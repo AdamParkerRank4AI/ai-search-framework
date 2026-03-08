@@ -137,7 +137,7 @@
 > 6. Russia (2018)
 > 7. Qatar (2022)
 
-**Q32.** Since the 2009-10 season, 9 different managers have won the Premier League. Name as many as you can. (1 point each, bonus 2 points for naming all 9)
+**Q32.** Since the 2009-10 season, 10 different managers have won the Premier League. Name as many as you can. (1 point each, bonus 2 points for naming all 10)
 > **Answer:**
 > 1. Carlo Ancelotti (Chelsea, 2009-10)
 > 2. Sir Alex Ferguson (Man Utd, 2010-11, 2012-13)
@@ -148,6 +148,7 @@
 > 7. Antonio Conte (Chelsea, 2016-17)
 > 8. Pep Guardiola (Man City, 2017-18, 2018-19, 2020-21, 2021-22, 2022-23, 2023-24)
 > 9. Jurgen Klopp (Liverpool, 2019-20)
+> 10. Arne Slot (Liverpool, 2024-25)
 
 **Q33.** Five players have scored 5 goals in a single Premier League match. Name them. (1 point each, 5 available)
 > **Answer:**
@@ -163,13 +164,13 @@
 *6 questions - 2 points each (1 for the odd one out, 1 for the reason)*
 
 **Q34.** Odd one out: Manchester United, Arsenal, Chelsea, Manchester City, Liverpool, Leicester City?
-> **Answer:** **Leicester City** - only Premier League champion to also have been relegated from the Premier League.
+> **Answer:** **Leicester City** - the only Premier League champion from outside the traditional "Big Six." (Also accept: the only one based in the East Midlands)
 
 **Q35.** Odd one out: Steven Gerrard, Frank Lampard, Paul Scholes, David Beckham?
 > **Answer:** **Steven Gerrard** - the only one who never won the Premier League.
 
-**Q36.** Odd one out: Paris Saint-Germain, Real Madrid, Barcelona, Bayern Munich, Juventus?
-> **Answer:** **Paris Saint-Germain** - the only club never to have won the Champions League / European Cup.
+**Q36.** Odd one out: Paris Saint-Germain, Real Madrid, Barcelona, Bayern Munich, Manchester City?
+> **Answer:** **Manchester City** - the only club to have been relegated to the third tier of their domestic league. (City were in the old Division Two in 1998-99)
 
 **Q37.** Odd one out: Didier Drogba, Thierry Henry, Sergio Aguero, Robin van Persie, Luis Suarez?
 > **Answer:** **Luis Suarez** - the only one who never won the Premier League.
@@ -341,4 +342,4 @@
 
 ---
 
-*Quiz compiled March 2026. Stats are correct as of end of 2023-24 Premier League season. Some numbers may have changed slightly during the 2024-25 and 2025-26 seasons.*
+*Quiz compiled March 2026. Stats are correct as of end of 2024-25 season where possible. Some numbers may have changed slightly during the 2025-26 season.*
