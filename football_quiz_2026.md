@@ -244,8 +244,8 @@
 **Q46.** Who holds the record for the fastest red card in Premier League history? Bonus point for how many seconds.
 > **Answer:** Keith Gillespie - 12 seconds (Sheffield United vs Reading, January 2007 — elbowed a player before the ball was even in play)
 
-**Q47.** Who scored Arsenal's last ever goal at Highbury, in their final match there in May 2006?
-> **Answer:** Thierry Henry (scored a hat-trick in a 4-2 win over Wigan Athletic)
+**Q47.** Who is the all-time top scorer in men's World Cup history?
+> **Answer:** Miroslav Klose - 16 goals (Germany, across 2002, 2006, 2010 & 2014 World Cups). He overtook Ronaldo (Brazil, 15) in 2014.
 
 **Q48.** In the 2008 Champions League Final between Manchester United and Chelsea, who missed the decisive penalty that handed United the trophy?
 > **Answer:** Nicolas Anelka (saved by Edwin van der Sar). John Terry had earlier slipped and missed what would have been the winning penalty for Chelsea.
@@ -267,29 +267,29 @@
 **Q52.** Who was the first African player to win the Ballon d'Or?
 > **Answer:** George Weah (1995, while at AC Milan)
 
-**Q53.** Dennis Bergkamp had a famous nickname related to his well-known phobia. What was it?
-> **Answer:** The Non-Flying Dutchman (he had a fear of flying and refused to travel by plane)
+**Q53.** Which player scored the last ever goal at the old Wembley Stadium before it was demolished?
+> **Answer:** Dietmar Hamann (Germany beat England 1-0 in a World Cup qualifier, October 2000 — the final match at the old Wembley)
 
 **Q54.** Name the three Italian clubs that Zlatan Ibrahimovic played for. (1 point each)
 > **Answer:** Juventus, Inter Milan, AC Milan
 
-**Q55.** Who did Arsene Wenger replace as Arsenal manager in 1996?
-> **Answer:** Bruce Rioch
+**Q55.** Zinedine Zidane nearly signed for which English club as a young player before joining Juventus in 1996?
+> **Answer:** Blackburn Rovers (manager Ray Harford and owner Jack Walker reportedly turned down the chance to sign him)
 
 **Q56.** Which Premier League manager was nicknamed "The Tinkerman" due to his constant rotation of players?
 > **Answer:** Claudio Ranieri (at Chelsea, before being replaced by Jose Mourinho in 2004)
 
-**Q57.** David Beckham won league titles in four different countries. Name all four countries. (1 point each)
-> **Answer:** England (Manchester United, Premier League), Spain (Real Madrid, La Liga), USA (LA Galaxy, MLS Cup), France (PSG, Ligue 1)
+**Q57.** Only two players have scored a hat-trick in a World Cup Final. Name both. (1 point each)
+> **Answer:** Geoff Hurst (England vs West Germany, 1966) and Kylian Mbappe (France vs Argentina, 2022). Mbappe scored his despite France losing on penalties.
 
 **Q58.** Before establishing himself at Tottenham, Harry Kane went on four loan spells. Name any two of the four clubs. (1 point each)
 > **Answer:** Leyton Orient, Millwall, Norwich City, Leicester City
 
-**Q59.** Which manager has managed the most different clubs in the Premier League?
-> **Answer:** Sam Allardyce (8 clubs — Bolton, Newcastle, Blackburn, West Ham, Sunderland, Crystal Palace, Everton, Leeds)
+**Q59.** Which was the first club to be deducted points in the Premier League, and why? (1 point each)
+> **Answer:** Middlesbrough — deducted 3 points in 1996-97 for failing to fulfil a fixture against Blackburn Rovers (they called off the match claiming too many players were injured)
 
-**Q60.** Which club did Jose Mourinho manage immediately before his first spell at Chelsea in 2004?
-> **Answer:** Porto (where he won the Champions League in 2004)
+**Q60.** Who holds the record for the most consecutive Premier League appearances?
+> **Answer:** Brad Friedel — 310 consecutive appearances (across Blackburn, Aston Villa, and Tottenham, from 2004 to 2012)
 
 ---
 
