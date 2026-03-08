@@ -18,11 +18,11 @@
 **Q3.** Who holds the record for the most Premier League yellow cards?
 > **Answer:** Gareth Barry (123 yellow cards)
 
-**Q4.** Which team holds the record for the longest unbeaten run in Premier League history, and how many games?
-> **Answer:** Arsenal - 49 games (May 2003 to October 2004) - *1 point for team, 1 point for number*
+**Q4.** Who holds the record for the most Premier League assists of all time?
+> **Answer:** Ryan Giggs (162 assists)
 
-**Q5.** Who holds the record for scoring in the most consecutive Premier League matches?
-> **Answer:** Jamie Vardy - 11 consecutive matches (Leicester City, 2015-16 season)
+**Q5.** Which club conceded the fewest goals in a single 38-game Premier League season, and how many did they concede? (1 point each)
+> **Answer:** Chelsea - 15 goals (2004-05, under Jose Mourinho)
 
 **Q6.** Who has scored the most Premier League hat-tricks?
 > **Answer:** Sergio Aguero (12 hat-tricks, all for Manchester City). Alan Shearer is second with 11.
@@ -35,8 +35,8 @@
 **Q7.** Since 2002, six different countries have won the World Cup. Name them all. (1 point each, 6 available)
 > **Answer:** Brazil (2002), Italy (2006), Spain (2010), Germany (2014), France (2018), Argentina (2022)
 
-**Q8.** Who scored the winning goal in the 2010 World Cup final?
-> **Answer:** Andres Iniesta (Spain 1-0 Netherlands, extra time)
+**Q8.** In the 2014 World Cup semi-final, Germany beat Brazil 7-1. Five different German players scored. Name any three of them. (1 point each, 3 available)
+> **Answer:** Thomas Muller, Miroslav Klose, Toni Kroos (x2), Sami Khedira, Andre Schurrle (x2)
 
 **Q9.** In the famous 2005 Champions League final, Liverpool came back from 3-0 down against AC Milan. Name all three Liverpool goalscorers. (1 point each)
 > **Answer:** Steven Gerrard, Vladimir Smicer, Xabi Alonso
@@ -44,26 +44,29 @@
 **Q10.** Which manager has won the Champions League / European Cup the most times?
 > **Answer:** Carlo Ancelotti (5 times) - AC Milan 2003 & 2007, Real Madrid 2014, 2022 & 2024
 
-**Q11.** Which was the first Asian country to reach the semi-finals of a World Cup?
-> **Answer:** South Korea (2002 World Cup, as co-hosts)
+**Q11.** Which country has appeared in the most World Cup finals without ever winning the tournament?
+> **Answer:** Netherlands (3 finals — 1974, 1978, 2010 — lost all three)
 
 ---
 
 ## ROUND 3: WHO AM I?
-*2 questions - 1 point each*
+*3 questions - 1 point each*
 
-**Q12.** I was born in Togo. I played for Arsenal, Manchester City, Real Madrid, and Crystal Palace among others. I'm famous for running the full length of the pitch to celebrate in front of the Arsenal fans after scoring for Man City. Who am I?
-> **Answer:** Emmanuel Adebayor
+**Q12.** I'm South African. I scored twice in a Champions League final before I came to England. In the Premier League, I played for Blackburn Rovers and West Ham. I scored 18 league goals in a single season at Blackburn. I later became a first-team coach at Manchester United. Who am I?
+> **Answer:** Benni McCarthy (scored twice in Porto's 3-0 CL final win over Monaco, 2004)
 
 **Q13.** I won the European Golden Shoe while playing for Sunderland in 1999-2000, scoring 30 league goals that season. I went on to play for several other English clubs including Southampton, Aston Villa, and West Brom. Who am I?
 > **Answer:** Kevin Phillips
+
+**Q14.** I'm Irish. I scored over 125 Premier League goals across five different clubs, including Leeds, Liverpool, and Tottenham — where I spent most of my career. I also became a cult hero in the United States. Who am I?
+> **Answer:** Robbie Keane
 
 ---
 
 ## ROUND 4: NAME THE LIST
 *5 questions - multiple points available per question*
 
-**Q14.** Since the Premier League began in 1992, only 7 clubs have won the title. Name them all. (1 point each, 7 available)
+**Q15.** Since the Premier League began in 1992, only 7 clubs have won the title. Name them all. (1 point each, 7 available)
 > **Answer:**
 > 1. Manchester United
 > 2. Blackburn Rovers
@@ -73,7 +76,7 @@
 > 6. Leicester City
 > 7. Liverpool
 
-**Q15.** Name the 6 English clubs that have won the Champions League / European Cup. (1 point each, 6 available)
+**Q16.** Name the 6 English clubs that have won the Champions League / European Cup. (1 point each, 6 available)
 > **Answer:**
 > 1. Liverpool
 > 2. Manchester United
@@ -82,7 +85,7 @@
 > 5. Chelsea
 > 6. Manchester City
 
-**Q16.** Name all 7 host countries for the men's World Cup since 2002. (1 point each)
+**Q17.** Name all 7 host countries for the men's World Cup since 2002. (1 point each)
 > **Answer:**
 > 1. South Korea (2002)
 > 2. Japan (2002)
@@ -92,7 +95,7 @@
 > 6. Russia (2018)
 > 7. Qatar (2022)
 
-**Q17.** Since the 2009-10 season, 10 different managers have won the Premier League. Name as many as you can. (1 point each, bonus 2 points for naming all 10)
+**Q18.** Since the 2009-10 season, 10 different managers have won the Premier League. Name as many as you can. (1 point each, bonus 2 points for naming all 10)
 > **Answer:**
 > 1. Carlo Ancelotti (Chelsea, 2009-10)
 > 2. Sir Alex Ferguson (Man Utd, 2010-11, 2012-13)
@@ -105,7 +108,7 @@
 > 9. Jurgen Klopp (Liverpool, 2019-20)
 > 10. Arne Slot (Liverpool, 2024-25)
 
-**Q18.** Five players have scored 5 goals in a single Premier League match. Name them. (1 point each, 5 available)
+**Q19.** Five players have scored 5 goals in a single Premier League match. Name them. (1 point each, 5 available)
 > **Answer:**
 > 1. Andy Cole (Man Utd 9-0 Ipswich, 1995)
 > 2. Alan Shearer (Newcastle 8-0 Sheffield Wednesday, 1999)
@@ -118,22 +121,22 @@
 ## ROUND 5: ODD ONE OUT
 *6 questions - 2 points each (1 for the odd one out, 1 for the reason)*
 
-**Q19.** Odd one out: Manchester United, Arsenal, Chelsea, Manchester City, Liverpool, Leicester City?
+**Q20.** Odd one out: Manchester United, Arsenal, Chelsea, Manchester City, Liverpool, Leicester City?
 > **Answer:** **Leicester City** - the only Premier League champion from outside the traditional "Big Six." (Also accept: the only one based in the East Midlands)
 
-**Q20.** Odd one out: Steven Gerrard, Frank Lampard, Paul Scholes, David Beckham?
+**Q21.** Odd one out: Steven Gerrard, Frank Lampard, Paul Scholes, David Beckham?
 > **Answer:** **Steven Gerrard** - the only one who never won the Premier League.
 
-**Q21.** Odd one out: Paris Saint-Germain, Real Madrid, Barcelona, Bayern Munich, Manchester City?
+**Q22.** Odd one out: Paris Saint-Germain, Real Madrid, Barcelona, Bayern Munich, Manchester City?
 > **Answer:** **Manchester City** - the only club to have been relegated to the third tier of their domestic league. (City were in the old Division Two in 1998-99)
 
-**Q22.** Odd one out: Didier Drogba, Thierry Henry, Sergio Aguero, Robin van Persie, Luis Suarez?
+**Q23.** Odd one out: Didier Drogba, Thierry Henry, Sergio Aguero, Robin van Persie, Luis Suarez?
 > **Answer:** **Luis Suarez** - the only one who never won the Premier League.
 
-**Q23.** Odd one out: Petr Cech, David Seaman, Edwin van der Sar, Peter Schmeichel?
+**Q24.** Odd one out: Petr Cech, David Seaman, Edwin van der Sar, Peter Schmeichel?
 > **Answer:** **David Seaman** - the only one who never won the Champions League.
 
-**Q24.** Odd one out: Ryan Giggs, Paul Scholes, Gary Neville, David Beckham?
+**Q25.** Odd one out: Ryan Giggs, Paul Scholes, Gary Neville, David Beckham?
 > **Answer:** **David Beckham** - the only member of the "Class of '92" who did not finish his career at Manchester United. Giggs, Scholes, and Neville all retired at Man Utd.
 
 ---
@@ -161,31 +164,31 @@
 ## ROUND 7: QUICK FIRE TRIVIA
 *9 questions - 1 point each unless stated*
 
-**Q25.** What was the original name of the Premier League when it launched in 1992?
+**Q26.** What was the original name of the Premier League when it launched in 1992?
 > **Answer:** The FA Premier League (also accept "FA Carling Premiership" as the first sponsored name)
 
-**Q26.** Who is the youngest player to score a Premier League goal?
+**Q27.** Who is the youngest player to score a Premier League goal?
 > **Answer:** James Vaughan (Everton, aged 16 years and 271 days, vs Crystal Palace in April 2005)
 
-**Q27.** Which country did manager Claudio Ranieri manage immediately BEFORE taking charge of Leicester City's title-winning season?
+**Q28.** Which country did manager Claudio Ranieri manage immediately BEFORE taking charge of Leicester City's title-winning season?
 > **Answer:** Greece (he managed the Greek national team)
 
-**Q28.** Which two teams contested the first-ever Premier League match on 15 August 1992?
+**Q29.** Which two teams contested the first-ever Premier League match on 15 August 1992?
 > **Answer:** Sheffield United vs Manchester United (Brian Deane scored the first-ever PL goal)
 
-**Q29.** Which Premier League stadium has the largest capacity?
-> **Answer:** Old Trafford (Manchester United) - approximately 74,310
+**Q30.** Leicester City's 2015-16 Premier League title was mathematically confirmed when Tottenham failed to beat which club?
+> **Answer:** Chelsea (2-2 draw at Stamford Bridge, 2 May 2016)
 
-**Q30.** Which country won the first-ever World Cup in 1930?
-> **Answer:** Uruguay
+**Q31.** In which city was the 2012 Champions League Final held, where Chelsea famously beat Bayern Munich on penalties?
+> **Answer:** Munich — the final was played at Bayern's own Allianz Arena
 
-**Q31.** In what year did Manchester City first win the Premier League?
-> **Answer:** 2012 (2011-12 season)
+**Q32.** Which player scored the most Premier League goals in a single calendar year (January to December)?
+> **Answer:** Harry Kane - 39 goals in 2017
 
-**Q32.** In the 2006 World Cup final, which player was sent off for a headbutt in his final-ever professional match?
-> **Answer:** Zinedine Zidane (headbutted Marco Materazzi)
+**Q33.** Which player has won the most Premier League winner's medals?
+> **Answer:** Ryan Giggs (13 Premier League titles, all with Manchester United)
 
-**Q33.** Which club did Jamie Vardy play for immediately before joining Leicester City?
+**Q34.** Which club did Jamie Vardy play for immediately before joining Leicester City?
 > **Answer:** Fleetwood Town
 
 ---
@@ -193,7 +196,7 @@
 ## ROUND 8: PREMIER LEAGUE GOALSCORING RECORDS
 *5 questions - variable points*
 
-**Q34.** Name the top 5 all-time Premier League goalscorers from outside the United Kingdom. (1 point each, bonus 2 for all 5 in order)
+**Q35.** Name the top 5 all-time Premier League goalscorers from outside the United Kingdom. (1 point each, bonus 2 for all 5 in order)
 > **Answer:**
 > 1. Sergio Aguero (184)
 > 2. Thierry Henry (175)
@@ -203,16 +206,16 @@
 >
 > *(Numbers approximate - accept reasonable variations as records update)*
 
-**Q35.** Which player holds the record for the most Premier League goals without ever winning the title?
+**Q36.** Which player holds the record for the most Premier League goals without ever winning the title?
 > **Answer:** Robbie Fowler (163 goals, never won the Premier League)
 
-**Q36.** Sergio Aguero's title-winning goal against QPR in 2012 is one of the most famous in Premier League history. But who ASSISTED the goal?
+**Q37.** Sergio Aguero's title-winning goal against QPR in 2012 is one of the most famous in Premier League history. But who ASSISTED the goal?
 > **Answer:** Mario Balotelli
 
-**Q37.** Who was the last player to score 30+ Premier League goals in a season before Erling Haaland did it in 2022-23?
+**Q38.** Who was the last player to score 30+ Premier League goals in a season before Erling Haaland did it in 2022-23?
 > **Answer:** Mohamed Salah (32 goals in 2017-18)
 
-**Q38.** Filippo Inzaghi scored twice in the 2007 Champions League final. Which English club did AC Milan beat?
+**Q39.** Filippo Inzaghi scored twice in the 2007 Champions League final. Which English club did AC Milan beat?
 > **Answer:** Liverpool (AC Milan 2-1 Liverpool, Athens)
 
 ---
@@ -220,13 +223,13 @@
 ## BONUS ROUND: FOOTBALL CONNECTIONS
 *3 questions - 2 points each*
 
-**Q39.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
+**Q40.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
 > **Answer:** All won the top division of English football (League title / Premier League) having been promoted from the second tier the previous season or shortly before. *(Accept: surprise/shock title winners, or won the league shortly after promotion)*
 
-**Q40.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
+**Q41.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
 > **Answer:** They all played for both Arsenal AND Chelsea.
 
-**Q41.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
+**Q42.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
 > **Answer:** All were dramatic late goals that turned seemingly certain defeat into victory and won a major trophy.
 
 ---
@@ -237,14 +240,14 @@
 |-------|-------------|------------|
 | 1 | Premier League Records | ~8 |
 | 2 | World Football | ~10 |
-| 3 | Who Am I? | 2 |
+| 3 | Who Am I? | 3 |
 | 4 | Name The List | ~30 |
 | 5 | Odd One Out | 12 |
 | 6 | Picture Round | 11 |
 | 7 | Quick Fire | 9 |
 | 8 | Goalscoring Records | ~10 |
 | Bonus | Connections | 6 |
-| **TOTAL** | | **~98** |
+| **TOTAL** | | **~99** |
 
 ---
 
