@@ -162,7 +162,7 @@
 ---
 
 ## ROUND 7: QUICK FIRE TRIVIA
-*9 questions - 1 point each unless stated*
+*10 questions - 1 point each unless stated*
 
 **Q26.** What was the original name of the Premier League when it launched in 1992?
 > **Answer:** The FA Premier League (also accept "FA Carling Premiership" as the first sponsored name)
@@ -176,19 +176,22 @@
 **Q29.** Which two teams contested the first-ever Premier League match on 15 August 1992?
 > **Answer:** Sheffield United vs Manchester United (Brian Deane scored the first-ever PL goal)
 
-**Q30.** Leicester City's 2015-16 Premier League title was mathematically confirmed when Tottenham failed to beat which club?
+**Q30.** Name all 5 clubs that Sol Campbell played for. (1 point each, 5 available)
+> **Answer:** Tottenham Hotspur, Arsenal, Portsmouth, Newcastle United, Notts County
+
+**Q31.** Leicester City's 2015-16 Premier League title was mathematically confirmed when Tottenham failed to beat which club?
 > **Answer:** Chelsea (2-2 draw at Stamford Bridge, 2 May 2016)
 
-**Q31.** In which city was the 2012 Champions League Final held, where Chelsea famously beat Bayern Munich on penalties?
+**Q32.** In which city was the 2012 Champions League Final held, where Chelsea famously beat Bayern Munich on penalties?
 > **Answer:** Munich — the final was played at Bayern's own Allianz Arena
 
-**Q32.** Which player scored the most Premier League goals in a single calendar year (January to December)?
+**Q33.** Which player scored the most Premier League goals in a single calendar year (January to December)?
 > **Answer:** Harry Kane - 39 goals in 2017
 
-**Q33.** Which player has won the most Premier League winner's medals?
+**Q34.** Which player has won the most Premier League winner's medals?
 > **Answer:** Ryan Giggs (13 Premier League titles, all with Manchester United)
 
-**Q34.** Which club did Jamie Vardy play for immediately before joining Leicester City?
+**Q35.** Which club did Jamie Vardy play for immediately before joining Leicester City?
 > **Answer:** Fleetwood Town
 
 ---
@@ -196,7 +199,7 @@
 ## ROUND 8: PREMIER LEAGUE GOALSCORING RECORDS
 *5 questions - variable points*
 
-**Q35.** Name the top 5 all-time Premier League goalscorers from outside the United Kingdom. (1 point each, bonus 2 for all 5 in order)
+**Q36.** Name the top 5 all-time Premier League goalscorers from outside the United Kingdom. (1 point each, bonus 2 for all 5 in order)
 > **Answer:**
 > 1. Sergio Aguero (184)
 > 2. Thierry Henry (175)
@@ -206,16 +209,16 @@
 >
 > *(Numbers approximate - accept reasonable variations as records update)*
 
-**Q36.** Which player holds the record for the most Premier League goals without ever winning the title?
+**Q37.** Which player holds the record for the most Premier League goals without ever winning the title?
 > **Answer:** Robbie Fowler (163 goals, never won the Premier League)
 
-**Q37.** Sergio Aguero's title-winning goal against QPR in 2012 is one of the most famous in Premier League history. But who ASSISTED the goal?
+**Q38.** Sergio Aguero's title-winning goal against QPR in 2012 is one of the most famous in Premier League history. But who ASSISTED the goal?
 > **Answer:** Mario Balotelli
 
-**Q38.** Who was the last player to score 30+ Premier League goals in a season before Erling Haaland did it in 2022-23?
+**Q39.** Who was the last player to score 30+ Premier League goals in a season before Erling Haaland did it in 2022-23?
 > **Answer:** Mohamed Salah (32 goals in 2017-18)
 
-**Q39.** Filippo Inzaghi scored twice in the 2007 Champions League final. Which English club did AC Milan beat?
+**Q40.** Filippo Inzaghi scored twice in the 2007 Champions League final. Which English club did AC Milan beat?
 > **Answer:** Liverpool (AC Milan 2-1 Liverpool, Athens)
 
 ---
@@ -223,13 +226,13 @@
 ## BONUS ROUND: FOOTBALL CONNECTIONS
 *3 questions - 2 points each*
 
-**Q40.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
+**Q41.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
 > **Answer:** All won the top division of English football (League title / Premier League) having been promoted from the second tier the previous season or shortly before. *(Accept: surprise/shock title winners, or won the league shortly after promotion)*
 
-**Q41.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
+**Q42.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
 > **Answer:** They all played for both Arsenal AND Chelsea.
 
-**Q42.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
+**Q43.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
 > **Answer:** All were dramatic late goals that turned seemingly certain defeat into victory and won a major trophy.
 
 ---
@@ -244,10 +247,10 @@
 | 4 | Name The List | ~30 |
 | 5 | Odd One Out | 12 |
 | 6 | Picture Round | 11 |
-| 7 | Quick Fire | 9 |
+| 7 | Quick Fire | 14 |
 | 8 | Goalscoring Records | ~10 |
 | Bonus | Connections | 6 |
-| **TOTAL** | | **~99** |
+| **TOTAL** | | **~104** |
 
 ---
 
