@@ -1,8 +1,8 @@
 # FOOTBALL QUIZ 2026 - QUIZMASTER'S COPY
 
 > **Theme:** Football, 2000 onwards (Premier League focus)
-> **Total Questions:** 50+
-> **Total Points Available:** ~100
+> **Total Questions:** 63 + 11 picture round
+> **Total Points Available:** ~130
 
 ---
 
@@ -223,16 +223,86 @@
 
 ---
 
+## ROUND 9: MOMENTS & MILESTONES
+*10 questions - 1 point each unless stated*
+
+**Q41.** Who scored the winning goal in the 2006 Champions League Final, as Barcelona came from behind to beat Arsenal 2-1?
+> **Answer:** Juliano Belletti (Eto'o equalised, then Belletti scored the winner late on)
+
+**Q42.** England beat Germany 5-1 in Munich in September 2001. Who scored a hat-trick in that match?
+> **Answer:** Michael Owen (Gerrard and Heskey scored the other two)
+
+**Q43.** Who is the youngest player to appear in a Premier League match?
+> **Answer:** Ethan Nwaneri (Arsenal, aged 15 years and 181 days, vs Brentford in September 2022)
+
+**Q44.** Which player scored four goals as a substitute in a single Premier League match?
+> **Answer:** Ole Gunnar Solskjaer (Manchester United 8-1 Nottingham Forest, February 1999)
+
+**Q45.** Who scored the fastest goal in Premier League history?
+> **Answer:** Shane Long - 7.69 seconds (Southampton vs Watford, April 2019)
+
+**Q46.** Who holds the record for the fastest red card in Premier League history? Bonus point for how many seconds.
+> **Answer:** Keith Gillespie - 12 seconds (Sheffield United vs Reading, January 2007 — elbowed a player before the ball was even in play)
+
+**Q47.** Who scored Arsenal's last ever goal at Highbury, in their final match there in May 2006?
+> **Answer:** Thierry Henry (scored a hat-trick in a 4-2 win over Wigan Athletic)
+
+**Q48.** In the 2008 Champions League Final between Manchester United and Chelsea, who missed the decisive penalty that handed United the trophy?
+> **Answer:** Nicolas Anelka (saved by Edwin van der Sar). John Terry had earlier slipped and missed what would have been the winning penalty for Chelsea.
+
+**Q49.** Who was the first player to score 100 Premier League goals?
+> **Answer:** Alan Shearer
+
+**Q50.** Who holds the record for the most goals scored in a single World Cup tournament?
+> **Answer:** Just Fontaine - 13 goals (France, 1958 World Cup). A record that still stands.
+
+---
+
+## ROUND 10: CAREERS & MANAGERS
+*10 questions - 1 point each unless stated*
+
+**Q51.** Who is the only player to have won the Champions League with three different clubs?
+> **Answer:** Clarence Seedorf (Ajax 1995, Real Madrid 1998, AC Milan 2003 & 2007)
+
+**Q52.** Who was the first African player to win the Ballon d'Or?
+> **Answer:** George Weah (1995, while at AC Milan)
+
+**Q53.** Dennis Bergkamp had a famous nickname related to his well-known phobia. What was it?
+> **Answer:** The Non-Flying Dutchman (he had a fear of flying and refused to travel by plane)
+
+**Q54.** Name the three Italian clubs that Zlatan Ibrahimovic played for. (1 point each)
+> **Answer:** Juventus, Inter Milan, AC Milan
+
+**Q55.** Who did Arsene Wenger replace as Arsenal manager in 1996?
+> **Answer:** Bruce Rioch
+
+**Q56.** Which Premier League manager was nicknamed "The Tinkerman" due to his constant rotation of players?
+> **Answer:** Claudio Ranieri (at Chelsea, before being replaced by Jose Mourinho in 2004)
+
+**Q57.** David Beckham won league titles in four different countries. Name all four countries. (1 point each)
+> **Answer:** England (Manchester United, Premier League), Spain (Real Madrid, La Liga), USA (LA Galaxy, MLS Cup), France (PSG, Ligue 1)
+
+**Q58.** Before establishing himself at Tottenham, Harry Kane went on four loan spells. Name any two of the four clubs. (1 point each)
+> **Answer:** Leyton Orient, Millwall, Norwich City, Leicester City
+
+**Q59.** Which manager has managed the most different clubs in the Premier League?
+> **Answer:** Sam Allardyce (8 clubs — Bolton, Newcastle, Blackburn, West Ham, Sunderland, Crystal Palace, Everton, Leeds)
+
+**Q60.** Which club did Jose Mourinho manage immediately before his first spell at Chelsea in 2004?
+> **Answer:** Porto (where he won the Champions League in 2004)
+
+---
+
 ## BONUS ROUND: FOOTBALL CONNECTIONS
 *3 questions - 2 points each*
 
-**Q41.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
+**Q61.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
 > **Answer:** All won the top division of English football (League title / Premier League) having been promoted from the second tier the previous season or shortly before. *(Accept: surprise/shock title winners, or won the league shortly after promotion)*
 
-**Q42.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
+**Q62.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
 > **Answer:** They all played for both Arsenal AND Chelsea.
 
-**Q43.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
+**Q63.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
 > **Answer:** All were dramatic late goals that turned seemingly certain defeat into victory and won a major trophy.
 
 ---
@@ -249,8 +319,10 @@
 | 6 | Picture Round | 11 |
 | 7 | Quick Fire | 14 |
 | 8 | Goalscoring Records | ~10 |
+| 9 | Moments & Milestones | ~11 |
+| 10 | Careers & Managers | ~13 |
 | Bonus | Connections | 6 |
-| **TOTAL** | | **~104** |
+| **TOTAL** | | **~128** |
 
 ---
 
