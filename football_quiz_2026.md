@@ -10,7 +10,7 @@
 *10 questions - 1 point each unless stated*
 
 **Q1.** Who has made the most Premier League appearances of all time?
-> **Answer:** Gareth Barry (653 appearances) - *Bonus point for exact number*
+> **Answer:** James Milner (655 appearances) - *Bonus point for exact number. He overtook Gareth Barry's record of 653.*
 
 **Q2.** Who holds the record for the most Premier League clean sheets by a goalkeeper?
 > **Answer:** Petr Cech (202 clean sheets) - *Bonus point for exact number*
@@ -34,7 +34,7 @@
 > **Answer:** Jamie Vardy - 11 consecutive matches (Leicester City, 2015-16 season)
 
 **Q9.** Who has scored the most Premier League hat-tricks?
-> **Answer:** Alan Shearer (11 hat-tricks)
+> **Answer:** Sergio Aguero (12 hat-tricks, all for Manchester City). Alan Shearer is second with 11.
 
 **Q10.** Who holds the record for the most goals in a single Premier League season (38-game era)?
 > **Answer:** Erling Haaland - 36 goals (Manchester City, 2022-23)
