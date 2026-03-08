@@ -1,8 +1,8 @@
 # FOOTBALL QUIZ 2026 - QUIZMASTER'S COPY
 
 > **Theme:** Football, 2000 onwards (Premier League focus)
-> **Total Questions:** 75 + 11 picture round
-> **Total Points Available:** ~162
+> **Total Questions:** 94 + 11 picture round
+> **Total Points Available:** ~196
 
 ---
 
@@ -367,16 +367,88 @@
 
 ---
 
+## ROUND 11: YO-YO CLUBS & SQUAD STATS
+*4 questions - variable points*
+
+**Q73.** Since 2005-06, seven clubs have had three or more separate spells in the Premier League. Name all seven. (1 point each)
+> **Answer:** Burnley (5), Norwich City (4), West Brom, Watford, Fulham, Leicester City and Sheffield United (3 each).
+
+**Q74.** Only two clubs have ever done a strict back-to-back yo-yo — promoted, relegated, then promoted again in consecutive seasons. Name both. (1 point each)
+> **Answer:** Fulham and Norwich City.
+
+**Q75.** One of those clubs did the full cycle twice in just four years. Which one — and trace all four promotions and relegations? (1 point for the club, bonus 1 for the full sequence)
+> **Answer:** Fulham. Promoted 2018, relegated 2019, promoted 2020, relegated 2021, promoted 2022.
+
+**Q76.** Across the last three completed Premier League seasons, which three clubs used the most unique individual players? Name them in order. (1 point each)
+> **Answer:** Chelsea, Nottingham Forest, Manchester United. Bonus: Enzo Maresca used a club-record 39 different players in 2024-25.
+
+---
+
+## ROUND 12: COUNTRY BY COUNTRY
+*6 questions - variable points*
+
+**Q77.** Only three Icelandic players have made 200+ Premier League appearances. Name all three. (1 point each)
+> **Answer:** Hermann Hreidarsson (332 apps), Gylfi Sigurdsson (282), Eidur Gudjohnsen (211). Bonus: Hreidarsson was relegated five times with five different clubs — joint PL record.
+
+**Q78.** Who was the first player from outside the UK to make over 500 Premier League appearances, and how many did he make? (1 point each)
+> **Answer:** Mark Schwarzer — 514 appearances across Middlesbrough, Fulham, Chelsea and Leicester. Still the only non-British player ever to reach 500 PL appearances.
+
+**Q79.** Only three New Zealand players have made over 100 Premier League appearances. Name all three. (1 point each)
+> **Answer:** Ryan Nelsen (198), Chris Wood (171), Winston Reid (166).
+
+**Q80.** Name the only Latvian player to make over 100 Premier League appearances.
+> **Answer:** Marians Pahars — 129 appearances for Southampton. First Latvian in PL history (1999); scored twice on the final day to save Southampton from relegation.
+
+**Q81.** Only one player from Oman has ever played in the Premier League. Hint 1: He made around 90 appearances so you would know him. Hint 2: He was a goalkeeper.
+> **Answer:** Ali Al-Habsi — Bolton Wanderers and Wigan Athletic. First Arab player to win the FA Cup, with Wigan in 2013 — the day they beat Man City in the final and were relegated.
+
+**Q82.** Only two Trinidadian players have made over 100 Premier League appearances. Name them both. (1 point each)
+> **Answer:** Dwight Yorke (375 apps) and Kenwyne Jones (195 apps).
+
+---
+
+## ROUND 13: PREMIER LEAGUE ODD FACTS
+*9 questions - 1 point each unless stated*
+
+**Q83.** Only one player has ever played in the Premier League with nine fingers. Who is he, and how did he lose the finger? (1 point each)
+> **Answer:** Dan Burn (Newcastle United). Lost his ring finger aged 13 when it caught on a fence spike while wearing a ring.
+
+**Q84.** Only one goalkeeper in Premier League history has played with Tourette's syndrome. Who is he?
+> **Answer:** Tim Howard — Manchester United and Everton.
+
+**Q85.** Only one father and son have both won the Premier League title. Who are they, and with which clubs? (1 point each)
+> **Answer:** Peter Schmeichel (Manchester United, 1993-1999) and Kasper Schmeichel (Leicester City, 2016).
+
+**Q86.** Which former Premier League striker holds the Guinness World Record for the most headed goals in Premier League history — and how many? (1 point each)
+> **Answer:** Peter Crouch — 53 headed goals. He beat Alan Shearer's record of 46 in May 2015, heading in for Stoke against his former club Liverpool.
+
+**Q87.** Which former Premier League striker went on to present the BBC daytime property show Homes Under the Hammer?
+> **Answer:** Dion Dublin — presenter since 2015.
+
+**Q88.** Which Premier League footballer appeared on Countdown in 2010 — the first top-flight player ever to do so — won his first two episodes, then was knocked out in his third?
+> **Answer:** Clarke Carlisle. Also known as "Britain's Brainiest Footballer" after winning a TV quiz in 2002.
+
+**Q89.** Which Premier League striker once scored a goal AND saved a penalty in the same match after his goalkeeper was sent off?
+> **Answer:** Niall Quinn — for Manchester City vs Derby County, April 1991. Keeper Tony Coton was sent off; Quinn went in goal and saved Dean Saunders' penalty.
+
+**Q90.** One striker scored on his debut for every top-flight club he played for. Name him. Hint: Career spanned 1988 to 2006, three clubs — all in the top flight.
+> **Answer:** Alan Shearer — hat-trick on full debut for Southampton vs Arsenal (1988), scored on Blackburn debut (1992), and scored on Newcastle debut (1996).
+
+**Q91.** Name the only Englishman to have scored in three separate World Cups.
+> **Answer:** David Beckham — vs Colombia (1998), vs Argentina via penalty (2002), vs Ecuador (2006).
+
+---
+
 ## BONUS ROUND: FOOTBALL CONNECTIONS
 *3 questions - 2 points each*
 
-**Q73.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
+**Q92.** What connects the following: Blackburn Rovers (1995), Leicester City (2016), and Nottingham Forest (1978)?
 > **Answer:** All won the top division of English football (League title / Premier League) having been promoted from the second tier the previous season or shortly before. *(Accept: surprise/shock title winners, or won the league shortly after promotion)*
 
-**Q74.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
+**Q93.** What do Nicolas Anelka, Ashley Cole, William Gallas, Emmanuel Petit, and David Luiz all have in common?
 > **Answer:** They all played for both Arsenal AND Chelsea.
 
-**Q75.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
+**Q94.** What connects Sergio Aguero's goal vs QPR (2012), Steven Gerrard's goal vs AC Milan (2005 CL Final), and Ole Gunnar Solskjaer's goal vs Bayern Munich (1999 CL Final)?
 > **Answer:** All were dramatic late goals that turned seemingly certain defeat into victory and won a major trophy.
 
 ---
@@ -395,8 +467,11 @@
 | 8 | Goalscoring Records | ~10 |
 | 9 | Moments & Milestones | ~19 |
 | 10 | Careers & Managers | ~17 |
+| 11 | Yo-Yo Clubs & Squad Stats | ~10 |
+| 12 | Country by Country | ~11 |
+| 13 | Premier League Odd Facts | ~13 |
 | Bonus | Connections | 6 |
-| **TOTAL** | | **~162** |
+| **TOTAL** | | **~196** |
 
 ---
 
