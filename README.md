@@ -239,7 +239,7 @@ The businesses that build these foundations now, while the landscape is still fo
 
 - **Website:** [www.rank4ai.co.uk](https://www.rank4ai.co.uk)
 - **Founder:** Adam Parker
-- **Company:** AIPOPPY LTD (Company [16584507](https://find-and-update.company-information.service.gov.uk/company/16584507)) trading as Rank4AI
+- **Company:** Rank4AI Ltd (Company [16584507](https://find-and-update.company-information.service.gov.uk/company/16584507))
 
 ---
 
