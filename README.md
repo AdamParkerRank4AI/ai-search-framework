@@ -58,7 +58,7 @@ The five signal layers are:
 2. **Subject Authority:** Demonstrating deep, structured expertise on core topics.
 3. **Meaning Architecture:** Implementing the technical and structural foundations for AI processing.
 4. **Ecosystem Validation:** Reinforcing identity and authority through external, third-party signals.
-5. **Temporal Stability:** Ensuring stability and coherence of all signals across time.
+5. **Signal Consistency:** Ensuring stability and coherence of all signals across time.
 
 ---
 
@@ -168,7 +168,7 @@ AI platforms do not take a business at its word. A business that only exists on 
 
 ---
 
-## Signal 05: Temporal Stability
+## Signal 05: Signal Consistency
 
 AI platforms process both historical and current signals. Inconsistencies over time create signal drift and reduce an AI platform's confidence. Maintaining temporal stability is crucial.
 
