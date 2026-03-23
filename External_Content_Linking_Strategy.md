@@ -198,6 +198,165 @@ This is how third-party content becomes a genuine ecosystem validation signal ra
 
 ---
 
+## Quick-Reference: Per-Platform Checklists
+
+Use the relevant checklist every time you publish or appear on external content. Each one should take five minutes or less once your appearances page exists.
+
+---
+
+### Buzzsprout (Your Own Podcast)
+
+**On Buzzsprout when publishing:**
+
+1. In the episode description, add the full URL to the relevant topic page on rank4ai.co.uk (not the homepage)
+2. Write the description using your full entity name: "Adam Parker, Founder of Rank4AI"
+3. Put the link in the first two lines of the description
+
+**On your site after publishing:**
+
+4. Go to the topic page on rank4ai.co.uk that matches the episode subject
+5. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, discussed [topic] on [episode title] on [date]. [Listen here](link)."
+6. Add the episode to your /appearances page with title, date, summary, and link
+7. Add PodcastEpisode schema markup (see Part 4)
+
+---
+
+### YouTube (Your Own Channel or Guest Appearance)
+
+**On YouTube when publishing or appearing:**
+
+1. In the video description, add the full URL to the relevant topic page on rank4ai.co.uk in the first two to three lines (above the fold, before "Show more")
+2. Use your full entity name in the description: "Adam Parker, Founder of Rank4AI"
+3. If you are a guest, provide the host with a short written summary including your link and entity name to paste into the description
+4. Pin a comment on the video with a relevant, non-promotional addition that includes context about Rank4AI and a link to the topic page
+
+**On your site after publishing:**
+
+5. Go to the topic page on rank4ai.co.uk that matches the video subject
+6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, explained [topic] in [video title] on [channel name], [date]. [Watch here](link)."
+7. Add the video to your /appearances page with title, date, channel name, summary, and link
+8. Add VideoObject schema markup (see Part 4)
+
+---
+
+### Medium (Articles You Write)
+
+**On Medium when publishing:**
+
+1. Include contextual links to relevant topic pages on rank4ai.co.uk within the article body, not just at the end. Link where it is editorially natural (e.g. "as outlined in the [Rank4AI AI Search Framework](url)")
+2. Use your full entity name in your Medium bio: "Adam Parker, Founder of Rank4AI — www.rank4ai.co.uk"
+3. At the end of the article, add a short call-to-action linking to the most relevant page on rank4ai.co.uk
+4. Use consistent terminology — same company name, same service descriptions, same language as your site
+
+**On your site after publishing:**
+
+5. Go to the topic page on rank4ai.co.uk that matches the article subject
+6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, wrote about [topic] in [article title] on Medium, [date]. [Read here](link)."
+7. Add the article to your /appearances page with title, date, publication, summary, and link
+8. Add Article schema markup:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article Title",
+  "url": "https://medium.com/@yourhandle/article-slug",
+  "datePublished": "2026-03-23",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Medium"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Adam Parker",
+    "jobTitle": "Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Rank4AI",
+      "url": "https://www.rank4ai.co.uk"
+    }
+  },
+  "description": "Adam Parker, Founder of Rank4AI, discusses [topic summary]."
+}
+```
+
+---
+
+### Guest Articles (Third-Party Publications)
+
+**Before or during writing:**
+
+1. Include contextual links to relevant topic pages on rank4ai.co.uk within the article body where editorially appropriate
+2. Provide the editor with your full author bio: "Adam Parker is the Founder of Rank4AI (www.rank4ai.co.uk), a UK-based consultancy specialising in AI search optimisation."
+3. Link to specific topic pages, not just the homepage
+
+**On your site after publishing:**
+
+4. Go to the topic page on rank4ai.co.uk that matches the article subject
+5. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, contributed [article title] to [publication name], [date]. [Read here](link)."
+6. Add the article to your /appearances page
+7. Add Article schema markup (same pattern as Medium above, with the publication name updated)
+
+---
+
+### Guest Podcast Appearances (Someone Else's Show)
+
+**Before recording:**
+
+1. Provide the host with your full bio: "Adam Parker, Founder of Rank4AI (www.rank4ai.co.uk)"
+2. Provide the exact URL to the topic page you want linked in the show notes
+3. Offer a one-paragraph summary or key takeaway the host can use in show notes (this gives them a reason to include your link)
+
+**After publication:**
+
+4. Check the show notes on the host's website. If no link, email them with a polite request and the specific URL
+5. Go to the topic page on rank4ai.co.uk that matches what you discussed
+6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, discussed [topic] on [podcast name], hosted by [host name], [date]. [Listen here](link)."
+7. Add the episode to your /appearances page
+8. Add PodcastEpisode schema markup (see Part 4)
+
+---
+
+### LinkedIn Posts and Articles
+
+**On LinkedIn when publishing:**
+
+1. Link to the relevant topic page on rank4ai.co.uk within the post or article
+2. Use your full entity name and description consistently
+3. If sharing a podcast or video, link to both the external content and the relevant page on your site
+
+**On your site:**
+
+4. LinkedIn posts do not need individual references on your site unless they contain substantial original content. Focus on the primary source (the podcast, video, or article the LinkedIn post promotes).
+
+---
+
+### Press Mentions and Interviews
+
+**Before the interview:**
+
+1. Provide the journalist with your preferred entity description and the specific URL to link to
+
+**After publication:**
+
+2. Check if a link was included. If not, email requesting one
+3. Add a reference to your /appearances page
+4. If the topic matches a specific page on your site, add a contextual reference there too
+
+---
+
+### The Pattern
+
+Every platform follows the same three steps:
+
+1. **Link out** from the external content to the relevant topic page on rank4ai.co.uk
+2. **Reference in** on the matching topic page on your site (one to two sentences, full entity names, link to the source)
+3. **Log it** on your /appearances page
+
+The platform-specific details above just tell you where exactly to put the link on each platform. The site-side steps are always the same.
+
+---
+
 ## Action Checklist
 
 - [ ] Audit all existing external appearances (podcasts, YouTube, articles, press)
@@ -205,6 +364,6 @@ This is how third-party content becomes a genuine ecosystem validation signal ra
 - [ ] Follow up with any external source not currently linking back to the site
 - [ ] Create a dedicated appearances page on rank4ai.co.uk
 - [ ] Add contextual references to relevant external appearances within topic pages
-- [ ] Implement schema markup (PodcastEpisode, VideoObject) on appearance references
+- [ ] Implement schema markup (PodcastEpisode, VideoObject, Article) on appearance references
 - [ ] Establish a process for new appearances: provide links, entity language, and bio in advance
 - [ ] Review and update the register monthly
