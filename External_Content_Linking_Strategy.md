@@ -198,9 +198,49 @@ This is how third-party content becomes a genuine ecosystem validation signal ra
 
 ---
 
+## Current Content Output and Linking Assessment
+
+The following platforms are currently active. For each platform, the key question is: **does every piece of content link to a relevant topic page on rank4ai.co.uk?**
+
+### Automated (Unified Publisher)
+
+| Platform | Volume | Links Back to Site? | AI Crawlable? | Priority |
+|----------|--------|-------------------|---------------|----------|
+| Instagram | 2 posts/day | Likely no (link in bio only) | No — not crawled by AI platforms | Low |
+| Threads | 2 posts/day | Likely no | No — not crawled by AI platforms | Low |
+| Dev.to | 1 post/day | **Check** | **Yes — highly crawlable** | **Critical** |
+| GitHub Index | 3 entries/day | **Check** | **Yes — highly crawlable** | **Critical** |
+
+### Automated (Scripts)
+
+| Platform | Volume | Links Back to Site? | AI Crawlable? | Priority |
+|----------|--------|-------------------|---------------|----------|
+| Supabase Questions | 5 questions/day | **Check** | Partially | Medium |
+| Supabase Blog | 1 blog/day | **Check** | Partially | Medium |
+| Email | 1/day Mon-Fri | No (private) | No | Low |
+
+### Manual / Batch Scheduled
+
+| Platform | Volume | Links Back to Site? | AI Crawlable? | Priority |
+|----------|--------|-------------------|---------------|----------|
+| YouTube | Batch uploads | **Check** | **Yes — highly crawlable** | **Critical** |
+| Facebook | Batch scheduled | Likely no | Partially | Low |
+| Tumblr | 474 scheduled through Jun 2027 | **Check** | Yes — crawlable | Medium |
+| WordPress | 500 scheduled through Jul 2027 | **Check** | **Yes — highly crawlable** | **Critical** |
+| Blogger | Manual | **Check** | **Yes — crawlable** | **High** |
+| LinkedIn | Manual | **Check** | **Yes — crawlable by ChatGPT/Copilot** | **High** |
+
+### The Honest Assessment
+
+You are producing a huge volume of content. But if that content does not link to specific topic pages on rank4ai.co.uk, it is **invisible to your entity graph**. AI platforms see the content on those platforms but cannot connect it back to the Rank4AI entity on your site. It is like putting up billboards with no company name on them.
+
+The platforms that matter most for AI search are the ones that AI platforms actually crawl and index: **Dev.to, GitHub, YouTube, WordPress, Blogger, LinkedIn, and Tumblr**. Instagram, Threads, Facebook, and email are essentially invisible to AI platforms.
+
+---
+
 ## Quick-Reference: Per-Platform Checklists
 
-Use the relevant checklist every time you publish or appear on external content. Each one should take five minutes or less once your appearances page exists.
+Use the relevant checklist every time you publish content. The same three-step pattern applies to every platform: **link out, reference in, log it.**
 
 ---
 
@@ -221,127 +261,165 @@ Use the relevant checklist every time you publish or appear on external content.
 
 ---
 
-### YouTube (Your Own Channel or Guest Appearance)
+### YouTube
 
-**On YouTube when publishing or appearing:**
+**On YouTube when publishing:**
 
 1. In the video description, add the full URL to the relevant topic page on rank4ai.co.uk in the first two to three lines (above the fold, before "Show more")
 2. Use your full entity name in the description: "Adam Parker, Founder of Rank4AI"
-3. If you are a guest, provide the host with a short written summary including your link and entity name to paste into the description
-4. Pin a comment on the video with a relevant, non-promotional addition that includes context about Rank4AI and a link to the topic page
+3. If you are a guest on someone else's channel, provide the host with a short written summary including your link and entity name
+4. Pin a comment on the video with context about Rank4AI and a link to the topic page
 
 **On your site after publishing:**
 
 5. Go to the topic page on rank4ai.co.uk that matches the video subject
-6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, explained [topic] in [video title] on [channel name], [date]. [Watch here](link)."
-7. Add the video to your /appearances page with title, date, channel name, summary, and link
+6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, explained [topic] in [video title], [date]. [Watch here](link)."
+7. Add the video to your /appearances page with title, date, summary, and link
 8. Add VideoObject schema markup (see Part 4)
 
----
-
-### Medium (Articles You Write)
-
-**On Medium when publishing:**
-
-1. Include contextual links to relevant topic pages on rank4ai.co.uk within the article body, not just at the end. Link where it is editorially natural (e.g. "as outlined in the [Rank4AI AI Search Framework](url)")
-2. Use your full entity name in your Medium bio: "Adam Parker, Founder of Rank4AI — www.rank4ai.co.uk"
-3. At the end of the article, add a short call-to-action linking to the most relevant page on rank4ai.co.uk
-4. Use consistent terminology — same company name, same service descriptions, same language as your site
-
-**On your site after publishing:**
-
-5. Go to the topic page on rank4ai.co.uk that matches the article subject
-6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, wrote about [topic] in [article title] on Medium, [date]. [Read here](link)."
-7. Add the article to your /appearances page with title, date, publication, summary, and link
-8. Add Article schema markup:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Article Title",
-  "url": "https://medium.com/@yourhandle/article-slug",
-  "datePublished": "2026-03-23",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Medium"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Adam Parker",
-    "jobTitle": "Founder",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Rank4AI",
-      "url": "https://www.rank4ai.co.uk"
-    }
-  },
-  "description": "Adam Parker, Founder of Rank4AI, discusses [topic summary]."
-}
-```
+**Batch upload note:** If videos are uploaded in batches and hitting quota limits, prioritise getting the description links right over upload speed. A video without a link in the description is a wasted signal. When resuming batch uploads, check that all previously uploaded videos have the correct description with link before uploading more.
 
 ---
 
-### Guest Articles (Third-Party Publications)
+### Dev.to (CRITICAL — AI Crawlable)
 
-**Before or during writing:**
+**On Dev.to when publishing (unified publisher):**
 
-1. Include contextual links to relevant topic pages on rank4ai.co.uk within the article body where editorially appropriate
-2. Provide the editor with your full author bio: "Adam Parker is the Founder of Rank4AI (www.rank4ai.co.uk), a UK-based consultancy specialising in AI search optimisation."
-3. Link to specific topic pages, not just the homepage
+1. Every post must include at least one contextual link to the relevant topic page on rank4ai.co.uk within the body of the post. Not just at the end — within a relevant paragraph.
+2. Author bio must read: "Adam Parker, Founder of Rank4AI (www.rank4ai.co.uk)" — check this is set correctly in your Dev.to profile
+3. Use consistent terminology: same company name, same service descriptions as your site
+4. At the end of each post, include: "Learn more about [topic] at [relevant page URL on rank4ai.co.uk]"
 
-**On your site after publishing:**
+**On your site:** Dev.to posts at this volume (1/day) do not each need individual references on your site. Instead, ensure your site links to your Dev.to profile from a relevant page (e.g. /about or /appearances).
 
-4. Go to the topic page on rank4ai.co.uk that matches the article subject
-5. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, contributed [article title] to [publication name], [date]. [Read here](link)."
-6. Add the article to your /appearances page
-7. Add Article schema markup (same pattern as Medium above, with the publication name updated)
+**Why this is critical:** Dev.to is heavily crawled by AI platforms. It is a developer-credibility signal. Every post without a link to rank4ai.co.uk is a missed connection.
 
 ---
 
-### Guest Podcast Appearances (Someone Else's Show)
+### GitHub Index (CRITICAL — AI Crawlable)
 
-**Before recording:**
+**On GitHub when publishing (unified publisher):**
 
-1. Provide the host with your full bio: "Adam Parker, Founder of Rank4AI (www.rank4ai.co.uk)"
-2. Provide the exact URL to the topic page you want linked in the show notes
-3. Offer a one-paragraph summary or key takeaway the host can use in show notes (this gives them a reason to include your link)
+1. Every repository README must include a reference to Rank4AI with a link to rank4ai.co.uk: "Created by Adam Parker, Founder of [Rank4AI](https://www.rank4ai.co.uk)"
+2. Your GitHub profile README must include your full entity description and link to rank4ai.co.uk
+3. Repository descriptions must include "Rank4AI" where relevant
+4. If publishing index entries or documentation, include contextual links to relevant topic pages on rank4ai.co.uk
 
-**After publication:**
+**On your site:** Link to your GitHub profile from your /about or /appearances page. Reference specific repositories on relevant topic pages where appropriate.
 
-4. Check the show notes on the host's website. If no link, email them with a polite request and the specific URL
-5. Go to the topic page on rank4ai.co.uk that matches what you discussed
-6. Add a one to two sentence reference: "Adam Parker, Founder of Rank4AI, discussed [topic] on [podcast name], hosted by [host name], [date]. [Listen here](link)."
-7. Add the episode to your /appearances page
-8. Add PodcastEpisode schema markup (see Part 4)
+**Why this is critical:** GitHub is a primary signal source for ChatGPT, Copilot, and Claude. It is one of the strongest developer and practitioner credibility signals available.
 
 ---
 
-### LinkedIn Posts and Articles
+### WordPress (CRITICAL — 500 Scheduled Posts)
+
+**On WordPress when publishing:**
+
+1. Every post must include at least one contextual link to the relevant topic page on rank4ai.co.uk within the body
+2. Author bio on the WordPress site must read: "Adam Parker, Founder of Rank4AI (www.rank4ai.co.uk)"
+3. If this is a separate WordPress blog (not on rank4ai.co.uk), treat it as an external publication — every post needs a link back
+
+**Batch scheduled note:** You have 500 posts scheduled through July 2027. **Audit a sample of these immediately.** If they do not contain links to rank4ai.co.uk, you have 500 pieces of content going out over the next 16 months that do nothing for your entity graph. Fix the template or content brief used to generate these posts so every future post includes the link. Then prioritise updating the already-scheduled posts, starting with the nearest ones.
+
+**On your site:** If this WordPress site covers topics that have pages on rank4ai.co.uk, add references from those topic pages to key WordPress posts.
+
+---
+
+### Blogger (HIGH — AI Crawlable)
+
+**On Blogger when publishing:**
+
+1. Every post must include at least one contextual link to the relevant topic page on rank4ai.co.uk
+2. Author profile must include full entity name and link to rank4ai.co.uk
+3. Use consistent entity language throughout
+
+**On your site:** Same as WordPress — reference key posts from relevant topic pages on rank4ai.co.uk.
+
+---
+
+### LinkedIn (HIGH — Crawled by ChatGPT and Copilot)
 
 **On LinkedIn when publishing:**
 
-1. Link to the relevant topic page on rank4ai.co.uk within the post or article
-2. Use your full entity name and description consistently
-3. If sharing a podcast or video, link to both the external content and the relevant page on your site
+1. Every post must link to the relevant topic page on rank4ai.co.uk
+2. Use full entity name: "Adam Parker, Founder of Rank4AI"
+3. If sharing a podcast, video, or article, link to both the external content and the relevant page on your site
+4. LinkedIn profile must have consistent entity description matching your site
 
-**On your site:**
+**On your site:** LinkedIn posts do not need individual references on your site. Ensure your site links to your LinkedIn profile from /about or /appearances.
 
-4. LinkedIn posts do not need individual references on your site unless they contain substantial original content. Focus on the primary source (the podcast, video, or article the LinkedIn post promotes).
+**Why this is high priority:** LinkedIn is a primary signal source for ChatGPT and Copilot specifically. It carries weight for professional entity verification.
 
 ---
 
-### Press Mentions and Interviews
+### Tumblr (MEDIUM — Crawlable)
 
-**Before the interview:**
+**On Tumblr when publishing:**
 
-1. Provide the journalist with your preferred entity description and the specific URL to link to
+1. Every post should include a link to the relevant topic page on rank4ai.co.uk
+2. Profile must include full entity name and website link
+3. Use consistent entity language
 
-**After publication:**
+**Batch scheduled note:** You have 474 posts scheduled through June 2027. Same audit advice as WordPress — check a sample to see if they contain links. If not, fix the template.
 
-2. Check if a link was included. If not, email requesting one
-3. Add a reference to your /appearances page
-4. If the topic matches a specific page on your site, add a contextual reference there too
+---
+
+### Supabase Questions and Blog (MEDIUM)
+
+**On Supabase when publishing:**
+
+1. Where appropriate, reference Rank4AI methodology or link to relevant content on rank4ai.co.uk
+2. Profile must include full entity name and link
+3. Do not force links where they are not relevant — Supabase is a community platform and overly promotional content will be counterproductive
+
+---
+
+### Instagram and Threads (LOW — Not AI Crawlable)
+
+Instagram and Threads are not crawled by AI platforms. They have value for human audience building but **zero direct value for AI entity graph reinforcement**.
+
+1. Use consistent entity language in bio and captions (this helps if AI platforms ever index these in future)
+2. Link in bio should point to rank4ai.co.uk (Instagram) or include the URL in posts (Threads)
+3. Do not invest additional effort in making these AI-optimised — focus that effort on Dev.to, GitHub, WordPress, and YouTube instead
+
+---
+
+### Facebook (LOW)
+
+Facebook is partially crawlable but heavily gated. Low priority for AI search.
+
+1. Ensure page description and about section use full entity language and link to rank4ai.co.uk
+2. Posts should include links where natural
+3. Do not prioritise over higher-value platforms
+
+---
+
+### Email (NO AI VALUE)
+
+Email content is private and not crawlable. It has no direct AI search value. Continue using it for audience engagement but do not invest effort in AI-optimising email content.
+
+---
+
+## Priority Actions Based on Current Output
+
+### Immediate (This Week)
+
+1. **Audit the unified publisher template.** Check that every Dev.to post and GitHub entry being generated includes a link to a relevant topic page on rank4ai.co.uk. If not, fix the template. This affects 4 pieces of content per day.
+2. **Audit a sample of scheduled WordPress posts.** Check 10 posts across different dates. Do they link to rank4ai.co.uk? If not, fix the template and begin updating scheduled posts.
+3. **Audit a sample of scheduled Tumblr posts.** Same check.
+4. **Check YouTube video descriptions.** Do existing uploaded videos have links to rank4ai.co.uk in the first 2-3 lines? If not, update them. Fix the template for future batch uploads.
+
+### This Month
+
+5. **Set up LinkedIn posting cadence** with links to relevant topic pages on rank4ai.co.uk in every post.
+6. **Audit Blogger posts** for links back to the site.
+7. **Create the /appearances page** on rank4ai.co.uk to serve as the central index of all external content.
+8. **Add contextual references** on rank4ai.co.uk topic pages to the highest-value external content (key YouTube videos, key Dev.to posts, key WordPress articles).
+
+### Ongoing
+
+9. **Monthly register review** — check that all new content across all platforms is linking back correctly.
+10. **Quarterly audit** of scheduled content batches (WordPress, Tumblr) to catch drift.
 
 ---
 
@@ -353,17 +431,21 @@ Every platform follows the same three steps:
 2. **Reference in** on the matching topic page on your site (one to two sentences, full entity names, link to the source)
 3. **Log it** on your /appearances page
 
-The platform-specific details above just tell you where exactly to put the link on each platform. The site-side steps are always the same.
+The platform-specific details above tell you where to put the link on each platform and which platforms actually matter for AI search. Focus effort on the critical and high-priority platforms first.
 
 ---
 
 ## Action Checklist
 
-- [ ] Audit all existing external appearances (podcasts, YouTube, articles, press)
-- [ ] Create an external content register tracking link status
-- [ ] Follow up with any external source not currently linking back to the site
-- [ ] Create a dedicated appearances page on rank4ai.co.uk
-- [ ] Add contextual references to relevant external appearances within topic pages
+- [ ] Audit unified publisher templates (Dev.to, GitHub, Instagram, Threads) for links to rank4ai.co.uk
+- [ ] Audit sample of 500 scheduled WordPress posts for links to rank4ai.co.uk
+- [ ] Audit sample of 474 scheduled Tumblr posts for links to rank4ai.co.uk
+- [ ] Audit YouTube video descriptions for links to rank4ai.co.uk
+- [ ] Audit Blogger posts for links to rank4ai.co.uk
+- [ ] Fix any templates or content briefs that do not include links
+- [ ] Set up LinkedIn posting cadence with entity-linked content
+- [ ] Create /appearances page on rank4ai.co.uk
+- [ ] Add contextual references on topic pages for highest-value external content
 - [ ] Implement schema markup (PodcastEpisode, VideoObject, Article) on appearance references
-- [ ] Establish a process for new appearances: provide links, entity language, and bio in advance
-- [ ] Review and update the register monthly
+- [ ] Establish monthly review cycle for link status across all platforms
+- [ ] Establish quarterly audit of scheduled content batches
