@@ -261,3 +261,4 @@ The businesses that build these foundations now, while the landscape is still fo
 | 10a | Client Options |
 | 10b | Internal Reference |
 | 11 | Full Agency Service |
+| 12 | External Content Linking Strategy |
