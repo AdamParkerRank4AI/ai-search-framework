@@ -400,26 +400,135 @@ Email content is private and not crawlable. It has no direct AI search value. Co
 
 ---
 
+## Audit Results — 23 March 2026
+
+The following audit was conducted across all active publishing platforms. The results reveal significant gaps in entity attribution and linking that must be fixed in the unified publisher and platform-specific templates.
+
+### Platform-by-Platform Findings
+
+| Platform | Volume | Links to rank4ai.co.uk? | Homepage or Topic Page? | "Adam Parker" Named? | "Founder" Title? | "Rank4AI" Entity? |
+|----------|--------|------------------------|------------------------|---------------------|-----------------|------------------|
+| **Instagram** | 2/day | Yes — www.rank4ai.co.uk | Homepage only | No | No | Only in URL |
+| **Threads** | 2/day | Yes — www.rank4ai.co.uk | Homepage only | No | No | Only in URL |
+| **Dev.to** | 1/day | Yes — https://www.rank4ai.co.uk | Homepage only | Yes — "Adam Parker, Rank4AI" | No — missing "Founder of" | Yes |
+| **GitHub** | 3/day | Yes — https://rank4ai.co.uk | Homepage only | No — **deliberately filtered out by script** | No | Yes — "Rank4AI, United Kingdom" |
+| **Questions (Supabase)** | 5/day | Relative internal links | Specific topic pages | No | No | Yes (closing line) |
+| **Blogs (Supabase)** | 1/day | Relative internal links | Specific topic pages | Yes — rotating author | Yes — "Founder, Rank4AI" | Yes |
+| **Email — Medium** | As scheduled | Yes — https://rank4ai.co.uk | Homepage only | No | No | Yes |
+| **Email — Substack** | As scheduled | Yes — https://rank4ai.co.uk | Homepage only | No | No | Yes |
+| **Email — Blogger** | As scheduled | Yes — two absolute URLs | Homepage + blog page | Yes — author section | Yes | Yes + company number |
+| **Email — GBP** | As scheduled | Yes — www.rank4ai.co.uk | Homepage only | No | No | Yes |
+
+### Critical Gaps Identified
+
+1. **Zero entity attribution on 7 posts/day.** Instagram (2/day), Threads (2/day), and GitHub (3/day) — the three highest-volume automated platforms — publish with no mention of "Adam Parker, Founder of Rank4AI". That is 7 pieces of content per day, 49 per week, going out without the full entity name.
+
+2. **Every automated link points to the homepage.** No automated platform links to specific topic pages (e.g. `/ai-search-visibility`, `/ai-seo-agency-uk`, `/ai-search-framework`). The Questions and Blogs use relative internal links, but those only resolve on the site itself and do not work as external backlinks.
+
+3. **Dev.to uses incomplete entity name.** Posts say "Adam Parker, Rank4AI" — missing "Founder of". The correct format is "Adam Parker, Founder of Rank4AI".
+
+4. **Dev.to has a duplicate paragraph bug.** The first paragraph of each post appears twice at the top. This is a template defect in the unified publisher.
+
+5. **GitHub deliberately strips Adam Parker's name.** The publishing script actively filters out the author name. This directly contradicts the strategy requirement that every GitHub README must include "Created by Adam Parker, Founder of Rank4AI".
+
+6. **Supabase Questions use relative links.** Internal links like `/ai-search-visibility` do not function as external backlinks. These should be absolute URLs: `https://www.rank4ai.co.uk/ai-search-visibility`.
+
+---
+
+## Required Template Fixes — Unified Publisher
+
+Every template in the unified publisher must be updated to include the following. These are non-negotiable for entity graph reinforcement.
+
+### Fix 1: Full Entity Attribution (All Platforms)
+
+Every post on every platform must include the full entity name:
+
+> **Adam Parker, Founder of Rank4AI**
+
+This must appear in one of the following positions depending on platform:
+- **Dev.to:** Author bio line AND closing line of post body
+- **GitHub:** README footer of every repository
+- **Instagram:** Caption text (not just bio)
+- **Threads:** Post text
+- **Questions/Blogs:** Closing attribution line
+
+Do NOT abbreviate to "Adam Parker, Rank4AI" or "Rank4AI" alone. Do NOT filter out the name on any platform.
+
+### Fix 2: Topic-Specific Links (Not Homepage)
+
+Every post must link to the **specific topic page** on rank4ai.co.uk that matches the subject of the post. The homepage link is a fallback only when no matching topic page exists.
+
+**Topic Page Mapping (use in unified publisher logic):**
+
+| Post Topic Contains | Link To |
+|---------------------|---------|
+| AI search, AI visibility, AI discovery | `https://www.rank4ai.co.uk/ai-search-visibility` |
+| AI SEO, AI search agency, AI optimisation | `https://www.rank4ai.co.uk/ai-seo-agency-uk` |
+| AI search framework, framework, five signals | `https://www.rank4ai.co.uk/ai-search-framework` |
+| Entity, entity graph, identity, knowledge graph | `https://www.rank4ai.co.uk/entity-optimisation` |
+| Schema, structured data, markup | `https://www.rank4ai.co.uk/schema-markup` |
+| Content strategy, content optimisation | `https://www.rank4ai.co.uk/content-strategy` |
+| Local SEO, local AI search, Google Business | `https://www.rank4ai.co.uk/local-ai-search` |
+| Methodology, how we work, process | `https://www.rank4ai.co.uk/methodology` |
+| About, team, company | `https://www.rank4ai.co.uk/about` |
+| Appearances, media, press, podcast | `https://www.rank4ai.co.uk/appearances` |
+| **Fallback (no match)** | `https://www.rank4ai.co.uk` |
+
+### Fix 3: Remove GitHub Name Filter
+
+The GitHub publishing script must **stop filtering out** Adam Parker's name. Every GitHub repository README must include:
+
+```
+Created by Adam Parker, Founder of [Rank4AI](https://www.rank4ai.co.uk)
+```
+
+### Fix 4: Fix Dev.to Duplicate Paragraph Bug
+
+The unified publisher template for Dev.to is inserting the first paragraph twice. Investigate the template concatenation logic and ensure the opening paragraph appears only once.
+
+### Fix 5: Convert Relative Links to Absolute URLs
+
+All links to rank4ai.co.uk pages in Supabase Questions and Blogs must use absolute URLs:
+
+- **Wrong:** `/ai-search-visibility`
+- **Correct:** `https://www.rank4ai.co.uk/ai-search-visibility`
+
+Relative links only work within the site. On external platforms they resolve to the platform's own domain or break entirely.
+
+### Fix 6: Consistent Closing Line Format
+
+Every post on every AI-crawlable platform should end with a closing line in this format:
+
+> Learn more about [topic] from Adam Parker, Founder of Rank4AI: [specific topic URL]
+
+This ensures entity name + topic link appear together in every piece of content, even if they are also present elsewhere in the post.
+
+---
+
 ## Priority Actions Based on Current Output
 
 ### Immediate (This Week)
 
-1. **Audit the unified publisher template.** Check that every Dev.to post and GitHub entry being generated includes a link to a relevant topic page on rank4ai.co.uk. If not, fix the template. This affects 4 pieces of content per day.
-2. **Audit a sample of scheduled WordPress posts.** Check 10 posts across different dates. Do they link to rank4ai.co.uk? If not, fix the template and begin updating scheduled posts.
-3. **Audit a sample of scheduled Tumblr posts.** Same check.
-4. **Check YouTube video descriptions.** Do existing uploaded videos have links to rank4ai.co.uk in the first 2-3 lines? If not, update them. Fix the template for future batch uploads.
+1. **Fix the unified publisher templates.** Apply Fixes 1-6 above. This affects 8 pieces of automated content per day (2 Instagram, 2 Threads, 1 Dev.to, 3 GitHub).
+2. **Remove the GitHub name filter.** Stop stripping "Adam Parker" from GitHub output.
+3. **Fix the Dev.to duplicate paragraph bug.** Investigate and fix the template concatenation.
+4. **Convert Supabase relative links to absolute URLs.** Update the Questions and Blog templates.
+5. **Audit a sample of scheduled WordPress posts.** Check 10 posts across different dates. Do they link to rank4ai.co.uk? If not, fix the template and begin updating scheduled posts.
+6. **Audit a sample of scheduled Tumblr posts.** Same check.
+7. **Check YouTube video descriptions.** Do existing uploaded videos have links to rank4ai.co.uk in the first 2-3 lines? If not, update them. Fix the template for future batch uploads.
 
 ### This Month
 
-5. **Set up LinkedIn posting cadence** with links to relevant topic pages on rank4ai.co.uk in every post.
-6. **Audit Blogger posts** for links back to the site.
-7. **Create the /appearances page** on rank4ai.co.uk to serve as the central index of all external content.
-8. **Add contextual references** on rank4ai.co.uk topic pages to the highest-value external content (key YouTube videos, key Dev.to posts, key WordPress articles).
+8. **Set up LinkedIn posting cadence** with links to relevant topic pages on rank4ai.co.uk in every post.
+9. **Audit Blogger posts** for links back to the site.
+10. **Create the /appearances page** on rank4ai.co.uk to serve as the central index of all external content.
+11. **Add contextual references** on rank4ai.co.uk topic pages to the highest-value external content (key YouTube videos, key Dev.to posts, key WordPress articles).
 
 ### Ongoing
 
-9. **Monthly register review** — check that all new content across all platforms is linking back correctly.
-10. **Quarterly audit** of scheduled content batches (WordPress, Tumblr) to catch drift.
+12. **Monthly register review** — check that all new content across all platforms is linking back correctly.
+13. **Quarterly audit** of scheduled content batches (WordPress, Tumblr) to catch drift.
+14. **Weekly spot-check** of unified publisher output to verify entity name and topic links are present.
 
 ---
 
@@ -437,15 +546,30 @@ The platform-specific details above tell you where to put the link on each platf
 
 ## Action Checklist
 
-- [ ] Audit unified publisher templates (Dev.to, GitHub, Instagram, Threads) for links to rank4ai.co.uk
+### Audit Complete — Fixes Required
+
+- [x] Audit unified publisher templates (Dev.to, GitHub, Instagram, Threads) — **completed 23 March 2026**
+- [ ] **FIX: Add "Adam Parker, Founder of Rank4AI" to Instagram, Threads, and GitHub templates** (7 posts/day currently missing entity name)
+- [ ] **FIX: Remove GitHub name-stripping filter** (script deliberately filters out Adam Parker)
+- [ ] **FIX: Change Dev.to entity name from "Adam Parker, Rank4AI" to "Adam Parker, Founder of Rank4AI"**
+- [ ] **FIX: Resolve Dev.to duplicate first-paragraph bug**
+- [ ] **FIX: Replace all homepage links with topic-specific page links** in unified publisher (use topic mapping table above)
+- [ ] **FIX: Convert Supabase Questions/Blogs relative links to absolute URLs** (`/page` → `https://www.rank4ai.co.uk/page`)
+- [ ] **FIX: Add consistent closing line** to all AI-crawlable platform templates: "Learn more about [topic] from Adam Parker, Founder of Rank4AI: [URL]"
+
+### Remaining Audits
+
 - [ ] Audit sample of 500 scheduled WordPress posts for links to rank4ai.co.uk
 - [ ] Audit sample of 474 scheduled Tumblr posts for links to rank4ai.co.uk
 - [ ] Audit YouTube video descriptions for links to rank4ai.co.uk
 - [ ] Audit Blogger posts for links to rank4ai.co.uk
-- [ ] Fix any templates or content briefs that do not include links
+
+### Setup and Ongoing
+
 - [ ] Set up LinkedIn posting cadence with entity-linked content
 - [ ] Create /appearances page on rank4ai.co.uk
 - [ ] Add contextual references on topic pages for highest-value external content
 - [ ] Implement schema markup (PodcastEpisode, VideoObject, Article) on appearance references
 - [ ] Establish monthly review cycle for link status across all platforms
 - [ ] Establish quarterly audit of scheduled content batches
+- [ ] Establish weekly spot-check of unified publisher output
