@@ -226,6 +226,145 @@ Assuming you build ONE site per vertical and it generates 100 leads/month after 
 | Business Loans Comparison | 50-150 | £15-£40 | £750-£6,000 |
 | Will Writing Guide | 50-100 | £25-£60 | £1,250-£6,000 |
 | Debt Management | 30-80 | £40-£70 | £1,200-£5,600 |
-| **Total potential** | | | **£6,200-£36,600/month** |
+| Health/Cosmetic Comparison | 50-100 | £50-£150 avg | £2,500-£15,000 |
+| Pension/Equity Release | 30-60 | £70-£200 avg | £2,100-£12,000 |
+| **Total potential** | | | **£10,800-£63,600/month** |
 
 These are conservative estimates based on a single site per vertical reaching moderate organic traffic. The 301 redirect strategy accelerates the timeline to reach these numbers.
+
+---
+
+# CONSUMER LEAD GEN — WHERE THE BIG 4 DON'T COMPETE
+
+The Big 4 comparison sites (GoCompare, MoneySuperMarket, CompareTheMarket, Confused.com) collectively dominate car insurance (96.7%), home insurance (~40%), and credit cards (~25%). They spend £150m+/year on TV ads. You CANNOT compete with them in those verticals.
+
+But there are huge verticals they completely ignore:
+
+## HEALTH / COSMETIC (Big 4 = ZERO presence)
+
+| Vertical | Lead Price | Procedure Cost | Monthly Searches | Available Domain |
+|----------|-----------|----------------|-----------------|-----------------|
+| Cosmetic Surgery | £50-£250 | £3,000-£15,000 | High | cosmeticsurgeryguide.co.uk (EXPIRED — check DropCatch) |
+| Hair Transplants | £50-£200 | £4,500-£6,000 | High | hairtransplantguide.co.uk (expires 24 days — SNIPE) |
+| Laser Eye Surgery | £50-£150 | £1,300-£3,500/eye | High | **lasereyeguide.co.uk — AVAILABLE** |
+| Dental Implants | £25-£120 | £2,000-£5,000/tooth | 25,000/month | dentalimplantguide.co.uk (expires 76 days — SNIPE) |
+| Hearing Aids | £30-£80 | £500-£3,000/ear | Growing | **hearingaidguide.co.uk — AVAILABLE** |
+| Weight Loss (GLP-1) | £10-£50 | £200-£350/month | Exploding | New market — Ozempic/Wegovy clinic comparison |
+
+**One "health comparison" site covering all of these = no Big 4 competition, £25-250/lead, all high-ticket procedures.**
+
+## PENSIONS / EQUITY RELEASE (Big 4 = ZERO presence)
+
+| Vertical | Lead Price | Avg Case Value | Available Domain |
+|----------|-----------|---------------|-----------------|
+| Equity Release | £75-£250 | £80,000 avg release | **lifetimemortgageguide.co.uk — AVAILABLE** |
+| Pension Drawdown | £140 | £180,000 avg fund | **drawdownguide.co.uk — AVAILABLE** |
+| Pension Advice | £70-£144 | High LTV | **pensionadviceguide.co.uk — AVAILABLE** |
+| Income Protection | £75 | Ongoing premiums | **incomeprotectionguide.co.uk — AVAILABLE** |
+
+## CAR FINANCE (Big 4 = Low presence)
+
+| Vertical | Lead Price | Available Domain |
+|----------|-----------|-----------------|
+| Car Finance | £25-£65 | **carfinanceguide.co.uk — AVAILABLE** |
+| Van Finance | £10-£21 | **vanfinanceguide.co.uk — AVAILABLE** |
+| Van Leasing | £10-£21 | **vanleasingguide.co.uk — AVAILABLE** |
+
+## OTHER CONSUMER (Big 4 = ZERO presence)
+
+| Vertical | Lead Price | Notes | Available Domain |
+|----------|-----------|-------|-----------------|
+| Addiction/Rehab | £500-£20,000 | Ethical concerns but enormous margins | **addictiontreatmentguide.co.uk — AVAILABLE** |
+| Estate Planning | £50-£80 | Ageing population | **estateplanninguide.co.uk — AVAILABLE** |
+| Funeral Plans | £12-£58 | FCA regulated since 2022 | **funeralplanguide.co.uk — AVAILABLE** |
+| Wedding Venues | £10-£25 | £18bn UK wedding industry | **weddingvenueguide.co.uk — AVAILABLE** |
+| Broadband | £5-£100/switch | Big 4 present but niche sites work (BroadbandGenie) | **fibrebroadbandguide.co.uk — AVAILABLE** |
+| Personal Loans | £20-£65 | Big 4 present but niche possible | **comparepersonalloans.co.uk — AVAILABLE** |
+
+## CONSUMER DOMAINS — URGENT SNIPING
+
+| Domain | Expires | Days | Lead Price |
+|--------|---------|------|------------|
+| **lifeinsuranceguide.co.uk** | 13 Apr | 9 | £25-£75 |
+| **hairtransplantguide.co.uk** | 27 Apr | 24 | £50-£200 |
+| **broadbandguide.co.uk** | 2 May | 28 | £5-£100 |
+| **energyswitching.co.uk** | 14 May | 40 | £10-£30 |
+| **comparehearingaids.co.uk** | 31 May | 57 | £30-£80 |
+| **pensionguide.co.uk** | 10 Jun | 68 | £70-£144 |
+| **comparefuneralplans.co.uk** | 17 Jun | 74 | £12-£58 |
+| **dentalimplantguide.co.uk** | 18 Jun | 76 | £25-£120 |
+| **weightlossguide.com** | 19 Jun | 77 | £10-£50 |
+| **hairtransplantguide.com** | 25 Jul | 113 | £50-£200 |
+
+## VERTICALS TO AVOID (Big 4 Dominated)
+
+| Vertical | Why |
+|----------|-----|
+| Car Insurance | 96.7% Big 4. Impossible. |
+| Home Insurance | £5-15/lead, Big 4 dominated |
+| Energy Switching | Market collapsed, Big 4 own it |
+| Credit Cards | Big 4 + MoneySavingExpert |
+| Savings Accounts | Tiny commissions, MSE dominant |
+| Travel Insurance | Commoditised, Big 4 present |
+
+---
+
+# HOW 301 REDIRECTS WORK
+
+## The Basics
+
+A 301 redirect = "this address permanently moved to this new address." Set it in your hosting/DNS and it runs forever.
+
+**You can point as many domains as you want to ONE site.** No limit.
+
+```
+alexlawrie.co.uk ────────── 301 ──┐
+griffinfactors.co.uk ────── 301 ──┤
+castlebusinessfinance.co.uk 301 ──┤
+positivecash.co.uk ──────── 301 ──┼──► compareinvoicefinance.co.uk
+kellockfactors.co.uk ────── 301 ──┤    (gets ALL combined authority)
+platformblack.co.uk ─────── 301 ──┤
+davenhamdirect.co.uk ────── 301 ──┘
+```
+
+When Google crawls an old backlink pointing to alexlawrie.co.uk, it follows the 301, lands on your site, and passes the authority. They all stack.
+
+## Your Approach vs The LinkedIn "Canonical Loophole"
+
+| | Your 301 Approach | LinkedIn Canonical Method |
+|--|---|---|
+| **How many to 1 site?** | Many → 1 (stack them) | 1 aged → 1 burner |
+| **Content needed?** | Only on your main site | On BOTH domains |
+| **Risk?** | Very low — standard practice | Medium-high — burner gets nuked |
+| **When caught?** | N/A — it's legitimate | Burner dies, spin up new one |
+| **Maintenance?** | Set and forget | Constant rebuilding |
+| **Best for?** | Long-term comparison sites | Short-term spam sites |
+
+## Why Your 301s Won't Get Caught
+
+- 301 redirecting acquired domains is **completely normal** — every company acquisition does it
+- Your domains are **relevant** (factoring → factoring comparison = natural)
+- You're building **real content** on destination sites
+- 5-10 redirects per vertical is **reasonable** — not hundreds
+
+## The Golden Rule
+
+**The redirect domains must be relevant to the destination site.** That's it.
+- Factoring company → factoring comparison = safe
+- Energy company → energy comparison = safe
+- Energy company → invoice finance site = suspicious
+- Random domain → finance site = what the LinkedIn post does (riskier)
+
+## How to Set Up (2 minutes per domain)
+
+1. Go to domain settings on your registrar
+2. Click "URL forwarding" or "redirects"
+3. Enter destination URL
+4. Select "301 permanent redirect"
+5. Save
+
+No hosting needed for redirect domains. They just forward.
+
+## Keep Them Renewed
+
+Budget ~£5/year per redirect domain. If you let one expire, you lose that authority channel.
