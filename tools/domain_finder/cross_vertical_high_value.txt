@@ -1,0 +1,107 @@
+# Cross-Vertical High Value Domain Check
+# Focus on "compare", "guide", "broker" patterns that drive search traffic
+
+# INVOICE FINANCE (top picks not already checked)
+marketinvoice.com
+factoring.com
+factoringbroker.com
+invoicetrading.com
+singleinvoicefinance.com
+artisfinance.com
+just-cashflow.com
+invoicefactoring.com
+
+# ASSET FINANCE
+compareassetfinance.com
+assetfinanceguide.com
+assetfinancebroker.com
+assetfinancedirect.com
+equipmentfinanceuk.com
+vehiclefinanceguide.com
+constructionfinance.com
+plantfinance.com
+leasingfinance.com
+
+# BUSINESS LOANS
+comparebusinessloans.com
+businessloanguide.com
+businessloanbroker.com
+smeloans.com
+smallbusinesslending.com
+merchantcashadvance.com
+bridgingloanguide.com
+bridgingfinanceguide.com
+developmentfinanceguide.com
+commercialmortgageguide.com
+unsecuredbusinessloans.com
+businessfinanceguide.com
+businessfinancebroker.com
+
+# TRADE FINANCE
+tradefinanceguide.com
+tradefinancebroker.com
+supplychainfinance.com
+supplychainfinanceguide.com
+exportfinanceguide.com
+letterofcreditguide.com
+tradecreditinsurance.com
+
+# RECRUITMENT FINANCE
+recruitmentfinance.com
+recruitmentfinanceguide.com
+recruitmentagencyfinance.com
+recruitmentfactoring.com
+contractorpayroll.com
+umbrellacompanyguide.com
+contractfinance.com
+
+# COMMERCIAL INSURANCE
+commercialinsuranceguide.com
+businessinsuranceguide.com
+professionalindemnityguide.com
+publicliabilityguide.com
+cyberinsuranceguide.com
+tradecreditinsuranceguide.com
+contractorsinsurance.com
+employersliabilityguide.com
+
+# COMMERCIAL PROPERTY
+commercialmortgagebroker.com
+commercialmortgageguide.com
+commercialpropertyfinance.com
+bridgingfinancebroker.com
+developmentfinancebroker.com
+buytoletguide.com
+propertyfinanceguide.com
+
+# BUSINESS ENERGY
+comparebusinessenergy.com
+businessenergyguide.com
+businesselectricity.com
+commercialenergybroker.com
+businessenergyswitching.com
+
+# BUSINESS TELECOMS
+businessbroadbandguide.com
+businesstelecoms.com
+voipguide.com
+leasedlineguide.com
+businessphoneguide.com
+
+# ACCOUNTING
+compareaccountants.com
+accountancyguide.com
+bookkeepingguide.com
+cloudaccountingguide.com
+taxadvisorguide.com
+
+# FOREX / PAYMENTS
+businessforex.com
+internationalpayments.com
+currencytransferguide.com
+
+# LEGAL
+businesslawyerguide.com
+employmentlawguide.com
+debtrecoveryguide.com
+insolvencyguide.com
