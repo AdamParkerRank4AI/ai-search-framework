@@ -435,3 +435,213 @@ The .co.uk domains are the low-risk, high-value play. The .com backorders are sp
 ---
 
 *Note: All .co.uk availability should be verified on a registrar (123-reg.co.uk, namecheap.com) before purchase. The Nominet RDAP service was returning 503 errors during our checks, so "available" status is based on no RDAP record being found, which strongly indicates unregistered but should be confirmed.*
+
+---
+
+# PART 6: BUSINESS ENERGY — THE GOLDMINE VERTICAL
+
+The 2021-2022 UK energy crisis caused 28+ supplier collapses. These companies had hundreds of thousands of customers and massive press coverage (BBC, FT, Guardian, Ofgem). Their domains are now dropping.
+
+## 6A. 301 Redirect Domains — Failed Energy Companies
+
+### Available NOW (.co.uk — ~£5 each):
+| Domain | Former Company | Customers | Press Coverage |
+|--------|---------------|-----------|----------------|
+| **avroenergy.co.uk** | Avro Energy (ceased Sep 2021) | 580,000 | BBC, FT, all nationals — MASSIVE |
+| **togetherenergy.co.uk** | Together Energy (ceased Jan 2022) | 176,000 | BBC, national press |
+| **peoplesenergy.co.uk** | People's Energy (ceased Sep 2021) | 350,000 | BBC, national press |
+| **utilitypoint.co.uk** | Utility Point (ceased Sep 2021) | 220,000 | BBC, Ofgem |
+| **pfpenergy.co.uk** | PfP Energy (ceased Sep 2021) | 82,000 | Medium press |
+| **iglooenergy.co.uk** | Igloo Energy (ceased Sep 2021) | 179,000 | Medium press |
+| **symbioenergy.co.uk** | Symbio Energy (ceased Sep 2021) | 48,000 | Medium press |
+| **coloradoenergy.co.uk** | Colorado Energy (ceased Oct 2021) | ~15,000 | Low press |
+| **orbitenergy.co.uk** | Orbit Energy (ceased Nov 2021) | 65,000 | Medium press |
+| **zogenergy.co.uk** | Zog Energy (ceased Dec 2021) | 11,700 | Low press |
+
+### Available NOW (.com):
+| Domain | Notes |
+|--------|-------|
+| **purepplanet.com** | BP-backed, huge media coverage. AVAILABLE RIGHT NOW. |
+
+### Sniping (.com):
+| Domain | Expires | Notes |
+|--------|---------|-------|
+| **gotoenergy.com** | 24 May (51 days) | Small energy supplier |
+| **solarplicity.com** | 14 Aug (133 days) | Solar energy supplier |
+
+**The energy vertical is HUGE for 301 redirects.** Avro Energy alone had 580,000 customers — that means BBC articles, Ofgem pages, MoneySavingExpert threads, national newspaper articles all linking to avroenergy.co.uk. Stack 5-6 of these energy domains as 301 redirects to comparebusinessenergy.co.uk and you'd have an incredible backlink profile.
+
+```
+avroenergy.co.uk ────────301──┐
+togetherenergy.co.uk ────301──┤
+peoplesenergy.co.uk ─────301──┤
+utilitypoint.co.uk ──────301──┼──► comparebusinessenergy.co.uk
+pfpenergy.co.uk ─────────301──┤
+iglooenergy.co.uk ───────301──┤
+purepplanet.com ─────────301──┘
+```
+
+**Note:** bulb.co.uk / bulbenergy.co.uk would be the ultimate prize (1.7m customers) but Bulb was acquired by Octopus Energy who likely retain the domain.
+
+## 6B. Build-On Domain for Energy:
+- **comparebusinessenergy.co.uk** — available, "compare business energy" is a VERY high volume search term
+
+---
+
+# PART 7: ADDITIONAL VERTICALS — 301 REDIRECT OPPORTUNITIES
+
+## P2P Lending / Property Finance (.co.uk — likely available):
+| Domain | Former Company | Press Coverage |
+|--------|---------------|----------------|
+| **lendy.co.uk** | Lendy (admin May 2019, £152m) | BBC, FT, FCA — VERY HIGH |
+| **collateral.co.uk** | Collateral (FCA shut down 2018) | BBC, FCA |
+| **growthstreet.co.uk** | Growth Street (solvent wind-down 2020) | FT — clean exit |
+| **wellesley.co.uk** | Wellesley Finance (ceased 2020, £118m) | FT, BBC |
+| **lendingworks.co.uk** | Lending Works (wound down) | Industry press |
+| **bassetgold.co.uk** | Basset & Gold (bust 2019, FSCS) | FCA |
+| **savingstream.co.uk** | Saving Stream / became Lendy | Industry press |
+
+## P2P (.com — sniping targets):
+| Domain | Age | Expires | Notes |
+|--------|-----|---------|-------|
+| **moneything.com** | 19 yrs | 4 Jun (62 days) | P2P lending platform |
+| **thehousecrowd.com** | 14 yrs | 11 Dec (251 days) | P2P property crowdfunding |
+| **mceinsurance.com** | 20 yrs | 23 Nov (234 days) | MCE Insurance (admin Jul 2023) |
+| **solarplicity.com** | 11 yrs | 14 Aug (133 days) | Solar energy supplier |
+
+## Insurance:
+- **mceinsurance.com** — 20 years old, expires Nov 2026. MCE Insurance (motorcycle) went into administration Jul 2023. BBC coverage. Monitor for drop.
+
+## Telecoms:
+- **vispa.co.uk** — Broadband ISP entering liquidation Feb 2026. Very recent — monitor closely.
+
+---
+
+# PART 8: RANK4AI LEAD GENERATION SITE
+
+## What Rank4AI Does
+Rank4AI (rank4ai.co.uk) is a UK-based AI search optimization agency. They help businesses get recommended and cited by AI platforms — ChatGPT, Claude, Perplexity, Google AI Overviews, and Gemini.
+
+## The Market
+- Gartner predicts 25% drop in traditional organic search traffic by 2026 as consumers shift to AI search
+- Fewer than 5% of businesses have any AI search strategy
+- Mid-market retainers run £2,000-8,000/month; enterprise £25,000+/month
+- Key terms: GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), LLMO (LLM Optimization), AI SEO
+
+## Lead Gen Site Concept: "AI Search Guide"
+
+An independent comparison and educational resource that captures search intent from business owners evaluating AI search optimization options.
+
+### Content Strategy:
+1. **Agency comparison tables** — "Best AI Search Optimization Agencies 2026" (Rank4AI featured prominently)
+2. **Tool comparisons** — "Best AI Visibility Tracking Tools Compared"
+3. **Educational guides** — "How to Rank in ChatGPT", "GEO vs Traditional SEO"
+4. **Free audit tool** — lead capture form triggering AI search visibility reports
+5. **Industry-specific guides** — "AI Search Optimization for Law Firms", "AI Search for E-commerce"
+
+### Target Search Terms:
+- "best AI SEO agencies UK"
+- "how to rank in ChatGPT"
+- "AI search optimization services compared"
+- "generative engine optimization agency"
+- "is my business visible in AI search"
+- "ChatGPT SEO services"
+
+## Available Domains for Rank4AI Lead Gen
+
+### AVAILABLE NOW (.com):
+| Domain | Why It's Good |
+|--------|--------------|
+| **compareaiseo.com** | "Compare" prefix = high-intent buyers. Both .com AND .co.uk available! |
+| **compareseoagencies.com** | Broader SEO comparison — captures wider audience |
+
+### AVAILABLE NOW (.co.uk):
+| Domain | Why It's Good |
+|--------|--------------|
+| **aisearchguide.co.uk** | Best overall for UK-focused guide site |
+| **compareaiseo.co.uk** | Pair with the .com |
+| **aiseoguide.co.uk** | Strong keyword match |
+| **aisearchoptimization.co.uk** | Directly describes service category |
+| **llmseo.co.uk** | Short, memorable, technical audience |
+| **compareseoagencies.co.uk** | Broader comparison |
+| **chatgptseo.co.uk** | Targets ChatGPT-specific searches |
+| **rankforaisearch.co.uk** | Branded feel |
+| **aisearchmarketing.co.uk** | Marketing angle |
+
+### SNIPING TARGETS (.com):
+| Domain | Age | Expires | Notes |
+|--------|-----|---------|-------|
+| **aisearchguide.com** | 0.7 yrs | 5 Jul 2026 (93 days) | Perfect name, watch closely |
+| **aiseoguide.com** | 1.2 yrs | EXPIRED (78 days ago) | May be in redemption/drop process — check DropCatch |
+| **aisearchmarketing.com** | 19 yrs | 13 Dec 2026 | 19 years old! Valuable aged domain |
+| **geooptimization.com** | 19 yrs | 7 Dec 2026 | 19 years old, GEO keyword |
+
+## Recommended Rank4AI Domain Action:
+1. **Register NOW:** compareaiseo.com + compareaiseo.co.uk (both available, ~£15 total)
+2. **Register NOW:** aisearchguide.co.uk (~£5)
+3. **Backorder:** aiseoguide.com (expired, may drop soon)
+4. **Watch:** aisearchguide.com (expires Jul 2026)
+
+---
+
+# UPDATED COST SUMMARY
+
+| Category | Domains | Est. Cost |
+|----------|---------|-----------|
+| Invoice Finance .co.uk (301s + build-on) | ~12 domains | £60-100 |
+| Business Loans .co.uk (301s + build-on) | ~12 domains | £60-100 |
+| Business Energy .co.uk (301s + build-on) | ~12 domains | £60-100 |
+| Other Verticals .co.uk (build-on) | ~15 domains | £75-120 |
+| Rank4AI Lead Gen domains | ~4 domains | £25-40 |
+| purepplanet.com | 1 domain | £8-12 |
+| **Total .co.uk + available .com** | **~56 domains** | **£300-500** |
+| Backorders (if won at auction) | 5-10 domains | £100-5,000+ each |
+| Hosting (3-5 sites) | | £20-50/month |
+
+---
+
+# COMPLETE WEEK-BY-WEEK ACTION PLAN
+
+## WEEK 1 (NOW):
+- [ ] Register on DropCatch.com, SnapNames.com, GoDaddy Auctions, NameJet.com
+- [ ] Buy Phase 1 .co.uk domains on 123-reg or Namecheap (verify availability first)
+- [ ] Buy compareaiseo.com + compareaiseo.co.uk for Rank4AI lead gen
+- [ ] Buy purepplanet.com (available .com with energy press backlinks)
+- [ ] Place backorder on creditfactoring.com (expires 19 Apr)
+- [ ] Place backorder on stenn.com (expires 27 Apr)
+- [ ] Check if aiseoguide.com has dropped yet (expired 78 days ago)
+
+## WEEK 2-4 (Apr):
+- [ ] Set up 301 redirects from invoice finance .co.uk domains to compareinvoicefinance.co.uk
+- [ ] Set up 301 redirects from energy company .co.uk domains to comparebusinessenergy.co.uk
+- [ ] Start building content on compareinvoicefinance.co.uk
+- [ ] Start building content on compareaiseo.com for Rank4AI leads
+- [ ] Backorder artisfinance.com and workingcapitalfinance.com
+
+## MONTH 2 (May):
+- [ ] Backorder factoringguide.com, marketinvoice.com, invoicefinance.com, justcashflow.com
+- [ ] Backorder comparebusinessfinance.com, moneything.com, gotoenergy.com
+- [ ] Expand content on business loans comparison site
+- [ ] Set up lead capture forms on compareaiseo.com
+
+## MONTH 3 (Jun-Jul):
+- [ ] Backorder cashflowfinance.com, invoicefinancebroker.com
+- [ ] Backorder compareaccountants.com (27 years old!)
+- [ ] Watch aisearchguide.com (expires 5 Jul)
+- [ ] Backorder greensill.com (expires 31 Jul)
+- [ ] Expand to third vertical site
+
+## MONTH 4-6 (Aug-Sep):
+- [ ] Backorder factoring.com (31 years old — the ultimate prize)
+- [ ] Backorder factoringbroker.com, businessloanguide.com
+- [ ] Watch aisearchmarketing.com, geooptimization.com (both 19 yrs old)
+- [ ] Review and expand monthly domain monitoring
+- [ ] Assess ROI on 301 redirect strategy — check ranking improvements
+
+## ONGOING (Monthly):
+- [ ] Re-run RDAP checker on all watchlist domains
+- [ ] Check Companies House for newly dissolved companies in target verticals
+- [ ] Set Google Alerts for "[company] administration" in target sectors
+- [ ] Check ExpiredDomains.net weekly for new drops
+- [ ] Monitor ranking improvements from 301 redirects
+- [ ] Generate and follow up on Rank4AI leads from compareaiseo.com
