@@ -107,7 +107,41 @@ Calculators, eligibility checkers, quote request forms. These force clicks becau
 - "We contacted 47 providers and compared quotes" beats "here are the top 10 based on our research"
 
 ### 7. Keep content fresh
-AI favours recency. Update comparison tables quarterly. Add "Last updated: April 2026" prominently.
+AI favours recency. Update comparison tables quarterly. Add "Last updated: April 2026" prominently. Pages not updated quarterly are **3x more likely to lose citations.**
+
+### 8. Write "answer capsules" (THE #1 tactic)
+After every H2/H3 heading, write a **40-60 word self-contained factual block** that directly answers the heading. This is the single most common trait among AI-cited content. Over 90% of cited capsules contain no links — they're clean, extractable fact blocks.
+
+### 9. Include original data and statistics
+Adding statistics improves AI visibility by **41%** (Princeton/Georgia Tech study). Pages with original data tables earn **4.1x more AI citations.**
+
+Create branded stats: "Our analysis of 47 invoice finance providers found that 63% charge between 0.5-2% of invoice value." This creates a citation hook AI can't find elsewhere.
+
+### 10. Use definitive language — don't hedge
+AI prefers sources that commit to positions. Cited content is 2x more likely to use "is defined as" or "refers to" rather than "may", "could", or "it depends."
+
+### 11. Build 5+ pages per topic (topical authority)
+**86% of AI citations come from sites with 5+ interconnected pages on the topic.** A single comparison page won't get cited. You need a cluster:
+- Pillar: "Best Invoice Finance Companies 2026"
+- Cluster: "Invoice Finance Costs Explained"
+- Cluster: "Factoring vs Invoice Discounting"
+- Cluster: "How to Choose an Invoice Finance Provider"
+- Cluster: "Invoice Finance for Recruitment Agencies"
+- Cluster: "Invoice Finance FAQ"
+- Content clusters drive ~30% more organic traffic and hold rankings 2.5x longer
+
+### 12. Build brand mentions across the web
+Brand web mentions have the **strongest correlation (0.664) with AI visibility** — stronger than backlinks or traditional rankings. Get mentioned on:
+- Industry press, guest posts, expert quotes
+- Reddit (genuine participation in relevant subreddits)
+- Wikipedia (if relevant articles exist for your topic)
+- YouTube (23% of AI Overview citations)
+
+### 13. Don't block AI crawlers
+Ensure robots.txt allows: GPTBot, PerplexityBot, CCBot, ClaudeBot, Google-Extended. If you block them, you can't get cited.
+
+### 14. Optimise for Bing (not just Google)
+ChatGPT and Perplexity index primarily from **Bing**, not Google. Submit your sitemap to Bing Webmaster Tools. Many SEOs ignore this — it's a massive competitive advantage for AI visibility.
 
 ---
 
@@ -123,6 +157,43 @@ AI search engines pull from multiple surfaces:
 - **Instagram/TikTok** → brand awareness → brand mentions → AI training data
 
 Every piece of content should exist on ALL these surfaces. One blog post becomes 5+ pieces of content.
+
+## Content Formats AI Cites Most
+
+| Format | Citation Share | Why |
+|--------|---------------|-----|
+| **Listicles** (ranked lists) | 21.9% | #1 format — structurally aligned with how AI generates recommendations |
+| **Articles** (long-form) | 16.7% | Authority content with depth |
+| **Product/service pages** | 13.7% | Especially for "best X" queries |
+| **Tables** | 2.5x multiplier | vs unstructured text |
+| **FAQ content** | 3.2x more likely | to appear when using FAQ schema |
+
+**Word count has near-zero correlation with AI citations.** Structure, specificity, and recency predict citations far better than length.
+
+## Schema Markup Priorities (Install These First)
+
+| Schema | Impact | Apply To |
+|--------|--------|----------|
+| **FAQPage** | **350% citation increase** | All FAQ sections on every page |
+| **Article** | Helps AI identify content type, author, dates | Every blog post/guide |
+| **Product** | For individual service entries | Each provider in comparison |
+| **AggregateRating** | Comparison ratings and scores | Rating tables |
+| **Organization** | Establishes brand identity | Site-wide |
+| **HowTo** | For methodology/guide content | Step-by-step guides |
+
+Use **Rank Math** or **Yoast** WordPress plugins to add these without coding.
+
+## How Each AI Engine Picks Sources
+
+| AI Engine | Primary Source | What It Prioritises |
+|-----------|---------------|-------------------|
+| **Google AI Overviews** | Google search index | Must rank top 10 first. E-E-A-T. Topical authority. |
+| **ChatGPT** | Bing index + training data | Brand mentions (0.664 correlation). Reviews. Industry recognition. |
+| **Perplexity** | Curated index | Recency. Reddit/forums (6.6% of citations). Structural clarity. |
+| **Claude** | Training data | Authority sources. Structured content. Factual density. |
+| **Gemini** | Google index | Schema markup. Entity relationships. Freshness. |
+
+**Key insight:** Optimise for Google AND Bing. Google feeds AI Overviews + Gemini. Bing feeds ChatGPT + Perplexity. Most SEOs only optimise for Google.
 
 ## The Content Repurposing Pipeline
 
