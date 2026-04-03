@@ -1,0 +1,74 @@
+# Known invoice finance / factoring domains to monitor
+# These are domains of companies that have closed, been acquired, or may lapse
+# Format: one domain per line, # for comments
+
+# Martin Sharrock / Global Internet Media Services
+compare-invoice-factoring.com
+compareinvoicefactoring.co.uk
+compareinvoicefactoring.com
+
+# Dissolved/closed invoice finance companies
+venturesfinance.co.uk
+cattlesinvoicefinance.co.uk
+oxfordfunding.co.uk
+oxfordfunding.com
+centriccommercialfinance.co.uk
+centriccommercialfinance.com
+platformfunding.co.uk
+platformfunding.com
+positivecashflow.co.uk
+positivecashflowfinance.co.uk
+advantagebusinessfinance.co.uk
+griffinfactors.co.uk
+griffinfactors.com
+kellockfactors.co.uk
+alexlawrie.co.uk
+alexlawriefactors.co.uk
+alexlawriefactors.com
+
+# Old comparison / broker sites
+invoicefinanceguide.co.uk
+invoicefinanceguide.com
+invoicefinancebroker.co.uk
+invoicefinancebroker.com
+factoringbroker.co.uk
+factoringguide.co.uk
+factoringguide.com
+ukinvoicefinance.co.uk
+ukinvoicefinance.com
+invoicefinancedirect.co.uk
+invoicefinancedirect.com
+invoicefinancesolutions.co.uk
+invoicefinancesolutions.com
+invoicefinanceuk.co.uk
+invoicefinanceuk.com
+invoicediscounting.co.uk
+invoicediscounting.com
+bestinvoicefinance.co.uk
+bestinvoicefinance.com
+invoicefinanceonline.co.uk
+invoicefinanceonline.com
+invoicefinancenews.co.uk
+
+# Old trade/receivables finance sites
+receivablesfinance.co.uk
+receivablesfinance.com
+tradedebtfinance.co.uk
+tradedebtfinance.com
+debtfactoring.co.uk
+debtfactoring.com
+
+# Old asset-based lending domains
+assetbasedlending.co.uk
+assetbasedlending.com
+assetbasedfinance.co.uk
+assetbasedfinance.com
+ablfinance.co.uk
+
+# Old cashflow / working capital domains
+cashflowfinance.co.uk
+cashflowfinance.com
+workingcapitalfinance.co.uk
+workingcapitalfinance.com
+cashflowfunding.co.uk
+cashflowsolutions.co.uk
