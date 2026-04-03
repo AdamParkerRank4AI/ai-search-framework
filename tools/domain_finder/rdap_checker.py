@@ -34,8 +34,8 @@ RDAP_SERVERS = {
     "com": "https://rdap.verisign.com/com/v1/domain/",
     "net": "https://rdap.verisign.com/net/v1/domain/",
     "org": "https://rdap.org/domain/",
-    "co.uk": "https://rdap.nominet.uk/",
-    "uk": "https://rdap.nominet.uk/",
+    "co.uk": "https://rdap.nominet.uk/uk/domain/",
+    "uk": "https://rdap.nominet.uk/uk/domain/",
     "io": "https://rdap.nic.io/domain/",
     "info": "https://rdap.afilias.net/rdap/info/domain/",
 }
@@ -114,7 +114,7 @@ def check_domain(domain: str, timeout: int = 10) -> DomainInfo:
             error=f"No RDAP server configured for TLD: .{tld}",
         )
 
-    url = f"{rdap_base}{domain.upper()}"
+    url = f"{rdap_base}{domain.lower()}"
 
     try:
         req = urllib.request.Request(

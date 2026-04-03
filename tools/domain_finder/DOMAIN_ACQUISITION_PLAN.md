@@ -2,6 +2,60 @@
 ## Complete Strategy: 301 Redirect Domains + Build-On Domains + Sniping Plan
 
 Generated: 2026-04-03
+Last Updated: 2026-04-03 (with corrected .co.uk RDAP data)
+
+---
+
+## CRITICAL CORRECTIONS (from fixed .co.uk RDAP checker)
+
+The Nominet RDAP endpoint was fixed. Several .co.uk domains previously shown as
+"available" are actually REGISTERED. Updated data below. Also discovered new
+urgent sniping targets:
+
+### ULTRA-URGENT — Expiring THIS WEEK:
+| Domain | Expires | Days Left | Value |
+|--------|---------|-----------|-------|
+| **businessforex.co.uk** | 10 Apr 2026 | 7 DAYS | 6-year-old forex keyword domain |
+| **recruitmentfactoring.co.uk** | 12 Apr 2026 | 9 DAYS | 10-year-old exact-match keyword |
+
+### NEW .co.uk SNIPING TARGETS (energy companies):
+| Domain | Age | Expires | Days Left | Former Company |
+|--------|-----|---------|-----------|----------------|
+| **peoplesenergy.co.uk** | 0.8 yrs | 1 Jun 2026 | 59 | People's Energy (350k customers) |
+| **bulbenergy.co.uk** | 10.8 yrs | 17 Jun 2026 | 75 | Bulb Energy (1.7M customers, BBC/FT) |
+| **togetherenergy.co.uk** | 2.8 yrs | 29 Jun 2026 | 87 | Together Energy (176k customers) |
+| **recruitmentfinance.co.uk** | 18.7 yrs | 9 Jul 2026 | 97 | 19-year-old exact-match keyword! |
+| **avroenergy.co.uk** | 2.4 yrs | 16 Nov 2026 | 227 | Avro Energy (580k customers) |
+
+### CORRECTIONS — Previously listed as "available" but actually REGISTERED:
+| Domain | Status | Expires | Notes |
+|--------|--------|---------|-------|
+| comparebusinessenergy.co.uk | REGISTERED | Aug 2026 | Watch for drop |
+| businesselectricity.co.uk | REGISTERED | Jan 2027 | 19 years old |
+| compareaccountants.co.uk | REGISTERED | Jan 2027 | 18 years old |
+| recruitmentfinance.co.uk | REGISTERED | Jul 2026 | 19 years old — WATCH |
+| businessinsuranceguide.co.uk | REGISTERED | Jan 2028 | Recently registered |
+| businesstelecoms.co.uk | REGISTERED | Jan 2027 | 19 years old |
+| comparebusinessbroadband.co.uk | REGISTERED | Feb 2027 | |
+| contractorsinsurance.co.uk | REGISTERED | Sep 2026 | 24 years old |
+| businessenergyswitching.co.uk | REGISTERED | Nov 2030 | Long-term hold |
+| commercialenergybroker.co.uk | REGISTERED | Sep 2027 | |
+| employmentlawguide.co.uk | REGISTERED | Sep 2026 | Watch for drop |
+| insolvencyguide.co.uk | REGISTERED | Jan 2027 | |
+| commercialpropertyfinance.co.uk | REGISTERED | Dec 2026 | 26 years old |
+| comparebridgingloans.co.uk | REGISTERED | Jan 2027 | |
+| compareforex.co.uk | REGISTERED | Aug 2026 | Watch for drop |
+| internationalpayments.co.uk | REGISTERED | Dec 2026 | 24 years old |
+
+### CONFIRMED AVAILABLE — 24 .co.uk Domains:
+**Insurance:** commercialinsuranceguide.co.uk, professionalindemnityguide.co.uk, publicliabilityguide.co.uk, cyberinsuranceguide.co.uk, employersliabilityguide.co.uk, comparecommercialinsurance.co.uk
+**Energy:** businessenergyguide.co.uk, symbioenergyuk.co.uk
+**Telecoms:** businessbroadbandguide.co.uk, voipguide.co.uk, leasedlineguide.co.uk, businessphoneguide.co.uk
+**Accounting:** accountancyguide.co.uk, bookkeepingguide.co.uk, cloudaccountingguide.co.uk, taxadvisorguide.co.uk
+**Recruitment:** recruitmentfinanceguide.co.uk, recruitmentagencyfinance.co.uk, contractorpayroll.co.uk, umbrellacompanyguide.co.uk
+**Forex:** currencytransferguide.co.uk
+**Legal:** businesslawyerguide.co.uk, debtrecoveryguide.co.uk
+**Property:** propertyfinanceguide.co.uk, buytoletguide.co.uk, bridgingfinanceguide.com
 
 ---
 
