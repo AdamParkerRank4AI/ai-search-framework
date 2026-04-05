@@ -6,11 +6,16 @@ Checks:
 2. Tranco ranking — was the parent brand a top site? (proxy for traffic)
 3. Majestic Million — referring subnets & IPs (proxy for backlinks)
 4. HTTP status — is the site dead (503/403/timeout)?
+5. GoDaddy/NameCheap API — verify availability & pricing (if credentials set)
 
 Usage:
     python3 -m tools.domain_finder.domain_scanner --domains "bigmouthmedia.co.uk" "receptional.co.uk"
     python3 -m tools.domain_finder.domain_scanner --file domains.txt
     python3 -m tools.domain_finder.domain_scanner --keywords "seo,marketing,digital" --tlds "co.uk,com"
+
+For registrar price checking, set env vars:
+    GODADDY_API_KEY, GODADDY_API_SECRET
+    NAMECHEAP_API_USER, NAMECHEAP_API_KEY, NAMECHEAP_CLIENT_IP
 """
 
 import csv
@@ -47,6 +52,10 @@ class DomainScore:
     majestic_parent_ref_subnets: Optional[int] = None
     majestic_parent_ref_ips: Optional[int] = None
     http_status: Optional[int] = None
+    # Registrar verification
+    registrar_available: Optional[bool] = None  # confirmed by GoDaddy/NameCheap
+    registrar_price: Optional[float] = None
+    registrar_currency: Optional[str] = None
     # Scoring
     strength_score: float = 0.0
     strength_reason: str = ""
@@ -290,16 +299,55 @@ def scan_domain(domain: str, check_parent: bool = True) -> DomainScore:
     return ds
 
 
+def _init_registrar_checker():
+    """Try to initialise registrar checker if credentials are available."""
+    try:
+        from tools.domain_finder.domain_checker import DomainChecker, load_config
+        config = load_config()
+        init_args = {k: v for k, v in config.items() if v is not None}
+        if init_args:
+            return DomainChecker(**init_args)
+    except Exception:
+        pass
+    return None
+
+
+def verify_with_registrar(checker, domain: str, ds: DomainScore) -> DomainScore:
+    """Verify availability and get pricing from GoDaddy/NameCheap."""
+    try:
+        report = checker.check(domain)
+        for provider, result in report.get("results", {}).items():
+            if result.get("available") is not None:
+                ds.registrar_available = result["available"]
+                if result.get("price"):
+                    ds.registrar_price = result["price"]
+                    ds.registrar_currency = result.get("currency", "USD")
+                break
+    except Exception:
+        pass
+    return ds
+
+
 def scan_domains(domains: list[str], check_parent: bool = True) -> list[DomainScore]:
     """Scan multiple domains and return scored results."""
     # Pre-load Majestic data once
     _load_majestic()
+
+    # Try to init registrar checker
+    checker = _init_registrar_checker()
+    if checker:
+        print("  [✓] Registrar API available — will verify availability & pricing")
+    else:
+        print("  [i] No registrar API keys set — using RDAP only for availability")
 
     results = []
     total = len(domains)
     for i, domain in enumerate(domains, 1):
         print(f"  [{i}/{total}] Scanning {domain}...", end="", flush=True)
         result = scan_domain(domain, check_parent)
+        # Verify with registrar if available and domain looks purchasable
+        if checker and result.status in ("available", "expired"):
+            result = verify_with_registrar(checker, domain, result)
         status_icon = {"available": "✓", "expired": "⚠", "expiring_soon": "⏳", "registered": "✗"}.get(result.status, "?")
         print(f" {status_icon} {result.status} | score: {result.strength_score}/10")
         results.append(result)
@@ -346,6 +394,8 @@ def format_results(results: list[DomainScore], min_score: float = 0.0) -> str:
             ref = r.majestic_ref_subnets or r.majestic_parent_ref_subnets
             if ref:
                 lines.append(f"    Referring subnets: {ref:,}")
+            if r.registrar_price:
+                lines.append(f"    Price: ${r.registrar_price:.2f} {r.registrar_currency}")
             lines.append(f"    Strength: {r.strength_reason}")
 
     if available:
@@ -358,6 +408,8 @@ def format_results(results: list[DomainScore], min_score: float = 0.0) -> str:
             ref = r.majestic_ref_subnets or r.majestic_parent_ref_subnets
             if ref:
                 lines.append(f"    Referring subnets: {ref:,}")
+            if r.registrar_price:
+                lines.append(f"    Price: ${r.registrar_price:.2f} {r.registrar_currency}")
             if r.strength_reason:
                 lines.append(f"    Strength: {r.strength_reason}")
 
