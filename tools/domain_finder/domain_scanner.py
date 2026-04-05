@@ -3,17 +3,19 @@ Domain Scanner — Find available domains with backlink strength scoring.
 
 Checks:
 1. RDAP — is the domain available, expired, or registered?
-2. Tranco ranking — was the parent brand a top site? (proxy for backlinks)
-3. Domain age — older = more accumulated backlinks
+2. Tranco ranking — was the parent brand a top site? (proxy for traffic)
+3. Majestic Million — referring subnets & IPs (proxy for backlinks)
 4. HTTP status — is the site dead (503/403/timeout)?
 
 Usage:
-    python3 domain_scanner.py --keywords "seo,marketing,digital" --tlds "co.uk,com"
-    python3 domain_scanner.py --file domains.txt
-    python3 domain_scanner.py --patterns "agency,consultancy,media,group"
+    python3 -m tools.domain_finder.domain_scanner --domains "bigmouthmedia.co.uk" "receptional.co.uk"
+    python3 -m tools.domain_finder.domain_scanner --file domains.txt
+    python3 -m tools.domain_finder.domain_scanner --keywords "seo,marketing,digital" --tlds "co.uk,com"
 """
 
+import csv
 import json
+import os
 import sys
 import time
 import urllib.request
@@ -22,6 +24,9 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
 from typing import Optional
 from tools.domain_finder.rdap_checker import check_domain, DomainInfo
+
+
+MAJESTIC_CSV = os.path.join(os.path.dirname(__file__), "majestic_million.csv")
 
 
 @dataclass
@@ -35,6 +40,12 @@ class DomainScore:
     # Strength signals
     tranco_rank: Optional[int] = None  # lower = stronger (top 1M sites)
     tranco_parent_rank: Optional[int] = None  # rank of parent brand (.com version)
+    majestic_rank: Optional[int] = None
+    majestic_ref_subnets: Optional[int] = None  # referring subnets (≈ referring domains)
+    majestic_ref_ips: Optional[int] = None
+    majestic_parent_rank: Optional[int] = None  # parent brand (.com) majestic data
+    majestic_parent_ref_subnets: Optional[int] = None
+    majestic_parent_ref_ips: Optional[int] = None
     http_status: Optional[int] = None
     # Scoring
     strength_score: float = 0.0
@@ -43,6 +54,49 @@ class DomainScore:
     def to_dict(self):
         return asdict(self)
 
+
+# ---------------------------------------------------------------------------
+# Majestic Million lookup (local CSV)
+# ---------------------------------------------------------------------------
+
+_majestic_cache: Optional[dict] = None
+
+
+def _load_majestic() -> dict:
+    """Load Majestic Million CSV into a dict keyed by domain."""
+    global _majestic_cache
+    if _majestic_cache is not None:
+        return _majestic_cache
+
+    _majestic_cache = {}
+    if not os.path.exists(MAJESTIC_CSV):
+        print(f"  [!] Majestic Million CSV not found at {MAJESTIC_CSV}")
+        print(f"      Download: curl -o {MAJESTIC_CSV} https://downloads.majestic.com/majestic_million.csv")
+        return _majestic_cache
+
+    with open(MAJESTIC_CSV, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            domain = row.get("Domain", "").lower()
+            if domain:
+                _majestic_cache[domain] = {
+                    "rank": int(row.get("GlobalRank", 0)),
+                    "ref_subnets": int(row.get("RefSubNets", 0)),
+                    "ref_ips": int(row.get("RefIPs", 0)),
+                }
+    print(f"  [✓] Loaded {len(_majestic_cache):,} domains from Majestic Million")
+    return _majestic_cache
+
+
+def check_majestic(domain: str) -> Optional[dict]:
+    """Look up a domain in the Majestic Million (local CSV)."""
+    data = _load_majestic()
+    return data.get(domain.lower())
+
+
+# ---------------------------------------------------------------------------
+# Tranco lookup (API)
+# ---------------------------------------------------------------------------
 
 def check_tranco(domain: str, timeout: int = 5) -> Optional[int]:
     """Check if domain appears in Tranco top sites list."""
@@ -53,12 +107,15 @@ def check_tranco(domain: str, timeout: int = 5) -> Optional[int]:
             data = json.loads(resp.read().decode())
             ranks = data.get("ranks", [])
             if ranks:
-                # Return the most recent rank
                 return ranks[0].get("rank")
     except Exception:
         pass
     return None
 
+
+# ---------------------------------------------------------------------------
+# HTTP status check
+# ---------------------------------------------------------------------------
 
 def check_http_status(domain: str, timeout: int = 5) -> Optional[int]:
     """Quick HTTP check — is the site live, dead, or redirecting?"""
@@ -79,84 +136,103 @@ def check_http_status(domain: str, timeout: int = 5) -> Optional[int]:
     return None  # totally dead — no response at all
 
 
+# ---------------------------------------------------------------------------
+# Strength scoring
+# ---------------------------------------------------------------------------
+
 def calculate_strength(score: DomainScore) -> DomainScore:
     """Calculate a strength score 0-10 based on available signals."""
     points = 0.0
     reasons = []
 
-    # Domain age scoring (max 4 points)
+    # --- Majestic referring subnets (max 4 points) — best backlink proxy ---
+    ref_subs = score.majestic_ref_subnets or score.majestic_parent_ref_subnets or 0
+    ref_source = "domain" if score.majestic_ref_subnets else "parent"
+    if ref_subs >= 5000:
+        points += 4.0
+        reasons.append(f"{ref_subs:,} ref subnets ({ref_source}, excellent)")
+    elif ref_subs >= 2000:
+        points += 3.5
+        reasons.append(f"{ref_subs:,} ref subnets ({ref_source}, very strong)")
+    elif ref_subs >= 1000:
+        points += 3.0
+        reasons.append(f"{ref_subs:,} ref subnets ({ref_source}, strong)")
+    elif ref_subs >= 500:
+        points += 2.0
+        reasons.append(f"{ref_subs:,} ref subnets ({ref_source}, good)")
+    elif ref_subs >= 200:
+        points += 1.5
+        reasons.append(f"{ref_subs:,} ref subnets ({ref_source}, fair)")
+    elif ref_subs >= 100:
+        points += 1.0
+        reasons.append(f"{ref_subs:,} ref subnets ({ref_source}, modest)")
+
+    # --- Domain age scoring (max 3 points) ---
     if score.age_years:
         if score.age_years >= 20:
-            points += 4.0
+            points += 3.0
             reasons.append(f"{score.age_years:.0f}yr age (excellent)")
         elif score.age_years >= 10:
-            points += 3.0
+            points += 2.0
             reasons.append(f"{score.age_years:.0f}yr age (strong)")
         elif score.age_years >= 5:
-            points += 2.0
+            points += 1.0
             reasons.append(f"{score.age_years:.0f}yr age (good)")
         elif score.age_years >= 2:
-            points += 1.0
+            points += 0.5
             reasons.append(f"{score.age_years:.0f}yr age (fair)")
 
-    # Tranco ranking (max 3 points) — domain itself
-    if score.tranco_rank:
-        if score.tranco_rank <= 10000:
-            points += 3.0
-            reasons.append(f"Tranco #{score.tranco_rank:,} (top 10K!)")
-        elif score.tranco_rank <= 100000:
-            points += 2.5
-            reasons.append(f"Tranco #{score.tranco_rank:,} (top 100K)")
-        elif score.tranco_rank <= 500000:
+    # --- Tranco ranking (max 2 points) — domain itself or parent ---
+    tranco = score.tranco_rank or score.tranco_parent_rank
+    tranco_source = "domain" if score.tranco_rank else "parent"
+    if tranco:
+        if tranco <= 10000:
             points += 2.0
-            reasons.append(f"Tranco #{score.tranco_rank:,} (top 500K)")
-        elif score.tranco_rank <= 1000000:
+            reasons.append(f"Tranco #{tranco:,} ({tranco_source}, top 10K)")
+        elif tranco <= 50000:
             points += 1.5
-            reasons.append(f"Tranco #{score.tranco_rank:,} (top 1M)")
-
-    # Tranco parent brand ranking (max 2 points)
-    # If the .com version of the brand is ranked, the .co.uk likely has backlinks
-    if score.tranco_parent_rank and not score.tranco_rank:
-        if score.tranco_parent_rank <= 10000:
-            points += 2.0
-            reasons.append(f"Parent brand Tranco #{score.tranco_parent_rank:,} (top 10K)")
-        elif score.tranco_parent_rank <= 100000:
-            points += 1.5
-            reasons.append(f"Parent brand Tranco #{score.tranco_parent_rank:,} (top 100K)")
-        elif score.tranco_parent_rank <= 500000:
+            reasons.append(f"Tranco #{tranco:,} ({tranco_source}, top 50K)")
+        elif tranco <= 100000:
             points += 1.0
-            reasons.append(f"Parent brand Tranco #{score.tranco_parent_rank:,} (top 500K)")
+            reasons.append(f"Tranco #{tranco:,} ({tranco_source}, top 100K)")
+        elif tranco <= 500000:
+            points += 0.5
+            reasons.append(f"Tranco #{tranco:,} ({tranco_source}, top 500K)")
 
-    # HTTP status scoring (max 1 point)
-    # Dead site (no response, 503, 403) = good for us — means it's truly abandoned
+    # --- HTTP status scoring (max 1 point) ---
+    # Dead site = good for us — means truly abandoned
     if score.http_status is None:
         points += 1.0
-        reasons.append("Site completely dead (no response)")
+        reasons.append("Site dead (no response)")
     elif score.http_status in (503, 502, 500):
         points += 0.8
-        reasons.append(f"Site dead (HTTP {score.http_status})")
+        reasons.append(f"Site dead ({score.http_status})")
     elif score.http_status == 403:
         points += 0.5
         reasons.append("Site blocked (403)")
     elif score.http_status == 200:
         points -= 0.5
-        reasons.append("Site still live (200) — may not be truly abandoned")
+        reasons.append("Site live (200) — may not be abandoned")
 
-    # Bonus: already expired
+    # --- Status bonus ---
     if score.status == "expired":
-        points += 1.0
-        reasons.append("Already expired — dropping soon")
+        points += 0.5
+        reasons.append("Expired — dropping soon")
     elif score.status == "available":
         points += 0.5
-        reasons.append("Available for immediate registration")
+        reasons.append("Available now")
 
-    score.strength_score = min(10.0, round(points, 1))
+    score.strength_score = max(0.0, min(10.0, round(points, 1)))
     score.strength_reason = " | ".join(reasons)
     return score
 
 
+# ---------------------------------------------------------------------------
+# Domain scanning
+# ---------------------------------------------------------------------------
+
 def scan_domain(domain: str, check_parent: bool = True) -> DomainScore:
-    """Full scan of a single domain: RDAP + Tranco + HTTP."""
+    """Full scan of a single domain: RDAP + Tranco + Majestic + HTTP."""
     ds = DomainScore(domain=domain)
 
     # 1. RDAP check
@@ -169,33 +245,56 @@ def scan_domain(domain: str, check_parent: bool = True) -> DomainScore:
 
     # Only score available or expired domains
     if ds.status not in ("available", "expired"):
-        # For registered domains expiring soon, still score them
         if rdap.days_until_expiry is not None and rdap.days_until_expiry <= 120:
             ds.status = "expiring_soon"
         else:
             ds = calculate_strength(ds)
             return ds
 
-    # 2. Tranco check — does/did this domain rank?
+    # 2. Majestic Million check (local, instant)
+    maj = check_majestic(domain)
+    if maj:
+        ds.majestic_rank = maj["rank"]
+        ds.majestic_ref_subnets = maj["ref_subnets"]
+        ds.majestic_ref_ips = maj["ref_ips"]
+
+    # 3. Tranco check (API)
     ds.tranco_rank = check_tranco(domain)
-    time.sleep(0.3)  # rate limit
+    time.sleep(0.3)
 
-    # 3. Check parent brand (.com version if this is .co.uk)
-    if check_parent and domain.endswith(".co.uk"):
-        parent = domain.replace(".co.uk", ".com")
-        ds.tranco_parent_rank = check_tranco(parent)
-        time.sleep(0.3)
+    # 4. Check parent brand (.com version if this is .co.uk, or vice versa)
+    if check_parent:
+        parent = None
+        if domain.endswith(".co.uk"):
+            parent = domain.replace(".co.uk", ".com")
+        elif domain.endswith(".com"):
+            # Check .co.uk variant too
+            parent = domain.replace(".com", ".co.uk")
 
-    # 4. HTTP status check
+        if parent:
+            if not ds.tranco_rank:
+                ds.tranco_parent_rank = check_tranco(parent)
+                time.sleep(0.3)
+
+            parent_maj = check_majestic(parent)
+            if parent_maj and not ds.majestic_ref_subnets:
+                ds.majestic_parent_rank = parent_maj["rank"]
+                ds.majestic_parent_ref_subnets = parent_maj["ref_subnets"]
+                ds.majestic_parent_ref_ips = parent_maj["ref_ips"]
+
+    # 5. HTTP status check
     ds.http_status = check_http_status(domain)
 
-    # 5. Calculate strength
+    # 6. Calculate strength
     ds = calculate_strength(ds)
     return ds
 
 
 def scan_domains(domains: list[str], check_parent: bool = True) -> list[DomainScore]:
     """Scan multiple domains and return scored results."""
+    # Pre-load Majestic data once
+    _load_majestic()
+
     results = []
     total = len(domains)
     for i, domain in enumerate(domains, 1):
@@ -212,13 +311,10 @@ def generate_domains(keywords: list[str], prefixes: list[str], suffixes: list[st
     domains = set()
     for kw in keywords:
         for tld in tlds:
-            # keyword only
             domains.add(f"{kw}.{tld}")
-            # with prefixes
             for pre in prefixes:
                 domains.add(f"{pre}{kw}.{tld}")
                 domains.add(f"{pre}-{kw}.{tld}")
-            # with suffixes
             for suf in suffixes:
                 domains.add(f"{kw}{suf}.{tld}")
                 domains.add(f"{kw}-{suf}.{tld}")
@@ -233,7 +329,6 @@ def format_results(results: list[DomainScore], min_score: float = 0.0) -> str:
     lines.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     lines.append("=" * 90)
 
-    # Group by status
     available = [r for r in results if r.status == "available" and r.strength_score >= min_score]
     expired = [r for r in results if r.status == "expired" and r.strength_score >= min_score]
     expiring = [r for r in results if r.status == "expiring_soon" and r.strength_score >= min_score]
@@ -246,7 +341,11 @@ def format_results(results: list[DomainScore], min_score: float = 0.0) -> str:
         lines.append(f"{'='*90}")
         for r in expired:
             lines.append(f"\n  [{r.strength_score}/10] {r.domain}")
-            lines.append(f"    Age: {r.age_years:.1f} years | Expired: {abs(r.days_until_expiry)} days ago")
+            if r.age_years:
+                lines.append(f"    Age: {r.age_years:.1f} years | Expired: {abs(r.days_until_expiry)} days ago")
+            ref = r.majestic_ref_subnets or r.majestic_parent_ref_subnets
+            if ref:
+                lines.append(f"    Referring subnets: {ref:,}")
             lines.append(f"    Strength: {r.strength_reason}")
 
     if available:
@@ -256,6 +355,9 @@ def format_results(results: list[DomainScore], min_score: float = 0.0) -> str:
         lines.append(f"{'='*90}")
         for r in available:
             lines.append(f"\n  [{r.strength_score}/10] {r.domain}")
+            ref = r.majestic_ref_subnets or r.majestic_parent_ref_subnets
+            if ref:
+                lines.append(f"    Referring subnets: {ref:,}")
             if r.strength_reason:
                 lines.append(f"    Strength: {r.strength_reason}")
 
@@ -266,7 +368,11 @@ def format_results(results: list[DomainScore], min_score: float = 0.0) -> str:
         lines.append(f"{'='*90}")
         for r in expiring:
             lines.append(f"\n  [{r.strength_score}/10] {r.domain}")
-            lines.append(f"    Age: {r.age_years:.1f} years | Expires in: {r.days_until_expiry} days")
+            if r.age_years:
+                lines.append(f"    Age: {r.age_years:.1f} years | Expires in: {r.days_until_expiry} days")
+            ref = r.majestic_ref_subnets or r.majestic_parent_ref_subnets
+            if ref:
+                lines.append(f"    Referring subnets: {ref:,}")
             lines.append(f"    Strength: {r.strength_reason}")
 
     lines.append(f"\n{'='*90}")
@@ -285,7 +391,7 @@ if __name__ == "__main__":
     parser.add_argument("--tlds", "-t", default="co.uk,com", help="Comma-separated TLDs (default: co.uk,com)")
     parser.add_argument("--min-score", type=float, default=0.0, help="Minimum strength score to show")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
-    parser.add_argument("--no-parent", action="store_true", help="Skip parent brand Tranco check")
+    parser.add_argument("--no-parent", action="store_true", help="Skip parent brand checks")
     args = parser.parse_args()
 
     domains = []
