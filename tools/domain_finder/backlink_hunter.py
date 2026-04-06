@@ -350,45 +350,58 @@ KNOWN_DIRECTORIES = [
 
 DEAD_COMPANIES = {
     "invoice finance": {
-        # Real UK invoice finance companies that went into administration/dissolved
         "co.uk": [
-            "alexlawriefactors.co.uk",      # Alex Lawrie Factors — merged into Lloyds
-            "griffinfactors.co.uk",          # Griffin Factors — absorbed by HSBC
-            "castlebusinessfinance.co.uk",   # Castle Business Finance — admin June 2020
-            "positivecash.co.uk",            # Positive Cashflow Finance
-            "platformblack.co.uk",           # Platform Black — became Sancus
-            "kellockfactors.co.uk",          # Kellock Factors
-            "inksmoor.co.uk",               # Inksmoor Finance — renamed Acuity
-            "firstcapitalfactors.co.uk",     # First Capital Factors — admin
-            "davenhamdirect.co.uk",          # Davenham Group — dissolved
-            "workingcapitalpartners.co.uk",  # WCP — admin May 2019
-            "lloydsfactoring.co.uk",         # Lloyds old factoring brand
-            "globalfactors.co.uk",           # Global Factors
-            "hhcashflow.co.uk",             # HH Cashflow
-            "justcashflowplc.co.uk",        # Just Cash Flow — admin Dec 2022
-            "centricfinance.co.uk",          # Centric Commercial Finance
-            "oxfordfunding.co.uk",           # Oxford Funding
-            "advantagebusinessfinance.co.uk", # Advantage Business Finance
-            "sancusfinance.co.uk",           # Sancus Finance (ex Platform Black)
-            "scotpacbf.co.uk",               # Scottish Pacific Business Finance
-            "ultimatefinance.co.uk",         # Ultimate Finance — acquired
-            "regencyfactors.co.uk",          # Regency Factors
-            "centriccf.co.uk",              # Centric CF
-            "acuitycf.co.uk",               # Acuity Commercial Finance
+            "alexlawriefactors.co.uk",
+            "griffinfactors.co.uk",
+            "castlebusinessfinance.co.uk",
+            "positivecash.co.uk",
+            "platformblack.co.uk",
+            "kellockfactors.co.uk",
+            "inksmoor.co.uk",
+            "firstcapitalfactors.co.uk",
+            "davenhamdirect.co.uk",
+            "workingcapitalpartners.co.uk",
+            "lloydsfactoring.co.uk",
+            "globalfactors.co.uk",
+            "hhcashflow.co.uk",
+            "justcashflowplc.co.uk",
+            "centricfinance.co.uk",
+            "oxfordfunding.co.uk",
+            "advantagebusinessfinance.co.uk",
+            "sancusfinance.co.uk",
+            "scotpacbf.co.uk",
+            "ultimatefinance.co.uk",
+            "regencyfactors.co.uk",
+            "centriccf.co.uk",
+            "acuitycf.co.uk",
+            # Invoice-adjacent keyword domains
+            "invoicetrading.co.uk",
+            "invoiceadvance.co.uk",
+            "invoicebuyer.co.uk",
+            "invoicecashflow.co.uk",
+            "invoicefinancecompany.co.uk",
+            "invoicepurchasing.co.uk",
+            "receivablesfinance.co.uk",
+            "selectiveinvoicefinance.co.uk",
+            "factoringuk.co.uk",
+            "factorsuk.co.uk",
+            "purchaseorderfinance.co.uk",
         ],
         "com": [
-            "absoluteinvoicefinance.com",     # Cattles → Absolute → Aldermore
-            "griffinfactors.com",            # Griffin Factors .com variant
-            "alexlawriefactors.com",         # Alex Lawrie .com variant
-            "invoicefinancenews.com",         # Exact match news domain
-            "invoicefinanceguide.com",        # Exact match guide domain
-            "invoicefinancedirect.com",       # Exact match commercial domain
-            "barclaysinvoicefinance.com",     # Barclays exited factoring 2021
-            "greensillcapital.com",           # Greensill Capital — massive scandal
-            "stenngroup.com",                # Stenn — admin Dec 2024
-            "firstcapitalfactors.com",       # First Capital Factors .com
-            "platformblack.com",             # Platform Black .com
-            "workingcapitalpartners.co.uk",  # WCP .co.uk variant
+            "absoluteinvoicefinance.com",
+            "griffinfactors.com",
+            "alexlawriefactors.com",
+            "invoicefinancenews.com",
+            "invoicefinanceguide.com",
+            "invoicefinancedirect.com",
+            "barclaysinvoicefinance.com",
+            "greensillcapital.com",
+            "stenngroup.com",
+            "firstcapitalfactors.com",
+            "platformblack.com",
+            "selectiveinvoicefinance.com",
+            "factorsuk.com",
+            "wellesleyandco.com",
         ],
     },
     "commercial finance": {
@@ -399,14 +412,12 @@ DEAD_COMPANIES = {
             "davenhamdirect.co.uk",
             "oxfordfunding.co.uk",
             "commercialfinanceguide.co.uk",
-            "businessfinancedirect.co.uk",
-            "tradefinancedirect.co.uk",
+            "assetfinanceguide.co.uk",
+            "tradefinanceguide.co.uk",
         ],
         "com": [
             "commercialfinanceguide.com",
-            "businessfinancedirect.com",
-            "tradefinancedirect.com",
-            "commercialfinancenews.com",
+            "assetfinanceguide.com",
         ],
     },
     "factoring": {
@@ -418,13 +429,36 @@ DEAD_COMPANIES = {
             "regencyfactors.co.uk",
             "firstcapitalfactors.co.uk",
             "lloydsfactoring.co.uk",
-            "comparefactoring.co.uk",
+            "factoringuk.co.uk",
+            "factorsuk.co.uk",
         ],
         "com": [
             "griffinfactors.com",
             "alexlawriefactors.com",
             "firstcapitalfactors.com",
-            "comparefactoring.com",
+            "factorsuk.com",
+        ],
+    },
+    "fintech lending": {
+        "co.uk": [
+            "lendy.co.uk",
+            "fundingsecure.co.uk",
+            "moneything.co.uk",
+            "collateral.co.uk",
+            "thehousecrowd.co.uk",
+            "wellesley.co.uk",
+            "wonga.co.uk",
+            "quickquid.co.uk",
+        ],
+        "com": [
+            "lendy.com",
+            "fundingsecure.com",
+            "moneything.com",
+            "thehousecrowd.com",
+            "wellesleyandco.com",
+            "wonga.com",
+            "stenngroup.com",
+            "greensillcapital.com",
         ],
     },
 }
