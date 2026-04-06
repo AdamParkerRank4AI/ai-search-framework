@@ -1,7 +1,7 @@
 # Domain Acquisition Master Plan
 ## Complete Strategy Across All Verticals
 
-Generated: 2026-04-03 | Last Updated: 2026-04-03
+Generated: 2026-04-03 | Last Updated: 2026-04-06
 
 ---
 
@@ -12,28 +12,41 @@ Generated: 2026-04-03 | Last Updated: 2026-04-03
 
 ## 1. INVOICE FINANCE — 301 Redirect Domains
 
-Actual trading domains of defunct companies. Have real backlinks. Use for 301 redirects.
+Actual trading domains of defunct companies. Ranked by Google mentions + press coverage value (not just Ahrefs backlinks). Brand mentions have strongest correlation (0.664) with AI visibility.
 
-| Domain | Former Company | Backlinks From | Risk |
-|--------|---------------|----------------|------|
-| **alexlawrie.co.uk** | Alex Lawrie Factors (est. 1973, Lloyds Bank) | 40+ years of industry directories, press | NONE — quietly absorbed into Lloyds |
-| **griffinfactors.co.uk** | Griffin Factors (HSBC/Midland Bank, 1960s) | Decades of industry links | NONE — corporate restructuring |
-| **castlebusinessfinance.co.uk** | Castle Business Finance (admin Jun 2020) | The Gazette (gov), Business Money, FundInvoice, PitchBook | VERY LOW |
-| **positivecash.co.uk** | Positive Cashflow Finance (acquired for £9m) | Business Money, industry directories | NONE — positive story |
-| **kellockfactors.co.uk** | Kellock Factors (Bank of Scotland) | Historic bank brand, industry directories | NONE |
-| **platformblack.co.uk** | Platform Black / Sancus | Fintech press coverage | LOW |
-| **davenhamdirect.co.uk** | Davenham Group PLC (AIM-listed) | Financial press, AIM market coverage | NONE |
-| **positivecashflowfinance.co.uk** | Positive Cashflow Finance | Duplicate brand coverage | NONE |
+**KEY FINDING:** Lloyds announced Dec 2025 they're shutting down their ENTIRE invoice factoring service. Alex Lawrie was their factoring brand. Thousands of displaced customers now searching for alternatives.
+
+| Rank | Domain | Former Company | Google Coverage | Key Press/Mentions | Risk |
+|------|--------|---------------|----------------|-------------------|------|
+| 1 | **alexlawrie.co.uk** | Alex Lawrie Factors (est. 1973, Lloyds Bank) | **HIGH** | BCR Publishing, PitchBook, Europages, Companies House, 50yr history. Lloyds exit = FT, BBC, Finextra, GB News | NONE |
+| 2 | **davenhamdirect.co.uk** | Davenham Group PLC (AIM-listed, admin £80m) | **HIGH** | Bloomberg x2, PitchBook, Crunchbase, AIM listing records, Canaccord, Business-Sale.com | NONE |
+| 3 | **griffinfactors.co.uk** | Griffin Factors (HSBC/Midland Bank, 1960s) | **MED-HIGH** | Encyclopedia.com, Accountancy Age, HSBC History, banking histories. Original "big three" | NONE |
+| 4 | **cattlesinvoicefinance.co.uk** | Cattles Invoice Finance (sold for £70m) | **HIGH** | TheBusinessDesk x4, YorkshireLive x3, Growth Business. Parent Cattles PLC = BBC, FT | LOW |
+| 5 | **platformblack.co.uk** | Platform Black / Sancus Finance | **MED-HIGH** | AltFi, Finextra, Crowdfund Insider, Bridging & Commercial, FCA register | LOW |
+| 6 | **castlebusinessfinance.co.uk** | Castle Business Finance (admin Jun 2020) | **MEDIUM** | The Gazette (gov.uk — high DA backlink!), FundInvoice, Business Money, PitchBook | VERY LOW |
+| 7 | **positivecash.co.uk** | Positive Cashflow Finance (acquired for £9m) | **MEDIUM** | Leasing Life, TheBusinessDesk, Business Money, £9m acquisition coverage | NONE |
+| 8 | **workingcapitalpartners.co.uk** | Working Capital Partners (admin May 2019) | **MEDIUM** | FundInvoice x3, Credit Connect, Trustpilot. Admin due to client fraud | LOW |
+| 9 | **positivecashflowfinance.co.uk** | Positive Cashflow Finance | **MEDIUM** | Brand name variant of #7 | NONE |
+| 10 | **kellockfactors.co.uk** | Kellock Factors (Bank of Scotland) | **LOW-MED** | Accountancy Age, factoringblog.co.uk, Bank of Scotland heritage | NONE |
+
+**NEW additions** (from research): #4 cattlesinvoicefinance.co.uk and #8 workingcapitalpartners.co.uk
+
+**WATCH LIST:** Close Brothers invoice finance domains — motor finance crisis (£300m+ provisions) could cause collapse
 
 ```
-alexlawrie.co.uk ────────────301──┐
-griffinfactors.co.uk ────────301──┤
-castlebusinessfinance.co.uk ─301──┤
-positivecash.co.uk ──────────301──┼──► compareinvoicefinance.co.uk (your main site)
-kellockfactors.co.uk ────────301──┤
-platformblack.co.uk ─────────301──┤
-davenhamdirect.co.uk ────────301──┘
+alexlawrie.co.uk ──────────────301──┐
+davenhamdirect.co.uk ──────────301──┤
+griffinfactors.co.uk ──────────301──┤
+cattlesinvoicefinance.co.uk ───301──┤
+platformblack.co.uk ───────────301──┼──► compareinvoicefinance.co.uk (your main site)
+castlebusinessfinance.co.uk ───301──┤
+positivecash.co.uk ────────────301──┤
+workingcapitalpartners.co.uk ──301──┤
+positivecashflowfinance.co.uk ─301──┤
+kellockfactors.co.uk ──────────301──┘
 ```
+
+**Note on Ahrefs vs Google:** Ahrefs may show zero backlinks for these domains. That's because Ahrefs tracks clickable hyperlinks, which many old industry directories have since removed. Google tracks brand MENTIONS (text references without links) — and brand mentions have the strongest correlation with AI visibility. These domains are valuable for mentions, not just links.
 
 ## 2. INVOICE FINANCE — Build-On Domains
 
@@ -52,22 +65,22 @@ Keyword-match domains to build your actual comparison site on.
 
 ## 3. BUSINESS LOANS — 301 Redirect Domains
 
-Defunct P2P lending and business loan companies.
+Defunct P2P lending and business loan companies. Ranked by press coverage value.
 
-| Domain | Former Company | Backlinks From | Risk |
-|--------|---------------|----------------|------|
-| **growthstreet.co.uk** | Growth Street (solvent wind-down 2020) | FT, industry press | NONE — clean exit, all lenders repaid |
-| **quakle.co.uk** | Quakle (early P2P failure 2011) | BBC, lovemoney.com | LOW — very old news |
-| **encash.co.uk** | Encash (closed) | Limited industry press | LOW |
-| **savingstream.co.uk** | Saving Stream / became Lendy | Industry press | LOW |
-| **lendingworks.co.uk** | Lending Works (wound down) | Industry press | LOW |
-| **bassetgold.co.uk** | Basset & Gold (bust 2019, FSCS) | FCA press | LOW |
-| **collateral.co.uk** | Collateral (FCA shut down 2018) | BBC, FCA | MEDIUM |
-| **wellesley.co.uk** | Wellesley Finance (ceased 2020, £118m) | FT, BBC, FCA | MEDIUM |
-| **lendy.co.uk** | Lendy (admin 2019, £152m) | BBC, FT, FCA, Guardian | MEDIUM — well covered |
+| Rank | Domain | Former Company | Google Coverage | Key Press | Risk |
+|------|--------|---------------|----------------|-----------|------|
+| 1 | **lendy.co.uk** | Lendy (admin 2019, £152m losses) | **VERY HIGH** | BBC, FT, Guardian, FCA, all nationals | MEDIUM — well-known collapse but massive backlinks |
+| 2 | **wellesley.co.uk** | Wellesley Finance (ceased 2020, £118m) | **HIGH** | FT, BBC, FCA, industry press | MEDIUM |
+| 3 | **growthstreet.co.uk** | Growth Street (solvent wind-down 2020) | **MED-HIGH** | FT, fintech press. Clean story — all lenders repaid | NONE |
+| 4 | **bassetgold.co.uk** | Basset & Gold (bust 2019, FSCS) | **MEDIUM** | FCA enforcement, FSCS coverage, industry press | LOW |
+| 5 | **lendingworks.co.uk** | Lending Works (orderly wind-down) | **MEDIUM** | Industry press, orderly exit narrative | LOW |
+| 6 | **collateral.co.uk** | Collateral (FCA shut down 2018) | **MEDIUM** | BBC, FCA enforcement action | MEDIUM |
+| 7 | **savingstream.co.uk** | Saving Stream / became Lendy | **LOW-MED** | Linked to Lendy (#1) — captures related searches | LOW |
+| 8 | **quakle.co.uk** | Quakle (early P2P failure 2011) | **LOW-MED** | BBC, lovemoney.com — old but real coverage | LOW |
+| 9 | **encash.co.uk** | Encash (closed) | **LOW** | Limited industry press | LOW |
 
-**"1 with press" pick:** lendy.co.uk — BBC, FT, massive coverage
-**"Clean history" pick:** growthstreet.co.uk — solvent exit, lenders repaid
+**Top picks:** lendy.co.uk (#1) for sheer backlink volume, growthstreet.co.uk (#3) for clean narrative
+**Watch for:** wonga.co.uk, amigloans.co.uk — MASSIVE press (BBC, FT, Guardian, everything) but likely still held by administrators. Check availability periodically.
 
 ## 4. BUSINESS LOANS — Build-On Domains
 
