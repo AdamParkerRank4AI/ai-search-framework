@@ -24,7 +24,11 @@ We've got a few angles ready to go depending on what suits your audience:
 
 We can provide any of these as a press release, contributed article, or just make ourselves available for interview — whatever works best for you. We've got the stats, the methodology and the quotes ready.
 
-Would any of these be of interest? Happy to send over the full materials or jump on a quick call.
+On a broader note — press is a core part of our strategy and what we advise clients on, because the data now shows it's one of the most powerful AI search signals there is. 94% of all AI citations come from non-paid sources, earned media triples AI search visibility, and AI-driven search visitors convert at 4.4x the rate of standard organic traffic. Press coverage isn't just brand awareness anymore — it's a direct trust signal that ChatGPT, Gemini and the rest use when deciding who to recommend.
+
+We've got 7 clients onboard already and expect that to grow into the hundreds. Each client needs regular, structured press coverage as part of their AI visibility strategy — so if this works well between us, there'll be a steady flow of stories and angles coming your way every month. We're looking for someone who can help us distribute at scale on an ongoing basis.
+
+Would any of this be of interest? Happy to send over the full materials or jump on a quick call.
 
 Cheers,
 Adam Parker
