@@ -37,6 +37,8 @@ Every time compareSEO publishes or updates a ranking, we ship this exact set in 
 
 One ranking, seven posts, one full feed week. Scales to every category compareSEO covers: UK agencies, US agencies, GEO specialists, AI tools, platform-specific rankings, industry landscapes.
 
+**Standing rule: follow and tag every ranked account.** Before the first post of any ranking week goes live, the compareSEO IG account follows every agency / tool on the ranking page. Every post then tags them in the asset itself (not just the caption). See the full rule in `monthly-refresh-playbook.md` under the T-7 section.
+
 ---
 
 ## Why redesigning the tables matters more than making new content

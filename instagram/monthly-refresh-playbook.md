@@ -10,9 +10,20 @@ The whole point of the design system is that this cycle becomes mechanical. No b
 
 - [ ] Pull the previous month's published posts from the scheduler — what were the top 2 best-performing formats? Note them for doubling down.
 - [ ] Pull the next month's ranking CSV as soon as it's locked internally.
+- [ ] **Pull the list of every agency / tool that appears on the ranking page from compareseo.co.uk.** This is the tag list for the week.
+- [ ] **Follow every agency / tool on that list from the compareSEO Instagram account** before any post goes live. A follow before a tag is lower-friction and gets more tag-backs.
+- [ ] Save the list of handles in `/compareSEO-IG/YYYY-MM/[ranking-slug]/tag-list.md` so the scheduler and the designer both have it.
 - [ ] Run a `diff` between this month and last month — that diff is the raw material for the Movers carousel (Format 6).
 - [ ] Export all agency logos / screenshots you'll need into `/compareSEO-IG/YYYY-MM/[ranking-slug]/assets/`.
 - [ ] Block 2 hours on Adam's calendar for face-to-camera recording (Format 5 spotlight).
+
+> **Standing rule — follow and tag every ranked account.**
+> Every agency / tool that appears in a compareSEO ranking gets:
+> 1. A follow from the compareSEO Instagram account before the first post of the week.
+> 2. A tag in the corresponding post — their position slide in the carousel, their name card in the countdown reel, and the spotlight reel if they're #1 or the runner-up.
+> 3. The tag goes in the image/video itself (Instagram's tagging tool), **not** just in the caption — image tags trigger a notification the account owner cannot miss and put the post on their tagged tab.
+> 4. Movers carousel: tag both the riser and the dropper in the relevant slide.
+> 5. If an account doesn't have an Instagram presence, leave a `@` placeholder in the asset and fall back to a plain-text name — don't guess handles.
 
 ---
 
