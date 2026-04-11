@@ -97,6 +97,50 @@ Taglines:
 
 ---
 
+## Category: Voices on LinkedIn (AI Search)
+
+Taglines:
+
+57. Top 10 LinkedIn Voices on AI Search to Follow in 2026
+58. Best 10 LinkedIn Creators Explaining AI Search Daily
+59. Top 15 LinkedIn Thought Leaders on LLM Visibility
+60. Top 10 Emerging LinkedIn Voices in AI Search
+61. Fastest Growing LinkedIn Profiles in the AI Search Space
+62. Top 10 Most Engaged-With LinkedIn Posts on AI Search
+63. Best 10 LinkedIn Newsletters Covering AI Search
+64. Top 10 UK LinkedIn Voices Teaching AI Visibility
+65. Top 10 Founders Dominating LinkedIn With AI Search Content
+66. Best 10 LinkedIn Profiles Bridging SEO and AI Search
+67. Top 10 LinkedIn Creators Replacing the Old SEO Gurus
+68. Fastest Rising LinkedIn Voices in Generative Search
+69. Top 10 LinkedIn Carousels That Explain AI Search Best
+70. Best 10 LinkedIn Personalities Worth Turning on Notifications For
+71. Top 10 LinkedIn Voices Every CMO Should Be Following
+
+---
+
+## Category: Voices on Instagram (AI Search)
+
+Taglines:
+
+72. Top 10 Instagram Voices in AI Search to Follow in 2026
+73. Best 10 Instagram Creators Teaching AI Visibility
+74. Top 15 Instagram Accounts Covering AI Search Trends
+75. Top 10 Emerging Instagram Voices in AI Search
+76. Fastest Growing Instagram Accounts in the AI Search Space
+77. Top 10 UK Instagram Creators Posting About AI Search
+78. Best 10 Instagram Reels Creators Explaining LLM Visibility
+79. Top 10 Instagram Founders Building Around AI Search
+80. Best 10 Instagram Pages That Actually Understand AI Search
+81. Top 10 Instagram Voices Turning AI Search Into Content
+82. Fastest Rising Instagram Accounts on Generative Search
+83. Top 10 Instagram Creators Bridging Marketing and AI Search
+84. Best 10 Instagram Carousels Teaching AI Search Strategy
+85. Top 10 Instagram Voices Replacing Traditional SEO Influencers
+86. Top 10 Instagram Accounts Every Marketer Should Follow for AI Search
+
+---
+
 ## Category: Agencies & Companies
 
 Taglines:
