@@ -18,6 +18,7 @@ One compareSEO ranking = 7 Instagram posts. Publish them all in the same week, t
 | `example-top10-ai-seo-agencies-uk.md` | A worked example using the "Top AI SEO Agencies UK" ranking slot-by-slot |
 | `monthly-refresh-playbook.md` | What to post every time a ranking updates — the "who moved" cycle |
 | `figma-spec.md` | Frame sizes, exports, naming convention for the designer/template builder |
+| `inspiration-swipe-file.md` | Weekly log of AI SEO / AI search content working on Instagram right now — hashtags to trawl, patterns to watch for, ideas to steal |
 
 ---
 
@@ -38,6 +39,8 @@ Every time compareSEO publishes or updates a ranking, we ship this exact set in 
 One ranking, seven posts, one full feed week. Scales to every category compareSEO covers: UK agencies, US agencies, GEO specialists, AI tools, platform-specific rankings, industry landscapes.
 
 **Standing rule: follow and tag every ranked account.** Before the first post of any ranking week goes live, the compareSEO IG account follows every agency / tool on the ranking page. Every post then tags them in the asset itself (not just the caption). See the full rule in `monthly-refresh-playbook.md` under the T-7 section.
+
+**Standing rule: weekly inspiration trawl.** The AI search niche moves fast — formats that work in January will be played out by April. Every Friday, run a 30-minute trawl of AI SEO / AI search / GEO hashtags and log anything worth stealing in `inspiration-swipe-file.md`. When a pattern shows up three weeks in a row, adapt it into one of the 7 formats.
 
 ---
 

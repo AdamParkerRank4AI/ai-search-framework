@@ -9,6 +9,7 @@ The whole point of the design system is that this cycle becomes mechanical. No b
 ## T-7 to T-1 (the week before the 1st)
 
 - [ ] Pull the previous month's published posts from the scheduler — what were the top 2 best-performing formats? Note them for doubling down.
+- [ ] **Read the last 4 weeks of `inspiration-swipe-file.md`** before picking hooks — steal any format that appeared three weeks in a row, kill anything that hasn't shown up in a month.
 - [ ] Pull the next month's ranking CSV as soon as it's locked internally.
 - [ ] **Pull the list of every agency / tool that appears on the ranking page from compareseo.co.uk.** This is the tag list for the week.
 - [ ] **Follow every agency / tool on that list from the compareSEO Instagram account** before any post goes live. A follow before a tag is lower-friction and gets more tag-backs.
@@ -96,6 +97,19 @@ The recurring engine. This post is the reason monthly refreshes compound.
 - [ ] Set up DM auto-reply for Question sticker replies (template in `caption-templates.md`)
 - [ ] Check DMs at 2-hour intervals during the day — this is the warmest traffic of the week
 - [ ] Every reply is a warm lead for a free audit
+
+---
+
+## Weekly — Inspiration trawl (every Friday, 30 min)
+
+Independent of the monthly cycle. Runs every week, even in "off" weeks when no ranking is refreshing. This is the early-warning system for formats that are about to break.
+
+- [ ] Open `inspiration-swipe-file.md`
+- [ ] Trawl the hashtag list at the top of that file — skim "Top" posts for anything with unusually high engagement
+- [ ] Check the 8 accounts in the "Accounts to check weekly" section — look at recent posts and their Saved tab if public
+- [ ] Log 3–5 entries in the swipe-file table: URL, format, hook, why it worked, what we'd steal
+- [ ] Cross-check LinkedIn + X for AI search content that hasn't reached Instagram yet (1–2 week lead time)
+- [ ] If a pattern now appears 3 weeks in a row, flag it in the Monday planning session as a format to adapt
 
 ---
 
