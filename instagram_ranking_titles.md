@@ -11,6 +11,9 @@ Adam Parker (Founder, Rank4AI) is positioned to feature in any people-based list
 - **Tag everyone you feature.** Every Instagram ranking post that names real people MUST tag each person listed. Tagging is what turns a passive post into a distribution engine — it triggers notifications, pulls the featured person's audience into the post, and increases the chance of a reshare.
 - **Build Instagram-first discovery rankings.** A dedicated stream of rankings should exist specifically to surface people who *have active Instagram accounts*, so Rank4AI can tag them, DM them, and open a conversation. These are prospecting lists disguised as celebratory rankings. See the dedicated category below: **Instagram-First Discovery Rankings (Outreach)**.
 - **Empty pond advantage.** Instagram is under-served in the AI search space. Ranking posts that anoint "Top 10 Instagram Voices in AI Search" crown Rank4AI as a category-definer by default, because the category barely exists yet.
+- **SEO vs AI Search comparison angle.** A dedicated category of rankings directly compares traditional SEO to AI Search — polarising the SEO audience and positioning Rank4AI as the voice of the new paradigm. See category: **SEO vs AI Search Comparisons**.
+- **Good vs bad use-case angle.** Rankings that tell people what AI chatbots are *great* at and what they are *dangerous* for (DIY yes, therapy no, legal advice careful) drive huge engagement because they're useful and shareable. See category: **When to Use (and Not Use) AI Chatbots**.
+- **Dashboard to be added.** A file at `dashboard/rankings.html` is planned for the site so the team can see all rankings, add/edit/delete titles, move them between categories, and export back to markdown.
 
 ---
 
@@ -243,71 +246,60 @@ Taglines:
 
 ---
 
-## Category: Events & Community
+## Category: Sources AI Platforms Pull From
+
+> **The "where do the answers come from" angle.** These rankings pull back the curtain on the actual data sources LLMs lean on when recommending brands. Concrete, specific, and shareable — ChatGPT leans heavily on Reddit and Wikipedia; Claude weights consistent entity descriptions across independent sources; Perplexity runs real-time web crawls; Gemini pulls from Google's own infrastructure.
 
 Taglines:
 
-142. Top 10 AI Search Conferences to Attend in 2026
-143. Best 10 UK Events Where AI Search Is Actually Discussed
-144. Top 5 AI Search Meetups and Communities Worth Joining
-145. Top 10 Slack and Discord Groups for AI Search Professionals
-146. Best 10 Global Events on LLM Visibility and AI Recommendation
-147. Fastest Growing AI Search Communities in 2026
-148. Top 10 Emerging Conferences for AI Search Practitioners
-149. Best 10 Free Online Events on AI Visibility
-150. Top 10 Invite-Only Circles in the AI Search World
-151. Worst 5 Overhyped Events Still Teaching Old SEO
+142. Top 10 Websites ChatGPT Pulls From When Recommending Brands
+143. Top 10 Sources ChatGPT Trusts Most in 2026
+144. Top 5 Reasons ChatGPT Loves Reddit
+145. Top 10 Subreddits ChatGPT Uses as Ground Truth
+146. Top 10 Websites Claude Pulls From for Business Recommendations
+147. Top 5 Types of Source Claude Weighs Most Heavily
+148. Top 10 Independent Sources Claude Uses to Verify Your Brand
+149. Top 10 Places Perplexity Pulls Live Citations From
+150. Top 10 Websites Gemini Quietly Trusts the Most
+151. Top 10 Sites Every AI Platform Pulls From (Whether You Like It or Not)
 
 ---
 
-## Category: Cities, Regions & Countries
+## Category: Brands Embracing AI Search
+
+> **Changed from "Case Studies".** Keep this light and celebratory — big, recognisable UK and global brands publicly leaning into AI search. No deep methodology, just visibility wins and name-drops (John Lewis, Monzo, Gymshark, etc.).
 
 Taglines:
 
-152. Top 10 UK Cities Leading in AI Search Adoption
-153. Best 10 Countries Winning at AI Visibility in 2026
-154. Top 5 European Capitals Becoming AI Search Hubs
-155. Top 10 Regions Where AI Search Strategy Is Taking Off
-156. Fastest Growing AI Search Markets Globally
-157. Top 10 US Cities Building the AI Search Industry
-158. Best 10 Emerging Countries in LLM Visibility
-159. Top 5 UK Regions Most Exposed to AI Search Disruption
-160. Top 10 Cities Hiring the Most AI Search Talent
-161. Worst 10 Regions Falling Behind on AI Search Readiness
+152. Top 10 UK Retailers Embracing AI Search in 2026
+153. Best 10 Household UK Brands Showing Up in ChatGPT Answers
+154. Top 10 Global Brands Leading the AI Search Shift
+155. Best 10 UK High-Street Names Winning in AI Recommendations
+156. Top 10 Challenger Brands Outranking the Giants in AI
+157. Top 10 UK Brands Most Cited by AI Overviews
+158. Best 10 Examples of Big Brands Playing the AI Search Game Right
+159. Top 10 Brands Quietly Dominating AI Citations in Their Sector
+160. Top 5 UK Brands That Get Mentioned When You Ask ChatGPT for Recommendations
+161. Top 10 Brands Every AI Platform Knows and Recommends
 
 ---
 
-## Category: Case Studies & Brand Wins
+## Category: When to Use (and Not Use) AI Chatbots
+
+> **Good vs bad use-case rankings.** Tell people exactly what ChatGPT, Claude, and friends are great for — and where they're dangerous. DIY advice: great. Therapy: tread carefully. Legal and medical: please don't. Financial advice: double-check everything. These are shareable because they're useful, polarising, and protective all at once.
 
 Taglines:
 
-162. Top 10 Brand Turnarounds Driven by AI Search Strategy
-163. Best 10 Case Studies of Businesses Dominating ChatGPT Citations
-164. Top 5 Brands That Recovered Visibility After an AI Search Audit
-165. Top 10 Small Businesses Beating Giants in AI Recommendations
-166. Best 10 Examples of Identity Clarity Done Right
-167. Fastest Recovering Brands After an AI Visibility Crisis
-168. Top 10 Emerging Brand Wins Powered by AI Search
-169. Best 10 Entity Graph Cleanups That Lifted Citations
-170. Top 10 Before-and-After Stories in AI Visibility
-171. Worst 10 Brand Failures in the AI Search Era
-
----
-
-## Category: Careers, Roles & Education
-
-Taglines:
-
-172. Top 10 Emerging Job Roles in AI Search
-173. Best 10 AI Search Courses and Certifications in 2026
-174. Top 5 Universities Teaching AI Visibility and LLM Strategy
-175. Top 10 Highest Paying Jobs in AI Search and GEO
-176. Best 10 Career Paths for SEOs Moving Into AI Search
-177. Fastest Growing Job Titles in AI Search
-178. Top 10 Skills Every AI Search Specialist Needs
-179. Best 10 Entry-Level Routes Into AI Search
-180. Top 10 Emerging Academic Programmes in AI Visibility
-181. Worst 5 Career Mistakes for SEOs Ignoring AI Search
+162. Top 10 Things ChatGPT Is Actually Great For
+163. Top 10 Things You Should Never Use ChatGPT For
+164. Top 5 Subjects AI Chatbots Get Dangerously Wrong
+165. Best 10 DIY Tasks ChatGPT Will Nail for You
+166. Top 5 Reasons Not to Use ChatGPT for Therapy
+167. Top 5 Reasons Not to Use ChatGPT for Legal Advice
+168. Top 5 Reasons to Double-Check ChatGPT on Financial Advice
+169. Top 10 Everyday Tasks ChatGPT Handles Better Than Google
+170. Top 10 Life Situations Where You Still Need a Human
+171. Worst 5 Subjects to Trust an AI Chatbot With
 
 ---
 
@@ -315,16 +307,16 @@ Taglines:
 
 Taglines:
 
-182. Top 10 VCs Backing AI Search and LLM Visibility Startups
-183. Best 10 Angel Investors in the UK AI Search Ecosystem
-184. Top 5 Funded AI Search Startups to Watch in 2026
-185. Top 10 Accelerators Supporting AI Visibility Founders
-186. Best 10 AI Search Startups That Raised in the Last 12 Months
-187. Fastest Growing AI Search Startups by Revenue
-188. Top 10 Emerging Founders in AI Visibility
-189. Best 10 Early-Stage Investments in the AI Search Space
-190. Top 10 Investors Quietly Betting on AI Search
-191. Worst 5 Misunderstood Pitches in AI Search Fundraising
+172. Top 10 VCs Backing AI Search and LLM Visibility Startups
+173. Best 10 Angel Investors in the UK AI Search Ecosystem
+174. Top 5 Funded AI Search Startups to Watch in 2026
+175. Top 10 Accelerators Supporting AI Visibility Founders
+176. Best 10 AI Search Startups That Raised in the Last 12 Months
+177. Fastest Growing AI Search Startups by Revenue
+178. Top 10 Emerging Founders in AI Visibility
+179. Best 10 Early-Stage Investments in the AI Search Space
+180. Top 10 Investors Quietly Betting on AI Search
+181. Worst 5 Misunderstood Pitches in AI Search Fundraising
 
 ---
 
@@ -332,13 +324,30 @@ Taglines:
 
 Taglines:
 
-192. Top 10 AI Search Myths Still Holding Brands Back
-193. Top 10 Worst AI Visibility Mistakes of 2026
-194. Best 10 Things to Stop Doing If You Want AI Citations
-195. Top 5 Schema Mistakes That Break AI Recommendation
-196. Top 10 SEO Habits That Hurt Your AI Search Performance
-197. Worst 10 Myths About How ChatGPT Ranks Brands
-198. Top 10 Identity Mistakes Even Big Brands Still Make
-199. Best 10 Warning Signs Your AI Visibility Is Slipping
-200. Top 10 Things AI Platforms Punish You For
-201. Worst 5 Pieces of AI Search Advice on the Internet
+182. Top 10 AI Search Myths Still Holding Brands Back
+183. Top 10 Worst AI Visibility Mistakes of 2026
+184. Best 10 Things to Stop Doing If You Want AI Citations
+185. Top 5 Schema Mistakes That Break AI Recommendation
+186. Top 10 SEO Habits That Hurt Your AI Search Performance
+187. Worst 10 Myths About How ChatGPT Ranks Brands
+188. Top 10 Identity Mistakes Even Big Brands Still Make
+189. Best 10 Warning Signs Your AI Visibility Is Slipping
+190. Top 10 Things AI Platforms Punish You For
+191. Worst 5 Pieces of AI Search Advice on the Internet
+
+---
+
+## Category: SEO vs AI Search Comparisons
+
+Taglines:
+
+192. Top 10 Ways AI Search Is Replacing Traditional SEO
+193. Best 10 SEO Tactics That No Longer Work in AI Search
+194. Top 5 Metrics SEOs Track That AI Platforms Ignore
+195. Best 10 Differences Between Ranking on Google and Ranking on ChatGPT
+196. Top 10 SEO Habits Holding Brands Back in the AI Era
+197. Fastest Declining SEO Practices in the Age of LLMs
+198. Top 10 Moves That Work for SEO but Kill AI Citations
+199. Best 10 New Rules of AI Search That SEOs Need to Learn
+200. Top 5 Reasons SEO and AI Search Are Not the Same Thing
+201. Worst 10 Pieces of SEO Advice for an AI-First World
