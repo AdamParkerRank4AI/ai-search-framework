@@ -351,3 +351,179 @@ Taglines:
 199. Best 10 New Rules of AI Search That SEOs Need to Learn
 200. Top 5 Reasons SEO and AI Search Are Not the Same Thing
 201. Worst 10 Pieces of SEO Advice for an AI-First World
+
+---
+
+## Category: Prompts & Queries
+
+Taglines:
+
+202. Top 10 Prompts That Reveal How ChatGPT Sees Your Brand
+203. Best 10 Prompts Every Marketer Should Test Monthly
+204. Top 5 Prompts to Check If AI Knows Your Business Exists
+205. Top 10 Prompts That Expose Your Competitor's Weaknesses
+206. Best 10 Prompts to Audit Your AI Visibility in Under a Minute
+207. Top 10 Prompts Journalists Use to Find Sources on AI
+208. Fastest 5 Prompts to Benchmark Your Brand Against Rivals
+209. Top 10 Prompts Marketers Should Run Before Every Campaign
+210. Best 10 Prompts for Testing Sentiment About Your Brand
+211. Worst 5 Prompts That Actively Mislead Your AI Visibility Score
+
+---
+
+## Category: Age & Generation Behaviour
+
+Taglines:
+
+212. Top 10 Things Gen Z Asks ChatGPT That Older Generations Don't
+213. Best 10 Ways Millennials Are Using AI Chatbots Daily
+214. Top 5 Questions Boomers Are Finally Asking AI
+215. Top 10 Things Teens Trust ChatGPT With
+216. Best 10 Ways Gen X Uses ChatGPT for Work
+217. Top 10 AI Habits That Separate Under-25s From Over-50s
+218. Top 5 Generational Differences in How People Talk to AI
+219. Top 10 Things Only Gen Z Would Ask ChatGPT
+220. Best 10 Questions Every Generation Asks AI Differently
+221. Top 10 Ways Parents and Kids Use AI for Totally Different Things
+
+---
+
+## Category: Jobs AI Is (and Isn't) Replacing
+
+Taglines:
+
+222. Top 10 Jobs ChatGPT Is Quietly Taking Over
+223. Top 10 Jobs AI Still Can't Touch
+224. Best 10 Careers Becoming More Valuable Because of AI
+225. Top 5 Roles That Will Disappear First in the AI Era
+226. Top 10 Jobs Where Human Judgement Still Wins
+227. Fastest Disappearing Job Titles of 2026
+228. Top 10 Roles Where AI Makes You 10x More Valuable
+229. Best 10 Jobs Worth Retraining Into Because of AI
+230. Top 10 Skills That Protect Your Job From AI
+231. Worst 5 Careers to Start in an AI-First World
+
+---
+
+## Category: Hidden Features
+
+Taglines:
+
+232. Top 10 ChatGPT Features Most People Don't Know About
+233. Best 10 Claude Tricks That Save You Hours a Week
+234. Top 5 Hidden Prompts That Unlock Better ChatGPT Answers
+235. Top 10 Perplexity Features That Beat Google Search
+236. Best 10 Gemini Tricks Power Users Swear By
+237. Top 10 AI Shortcuts Marketers Aren't Using (Yet)
+238. Fastest 10 Ways to Get More Out of ChatGPT Daily
+239. Top 5 AI Features That Just Quietly Launched
+240. Best 10 Hidden Settings in AI Platforms Worth Turning On
+241. Top 10 Underrated Features in the Top AI Chatbots
+
+---
+
+## Category: Brand Personalities in AI
+
+> **The mirror angle.** These rankings ask a simple question: what does AI actually say about a brand? Great for sparking reshares because brands often don't know how they're being described and will quote-share the post.
+
+Taglines:
+
+242. Top 10 Brands ChatGPT Describes in the Most Glowing Terms
+243. Top 5 Brands AI Platforms Describe Weirdly
+244. Best 10 Brands With the Most Consistent AI Descriptions
+245. Top 10 Brands That Sound Totally Different Across AI Platforms
+246. Top 5 Brands AI Accidentally Makes Fun Of
+247. Best 10 Brands With the Warmest Sentiment in AI Answers
+248. Top 10 Brands AI Keeps Confusing With Competitors
+249. Fastest Rising Brands in AI Sentiment Scores
+250. Top 10 Brands AI Describes as "Market Leaders"
+251. Worst 10 Brand Descriptions AI Is Currently Serving Up
+
+---
+
+## Category: Local & Country-Level AI Behaviour
+
+Taglines:
+
+252. Top 10 UK Questions AI Gets Wrong
+253. Top 5 Things AI Understands Differently in the US vs the UK
+254. Best 10 UK Brands AI Platforms Consistently Get Right
+255. Top 10 Ways AI Treats British Brands Differently
+256. Top 5 UK Slang Terms AI Still Can't Handle
+257. Best 10 Local UK Questions You Should Be Asking ChatGPT
+258. Top 10 Cultural Blind Spots in AI Chatbots
+259. Fastest Improving Countries in AI Localisation
+260. Top 10 Things AI Gets Right About the UK but Wrong About the US
+261. Worst 5 Regional Mistakes AI Chatbots Still Make
+
+---
+
+## Category: Before & After AI Launched
+
+Taglines:
+
+262. Top 10 Industries That Changed Overnight When ChatGPT Launched
+263. Best 10 Jobs That Look Totally Different After GPT-4
+264. Top 5 Workflows Every Marketer Changed Because of AI
+265. Top 10 SEO Habits That Died the Day ChatGPT Shipped
+266. Fastest Industries to Adapt After the AI Wave
+267. Top 10 Everyday Tasks That Changed Since ChatGPT Launched
+268. Best 10 Brands That Pivoted Hard Into AI Post-2023
+269. Top 10 Before-and-After Moments in the AI Revolution
+270. Top 5 Things Marketing Teams Stopped Doing in 2024
+271. Worst 10 Industries That Still Haven't Caught Up
+
+---
+
+## Category: "Ask AI About…" Series
+
+> **Lifestyle crossover.** These rankings take the feed beyond the AI-search-insider bubble. They package AI answers as consumer advice — house-buying, sleep, fitness, starting a business. Strongest Instagram reach potential.
+
+Taglines:
+
+272. Top 10 Things AI Says About Working From Home
+273. Top 10 Things AI Recommends for First-Time Buyers
+274. Best 10 Things AI Tells You About Starting a Business
+275. Top 10 Things AI Says About Losing Weight
+276. Top 5 Things AI Recommends for New Parents
+277. Best 10 Things AI Suggests for Saving Money
+278. Top 10 Things AI Says About Finding a New Job
+279. Top 10 Things AI Thinks Every 30-Year-Old Should Know
+280. Best 10 Things AI Recommends for Better Sleep
+281. Top 10 Things AI Will Tell You About Getting Fit in 2026
+
+---
+
+## Category: Everyday AI Wins
+
+Taglines:
+
+282. Top 10 Ways Normal People Use ChatGPT Every Day
+283. Top 10 AI Hacks That Save You an Hour a Day
+284. Best 10 ChatGPT Uses for Busy Parents
+285. Top 5 AI Shortcuts That Replaced Google Overnight
+286. Best 10 Everyday Tasks You Should Be Delegating to AI
+287. Top 10 Unexpected Ways People Are Using AI in 2026
+288. Fastest 10 AI Wins You Can Set Up in Under 5 Minutes
+289. Top 10 ChatGPT Prompts That Changed My Week
+290. Best 10 AI Routines Worth Stealing
+291. Top 10 Small AI Habits With Big Life Impact
+
+---
+
+## Category: Controversial / Spicy
+
+> **Handle with care.** Highest raw engagement potential but the framing matters — these should feel curious and investigative, not inflammatory. Great for save/share metrics.
+
+Taglines:
+
+292. Top 10 Topics AI Refuses to Answer
+293. Top 10 Questions That Break ChatGPT
+294. Best 10 Controversial Opinions AI Chatbots Actually Agree On
+295. Top 5 Things AI Platforms Will Never Tell You
+296. Top 10 Taboo Subjects AI Tiptoes Around
+297. Fastest Way to Make ChatGPT Refuse to Help
+298. Top 10 Reasons AI Is More Censored Than You Think
+299. Best 10 Topics That Expose AI Platform Bias
+300. Top 10 Questions That Reveal the Limits of AI Chatbots
+301. Worst 10 Things AI Gets Blamed For That Aren't Its Fault
