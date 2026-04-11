@@ -19,7 +19,7 @@ Locked decisions at the top. Everything else in the file supports them.
 | Countdown reel (Format 3) | **CapCut (desktop)** | 10 identical cards chain fast, audio beat sync |
 | #1 Spotlight reel (Format 5) | **CapCut + Loom** | Loom for AI screen recordings, CapCut to stitch with Adam's talking-head |
 
-**Fallback stack (if no Figma skills available):** do every static post in **Canva Pro**. You lose some pixel control but the templates exist.
+**Fallback stack (if no Figma skills available):** do every static post in **Canva Pro** using the **Bulk Create** workflow (see dedicated section below). Honestly, for a non-designer running a ranking account, this is probably *better* than Figma — it's purpose-built for "one template, N rows of data, N slides out".
 
 **Over-budget stack (don't reach for this yet):** After Effects for motion graphics, Premiere Pro for reels. Unnecessary until the account proves format/fit at 10k followers.
 
@@ -72,6 +72,99 @@ These clips are gold for the spotlight reel. Keep them 5–10 seconds each, no l
 ### Icons
 - Lucide (`lucide.dev`) or Heroicons — both free, minimal, MIT licensed
 - Do not use Flaticon — looks dated in 2026
+
+---
+
+## Canva Bulk Create workflow (the no-designer path)
+
+This is the easiest way in existence to turn a ranking table into 10 consistent Instagram slides. Canva Pro only (£10/mo). Read this once and you can run the whole ranking in under an hour.
+
+### The principle
+
+You design **one** master slide with placeholder text boxes. Canva reads a CSV where each row = one output slide. It auto-generates one slide per row by swapping in the data from that row. 10 rows → 10 perfect slides, identical layout, zero manual work.
+
+### Step 1 — Build the master slide (once, ~45 minutes)
+
+1. New design → Instagram Post (1080 × 1350)
+2. Set the background to near-black (`#0B0D10`)
+3. Add these text boxes, exactly as shown with the placeholder text:
+
+| Text box | Placeholder value | Size | Position |
+|----------|-------------------|------|----------|
+| Position number | `#01` | Huge (520 px) | Centre, top 60% |
+| Agency name | `AGENCY NAME` | Large (88 px) | Below number |
+| Score | `00 / 100` | Medium mono (64 px) | Below name |
+| Verdict | `"One-line verdict."` | Small (48 px) | Below score |
+| Top signal | `Top signal: SIGNAL` | Chip (32 px) | Bottom-left |
+| Weak spot | `Weak spot: WEAKNESS` | Chip (32 px) | Bottom-left |
+
+4. Drop the static compareSEO badge in the bottom-right corner
+5. Drop the footer bar at the bottom: `compareseo.co.uk · [MONTH] 2026 · by Rank4AI`
+
+Save this design. This is your master. You never touch it again unless the brand system changes.
+
+### Step 2 — Build the CSV (once per ranking, ~15 minutes)
+
+Create a Google Sheet with these exact column headers — the header text is what Canva matches against:
+
+```
+position,agency_name,score,verdict,top_signal,weak_spot
+1,[Agency 1],94,"They own entity clarity across all four platforms.",Identity Clarity,Ecosystem
+2,[Agency 2],89,"Best technical meaning architecture in the UK.",Meaning Architecture,Subject Authority
+3,[Agency 3],87,"A huge ecosystem moat no-one can touch.",Ecosystem Validation,Identity Clarity
+4,[Agency 4],82,"Consistent signal strength over 12 months.",Signal Consistency,Meaning Architecture
+5,[Agency 5],79,"Deep subject authority on one core topic.",Subject Authority,Ecosystem
+6,[Agency 6],76,"Clean architecture, thin ecosystem.",Meaning Architecture,Ecosystem
+7,[Agency 7],74,"Strong authority, weak identity signals.",Subject Authority,Identity Clarity
+8,[Agency 8],71,"Good ecosystem, inconsistent messaging.",Ecosystem Validation,Signal Consistency
+9,[Agency 9],68,"Underrated on identity, needs architecture work.",Identity Clarity,Meaning Architecture
+10,[Agency 10],65,"Entry-level on the list, lots to build.",Signal Consistency,Subject Authority
+```
+
+Export as CSV. (A Google Sheet "File → Download → CSV" does it in one click.)
+
+### Step 3 — Bulk Create (once per ranking, ~5 minutes)
+
+1. In the Canva master design, open the **Apps** menu → **Bulk Create**
+2. Click **Upload data** → pick your CSV
+3. Click **Auto-connect fields** — Canva reads the column names and links each column to the matching text box automatically. If auto-connect misses one, drag the field name from the sidebar onto the right text box manually.
+4. Click **Continue** → **Generate pages**
+5. Canva creates 10 new pages in the design, each with a different row's data filled in
+
+Your 10 ranking slides now exist. Review them, fix any truncated verdicts, and export.
+
+### Step 4 — Add the 3 bookend slides (once per ranking, ~10 minutes)
+
+Bulk Create only handles the 10 data slides. You still need:
+- **Slide 1** (cover) — "TOP 10 AI SEO AGENCIES UK · 2026 · ← swipe"
+- **Slide 12** (methodology) — the 5 signals, weighted
+- **Slide 13** (CTA) — "Free audit → link in bio"
+
+Build these once, save them as a separate "cover + outro" design, and duplicate it every month.
+
+### Step 5 — Export and assemble (5 minutes)
+
+1. Export all 13 slides as PNG at 1x
+2. Rename files per the convention in `figma-spec.md`: `cs-carousel-[slug]-[NN]-2026-04.png`
+3. Drag into Later / Metricool in the correct order
+4. Paste caption from `caption-templates.md`
+5. Schedule
+
+### Total time
+
+| Run | Time |
+|-----|------|
+| Month 1 (build master + first CSV + first ranking) | ~75 min |
+| Month 2 onwards (swap CSV, re-run Bulk Create) | ~20 min |
+
+That's faster than opening Figma.
+
+### When Bulk Create breaks
+
+- **Long verdicts truncate.** Cap verdicts at 60 characters. Test a row with the longest verdict before running all 10.
+- **Auto-connect misses a field.** Drag it manually. Happens when the header name has a typo vs the text box name.
+- **Score field appears as "94.0".** Format the CSV column as text in Google Sheets before exporting, or add a `score_display` column with the exact string you want.
+- **You change the master slide.** Re-run Bulk Create — old slides will regenerate with the new layout. This is why the master is sacred.
 
 ---
 
