@@ -47,6 +47,27 @@ The AI search niche moves week-to-week. Formats that worked in January will be p
 - [@hubspot](https://www.instagram.com/hubspot/)
 - [@neilpatel](https://www.instagram.com/neilpatel/)
 
+### Big UK business / marketing anchors (also used for follower mining)
+These are large UK-heavy business accounts. They're valuable twice over — as inspiration sources for format ideas AND as anchor accounts for mining pre-qualified UK followers.
+
+- [@simonsquibb](https://www.instagram.com/simonsquibb/) — 6M, UK founder creator
+- [@steven](https://www.instagram.com/steven/) — 5M, Steven Bartlett
+- [@thediaryofaceopodcast](https://www.instagram.com/thediaryofaceopodcast/) — 3M, Diary of a CEO
+- [@martinlewismse](https://www.instagram.com/martinlewismse/) — 2M, Martin Lewis / MSE
+- [@aliabdaal](https://www.instagram.com/aliabdaal/) — 1M, UK productivity/founder
+- [@benfrancis](https://www.instagram.com/benfrancis/) — 677K, Gymshark founder
+- [@peterjonescbe](https://www.instagram.com/peterjonescbe/) — 542K, Dragon
+- [@adamstottcoach](https://www.instagram.com/adamstottcoach/) — 486K, UK biz coach
+- [@deborahmeaden](https://www.instagram.com/deborahmeaden/) — 177K, Dragon
+- [@campaignmagazine](https://www.instagram.com/campaignmagazine/) — 82K, UK marketing industry
+- [@marketingweeked](https://www.instagram.com/marketingweeked/) — 71K, Marketing Week
+- [@thedrummag](https://www.instagram.com/thedrummag/) — 63K, The Drum
+- [@couriermedia](https://www.instagram.com/couriermedia/) — 61K, Courier (small biz)
+- [@theopaphitis](https://www.instagram.com/theopaphitis/) — 54K, Dragon / #SBS
+- [@virginstartup](https://www.instagram.com/virginstartup/) — 40K, Virgin StartUp
+- [@e_nation](https://www.instagram.com/e_nation/) — 28K, Enterprise Nation
+- [@fsb_uk](https://www.instagram.com/fsb_uk/) — 26K, Federation of Small Businesses
+
 ### Non-IG sources to cross-check
 The most interesting AI search content is still on LinkedIn and X. Worth a 5-minute weekly scan to see what's being discussed there — it arrives on Instagram 1–2 weeks later and we can get ahead of it:
 - LinkedIn: "AI search", "GEO", "AEO", "LLMO" in the search bar, filter to posts from the last 7 days
