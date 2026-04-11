@@ -1,0 +1,8 @@
+# Rendered output is regenerated from rankings/*.json.
+# Commit the sample output once (as a visual reference) but ignore
+# anything beyond the first sample to keep the repo small.
+output/**
+!output/top-10-ai-seo-agencies-uk/
+!output/top-10-ai-seo-agencies-uk/**
+__pycache__/
+*.pyc

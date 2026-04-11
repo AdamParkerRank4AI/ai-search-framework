@@ -20,6 +20,9 @@ One compareSEO ranking = 7 Instagram posts. Publish them all in the same week, t
 | `figma-spec.md` | Frame sizes, exports, naming convention for the designer/template builder |
 | `production-pipeline.md` | Which tool to use for which format (Figma, CapCut, Canva), asset sources (Clearbit, Loom), first-week plan, monthly refresh workflow, hiring options |
 | `reels-first-plan.md` | **Start here if you struggle with design tools.** Zero-Canva, zero-Figma version of the strategy — 7 reels per week, all made on a phone in ~1.5 hours total. |
+| `tools/render_ranking.py` | **The render pipeline.** One JSON in → post 1 PNGs + post 2 PNGs + stories PNGs + captions + tag list out. No design tools, no Canva, no Figma. See `tools/README.md` for the workflow. |
+| `rankings/*.json` | The ranking data. One JSON per ranking. Paste new ones here to regenerate all the slides in seconds. |
+| `output/*` | Generated PNGs + captions + tag lists. Output of the render pipeline. |
 | `inspiration-swipe-file.md` | Weekly log of AI SEO / AI search content working on Instagram right now — hashtags to trawl, patterns to watch for, ideas to steal |
 
 ---
