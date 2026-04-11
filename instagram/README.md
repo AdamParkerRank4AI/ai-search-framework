@@ -18,6 +18,7 @@ One compareSEO ranking = 7 Instagram posts. Publish them all in the same week, t
 | `example-top10-ai-seo-agencies-uk.md` | A worked example using the "Top AI SEO Agencies UK" ranking slot-by-slot |
 | `monthly-refresh-playbook.md` | What to post every time a ranking updates — the "who moved" cycle |
 | `figma-spec.md` | Frame sizes, exports, naming convention for the designer/template builder |
+| `production-pipeline.md` | Which tool to use for which format (Figma, CapCut, Canva), asset sources (Clearbit, Loom), first-week plan, monthly refresh workflow, hiring options |
 | `inspiration-swipe-file.md` | Weekly log of AI SEO / AI search content working on Instagram right now — hashtags to trawl, patterns to watch for, ideas to steal |
 
 ---
