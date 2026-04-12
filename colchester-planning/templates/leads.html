@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Leads - Colchester Planning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Kitchen Leads - Colchester</h1>
+            <p class="subtitle">Rear extension planning applications in Colchester postcodes (CO*)</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        {% if error %}
+        <div class="error-banner">
+            Unable to fetch data: {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- Stats bar -->
+        <div class="stats-bar">
+            <div class="stat stat-submitted">
+                <div class="stat-number">{{ submitted_count }}</div>
+                <div class="stat-label">Submitted - Awaiting Decision</div>
+                <div class="stat-detail">Last 3 months</div>
+            </div>
+            <div class="stat stat-approved">
+                <div class="stat-number">{{ approved_count }}</div>
+                <div class="stat-label">Recently Approved</div>
+                <div class="stat-detail">Last 1 month</div>
+            </div>
+            <div class="stat stat-total">
+                <div class="stat-number">{{ submitted_count + approved_count }}</div>
+                <div class="stat-label">Total Active Leads</div>
+                <div class="stat-detail">Kitchen opportunities</div>
+            </div>
+        </div>
+
+        <!-- TAB NAVIGATION -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('submitted')">
+                Submitted - Not Yet Approved
+                <span class="tab-count">{{ submitted_count }}</span>
+            </button>
+            <button class="tab-btn" onclick="showTab('approved')">
+                Recently Approved
+                <span class="tab-count">{{ approved_count }}</span>
+            </button>
+        </div>
+
+        <!-- LIST 1: SUBMITTED BUT NOT YET APPROVED -->
+        <div id="tab-submitted" class="tab-content active">
+            <div class="list-header list-header-submitted">
+                <h2>Submitted - Awaiting Decision</h2>
+                <p>These homeowners have applied in the last 3 months and are waiting for planning approval. Best time to contact - they haven't chosen a kitchen yet.</p>
+            </div>
+
+            <div class="applications">
+                {% for rec in submitted %}
+                <div class="app-card card-submitted">
+                    <div class="app-header">
+                        <div class="app-ref">
+                            <a href="/application/{{ rec.name }}">{{ rec.uid }}</a>
+                        </div>
+                        <div class="app-badges">
+                            <span class="badge badge-submitted">AWAITING DECISION</span>
+                            <span class="badge badge-type">{{ rec.app_type or 'Full' }}</span>
+                            {% if rec.app_size %}
+                            <span class="badge badge-size">{{ rec.app_size }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="app-address">{{ rec.address or 'Address not available' }}</div>
+                    <div class="app-description">{{ rec.description or 'No description available' }}</div>
+
+                    <div class="app-meta">
+                        {% if rec._date_received %}
+                        <div class="meta-item">
+                            <span class="meta-label">Received:</span>
+                            <span>{{ rec._date_received }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._consultation_end %}
+                        <div class="meta-item">
+                            <span class="meta-label">Consultation Ends:</span>
+                            <span>{{ rec._consultation_end }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._target_date %}
+                        <div class="meta-item">
+                            <span class="meta-label">Target Decision:</span>
+                            <span>{{ rec._target_date }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._ward %}
+                        <div class="meta-item">
+                            <span class="meta-label">Ward:</span>
+                            <span>{{ rec._ward }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec.postcode %}
+                        <div class="meta-item">
+                            <span class="meta-label">Postcode:</span>
+                            <span>{{ rec.postcode }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._applicant and rec._applicant != 'See source' %}
+                        <div class="meta-item">
+                            <span class="meta-label">Applicant:</span>
+                            <span>{{ rec._applicant }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="app-links">
+                        <a href="/application/{{ rec.name }}" class="btn btn-detail">View Details</a>
+                        {% if rec.url %}
+                        <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-council">Council Site</a>
+                        {% endif %}
+                        {% if rec._docs_url %}
+                        <a href="{{ rec._docs_url }}" target="_blank" rel="noopener" class="btn btn-docs">View Plans</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="no-results">
+                    <p>No submitted rear extension applications found in Colchester postcodes for the last 3 months.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- LIST 2: RECENTLY APPROVED -->
+        <div id="tab-approved" class="tab-content">
+            <div class="list-header list-header-approved">
+                <h2>Recently Approved</h2>
+                <p>These homeowners got approval in the last month. They're about to start building - follow up now before they choose a kitchen supplier.</p>
+            </div>
+
+            <div class="applications">
+                {% for rec in approved %}
+                <div class="app-card card-approved">
+                    <div class="app-header">
+                        <div class="app-ref">
+                            <a href="/application/{{ rec.name }}">{{ rec.uid }}</a>
+                        </div>
+                        <div class="app-badges">
+                            <span class="badge badge-approved">APPROVED</span>
+                            <span class="badge badge-type">{{ rec.app_type or 'Full' }}</span>
+                            {% if rec.app_size %}
+                            <span class="badge badge-size">{{ rec.app_size }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="app-address">{{ rec.address or 'Address not available' }}</div>
+                    <div class="app-description">{{ rec.description or 'No description available' }}</div>
+
+                    <div class="app-meta">
+                        {% if rec._decision_date %}
+                        <div class="meta-item">
+                            <span class="meta-label">Approved:</span>
+                            <span>{{ rec._decision_date }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._date_received %}
+                        <div class="meta-item">
+                            <span class="meta-label">Originally Received:</span>
+                            <span>{{ rec._date_received }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._ward %}
+                        <div class="meta-item">
+                            <span class="meta-label">Ward:</span>
+                            <span>{{ rec._ward }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec.postcode %}
+                        <div class="meta-item">
+                            <span class="meta-label">Postcode:</span>
+                            <span>{{ rec.postcode }}</span>
+                        </div>
+                        {% endif %}
+                        {% if rec._applicant and rec._applicant != 'See source' %}
+                        <div class="meta-item">
+                            <span class="meta-label">Applicant:</span>
+                            <span>{{ rec._applicant }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="app-links">
+                        <a href="/application/{{ rec.name }}" class="btn btn-detail">View Details</a>
+                        {% if rec.url %}
+                        <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-council">Council Site</a>
+                        {% endif %}
+                        {% if rec._docs_url %}
+                        <a href="{{ rec._docs_url }}" target="_blank" rel="noopener" class="btn btn-docs">View Plans</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="no-results">
+                    <p>No recently approved rear extension applications found in Colchester postcodes for the last month.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data sourced from <a href="https://www.planit.org.uk" target="_blank" rel="noopener">PlanIt.org.uk</a> public API.
+            Planning data is Crown copyright and published under the Open Government Licence.</p>
+            <p>Built as part of the <a href="https://www.rank4ai.co.uk">Rank4AI</a> AI Search Framework project.</p>
+        </div>
+    </footer>
+
+    <script>
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+        event.target.closest('.tab-btn').classList.add('active');
+    }
+    </script>
+</body>
+</html>
