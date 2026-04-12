@@ -12,6 +12,7 @@ One compareSEO ranking = 7 Instagram posts. Publish them all in the same week, t
 
 | File | What it contains |
 |------|------------------|
+| `bio-and-profile.md` | **Profile setup — copy-paste ready.** Bio, display name, category, highlights, pins, day 1 checklist. |
 | `post-formats.md` | The 7 Instagram formats one ranking expands into, with visual specs |
 | `design-system.md` | Colours, type, grids, safe zones — the locked visual system so every post looks like the same brand |
 | `caption-templates.md` | Fill-in-the-blanks captions and hooks for every format |
