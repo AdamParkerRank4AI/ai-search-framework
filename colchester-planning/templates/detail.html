@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if record %}{{ record.uid or record.name }} - {% endif %}Colchester Planning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/" style="color: inherit; text-decoration: none;">Colchester Planning Applications</a></h1>
+            <p class="subtitle">Application Detail</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="/" class="back-link">&larr; Back to search</a>
+
+        {% if error %}
+        <div class="error-banner">
+            Unable to fetch application: {{ error }}
+        </div>
+        {% elif record %}
+        <div class="detail-card">
+            <div class="detail-header">
+                <h2>{{ record.uid or record.name }}</h2>
+                <div class="app-badges">
+                    <span class="badge badge-type">{{ record.app_type or 'Unknown' }}</span>
+                    <span class="badge badge-state badge-{{ (record.app_state or 'unknown')|lower }}">{{ record.app_state or 'Unknown' }}</span>
+                    {% if record.app_size %}
+                    <span class="badge badge-size">{{ record.app_size }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>Address</h3>
+                <p>{{ record.address or 'Not available' }}</p>
+                {% if record.postcode %}
+                <p class="postcode">{{ record.postcode }}</p>
+                {% endif %}
+            </div>
+
+            <div class="detail-section">
+                <h3>Description</h3>
+                <p>{{ record.description or 'No description available' }}</p>
+            </div>
+
+            <div class="detail-grid">
+                {% set of = record.get('other_fields', {}) or {} %}
+
+                <div class="detail-section">
+                    <h3>Key Dates</h3>
+                    <table class="detail-table">
+                        {% if of.get('date_received') or record.start_date %}
+                        <tr><td>Date Received</td><td>{{ of.get('date_received', record.start_date) }}</td></tr>
+                        {% endif %}
+                        {% if of.get('date_validated') %}
+                        <tr><td>Date Validated</td><td>{{ of.date_validated }}</td></tr>
+                        {% endif %}
+                        {% if of.get('consultation_end_date') %}
+                        <tr><td>Consultation Ends</td><td>{{ of.consultation_end_date }}</td></tr>
+                        {% endif %}
+                        {% if of.get('target_decision_date') %}
+                        <tr><td>Target Decision</td><td>{{ of.target_decision_date }}</td></tr>
+                        {% endif %}
+                        {% if record.decided_date %}
+                        <tr><td>Decision Date</td><td>{{ record.decided_date }}</td></tr>
+                        {% endif %}
+                    </table>
+                </div>
+
+                <div class="detail-section">
+                    <h3>People</h3>
+                    <table class="detail-table">
+                        {% if of.get('applicant_name') %}
+                        <tr><td>Applicant</td><td>{{ of.applicant_name }}</td></tr>
+                        {% endif %}
+                        {% if of.get('agent_name') %}
+                        <tr><td>Agent</td><td>{{ of.agent_name }}</td></tr>
+                        {% endif %}
+                        {% if of.get('case_officer') %}
+                        <tr><td>Case Officer</td><td>{{ of.case_officer }}</td></tr>
+                        {% endif %}
+                    </table>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Location</h3>
+                    <table class="detail-table">
+                        {% if of.get('ward_name') %}
+                        <tr><td>Ward</td><td>{{ of.ward_name }}</td></tr>
+                        {% endif %}
+                        {% if of.get('parish') %}
+                        <tr><td>Parish</td><td>{{ of.parish }}</td></tr>
+                        {% endif %}
+                        {% if record.location_y and record.location_x %}
+                        <tr><td>Coordinates</td><td>{{ record.location_y }}, {{ record.location_x }}</td></tr>
+                        {% endif %}
+                    </table>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Application Info</h3>
+                    <table class="detail-table">
+                        {% if of.get('application_type') %}
+                        <tr><td>Application Type</td><td>{{ of.application_type }}</td></tr>
+                        {% endif %}
+                        {% if of.get('status') %}
+                        <tr><td>Status</td><td>{{ of.status }}</td></tr>
+                        {% endif %}
+                        {% if of.get('n_statutory_days') %}
+                        <tr><td>Statutory Days</td><td>{{ of.n_statutory_days }}</td></tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+
+            {% if record.location_y and record.location_x %}
+            <div class="detail-section">
+                <h3>Map</h3>
+                <div id="map" class="map-container">
+                    <iframe
+                        width="100%"
+                        height="350"
+                        frameborder="0"
+                        scrolling="no"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox={{ record.location_x - 0.005 }}%2C{{ record.location_y - 0.003 }}%2C{{ record.location_x + 0.005 }}%2C{{ record.location_y + 0.003 }}&layer=mapnik&marker={{ record.location_y }}%2C{{ record.location_x }}"
+                        style="border-radius: 8px;">
+                    </iframe>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="detail-links">
+                {% if record.url %}
+                <a href="{{ record.url }}" target="_blank" rel="noopener" class="btn btn-council">View on Council Website</a>
+                {% endif %}
+                {% if of.get('docs_url') %}
+                <a href="{{ of.docs_url }}" target="_blank" rel="noopener" class="btn btn-detail">View Documents</a>
+                {% endif %}
+                {% if record.link %}
+                <a href="{{ record.link }}" target="_blank" rel="noopener" class="btn btn-page">View on PlanIt</a>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="no-results">
+            <p>Application not found.</p>
+        </div>
+        {% endif %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data sourced from <a href="https://www.planit.org.uk" target="_blank" rel="noopener">PlanIt.org.uk</a> public API.
+            Planning data is Crown copyright and published under the Open Government Licence.</p>
+            <p>Built as part of the <a href="https://www.rank4ai.co.uk">Rank4AI</a> AI Search Framework project.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colchester Planning Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Colchester Planning Applications</h1>
+            <p class="subtitle">Browse recent planning applications for Colchester City Council</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Search and Filter -->
+        <form class="search-bar" method="GET" action="/">
+            <div class="search-row">
+                <input type="text" name="search" placeholder="Search by address, description, postcode..." value="{{ search }}">
+                <button type="submit">Search</button>
+            </div>
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="days">Time period:</label>
+                    <select name="days" id="days">
+                        <option value="7" {{ 'selected' if days == '7' }}>Last 7 days</option>
+                        <option value="14" {{ 'selected' if days == '14' }}>Last 14 days</option>
+                        <option value="30" {{ 'selected' if days == '30' }}>Last 30 days</option>
+                        <option value="60" {{ 'selected' if days == '60' }}>Last 60 days</option>
+                        <option value="90" {{ 'selected' if days == '90' }}>Last 90 days</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="app_type">Type:</label>
+                    <select name="app_type" id="app_type">
+                        <option value="">All types</option>
+                        <option value="Full" {{ 'selected' if app_type == 'Full' }}>Full</option>
+                        <option value="Outline" {{ 'selected' if app_type == 'Outline' }}>Outline</option>
+                        <option value="Householder" {{ 'selected' if app_type == 'Householder' }}>Householder</option>
+                        <option value="Conditions" {{ 'selected' if app_type == 'Conditions' }}>Conditions</option>
+                        <option value="Amendment" {{ 'selected' if app_type == 'Amendment' }}>Amendment</option>
+                        <option value="Trees" {{ 'selected' if app_type == 'Trees' }}>Trees</option>
+                        <option value="Listed Building" {{ 'selected' if app_type == 'Listed Building' }}>Listed Building</option>
+                        <option value="Advertisement" {{ 'selected' if app_type == 'Advertisement' }}>Advertisement</option>
+                        <option value="Heritage" {{ 'selected' if app_type == 'Heritage' }}>Heritage</option>
+                        <option value="Change of Use" {{ 'selected' if app_type == 'Change of Use' }}>Change of Use</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="app_state">Status:</label>
+                    <select name="app_state" id="app_state">
+                        <option value="">All statuses</option>
+                        <option value="Undecided" {{ 'selected' if app_state == 'Undecided' }}>Undecided</option>
+                        <option value="Permitted" {{ 'selected' if app_state == 'Permitted' }}>Permitted</option>
+                        <option value="Refused" {{ 'selected' if app_state == 'Refused' }}>Refused</option>
+                        <option value="Withdrawn" {{ 'selected' if app_state == 'Withdrawn' }}>Withdrawn</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        {% if error %}
+        <div class="error-banner">
+            Unable to fetch data: {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- Results Summary -->
+        <div class="results-summary">
+            <strong>{{ total }}</strong> application{{ 's' if total != 1 }} found
+            {% if search %} matching "{{ search }}"{% endif %}
+        </div>
+
+        <!-- Applications List -->
+        <div class="applications">
+            {% for rec in records %}
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-ref">
+                        <a href="/application/{{ rec.name }}">{{ rec.uid }}</a>
+                    </div>
+                    <div class="app-badges">
+                        <span class="badge badge-type">{{ rec.app_type or 'Unknown' }}</span>
+                        <span class="badge badge-state badge-{{ (rec.app_state or 'unknown')|lower }}">{{ rec._status or rec.app_state or 'Unknown' }}</span>
+                        {% if rec.app_size %}
+                        <span class="badge badge-size">{{ rec.app_size }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="app-address">{{ rec.address or 'Address not available' }}</div>
+                <div class="app-description">{{ rec.description or 'No description available' }}</div>
+
+                <div class="app-meta">
+                    {% if rec._date_received %}
+                    <div class="meta-item">
+                        <span class="meta-label">Received:</span>
+                        <span>{{ rec._date_received }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._applicant %}
+                    <div class="meta-item">
+                        <span class="meta-label">Applicant:</span>
+                        <span>{{ rec._applicant }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._agent %}
+                    <div class="meta-item">
+                        <span class="meta-label">Agent:</span>
+                        <span>{{ rec._agent }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._ward %}
+                    <div class="meta-item">
+                        <span class="meta-label">Ward:</span>
+                        <span>{{ rec._ward }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._parish %}
+                    <div class="meta-item">
+                        <span class="meta-label">Parish:</span>
+                        <span>{{ rec._parish }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._case_officer %}
+                    <div class="meta-item">
+                        <span class="meta-label">Case Officer:</span>
+                        <span>{{ rec._case_officer }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._target_date %}
+                    <div class="meta-item">
+                        <span class="meta-label">Target Decision:</span>
+                        <span>{{ rec._target_date }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec._consultation_end %}
+                    <div class="meta-item">
+                        <span class="meta-label">Consultation Ends:</span>
+                        <span>{{ rec._consultation_end }}</span>
+                    </div>
+                    {% endif %}
+                    {% if rec.postcode %}
+                    <div class="meta-item">
+                        <span class="meta-label">Postcode:</span>
+                        <span>{{ rec.postcode }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="app-links">
+                    <a href="/application/{{ rec.name }}" class="btn btn-detail">View Details</a>
+                    {% if rec.url %}
+                    <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-council">View on Council Site</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="no-results">
+                <p>No planning applications found for the selected criteria.</p>
+                <p>Try broadening your search or extending the time period.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if total_pages > 1 %}
+        <div class="pagination">
+            {% if page > 1 %}
+            <a href="?search={{ search }}&days={{ days }}&app_type={{ app_type }}&app_state={{ app_state }}&page={{ page - 1 }}" class="btn btn-page">&laquo; Previous</a>
+            {% endif %}
+
+            <span class="page-info">Page {{ page }} of {{ total_pages }}</span>
+
+            {% if page < total_pages %}
+            <a href="?search={{ search }}&days={{ days }}&app_type={{ app_type }}&app_state={{ app_state }}&page={{ page + 1 }}" class="btn btn-page">Next &raquo;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data sourced from <a href="https://www.planit.org.uk" target="_blank" rel="noopener">PlanIt.org.uk</a> public API.
+            Planning data is Crown copyright and published under the Open Government Licence.</p>
+            <p>Built as part of the <a href="https://www.rank4ai.co.uk">Rank4AI</a> AI Search Framework project.</p>
+        </div>
+    </footer>
+</body>
+</html>
