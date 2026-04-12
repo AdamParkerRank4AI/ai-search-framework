@@ -514,6 +514,56 @@ footer p {
     color: #e94560;
 }
 
+/* Councils bar */
+.councils-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.councils-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.council-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: #ebf4ff;
+    color: #2b6cb0;
+    border-radius: 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.council-leads {
+    color: #4a90d9;
+    font-weight: 400;
+}
+
+/* Size note */
+.size-note {
+    padding: 10px 16px;
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    color: #92400e;
+    margin-bottom: 16px;
+}
+
+.meta-size-note a {
+    color: #2b6cb0;
+    font-weight: 600;
+}
+
 /* Tab navigation */
 .tab-nav {
     display: flex;

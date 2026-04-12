@@ -9,8 +9,8 @@
 <body>
     <header>
         <div class="container">
-            <h1>Kitchen Leads - Colchester</h1>
-            <p class="subtitle">Rear extension planning applications in Colchester postcodes (CO*)</p>
+            <h1>Kitchen Leads - Colchester &amp; Surrounding Area</h1>
+            <p class="subtitle">Rear extension planning applications within 20 miles of Colchester</p>
         </div>
     </header>
 
@@ -39,6 +39,19 @@
                 <div class="stat-label">Total Active Leads</div>
                 <div class="stat-detail">Kitchen opportunities</div>
             </div>
+        </div>
+
+        <!-- Councils covered -->
+        <div class="councils-bar">
+            <span class="councils-label">Councils searched:</span>
+            {% for c in councils %}
+            <span class="council-tag">{{ c.name }} <span class="council-leads">({{ c.leads }})</span></span>
+            {% endfor %}
+        </div>
+
+        <!-- Size note -->
+        <div class="size-note">
+            <strong>Extension size:</strong> Not available in the planning data. To see the exact dimensions and floor plans, click "View Plans" on each application - the submitted drawings show the measurements.
         </div>
 
         <!-- TAB NAVIGATION -->
@@ -80,6 +93,12 @@
                     <div class="app-description">{{ rec.description or 'No description available' }}</div>
 
                     <div class="app-meta">
+                        {% if rec.area_name %}
+                        <div class="meta-item">
+                            <span class="meta-label">Council:</span>
+                            <span>{{ rec.area_name }}</span>
+                        </div>
+                        {% endif %}
                         {% if rec._date_received %}
                         <div class="meta-item">
                             <span class="meta-label">Received:</span>
@@ -116,21 +135,25 @@
                             <span>{{ rec._applicant }}</span>
                         </div>
                         {% endif %}
+                        <div class="meta-item meta-size-note">
+                            <span class="meta-label">Extension Size:</span>
+                            <span>See floor plans{% if rec._docs_url %} <a href="{{ rec._docs_url }}" target="_blank" rel="noopener">(view plans)</a>{% endif %}</span>
+                        </div>
                     </div>
 
                     <div class="app-links">
+                        {% if rec._docs_url %}
+                        <a href="{{ rec._docs_url }}" target="_blank" rel="noopener" class="btn btn-docs">View Floor Plans &amp; Drawings</a>
+                        {% endif %}
                         <a href="/application/{{ rec.name }}" class="btn btn-detail">View Details</a>
                         {% if rec.url %}
                         <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-council">Council Site</a>
-                        {% endif %}
-                        {% if rec._docs_url %}
-                        <a href="{{ rec._docs_url }}" target="_blank" rel="noopener" class="btn btn-docs">View Plans</a>
                         {% endif %}
                     </div>
                 </div>
                 {% else %}
                 <div class="no-results">
-                    <p>No submitted rear extension applications found in Colchester postcodes for the last 3 months.</p>
+                    <p>No submitted rear extension applications found for the last 3 months.</p>
                 </div>
                 {% endfor %}
             </div>
@@ -163,6 +186,12 @@
                     <div class="app-description">{{ rec.description or 'No description available' }}</div>
 
                     <div class="app-meta">
+                        {% if rec.area_name %}
+                        <div class="meta-item">
+                            <span class="meta-label">Council:</span>
+                            <span>{{ rec.area_name }}</span>
+                        </div>
+                        {% endif %}
                         {% if rec._decision_date %}
                         <div class="meta-item">
                             <span class="meta-label">Approved:</span>
@@ -193,21 +222,25 @@
                             <span>{{ rec._applicant }}</span>
                         </div>
                         {% endif %}
+                        <div class="meta-item meta-size-note">
+                            <span class="meta-label">Extension Size:</span>
+                            <span>See floor plans{% if rec._docs_url %} <a href="{{ rec._docs_url }}" target="_blank" rel="noopener">(view plans)</a>{% endif %}</span>
+                        </div>
                     </div>
 
                     <div class="app-links">
+                        {% if rec._docs_url %}
+                        <a href="{{ rec._docs_url }}" target="_blank" rel="noopener" class="btn btn-docs">View Floor Plans &amp; Drawings</a>
+                        {% endif %}
                         <a href="/application/{{ rec.name }}" class="btn btn-detail">View Details</a>
                         {% if rec.url %}
                         <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-council">Council Site</a>
-                        {% endif %}
-                        {% if rec._docs_url %}
-                        <a href="{{ rec._docs_url }}" target="_blank" rel="noopener" class="btn btn-docs">View Plans</a>
                         {% endif %}
                     </div>
                 </div>
                 {% else %}
                 <div class="no-results">
-                    <p>No recently approved rear extension applications found in Colchester postcodes for the last month.</p>
+                    <p>No recently approved rear extension applications found for the last month.</p>
                 </div>
                 {% endfor %}
             </div>

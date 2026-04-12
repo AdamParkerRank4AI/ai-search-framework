@@ -1,6 +1,6 @@
 """
-Colchester Kitchen Leads - Planning Applications
-Finds rear extension planning applications in Colchester postcodes
+Kitchen Leads - Colchester & Surrounding Area
+Finds rear extension planning applications within 20 miles of Colchester
 and splits them into two lead lists:
   1. Submitted but not yet approved (last 3 months) - early leads
   2. Recently approved (last 1 month) - ready-to-buy leads
@@ -14,10 +14,18 @@ import requests
 app = Flask(__name__)
 
 PLANIT_API_BASE = "https://www.planit.org.uk/api/applics/json"
-DEFAULT_AUTHORITY = "Colchester"
 
-# Colchester postcodes
-COLCHESTER_POSTCODES = re.compile(r"^CO[0-9]", re.IGNORECASE)
+# Councils within ~20 miles of Colchester town centre
+AUTHORITIES = [
+    "Colchester",
+    "Tendring",
+    "Maldon",
+    "Chelmsford",
+    "Babergh Mid Suffolk",
+    "Ipswich",
+    "East Suffolk",
+    "Uttlesford",
+]
 
 # Keywords that indicate a kitchen-relevant rear extension
 EXTENSION_KEYWORDS = [
@@ -44,13 +52,6 @@ def is_rear_extension(description):
     return any(kw in desc for kw in EXTENSION_KEYWORDS)
 
 
-def is_colchester_postcode(postcode):
-    """Check if a postcode is in the Colchester area (CO*)."""
-    if not postcode:
-        return False
-    return bool(COLCHESTER_POSTCODES.match(postcode.strip()))
-
-
 def enrich_record(rec):
     """Add parsed fields from other_fields to a record."""
     of = rec.get("other_fields") or {}
@@ -70,14 +71,16 @@ def enrich_record(rec):
     return rec
 
 
-def fetch_all_pages(params, max_pages=10):
+def fetch_all_pages(params, max_pages=20):
     """Fetch all pages of results from the PlanIt API."""
     all_records = []
-    page_size = params.get("pg_sz", 500)
+    # Use 200 per page - some councils fail at 500
+    page_size = 200
+    params["pg_sz"] = page_size
     for page_num in range(max_pages):
         params["index"] = page_num * page_size
         try:
-            resp = requests.get(PLANIT_API_BASE, params=params, timeout=30)
+            resp = requests.get(PLANIT_API_BASE, params=params, timeout=45)
             resp.raise_for_status()
             data = resp.json()
         except requests.RequestException:
@@ -91,54 +94,61 @@ def fetch_all_pages(params, max_pages=10):
 
 
 def fetch_kitchen_leads():
-    """Fetch and categorise kitchen-relevant planning leads."""
-    # Fetch last 90 days of Colchester applications
-    params = {
-        "auth": DEFAULT_AUTHORITY,
-        "recent": 90,
-        "pg_sz": 500,
-        "sort": "-start_date",
-    }
-    all_records = fetch_all_pages(params)
-
+    """Fetch and categorise kitchen-relevant planning leads from all authorities."""
     submitted = []  # Undecided rear extensions (last 3 months)
     approved = []   # Approved rear extensions (last 1 month)
-
     one_month_ago = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+    councils_searched = []
 
-    for rec in all_records:
-        # Must be in a Colchester postcode
-        if not is_colchester_postcode(rec.get("postcode", "")):
-            continue
+    for authority in AUTHORITIES:
+        params = {
+            "auth": authority,
+            "recent": 90,
+            "pg_sz": 500,
+            "sort": "-start_date",
+        }
+        records = fetch_all_pages(params, max_pages=4)
+        council_count = 0
 
-        # Must be a rear extension
-        if not is_rear_extension(rec.get("description", "")):
-            continue
+        for rec in records:
+            if not is_rear_extension(rec.get("description", "")):
+                continue
 
-        rec = enrich_record(rec)
-        of = rec.get("other_fields") or {}
-        decision = of.get("decision", "")
-        decision_date = of.get("decision_date", rec.get("decided_date", ""))
-        app_state = rec.get("app_state", "")
+            rec = enrich_record(rec)
+            of = rec.get("other_fields") or {}
+            decision = of.get("decision", "")
+            decision_date = of.get("decision_date", rec.get("decided_date", ""))
+            app_state = rec.get("app_state", "")
 
-        if app_state == "Undecided":
-            # List 1: Submitted but not yet decided
-            submitted.append(rec)
-        elif "Approve" in decision or app_state in ("Conditions", "Permitted"):
-            # List 2: Approved — but only if decided in the last month
-            if decision_date and decision_date >= one_month_ago:
-                approved.append(rec)
+            is_approved = (
+                "Approve" in decision
+                or "Permitted" in decision
+                or "Approval" in decision
+                or app_state == "Permitted"
+                or app_state == "Conditions"
+            )
 
-    return submitted, approved
+            if app_state == "Undecided":
+                submitted.append(rec)
+                council_count += 1
+            elif is_approved:
+                if decision_date and decision_date >= one_month_ago:
+                    approved.append(rec)
+                    council_count += 1
+
+        councils_searched.append({"name": authority, "leads": council_count})
+
+    # Sort by date
+    submitted.sort(key=lambda r: r.get("_date_received", ""), reverse=True)
+    approved.sort(key=lambda r: r.get("_decision_date", ""), reverse=True)
+
+    return submitted, approved, councils_searched
 
 
 @app.route("/")
 def index():
     """Main kitchen leads dashboard with two lists."""
-    submitted, approved = fetch_kitchen_leads()
-    error = None
-    if not submitted and not approved:
-        error = None  # Could be no results, not necessarily an error
+    submitted, approved, councils = fetch_kitchen_leads()
 
     return render_template(
         "leads.html",
@@ -146,7 +156,8 @@ def index():
         approved=approved,
         submitted_count=len(submitted),
         approved_count=len(approved),
-        error=error,
+        councils=councils,
+        error=None,
     )
 
 
@@ -166,12 +177,13 @@ def application_detail(name):
 @app.route("/api/leads")
 def api_leads():
     """JSON API endpoint for kitchen leads."""
-    submitted, approved = fetch_kitchen_leads()
+    submitted, approved, councils = fetch_kitchen_leads()
     return jsonify({
         "submitted": submitted,
         "approved": approved,
         "submitted_count": len(submitted),
         "approved_count": len(approved),
+        "councils": councils,
     })
 
 
