@@ -1,132 +1,255 @@
-# Instagram Rankings — Content Plan & Workflow
+# Instagram Rankings — Automated Content Pipeline
 
-The end-to-end plan for turning ranking titles into published content that lives on the Rank4AI site and Instagram.
-
----
-
-## The Flow
-
-Every ranking follows the same loop:
-
-```
-1. WRITE the ranking → full article/page on rank4ai.co.uk
-2. DESIGN the graphic → branded Instagram carousel or single image
-3. POST to Instagram → caption, tags, page URL, CTA
-4. TAG everyone featured → in the image AND the caption
-5. DM anyone tagged → warm outreach message within 24 hours
-6. SHARE to Stories → drive extra reach on day 1
-7. REPURPOSE → LinkedIn post, newsletter mention, X thread
-```
+End-to-end automated workflow for turning ranking titles into published content on rank4ai.co.uk and Instagram, driven by APIs.
 
 ---
 
-## Step 1: Write the Ranking (Site)
+## The Automated Flow
 
-Each ranking title becomes a full page on rank4ai.co.uk.
-
-**What goes on the page:**
-- Title (the tagline from the master list, e.g. "Top 10 Voices in AI Search UK to Follow in 2026")
-- Short intro paragraph (2–3 sentences framing the ranking and why it matters)
-- The ranked list (numbered, with a short write-up for each entry — name, why they're included, link to their site/profile)
-- Methodology note (1–2 lines: how we selected and ranked — e.g. "Based on citation frequency, content output, and independent visibility signals")
-- CTA at the bottom (e.g. "Think someone's missing? DM us on Instagram @rank4ai" or "Want to check your own AI visibility? Get a free audit")
-
-**URL structure:**
-- rank4ai.co.uk/rankings/[slug]
-- Example: rank4ai.co.uk/rankings/top-10-voices-ai-search-uk-2026
-
-**Why the page matters:**
-- It's the authority anchor — Instagram drives traffic, the page holds the depth
-- It's indexable by AI platforms — the ranking itself becomes a citation source
-- It gives you a URL to include in every Instagram post
-- It compounds over time — rankings get updated quarterly, the URL stays the same
+```
+TRIGGER (pick a title from master list)
+    │
+    ▼
+STEP 1: Claude API generates ranking content + caption + DM copy
+    │
+    ▼
+STEP 2: Canva API generates branded carousel/graphic from template
+    │
+    ▼
+STEP 3: WordPress API publishes the ranking page to rank4ai.co.uk/rankings/[slug]
+    │
+    ▼
+STEP 4: Instagram Graph API publishes the graphic + caption + tags + page URL
+    │
+    ▼
+STEP 5: Instagram Graph API publishes to Stories with link sticker
+    │
+    ▼
+STEP 6: LinkedIn API publishes repurposed text post
+    │
+    ▼
+STEP 7: Notify — flag tagged people for DM follow-up
+```
 
 ---
 
-## Step 2: Design the Graphic (Instagram)
+## APIs Involved
 
-**Format options:**
-- Carousel (best for 10-item lists: cover slide + one slide per entry + final CTA slide)
-- Single image (best for "Top 5" lists: all 5 names on one branded graphic)
-- Reel (best for "Controversial / Spicy" and "Ask AI About…" categories — talking head or text reveal)
-
-**Graphic must include:**
-- Rank4AI branding (logo, colour palette, consistent typography)
-- The ranking title as the headline
-- The ranked names/items clearly visible
-- The page URL at the bottom of the final slide: rank4ai.co.uk/rankings/[slug]
-- Tag handles directly on the image (for people-based rankings)
-
-**Design templates to build:**
-- Carousel template (cover + entry + CTA)
-- Single image template (Top 5 format)
-- Reel text overlay template
+| Step | API | Purpose |
+|---|---|---|
+| Content generation | Claude API (Anthropic) | Write ranking article, caption, DM copy, hashtags |
+| Graphic generation | Canva Connect API | Generate carousel/image from branded template |
+| Site publishing | WordPress REST API | Create/update ranking page at rank4ai.co.uk |
+| Instagram posting | Instagram Graph API (Meta) | Publish image/carousel, caption, user tags |
+| Instagram Stories | Instagram Graph API (Meta) | Publish Story with link sticker |
+| LinkedIn posting | LinkedIn Marketing API | Publish text post with link |
+| Scheduling | Cron / queue (internal) | Trigger the pipeline on schedule (3x per week) |
+| Tracking | Instagram Insights API + GA4 API | Pull reach, clicks, profile visits, page views |
 
 ---
 
-## Step 3: Post to Instagram
+## Step 1: Content Generation (Claude API)
 
-**Caption structure:**
+**Input:** A ranking title from the master list (instagram_ranking_titles.md) + category metadata
 
+**Claude API generates:**
+
+1. **Ranking article** (for the site page)
+   - Title
+   - Intro paragraph (2–3 sentences)
+   - Ranked list (10 entries, each with name, one-line reason, link)
+   - Methodology note
+   - CTA
+
+2. **Instagram caption**
+   - Hook line
+   - Numbered list with @handles
+   - Page URL: rank4ai.co.uk/rankings/[slug]
+   - Engagement prompt ("Agree? Who's missing?")
+   - Hashtag block
+
+3. **DM copy**
+   - Personalised warm message per tagged person
+   - Includes post link + page URL
+
+4. **LinkedIn post**
+   - Reformatted version of the caption for LinkedIn tone
+
+**API call pattern:**
 ```
-[Hook line — the ranking title as a question or bold statement]
-
-Here's our [Top 10 / Best 5 / etc.]:
-
-1. @handle — [one-line reason]
-2. @handle — [one-line reason]
-3. @handle — [one-line reason]
-...
-
-Full write-ups and methodology on the site 👇
-🔗 rank4ai.co.uk/rankings/[slug]
-
-Agree? Disagree? Who's missing? Drop a comment 👇
-
-#AISearch #AI #ChatGPT #Rank4AI #AIVisibility #LLM #AISeo #DigitalMarketing #SearchMarketing #AISearchUK
+POST https://api.anthropic.com/v1/messages
+Model: claude-sonnet-4-20250514
+System prompt: Rank4AI content voice, ranking format rules, tagging rules
+User prompt: "Write a full ranking for: [title]. Category: [category]. Include site article, Instagram caption with @handles, DM template, LinkedIn post."
 ```
 
-**Tagging rules:**
-- Tag every person/brand featured — in the IMAGE and in the CAPTION
-- If someone doesn't have an Instagram, tag their company page
-- If no Instagram exists at all, mention by name only (and note as a DM target for LinkedIn instead)
-
-**Include the page URL:**
-- In the caption (as text — Instagram doesn't make it clickable but people copy it)
-- In your bio link (update the Linktree / bio link to point to the latest ranking)
-- In Stories (use the link sticker to make it tappable)
-
-**Posting schedule:**
-- Aim for 3 rankings per week
-- Mix categories — don't post 3 "Voices" posts in a row, alternate between people, tools, brands, lifestyle, spicy
-- Best posting times to test: 7–8am (commute), 12–1pm (lunch), 7–9pm (evening scroll)
+**Output:** JSON with all four content blocks, ready to feed into the next steps.
 
 ---
 
-## Step 4: Tag & Notify
+## Step 2: Graphic Generation (Canva Connect API)
 
-**On post:**
-- Tag in the image (each featured person/brand)
-- Tag in the caption (@handle after each name)
+**Input:** Ranking title + ranked list from Step 1
 
-**After posting (within 24 hours):**
-- DM every tagged person with a warm message
+**What it does:**
+- Fills a pre-built Canva template with:
+  - Ranking title as headline
+  - Numbered entries on each carousel slide
+  - Rank4AI branding (logo, colours, fonts)
+  - Page URL on the final slide
+  - @handles overlaid on each entry slide
 
-**DM template:**
+**Template types (pre-built in Canva):**
+- Carousel template: cover slide → 10 entry slides → CTA slide
+- Single image template: Top 5 all on one graphic
+- Story template: vertical format with link placement
 
+**API call pattern:**
 ```
-Hey [name] 👋
+POST https://api.canva.com/rest/v1/autofills
+Template ID: [carousel_template_id]
+Data: { title, entries[], url, handles[] }
+→ Returns image URLs for each slide
+```
 
-We just featured you in our [ranking title] on Instagram — 
-thought you'd want to see it!
+**Output:** Image files (PNG/JPG) ready for Instagram upload.
 
-[Link to Instagram post]
+---
 
-We also wrote up the full ranking on our site here:
-rank4ai.co.uk/rankings/[slug]
+## Step 3: Site Publishing (WordPress REST API)
 
-Would love to know your thoughts. And if you're 
-interested in AI search visibility, happy to chat.
+**Input:** Ranking article from Step 1
+
+**What it does:**
+- Creates (or updates) a page at rank4ai.co.uk/rankings/[slug]
+- Sets the SEO title, meta description, and schema markup
+- Adds structured data (ItemList schema) for AI platform indexing
+
+**API call pattern:**
+```
+POST https://rank4ai.co.uk/wp-json/wp/v2/posts
+Headers: Authorization: Bearer [token]
+Body: {
+  title: "Top 10 Voices in AI Search UK to Follow in 2026",
+  slug: "top-10-voices-ai-search-uk-2026",
+  content: [rendered HTML from Claude output],
+  status: "publish",
+  categories: [rankings_category_id]
+}
+```
+
+**Output:** Live URL → rank4ai.co.uk/rankings/[slug]
+
+---
+
+## Step 4: Instagram Posting (Instagram Graph API)
+
+**Input:** Image files from Step 2 + caption from Step 1
+
+**What it does:**
+- Uploads carousel images to Meta's content publishing API
+- Publishes the post with caption, hashtags, and user tags
+- Tags featured people/brands in the image
+
+**API call pattern (carousel):**
+```
+Step A — Upload each image as a container:
+POST https://graph.facebook.com/v19.0/{ig-user-id}/media
+Body: {
+  image_url: [hosted image URL],
+  is_carousel_item: true,
+  user_tags: [{ username: "handle", x: 0.5, y: 0.5 }]
+}
+→ Returns creation_id per slide
+
+Step B — Create the carousel container:
+POST https://graph.facebook.com/v19.0/{ig-user-id}/media
+Body: {
+  media_type: "CAROUSEL",
+  children: [creation_id_1, creation_id_2, ...],
+  caption: [full caption with @handles, URL, hashtags]
+}
+→ Returns carousel_creation_id
+
+Step C — Publish:
+POST https://graph.facebook.com/v19.0/{ig-user-id}/media_publish
+Body: { creation_id: carousel_creation_id }
+→ Returns published post ID
+```
+
+**Output:** Live Instagram post ID + permalink.
+
+---
+
+## Step 5: Instagram Stories (Instagram Graph API)
+
+**Input:** Story-format image from Step 2 + page URL
+
+**API call pattern:**
+```
+POST https://graph.facebook.com/v19.0/{ig-user-id}/media
+Body: {
+  image_url: [story image URL],
+  media_type: "STORIES"
+}
+→ Publish via /media_publish
+```
+
+**Note:** Link stickers are not yet supported via the API. Current workaround: include the URL as text on the Story image itself, and update the bio link to point to the latest ranking page via Linktree API or similar.
+
+---
+
+## Step 6: LinkedIn Posting (LinkedIn Marketing API)
+
+**Input:** LinkedIn post text from Step 1 + page URL
+
+**API call pattern:**
+```
+POST https://api.linkedin.com/v2/ugcPosts
+Headers: Authorization: Bearer [token]
+Body: {
+  author: "urn:li:person:{adam-parker-id}",
+  lifecycleState: "PUBLISHED",
+  specificContent: {
+    shareContent: {
+      shareCommentary: { text: [LinkedIn post text] },
+      shareMediaCategory: "ARTICLE",
+      media: [{ originalUrl: "rank4ai.co.uk/rankings/[slug]" }]
+    }
+  },
+  visibility: { memberNetworkVisibility: "PUBLIC" }
+}
+```
+
+**Output:** Live LinkedIn post.
+
+---
+
+## Step 7: DM Follow-Up Notification
+
+**Note:** Instagram DM API (via Messenger Platform) is limited to responding to users who message you first. Automated cold DMs are not supported by the API.
+
+**Workaround — notification system:**
+- After Step 4 publishes, the pipeline generates a DM task list:
+  - Person name
+  - @handle
+  - Personalised DM copy (from Step 1)
+  - Post permalink
+  - Page URL
+- This task list is pushed to a simple dashboard or Slack/email notification
+- Adam (or team) sends the DMs manually within 24 hours using the pre-written copy
+
+**DM copy template (generated by Claude API in Step 1):**
+```
+Hey [name]
+
+We just featured you in our [ranking title] on Instagram — thought you'd want to see it!
+
+[Instagram post link]
+
+Full ranking and write-up here: rank4ai.co.uk/rankings/[slug]
+
+Would love to know your thoughts. And if you're interested in AI search visibility, happy to chat.
 
 Adam
 Rank4AI
@@ -134,62 +257,86 @@ Rank4AI
 
 ---
 
-## Step 5: Share to Stories
+## Scheduling & Orchestration
 
-- Reshare the post to Stories on day 1
-- Add the link sticker pointing to the page URL
-- Use a poll sticker ("Agree with #1?" / "Who did we miss?")
-- If anyone reshares to their Stories, screenshot and reshare that too (social proof loop)
+**Frequency:** 3 rankings per week (Mon / Wed / Fri)
+
+**Orchestration options:**
+- Simple: Cron job triggering a Python/Node script that runs Steps 1–7 in sequence
+- Medium: n8n or Make (Integromat) workflow connecting each API step visually
+- Advanced: Custom FastAPI service with a queue (pick title → generate → publish → notify)
+
+**Category rotation logic:**
+- Don't repeat the same category twice in a row
+- Alternate between people-based (tag-heavy) and topic-based (share-heavy) posts
+- Weight "Instagram-First Discovery" and "Voices on Instagram" higher in the first month (outreach priority)
+
+**Schedule example:**
+```
+Mon → People / Voices category (tag-heavy, outreach play)
+Wed → Topic / Lifestyle category (share-heavy, reach play)
+Fri → Spicy / Comparison category (engagement play)
+```
 
 ---
 
-## Step 6: Repurpose
+## Approval Gate (Optional)
 
-Each ranking can be turned into:
+If you want a human review before publishing:
 
-| Platform | Format |
+```
+STEP 1 (Claude API) → generates content
+    │
+    ▼
+REVIEW → content pushed to dashboard / Slack for Adam to approve or edit
+    │
+    ▼
+APPROVE → triggers Steps 2–7 automatically
+```
+
+This keeps the creative control but still automates 90% of the work. The only manual touchpoint is a quick approve/edit before it goes live.
+
+---
+
+## What Gets Automated vs Manual
+
+| Task | Automated | Manual |
+|---|---|---|
+| Write ranking content | Claude API | Review/approve |
+| Generate graphic | Canva API | — |
+| Publish to site | WordPress API | — |
+| Post to Instagram | Instagram Graph API | — |
+| Post to Stories | Instagram Graph API | — |
+| Post to LinkedIn | LinkedIn API | — |
+| Tag people in post | Instagram Graph API | — |
+| Send DMs | — | Adam sends using pre-written copy |
+| Update bio link | Linktree API | — |
+| Track metrics | Insights API + GA4 | Weekly review |
+
+---
+
+## API Keys & Access Needed
+
+| API | What to Set Up |
 |---|---|
-| LinkedIn | Text post with the list + link to the page |
-| X (Twitter) | Thread — one tweet per ranked entry |
-| Newsletter | "This week's ranking" feature section |
-| YouTube | Short video version (60s talking head or text reveal) |
-| TikTok | Same Reel content cross-posted |
-| Blog | The site page IS the blog post |
+| Claude API (Anthropic) | API key from console.anthropic.com |
+| Canva Connect API | App via canva.com/developers, connect to team account |
+| WordPress REST API | Application password or JWT token for rank4ai.co.uk |
+| Instagram Graph API | Meta Business account + Facebook App + Instagram Professional account, long-lived access token |
+| LinkedIn Marketing API | LinkedIn Developer App with Marketing API Product approved |
+| Linktree API | API key from Linktree (or equivalent bio link tool) |
+| Google Analytics 4 API | Service account with GA4 property access |
 
 ---
 
-## Step 7: Update & Compound
+## Quick Reference
 
-- Revisit each ranking quarterly
-- Update the site page (same URL, refreshed content)
-- Repost on Instagram as "Updated for Q3 2026" etc.
-- Track which rankings drive the most: profile visits, DM conversations, site clicks, reshares
-- Double down on winning categories, retire dead ones
-
----
-
-## Tracking What Matters
-
-| Metric | Where to Check |
+| What | Where |
 |---|---|
-| Instagram reach & impressions | Instagram Insights |
-| Profile visits from ranking posts | Instagram Insights |
-| Link clicks (bio/Stories) | Linktree / bio link analytics |
-| Site page views | Google Analytics (rank4ai.co.uk/rankings/*) |
-| DM conversations opened | Instagram DMs |
-| Tags / reshares | Instagram notifications |
-| AI citation of ranking pages | Rank4AI audit tools |
-
----
-
-## Quick Reference: What Goes Where
-
-| Asset | Where It Lives |
-|---|---|
-| Full ranking article | rank4ai.co.uk/rankings/[slug] |
-| Instagram carousel/image | Instagram feed @rank4ai |
-| Caption with tags + URL | Instagram caption |
-| Tappable link | Instagram Stories (link sticker) + bio |
-| DM follow-up | Instagram DMs (within 24 hours of posting) |
-| LinkedIn repurpose | LinkedIn post by Adam Parker |
 | Ranking master list | instagram_ranking_titles.md (this repo) |
+| Full ranking article | rank4ai.co.uk/rankings/[slug] (via WordPress API) |
+| Instagram post | @rank4ai feed (via Instagram Graph API) |
+| Instagram Story | @rank4ai Stories (via Instagram Graph API) |
+| LinkedIn post | Adam Parker profile (via LinkedIn API) |
+| DM task list | Dashboard / Slack notification |
+| Metrics | Instagram Insights API + GA4 API |
