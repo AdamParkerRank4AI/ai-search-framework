@@ -8,12 +8,12 @@ Before posting:
 | Pos | Agency | Handle | Followed? | Tagged? |
 |----:|--------|--------|:---------:|:-------:|
 | 1 | Mark Williams-Cook | _(find me)_ | [ ] | [ ] |
-| 2 | Dixon Jones | _(find me)_ | [ ] | [ ] |
-| 3 | Lukasz Zelezny | _(find me)_ | [ ] | [ ] |
-| 4 | Hridoy Chowdhury | _(find me)_ | [ ] | [ ] |
+| 2 | Dixon Jones | @jones.dixon | [ ] | [ ] |
+| 3 | Lukasz Zelezny | @lukaszzelezny | [ ] | [ ] |
+| 4 | Hridoy Chowdhury | @hridoychowdhuryseo | [ ] | [ ] |
 | 5 | Adam Parker | _(find me)_ | [ ] | [ ] |
-| 6 | Luca Tagliaferro | _(find me)_ | [ ] | [ ] |
+| 6 | Luca Tagliaferro | @luca.ttaglia | [ ] | [ ] |
 | 7 | Nic Dunn | _(find me)_ | [ ] | [ ] |
 | 8 | Gerry White | _(find me)_ | [ ] | [ ] |
 | 9 | Aleyda Solis | @aleyda | [ ] | [ ] |
-| 10 | Lily Ray | _(find me)_ | [ ] | [ ] |
+| 10 | Lily Ray | @lilyraynyc | [ ] | [ ] |
