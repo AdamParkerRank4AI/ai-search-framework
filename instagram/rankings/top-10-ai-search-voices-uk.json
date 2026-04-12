@@ -9,14 +9,6 @@
   "entries": [
     {
       "position": 1,
-      "name": "Hridoy Chowdhury",
-      "verdict": "AI keyword mapping, entity-based SEO and AEO. Building the playbook for how brands get cited by AI.",
-      "top_signal": "Founder, Rank Up Marketing UK",
-      "weak_spot": "LinkedIn · X",
-      "handle": ""
-    },
-    {
-      "position": 2,
       "name": "Mark Williams-Cook",
       "verdict": "Built AlsoAsked.com. Reads AI search signals before anyone else. BrightonSEO mainstage regular.",
       "top_signal": "Director, Candour · Norwich",
@@ -24,7 +16,7 @@
       "handle": ""
     },
     {
-      "position": 3,
+      "position": 2,
       "name": "Dixon Jones",
       "verdict": "Entity-based SEO pioneer. InLinks literally builds the knowledge graphs AI platforms read.",
       "top_signal": "CEO, InLinks.net",
@@ -32,19 +24,27 @@
       "handle": ""
     },
     {
-      "position": 4,
-      "name": "Aleyda Solis",
-      "verdict": "Runs LearningSEO.io and Crawling Mondays. Speaks at every UK event. The most influential voice in search.",
-      "top_signal": "Founder, Orainti · International",
-      "weak_spot": "LinkedIn · X · IG @aleyda",
-      "handle": "aleyda"
-    },
-    {
-      "position": 5,
+      "position": 3,
       "name": "Lukasz Zelezny",
       "verdict": "UK Top 10 social influencer. Search Awards judge. Vocal on AI content strategy and technical SEO.",
       "top_signal": "Founder, SEO.London",
       "weak_spot": "LinkedIn · X",
+      "handle": ""
+    },
+    {
+      "position": 4,
+      "name": "Hridoy Chowdhury",
+      "verdict": "AI keyword mapping, entity-based SEO and AEO. Building the playbook for how brands get cited by AI.",
+      "top_signal": "Founder, Rank Up Marketing UK",
+      "weak_spot": "LinkedIn · X",
+      "handle": ""
+    },
+    {
+      "position": 5,
+      "name": "Adam Parker",
+      "verdict": "Built the Five Signal Model and the Rank4AI framework. Defining how UK businesses get recommended by AI.",
+      "top_signal": "Founder, Rank4AI · compareSEO",
+      "weak_spot": "LinkedIn · rank4ai.co.uk",
       "handle": ""
     },
     {
@@ -57,14 +57,6 @@
     },
     {
       "position": 7,
-      "name": "Lily Ray",
-      "verdict": "VP of SEO and AI Search at Amsive. One of the loudest voices on how AI is reshaping search.",
-      "top_signal": "VP SEO & AI Search, Amsive",
-      "weak_spot": "LinkedIn · X",
-      "handle": ""
-    },
-    {
-      "position": 8,
       "name": "Nic Dunn",
       "verdict": "Built one of the first UK agencies to lead with GEO. Publishing heavily on AI engine interpretation.",
       "top_signal": "CEO, Charle · London",
@@ -72,7 +64,7 @@
       "handle": ""
     },
     {
-      "position": 9,
+      "position": 8,
       "name": "Gerry White",
       "verdict": "20+ years in technical SEO. Deep on how AI crawlers interact with sites. Conference speaker and judge.",
       "top_signal": "Technical Marketing Veteran",
@@ -80,11 +72,19 @@
       "handle": ""
     },
     {
+      "position": 9,
+      "name": "Aleyda Solis",
+      "verdict": "Runs LearningSEO.io and Crawling Mondays. Not UK-based but speaks at every UK event. Too influential to leave off.",
+      "top_signal": "Founder, Orainti · International",
+      "weak_spot": "LinkedIn · X · IG @aleyda",
+      "handle": "aleyda"
+    },
+    {
       "position": 10,
-      "name": "Ziggy Shtrosberg",
-      "verdict": "Technical SEO and AI system analysis. Schema optimization specialist. Understands how LLMs read structured data.",
-      "top_signal": "26PMX",
-      "weak_spot": "LinkedIn",
+      "name": "Lily Ray",
+      "verdict": "One of the loudest voices on how AI is reshaping search. Not UK-based but a fixture at UK conferences.",
+      "top_signal": "VP SEO & AI Search, Amsive",
+      "weak_spot": "LinkedIn · X",
       "handle": ""
     }
   ]

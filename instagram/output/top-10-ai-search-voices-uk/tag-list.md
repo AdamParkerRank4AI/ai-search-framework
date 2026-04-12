@@ -7,13 +7,13 @@ Before posting:
 
 | Pos | Agency | Handle | Followed? | Tagged? |
 |----:|--------|--------|:---------:|:-------:|
-| 1 | Hridoy Chowdhury | _(find me)_ | [ ] | [ ] |
-| 2 | Mark Williams-Cook | _(find me)_ | [ ] | [ ] |
-| 3 | Dixon Jones | _(find me)_ | [ ] | [ ] |
-| 4 | Aleyda Solis | @aleyda | [ ] | [ ] |
-| 5 | Lukasz Zelezny | _(find me)_ | [ ] | [ ] |
+| 1 | Mark Williams-Cook | _(find me)_ | [ ] | [ ] |
+| 2 | Dixon Jones | _(find me)_ | [ ] | [ ] |
+| 3 | Lukasz Zelezny | _(find me)_ | [ ] | [ ] |
+| 4 | Hridoy Chowdhury | _(find me)_ | [ ] | [ ] |
+| 5 | Adam Parker | _(find me)_ | [ ] | [ ] |
 | 6 | Luca Tagliaferro | _(find me)_ | [ ] | [ ] |
-| 7 | Lily Ray | _(find me)_ | [ ] | [ ] |
-| 8 | Nic Dunn | _(find me)_ | [ ] | [ ] |
-| 9 | Gerry White | _(find me)_ | [ ] | [ ] |
-| 10 | Ziggy Shtrosberg | _(find me)_ | [ ] | [ ] |
+| 7 | Nic Dunn | _(find me)_ | [ ] | [ ] |
+| 8 | Gerry White | _(find me)_ | [ ] | [ ] |
+| 9 | Aleyda Solis | @aleyda | [ ] | [ ] |
+| 10 | Lily Ray | _(find me)_ | [ ] | [ ] |
