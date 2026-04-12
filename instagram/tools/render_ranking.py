@@ -262,7 +262,7 @@ def render_bridge(ranking: Ranking, size: tuple[int, int]) -> Image.Image:
         y += 80
 
     f_cta = font(FONT_MONO, 36)
-    draw_centered(draw, "follow @compareseo for the drop →", f_cta, h - 220, MUTED, w)
+    draw_centered(draw, "follow @compareaiseo for the drop →", f_cta, h - 220, MUTED, w)
 
     draw_footer(draw, w, h, ranking.date)
     return img

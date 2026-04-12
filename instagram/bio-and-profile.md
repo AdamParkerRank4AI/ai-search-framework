@@ -8,7 +8,7 @@ Copy-paste ready. Open Instagram → Edit Profile → fill in each field below e
 
 | Field | Value |
 |-------|-------|
-| **Username** | `@compareseo` _(if taken, try `@compare.seo` or `@compareseo_uk`)_ |
+| **Username** | `@compareaiseo` _(confirmed live)_ |
 | **Display name** | `compareSEO · AI Search` |
 | **Category** | Media/News Company |
 | **Profile pic** | compareSEO logo on dark background _(not Adam's face — this is a media brand, not a personal account. Adam's face goes on a separate @rank4ai or @adamparker account later.)_ |
@@ -109,8 +109,8 @@ Built by @adamparker · Rank4AI
 
 ## Day 1 setup checklist
 
-- [ ] Claim the handle (`@compareseo` or variant)
-- [ ] Set display name to `compareSEO · AI Search`
+- [x] Claim the handle → `@compareaiseo` (done)
+- [ ] Set display name (Name field) to `compareSEO · AI Search`
 - [ ] Set category to `Media/News Company`
 - [ ] Upload logo as profile pic (dark background, clean)
 - [ ] Paste the bio text
