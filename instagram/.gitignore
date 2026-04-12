@@ -4,5 +4,7 @@
 output/**
 !output/top-10-ai-seo-agencies-uk/
 !output/top-10-ai-seo-agencies-uk/**
+!output/top-10-ai-search-voices-uk/
+!output/top-10-ai-search-voices-uk/**
 __pycache__/
 *.pyc

@@ -72,6 +72,8 @@ class Ranking:
     slug: str
     entries: list[Entry]
     category_hashtag: str = "#aiseo"
+    chip_top_label: str = "TOP"    # customisable: "TOP" for agencies, "ROLE" for people
+    chip_bottom_label: str = "WEAK"  # customisable: "WEAK" for agencies, "FIND" for people
 
     @classmethod
     def from_json(cls, path: Path) -> "Ranking":
@@ -84,6 +86,8 @@ class Ranking:
             slug=data["slug"],
             entries=entries,
             category_hashtag=data.get("category_hashtag", "#aiseo"),
+            chip_top_label=data.get("chip_top_label", "TOP"),
+            chip_bottom_label=data.get("chip_bottom_label", "WEAK"),
         )
 
 
@@ -191,7 +195,8 @@ def render_cover(ranking: Ranking, subtitle: str, swipe_hint: str, size: tuple[i
     return img
 
 
-def render_entry(ranking: Ranking, entry: Entry, size: tuple[int, int]) -> Image.Image:
+def render_entry(ranking: Ranking, entry: Entry, size: tuple[int, int],
+                  chip_top: str = "TOP", chip_bottom: str = "WEAK") -> Image.Image:
     """One slide = one ranked entry. Number is the biggest element."""
     w, h = size
     img = Image.new("RGB", size, BG)
@@ -232,9 +237,9 @@ def render_entry(ranking: Ranking, entry: Entry, size: tuple[int, int]) -> Image
         f_chip = font(FONT_MONO, 26)
         chip_y = h - 220
         if entry.top_signal:
-            draw.text((80, chip_y), f"TOP  {entry.top_signal.upper()}", font=f_chip, fill=GOOD)
+            draw.text((80, chip_y), f"{chip_top}  {entry.top_signal.upper()}", font=f_chip, fill=GOOD)
         if entry.weak_spot:
-            draw.text((80, chip_y + 36), f"WEAK {entry.weak_spot.upper()}", font=f_chip, fill=BAD)
+            draw.text((80, chip_y + 36), f"{chip_bottom} {entry.weak_spot.upper()}", font=f_chip, fill=MUTED)
 
     draw_footer(draw, w, h, ranking.date)
     return img
@@ -427,7 +432,7 @@ def render_all(r: Ranking, out_dir: Path) -> None:
     post_1: list[Image.Image] = []
     post_1.append(render_cover(r, "TOP 10", "swipe for positions 10 → 6 →", POST_SIZE))
     for e in sorted(bottom_5, key=lambda e: -e.position):  # 10, 9, 8, 7, 6
-        post_1.append(render_entry(r, e, POST_SIZE))
+        post_1.append(render_entry(r, e, POST_SIZE, r.chip_top_label, r.chip_bottom_label))
     post_1.append(render_bridge(r, POST_SIZE))
 
     for i, img in enumerate(post_1, start=1):
@@ -437,7 +442,7 @@ def render_all(r: Ranking, out_dir: Path) -> None:
     post_2: list[Image.Image] = []
     post_2.append(render_cover(r, "TOP 5", "swipe for the top five →", POST_SIZE))
     for e in sorted(top_5, key=lambda e: -e.position):  # 5, 4, 3, 2, 1
-        post_2.append(render_entry(r, e, POST_SIZE))
+        post_2.append(render_entry(r, e, POST_SIZE, r.chip_top_label, r.chip_bottom_label))
     post_2.append(render_methodology(r, POST_SIZE))
     post_2.append(render_cta(r, POST_SIZE))
 
@@ -448,7 +453,7 @@ def render_all(r: Ranking, out_dir: Path) -> None:
     stories: list[Image.Image] = []
     stories.append(render_cover(r, "TOP 10", "tap to see the full ranking →", STORY_SIZE))
     for e in ordered:
-        stories.append(render_entry(r, e, STORY_SIZE))
+        stories.append(render_entry(r, e, STORY_SIZE, r.chip_top_label, r.chip_bottom_label))
     stories.append(render_cta(r, STORY_SIZE))
 
     for i, img in enumerate(stories, start=1):
