@@ -9,7 +9,7 @@ Copy-paste ready. Open Instagram → Edit Profile → fill in each field below e
 | Field | Value |
 |-------|-------|
 | **Username** | `@compareseo` _(if taken, try `@compare.seo` or `@compareseo_uk`)_ |
-| **Display name** | `compareSEO · AI Rankings` |
+| **Display name** | `compareSEO · AI Search` |
 | **Category** | Media/News Company |
 | **Profile pic** | compareSEO logo on dark background _(not Adam's face — this is a media brand, not a personal account. Adam's face goes on a separate @rank4ai or @adamparker account later.)_ |
 | **Link** | `compareseo.co.uk` |
@@ -20,20 +20,20 @@ Copy-paste ready. Open Instagram → Edit Profile → fill in each field below e
 ## The bio (150 characters)
 
 ```
-Independent rankings of AI search agencies & tools
-No paid spots · Updated monthly
+Rankings · Comparisons · Tips
+AI agencies, tools, people & platforms compared
 ChatGPT · Claude · Gemini · Perplexity
-↓ See the full rankings
+↓ See the lists
 ```
 
 **Why every line earns its place:**
 
 | Line | Job it does |
 |------|-------------|
-| `Independent rankings of AI search agencies & tools` | What the account IS — in one sentence |
-| `No paid spots · Updated monthly` | Trust hook — the single biggest differentiator |
+| `Rankings · Comparisons · Tips` | The three content types — immediately tells you what the feed IS |
+| `AI agencies, tools, people & platforms compared` | The four things we compare — mirrors the site categories. The word "compared" echoes the brand name. |
 | `ChatGPT · Claude · Gemini · Perplexity` | Platform names are searchable keywords inside Instagram |
-| `↓ See the full rankings` | CTA pointing to the link |
+| `↓ See the lists` | CTA pointing to the link |
 
 ---
 
@@ -41,17 +41,21 @@ ChatGPT · Claude · Gemini · Perplexity
 
 Create 9 highlight covers in the same dark style as the ranking slides (near-black background, white/yellow text). Name each one exactly as below — keep the names short so they don't truncate on mobile.
 
-| # | Highlight name | What goes in it |
-|---|----------------|----------------|
-| 1 | **Start here** | 30-sec explainer story: "We rank AI search agencies. Here's how." |
-| 2 | **Top 10 UK** | Story frames from the Top 10 AI SEO Agencies UK ranking |
-| 3 | **Voices** | Story frames from the Top 10 AI Search Voices UK ranking |
-| 4 | **How we rank** | Methodology — the Five Signal Model |
-| 5 | **vs SEO** | SEO vs AI Search comparison content |
-| 6 | **Tips** | AI search tips, quick wins, prompts |
-| 7 | **Tools** | AI search tool comparisons and reviews |
-| 8 | **Founder** | Adam Parker behind-the-scenes, personal takes |
-| 9 | **Free audit** | CTA — link to rank4ai.co.uk/audit |
+These map directly to the content categories on the site and the 301-title ranking list:
+
+| # | Highlight name | Maps to | What goes in it |
+|---|----------------|---------|----------------|
+| 1 | **Start here** | — | 30-sec explainer: "We rank, compare and review everything in AI search." |
+| 2 | **Agencies** | Agency & company rankings | Top 10 UK, Top 50, Fastest Growing, etc. |
+| 3 | **People** | People & Voices, LinkedIn Voices, IG Voices | Top voices, experts, founders to follow |
+| 4 | **Tools** | Tools & Software, AI Platforms & Tooling | Tool comparisons, platform rankings, feature reviews |
+| 5 | **vs SEO** | SEO vs AI Search Comparisons | Side-by-sides, "10 SEO tactics that don't work in AI search" |
+| 6 | **Tips** | Signals & Framework, Prompts & Queries, Everyday AI Wins | Quick wins, prompts to try, hidden features |
+| 7 | **Industries** | Industries & Sectors, Brands Embracing AI Search | Which sectors are winning/losing, brand spotlights |
+| 8 | **Founder** | — | Adam Parker behind-the-scenes, personal takes, hot takes |
+| 9 | **Free audit** | — | CTA — link to rank4ai.co.uk/audit |
+
+**The logic:** highlights 2–7 mirror the six main content streams. A viewer can tap any highlight and instantly see "oh, this account covers agencies AND tools AND people AND tips." That's the breadth the bio promises with "Rankings · Comparisons · Tips."
 
 ---
 
@@ -69,28 +73,36 @@ Pin 3 posts to the top of the grid. These do 40% of the conversion work:
 
 ## Alternative bio options (if the main one doesn't feel right)
 
-### Option B — Provocation-led
+### Option B — Question-led
 ```
-We asked AI who the best AI agency is
-Then we built the ranking to prove it
-Independent · Monthly · by Rank4AI
-↓ The list
-```
-
-### Option C — Comparison-led
-```
-Comparing AI search agencies, tools & platforms
-Ranked by visibility across 4 AI platforms
-No paid placements. Ever.
-Founder @adamparker
+Who's the best AI agency? Which tools actually work?
+What does ChatGPT say about your brand?
+We compared them all.
+↓ See the results
 ```
 
-### Option D — Authority-led
+### Option C — Full scope
 ```
-Who's the best AI SEO agency in the UK?
-We ranked them. All of them.
-Independent audits · The Five Signal Model
-By Rank4AI · Adam Parker
+Comparing AI search agencies, tools, people & platforms
+Rankings · Tips · Data · Hot takes
+Independent. No paid spots. By Rank4AI.
+↓ compareseo.co.uk
+```
+
+### Option D — Provocative
+```
+Google traffic is collapsing
+AI search is replacing it
+We rank who's winning and who's not
+↓ The lists
+```
+
+### Option E — For Adam's personal touch
+```
+Rankings · Comparisons · Tips for AI search
+Agencies · Tools · People · Platforms
+Built by @adamparker · Rank4AI
+↓ See the full lists
 ```
 
 ---
@@ -98,7 +110,7 @@ By Rank4AI · Adam Parker
 ## Day 1 setup checklist
 
 - [ ] Claim the handle (`@compareseo` or variant)
-- [ ] Set display name to `compareSEO · AI Rankings`
+- [ ] Set display name to `compareSEO · AI Search`
 - [ ] Set category to `Media/News Company`
 - [ ] Upload logo as profile pic (dark background, clean)
 - [ ] Paste the bio text
