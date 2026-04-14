@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+trades.csv
+data/*.csv
+!data/.gitkeep
