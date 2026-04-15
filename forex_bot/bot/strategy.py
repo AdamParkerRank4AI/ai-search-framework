@@ -15,6 +15,9 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Optional
 
+from collections import deque
+from typing import Deque
+
 from .data import Candle
 from .indicators import ATR, EMA, RSI
 
@@ -127,11 +130,95 @@ class EmaCrossRsiStrategy(Strategy):
         return None
 
 
+@dataclass
+class DonchianBreakoutStrategy(Strategy):
+    """Classic Turtle-style channel breakout.
+
+    Rules:
+      * Compute rolling ``entry_period`` high/low (excluding current bar).
+      * Go long when close > entry-period high.
+      * Go short when close < entry-period low.
+      * Stop = entry -/+ atr_mult * ATR.
+      * Take profit = entry +/- atr_mult * rr_ratio * ATR.
+
+    Historically this had a real edge on trending instruments with a
+    wide profit distribution (many small losses, few big wins). That
+    edge has decayed massively on major FX pairs. Treat it as a
+    comparison baseline against the EMA-cross strategy, not a holy
+    grail.
+    """
+
+    entry_period: int = 20
+    atr_period: int = 14
+    atr_mult: float = 2.0
+    rr_ratio: float = 3.0  # breakout strategies live or die on big winners
+
+    name: str = "donchian_breakout"
+
+    _highs: Deque[float] = field(default_factory=deque, init=False)
+    _lows: Deque[float] = field(default_factory=deque, init=False)
+    _atr: ATR = field(init=False)
+
+    def __post_init__(self) -> None:
+        if self.entry_period < 2:
+            raise ValueError("entry_period must be >= 2")
+        if self.atr_mult <= 0 or self.rr_ratio <= 0:
+            raise ValueError("atr_mult and rr_ratio must be positive")
+        self._atr = ATR(self.atr_period)
+
+    def on_bar(self, bar: Candle) -> Optional[Signal]:
+        atr = self._atr.update(bar.high, bar.low, bar.close)
+
+        # Channel is computed EXCLUDING the current bar to avoid a
+        # look-ahead where the current high is both the trigger and
+        # the channel.
+        signal: Optional[Signal] = None
+        if len(self._highs) >= self.entry_period and atr is not None:
+            hi = max(self._highs)
+            lo = min(self._lows)
+            if bar.close > hi:
+                sl = bar.close - self.atr_mult * atr
+                tp = bar.close + self.atr_mult * self.rr_ratio * atr
+                signal = Signal(
+                    side=Side.BUY,
+                    price=bar.close,
+                    stop_loss=sl,
+                    take_profit=tp,
+                    reason=f"close {bar.close:.5f} > {self.entry_period}-bar high {hi:.5f}",
+                )
+            elif bar.close < lo:
+                sl = bar.close + self.atr_mult * atr
+                tp = bar.close - self.atr_mult * self.rr_ratio * atr
+                signal = Signal(
+                    side=Side.SELL,
+                    price=bar.close,
+                    stop_loss=sl,
+                    take_profit=tp,
+                    reason=f"close {bar.close:.5f} < {self.entry_period}-bar low {lo:.5f}",
+                )
+
+        # Update rolling high/low buffers AFTER signal decision.
+        self._highs.append(bar.high)
+        self._lows.append(bar.low)
+        if len(self._highs) > self.entry_period:
+            self._highs.popleft()
+            self._lows.popleft()
+        return signal
+
+
 def available_strategies() -> List[str]:
-    return ["ema_cross_rsi"]
+    return ["ema_cross_rsi", "donchian_breakout"]
 
 
 def build_strategy(name: str, **kwargs) -> Strategy:
     if name == "ema_cross_rsi":
-        return EmaCrossRsiStrategy(**kwargs)
-    raise ValueError(f"Unknown strategy: {name}")
+        # Filter kwargs to those this strategy accepts.
+        accepted = {"fast_period", "slow_period", "rsi_period", "atr_period",
+                    "atr_mult", "rr_ratio", "rsi_long", "rsi_short"}
+        return EmaCrossRsiStrategy(**{k: v for k, v in kwargs.items() if k in accepted})
+    if name == "donchian_breakout":
+        accepted = {"entry_period", "atr_period", "atr_mult", "rr_ratio"}
+        return DonchianBreakoutStrategy(
+            **{k: v for k, v in kwargs.items() if k in accepted}
+        )
+    raise ValueError(f"Unknown strategy: {name}. Available: {available_strategies()}")

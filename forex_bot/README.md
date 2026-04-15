@@ -22,21 +22,26 @@ read, understood, and modified — not to be a black box.
 ```
 forex_bot/
 ├── bot/
-│   ├── data.py         # CSV + synthetic candle feeds (no network)
-│   ├── indicators.py   # SMA, EMA, RSI, ATR (streaming)
-│   ├── strategy.py     # Strategy interface + sample EMA-cross + RSI strategy
-│   ├── risk.py         # Position sizing, hard risk caps
-│   ├── daily_guard.py  # Daily loss cap + profit target + trading sessions
-│   ├── broker.py       # Paper broker: entries, SL/TP, fills, trades
-│   ├── journal.py      # End-of-run metrics and CSV export
-│   ├── engine.py       # Bar-by-bar event loop
-│   ├── tracker.py      # Persistent equity/trade log for long-run tracking
-│   ├── walkforward.py  # Month-by-month walk-forward validator
-│   └── dashboard.py    # Self-contained HTML dashboard (inline SVG, no deps)
-├── tests/              # 29 pytest tests
-├── main.py             # CLI: backtest | demo | paper | walkforward | dashboard
+│   ├── data.py              # CSV + synthetic candle feeds (no network)
+│   ├── indicators.py        # SMA, EMA, RSI, ATR (streaming)
+│   ├── strategy.py          # EMA-cross + RSI and Donchian breakout
+│   ├── risk.py              # Position sizing, hard risk caps
+│   ├── daily_guard.py       # Daily loss cap + profit target + sessions
+│   ├── broker.py            # Paper broker: entries, SL/TP, fills, trades
+│   ├── brokers/oanda.py     # OANDA v20 historical-data fetcher (read-only)
+│   ├── journal.py           # End-of-run metrics and CSV export
+│   ├── engine.py            # Bar-by-bar event loop
+│   ├── tracker.py           # Persistent equity/trade log for 2-year tracking
+│   ├── walkforward.py       # Month-by-month walk-forward validator
+│   └── dashboard.py         # Self-contained HTML dashboard (inline SVG)
+├── tests/                   # 37 pytest tests
+├── main.py                  # CLI: backtest|demo|paper|walkforward|fetch|dashboard
+├── PLAYBOOK.md              # Operational plan with checkpoints
 └── README.md
 ```
+
+**Start here:** read `PLAYBOOK.md` before anything else. The code is
+scaffolding; the playbook is the thing that keeps you honest.
 
 ## Install
 
@@ -60,7 +65,22 @@ This generates a deterministic random walk, runs the sample strategy
 on it, and prints metrics. If the bot returns a positive PnL on this,
 that is noise, not skill — synthetic data has no edge to find.
 
-### 2. Backtest on your own CSV
+### 2. Pull real data from OANDA
+
+Open a free OANDA practice account, then generate a personal API
+token. `export OANDA_API_KEY=...` and:
+
+```bash
+python main.py fetch --instrument EUR_USD --granularity H1 \
+    --from 2023-01-01T00:00:00Z --to 2025-01-01T00:00:00Z \
+    --out data/EURUSD_H1.csv
+```
+
+Pure stdlib — uses `urllib`, no `requests` or OANDA SDK dependency.
+Only hits the practice host (`api-fxpractice.oanda.com`); edit the
+source explicitly if you ever want to switch to live.
+
+### 3. Backtest on your own CSV
 
 CSV format (header row required, case-insensitive columns):
 
@@ -80,7 +100,7 @@ python main.py backtest path/to/EURUSD_1h.csv \
     --trades-out trades.csv
 ```
 
-### 3. Walk-forward validation (do this before trusting anything)
+### 4. Walk-forward validation (do this before trusting anything)
 
 Tests the strategy month-by-month with no parameter tuning between
 windows. Prints a summary: what fraction of months were positive,
@@ -100,7 +120,7 @@ Useful numbers to look at:
   Below ~0.3 is noise. Above ~1.0 is notable and probably overfit.
 - `worst_return_pct`: assume you will live through this repeatedly.
 
-### 4. Paper trade a live-ish feed
+### 5. Paper trade a live-ish feed
 
 The `paper` subcommand tails a CSV file. A separate process (yours)
 is expected to append new rows to that CSV as real bars close — e.g.
@@ -131,7 +151,7 @@ python main.py paper live_feed.csv \
 `tracker.json` is append-only and survives restarts. The dashboard
 is rewritten on each tick, so you can tail it in a browser.
 
-### 5. Regenerate a dashboard from a saved tracker
+### 6. Regenerate a dashboard from a saved tracker
 
 ```bash
 python main.py dashboard runs/live.json \

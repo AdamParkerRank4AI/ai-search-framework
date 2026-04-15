@@ -46,8 +46,12 @@ def _add_common(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--spread", type=float, default=0.0001)
     parser.add_argument("--commission-per-unit", type=float, default=0.0)
     parser.add_argument("--strategy", default="ema_cross_rsi")
-    parser.add_argument("--fast", type=int, default=12)
-    parser.add_argument("--slow", type=int, default=26)
+    parser.add_argument("--fast", type=int, default=12,
+                        help="ema_cross_rsi only")
+    parser.add_argument("--slow", type=int, default=26,
+                        help="ema_cross_rsi only")
+    parser.add_argument("--entry-period", type=int, default=20,
+                        help="donchian_breakout only")
     parser.add_argument("--atr-mult", type=float, default=2.0)
     parser.add_argument("--rr", type=float, default=2.0)
     parser.add_argument("--trades-out", default=None,
@@ -79,6 +83,7 @@ def _build_strategy(args):
         args.strategy,
         fast_period=args.fast,
         slow_period=args.slow,
+        entry_period=args.entry_period,
         atr_mult=args.atr_mult,
         rr_ratio=args.rr,
     )
@@ -268,6 +273,24 @@ def cmd_walkforward(args) -> int:
     return 0
 
 
+def cmd_fetch(args) -> int:
+    """Pull real historical candles from OANDA's practice API into a CSV."""
+    from bot.brokers.oanda import OandaError, fetch_candles_to_csv
+    try:
+        n = fetch_candles_to_csv(
+            instrument=args.instrument,
+            granularity=args.granularity,
+            from_iso=args.frm,
+            to_iso=args.to,
+            out_path=args.out,
+        )
+    except OandaError as e:
+        print(f"OANDA error: {e}", file=sys.stderr)
+        return 2
+    print(f"Wrote {n} bars to {args.out}")
+    return 0
+
+
 def cmd_dashboard(args) -> int:
     tracker = Tracker.load(args.tracker)
     report = None
@@ -333,6 +356,19 @@ def main(argv=None) -> int:
     p_wf.add_argument("--tracker-label", default="walkforward")
     _add_common(p_wf)
     p_wf.set_defaults(func=cmd_walkforward)
+
+    p_fetch = sub.add_parser("fetch",
+                             help="Fetch historical candles from OANDA practice API into CSV.")
+    p_fetch.add_argument("--instrument", required=True,
+                         help="OANDA format, e.g. EUR_USD, XAU_USD, GBP_USD.")
+    p_fetch.add_argument("--granularity", default="H1",
+                         help="M1/M5/M15/M30/H1/H4/D (default H1).")
+    p_fetch.add_argument("--from", dest="frm", required=True,
+                         help="ISO-8601, e.g. 2023-01-01T00:00:00Z.")
+    p_fetch.add_argument("--to", required=True,
+                         help="ISO-8601, e.g. 2025-01-01T00:00:00Z.")
+    p_fetch.add_argument("--out", required=True, help="Output CSV path.")
+    p_fetch.set_defaults(func=cmd_fetch)
 
     p_dash = sub.add_parser("dashboard",
                             help="Render an HTML dashboard from a saved tracker.")
