@@ -22,15 +22,19 @@ read, understood, and modified — not to be a black box.
 ```
 forex_bot/
 ├── bot/
-│   ├── data.py        # CSV + synthetic candle feeds (no network)
-│   ├── indicators.py  # SMA, EMA, RSI, ATR (streaming)
-│   ├── strategy.py    # Strategy interface + sample EMA-cross + RSI strategy
-│   ├── risk.py        # Position sizing, hard risk caps
-│   ├── broker.py      # Paper broker: entries, SL/TP, fills, trades
-│   ├── journal.py     # Metrics and CSV export
-│   └── engine.py      # Bar-by-bar event loop
-├── tests/             # pytest suite (indicators, risk, broker, engine, data)
-├── main.py            # CLI: backtest | demo | paper
+│   ├── data.py         # CSV + synthetic candle feeds (no network)
+│   ├── indicators.py   # SMA, EMA, RSI, ATR (streaming)
+│   ├── strategy.py     # Strategy interface + sample EMA-cross + RSI strategy
+│   ├── risk.py         # Position sizing, hard risk caps
+│   ├── daily_guard.py  # Daily loss cap + profit target + trading sessions
+│   ├── broker.py       # Paper broker: entries, SL/TP, fills, trades
+│   ├── journal.py      # End-of-run metrics and CSV export
+│   ├── engine.py       # Bar-by-bar event loop
+│   ├── tracker.py      # Persistent equity/trade log for long-run tracking
+│   ├── walkforward.py  # Month-by-month walk-forward validator
+│   └── dashboard.py    # Self-contained HTML dashboard (inline SVG, no deps)
+├── tests/              # 29 pytest tests
+├── main.py             # CLI: backtest | demo | paper | walkforward | dashboard
 └── README.md
 ```
 
@@ -76,7 +80,27 @@ python main.py backtest path/to/EURUSD_1h.csv \
     --trades-out trades.csv
 ```
 
-### 3. Paper trade a live-ish feed
+### 3. Walk-forward validation (do this before trusting anything)
+
+Tests the strategy month-by-month with no parameter tuning between
+windows. Prints a summary: what fraction of months were positive,
+mean/stdev of monthly returns, worst month.
+
+```bash
+python main.py walkforward path/to/EURUSD_1h.csv \
+    --equity 100 \
+    --report-out reports/wf.json \
+    --dashboard-out reports/wf.html
+```
+
+Useful numbers to look at:
+- `pct_positive_windows`: if this is near 50% and the mean is small,
+  you have a coin flip, not a strategy.
+- `return_over_stdev`: rough signal-to-noise ratio across months.
+  Below ~0.3 is noise. Above ~1.0 is notable and probably overfit.
+- `worst_return_pct`: assume you will live through this repeatedly.
+
+### 4. Paper trade a live-ish feed
 
 The `paper` subcommand tails a CSV file. A separate process (yours)
 is expected to append new rows to that CSV as real bars close — e.g.
@@ -89,6 +113,32 @@ python main.py paper live_feed.csv --poll 5
 
 On startup the bot replays the existing rows to warm up the
 indicators, then polls for new rows. Ctrl-C prints final metrics.
+
+Enable persistent tracking + an auto-refreshing dashboard:
+
+```bash
+python main.py paper live_feed.csv \
+    --poll 60 \
+    --equity 100 \
+    --daily-loss-cap 0.02 \
+    --daily-profit-target 0.01 \
+    --sessions default \
+    --tracker-out  runs/live.json \
+    --dashboard-out runs/dashboard.html \
+    --tracker-label "eurusd-live-001"
+```
+
+`tracker.json` is append-only and survives restarts. The dashboard
+is rewritten on each tick, so you can tail it in a browser.
+
+### 5. Regenerate a dashboard from a saved tracker
+
+```bash
+python main.py dashboard runs/live.json \
+    --out runs/dashboard.html \
+    --walkforward reports/wf.json \
+    --title "My bot -- year 1"
+```
 
 ## Strategy
 
@@ -110,14 +160,46 @@ plumbing. Replace it with your own `Strategy` subclass by implementing
 
 `bot/risk.py` enforces these:
 
-| Setting            | Default | Hard cap                                 |
-|--------------------|---------|------------------------------------------|
-| `risk_per_trade`   | 1%      | Raises `ValueError` above 5%.            |
-| `max_leverage`     | 5x      | Configurable, but start low.             |
-| `max_open_positions` | 1     | Enforced by the broker.                  |
+| Setting              | Default | Hard cap                          |
+|----------------------|---------|-----------------------------------|
+| `risk_per_trade`     | 1%      | Raises `ValueError` above 5%.     |
+| `max_leverage`       | 5x      | Configurable, but start low.      |
+| `max_open_positions` | 1       | Enforced by the broker.           |
 
-If you want to raise the 5% per-trade ceiling you have to edit the
-source. That is friction on purpose.
+`bot/daily_guard.py` adds a day-level layer:
+
+| Setting                   | Default | Hard cap                                  |
+|---------------------------|---------|-------------------------------------------|
+| `daily_loss_cap_pct`      | 2%      | Raises `ValueError` above 10%.            |
+| `daily_profit_target_pct` | 1%      | Raises `ValueError` above 10%.            |
+| `sessions`                | London + NY opens | Any, or empty for 24/5.         |
+
+When the loss cap is hit, the bot closes any open position and refuses
+new signals until the next UTC day. Same for the profit target: take
+the win, go for a walk. Default FX sessions are London open
+(07:00-11:00 UTC) and NY open (12:30-16:00 UTC).
+
+## About "grow £100 by x% per day"
+
+A common ask. The math (compounding daily from £100):
+
+| Daily gain | After 1 year | After 2 years |
+|------------|--------------|---------------|
+| 1%/day     | £3,778       | £142,700      |
+| 2%/day     | £137,000     | £188 million  |
+| 5%/day     | £13 million  | £1.8 trillion |
+
+This is not an edge anyone has, retail or institutional. Renaissance
+Technologies' Medallion (the best hedge fund ever recorded) averages
+~0.2%/day net, and it is closed to outside money because its capacity
+is limited.
+
+The bot therefore does not ship with a "grow x% per day" setting.
+What it ships with instead is: daily loss cap, daily profit target,
+and a dashboard that shows you honestly what fraction of days you
+actually hit the target on your data. Run a year of walk-forward
+and look at the `% target days` tile. If it's 8% on good data,
+that's what "grow my account each day" really means in practice.
 
 ## Going live (what you would have to do)
 
