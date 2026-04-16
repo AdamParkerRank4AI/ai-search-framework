@@ -207,18 +207,23 @@ class DonchianBreakoutStrategy(Strategy):
 
 
 def available_strategies() -> List[str]:
-    return ["ema_cross_rsi", "donchian_breakout"]
+    return ["ema_cross_rsi", "donchian_breakout", "pair_spread"]
 
 
 def build_strategy(name: str, **kwargs) -> Strategy:
     if name == "ema_cross_rsi":
-        # Filter kwargs to those this strategy accepts.
         accepted = {"fast_period", "slow_period", "rsi_period", "atr_period",
                     "atr_mult", "rr_ratio", "rsi_long", "rsi_short"}
         return EmaCrossRsiStrategy(**{k: v for k, v in kwargs.items() if k in accepted})
     if name == "donchian_breakout":
         accepted = {"entry_period", "atr_period", "atr_mult", "rr_ratio"}
         return DonchianBreakoutStrategy(
+            **{k: v for k, v in kwargs.items() if k in accepted}
+        )
+    if name == "pair_spread":
+        from .pair_spread import PairSpreadStrategy
+        accepted = {"lookback", "entry_z", "exit_z", "atr_period", "atr_mult"}
+        return PairSpreadStrategy(
             **{k: v for k, v in kwargs.items() if k in accepted}
         )
     raise ValueError(f"Unknown strategy: {name}. Available: {available_strategies()}")

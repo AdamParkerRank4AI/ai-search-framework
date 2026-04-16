@@ -54,6 +54,12 @@ def _add_common(parser: argparse.ArgumentParser) -> None:
                         help="donchian_breakout only")
     parser.add_argument("--atr-mult", type=float, default=2.0)
     parser.add_argument("--rr", type=float, default=2.0)
+    parser.add_argument("--lookback", type=int, default=60,
+                        help="pair_spread only: rolling window for z-score.")
+    parser.add_argument("--entry-z", type=float, default=2.0,
+                        help="pair_spread only: z-score threshold to enter.")
+    parser.add_argument("--exit-z", type=float, default=0.5,
+                        help="pair_spread only: z-score threshold to exit.")
     parser.add_argument("--trades-out", default=None,
                         help="Write closed trades to this CSV path.")
 
@@ -86,6 +92,9 @@ def _build_strategy(args):
         entry_period=args.entry_period,
         atr_mult=args.atr_mult,
         rr_ratio=args.rr,
+        lookback=args.lookback,
+        entry_z=args.entry_z,
+        exit_z=args.exit_z,
     )
 
 
@@ -273,6 +282,15 @@ def cmd_walkforward(args) -> int:
     return 0
 
 
+def cmd_spread(args) -> int:
+    """Build a synthetic spread CSV from two pair CSVs."""
+    from bot.pair_spread import build_spread_csv
+    n = build_spread_csv(args.csv_a, args.csv_b, args.out, label=args.label)
+    print(f"Wrote {n} spread bars to {args.out}")
+    print(f"Now run: python main.py backtest {args.out} --strategy pair_spread")
+    return 0
+
+
 def cmd_fetch(args) -> int:
     """Pull real historical candles from OANDA's practice API into a CSV."""
     from bot.brokers.oanda import OandaError, fetch_candles_to_csv
@@ -356,6 +374,14 @@ def main(argv=None) -> int:
     p_wf.add_argument("--tracker-label", default="walkforward")
     _add_common(p_wf)
     p_wf.set_defaults(func=cmd_walkforward)
+
+    p_spread = sub.add_parser("spread",
+                              help="Build a spread CSV from two pair CSVs for pair_spread strategy.")
+    p_spread.add_argument("csv_a", help="CSV for pair A (e.g. EURUSD).")
+    p_spread.add_argument("csv_b", help="CSV for pair B (e.g. GBPUSD).")
+    p_spread.add_argument("--out", required=True, help="Output spread CSV path.")
+    p_spread.add_argument("--label", default="SPREAD")
+    p_spread.set_defaults(func=cmd_spread)
 
     p_fetch = sub.add_parser("fetch",
                              help="Fetch historical candles from OANDA practice API into CSV.")
