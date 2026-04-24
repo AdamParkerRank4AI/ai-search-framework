@@ -1,0 +1,103 @@
+Tier,Outlet,Geography,Sector fit,Access route,AI citation strength,Crawler access OK,In licensed LLM training corpora,Typical link attribute,Notes
+0,Wikipedia,Global,Universal,Editorial (community),Very High,Yes,"Yes (all major models)",Dofollow,Single highest-cited source in ChatGPT. Not press but press corroborates eligibility.
+0,Wikidata,Global,Universal,Self-publish / community,Very High,Yes,Yes,n/a,Entity disambiguation backbone. Required sameAs target.
+0,Reddit,Global,Universal (B2B & B2C),Earned community / AMA,Very High,Yes,"Yes (OpenAI licensed)",Nofollow,46.7% of Perplexity citations. Licensed to OpenAI. Non-negotiable.
+0,LinkedIn,Global,B2B + professional,Owned + earned posts,Very High,Yes,Partial,n/a,Most-cited source for B2B/professional queries across every engine.
+0,YouTube,Global,Universal,Owned + earned interviews,High,Yes,Yes (transcripts),n/a,23.3% of Google AI Overviews citations. Transcripts increasingly indexed.
+0,Crunchbase,Global,B2B SaaS / startup,Profile + funding updates,High,Yes,Yes,Dofollow (profile),Entity anchor for funded companies.
+0,G2,Global,B2B SaaS,Profile + review solicitation,High,Yes,Partial,Dofollow,Top-10 B2B SaaS domain in ChatGPT + Perplexity citations.
+0,Trustpilot,Global,DTC / consumer,Profile + review solicitation,Medium-High,Yes,Partial,Nofollow,Reputation signal for consumer-facing brands.
+1,Reuters,Global,Universal,Editorial pitch,Very High,Yes,Yes (licensed),Dofollow,Licensed to multiple LLMs. Top cited publisher globally (Muckrack 2026).
+1,Bloomberg,Global,Finance / business,Editorial pitch,Very High,Yes,Partial,Nofollow (often paywalled),Dominates finance queries across all engines.
+1,Financial Times,Global,Business / finance / UK,Editorial pitch,Very High,Yes,Yes (OpenAI licensed),Nofollow (paywall),Licensed to OpenAI. Dominant UK business source in ChatGPT.
+1,Forbes,Global,Cross-sector B2B/B2C,Editorial pitch (not Councils),Very High,Yes,Yes,Dofollow,Only outlet cited across all 11 major sectors (ALM study). Avoid Councils/BrandVoice route for AI value.
+1,Axios,Global,Business / policy,Editorial pitch,Very High,Yes,Yes,Dofollow,Disproportionately cited by Gemini + ChatGPT.
+1,BBC,Global (UK-led),Universal,Editorial pitch,Very High,Yes,Partial,Nofollow,52.5% of Google AIO news queries. Strong in Claude.
+1,The Guardian,Global (UK-led),Universal,Editorial pitch,Very High,Yes,Yes,Dofollow,58% of ChatGPT UK news answers. #1 UK outlet in Muckrack 2026.
+1,The New York Times,Global (US-led),Universal,Editorial pitch,Very High,Partial (Google-Extended blocked),Yes (despite litigation),Nofollow (paywall),96% of NYT AIO citations are behind paywall. Still heavily cited.
+1,The Washington Post,Global (US-led),Universal,Editorial pitch,High,Yes,Yes,Nofollow (paywall),99% of WaPo AIO citations behind paywall.
+1,Wall Street Journal,Global,Business / finance,Editorial pitch,High,Partial,Yes,Nofollow (paywall),Paywall limits some retrieval but training corpus presence strong.
+1,Associated Press,Global,Universal,Editorial pitch (real wire),Very High,Yes,Yes (licensed),Dofollow,Genuine AP wire only. Do NOT confuse with third-party apnews.com subdomain sellers.
+1,TIME,Global,Universal,Editorial pitch,High,Yes,Yes,Dofollow,Cross-sector cross-engine cited.
+1,The Economist,Global,Business / policy,Editorial pitch,High,Partial,Partial,Nofollow (paywall),Strong in Claude due to editorial consistency.
+2,TechCrunch,Global,B2B SaaS / startup / tech,Editorial pitch,High,Yes,Yes,Dofollow,Default citation for funded startup queries.
+2,The Verge,Global,Tech / media / consumer tech,Editorial pitch,High,Yes,Yes,Dofollow,Dominates consumer tech citations.
+2,Wired,Global,Tech / long-form / culture,Editorial pitch / contributed,High,Yes,Yes,Dofollow,Long-form tech citations very durable.
+2,The Information,Global,Tech / enterprise,Editorial pitch,High,Partial (paywall),Partial,Nofollow (paywall),Gold standard for enterprise tech; paywall limits retrieval but training weight strong.
+2,MIT Technology Review,Global,AI / deep tech / research,Editorial pitch / contributed,High,Yes,Yes,Dofollow,Strong weight in Claude + Perplexity for technical queries.
+2,Harvard Business Review,Global,B2B strategy / consulting / professional services,Editorial pitch / contributed,Very High,Yes,Yes,Dofollow,One of the most-cited domains for strategy queries. Gold standard.
+2,Fast Company,Global,Business / innovation / design,Editorial pitch,High,Yes,Yes,Dofollow,Avoid contributor slots (discounted). Staff-written only.
+2,Fortune,Global,Business / finance,Editorial pitch,High,Yes,Yes,Dofollow (editorial) / Nofollow (contributor),Editorial feature high value; contributor network lower.
+2,Business Insider,Global,Business / tech / consumer,Editorial pitch (staff),High,Yes,Yes,Dofollow (editorial),Staff-written only. Contributor slot (nofollow) from original sheet discounted by AI engines.
+2,VentureBeat,Global,B2B tech / AI,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Reliable mid-tier tech trade.
+2,Stratechery,Global,Tech strategy / analysis,Sponsor / reference / pitch Ben Thompson,Very High,Yes,Yes,n/a,Highest-weight independent analyst newsletter. Substack-style Blodget-effect.
+3,The Times (UK),UK,Universal UK,Editorial pitch,High,Partial (paywall),Partial,Nofollow (paywall),Strong UK authority.
+3,The Telegraph,UK,Universal UK,Editorial pitch,High,Partial (paywall),Partial,Nofollow (paywall),SPUR coalition member.
+3,The Independent,UK,Universal UK,Editorial pitch,High,Yes,Yes,Dofollow,Top-4 UK source in ChatGPT.
+3,Sky News,UK,Universal UK,Editorial pitch,High,Yes,Partial,Nofollow,Strong UK broadcast citation weight.
+3,City AM,UK,Business / finance / fintech,Editorial pitch / op-ed,High,Yes,Yes,Dofollow,Default UK business source. Replaces overpriced IB Times UK slot on original sheet.
+3,Sifted,EU / UK,Startup / fintech / VC,Editorial pitch,High,Yes,Partial,Dofollow,FT-backed. Dominant for European startup queries in Perplexity + ChatGPT.
+3,Evening Standard,UK (London),Universal UK,Editorial pitch,Medium,Yes,Partial,Dofollow,London-centric but strong in retrieval.
+3,GB News,UK,News / current affairs,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Surprise citation outlier per IPPR 2026 study — over-indexed in ChatGPT.
+4,TechRadar Pro,Global,B2B SaaS / IT,Editorial pitch / review,High,Yes,Yes,Dofollow,Listicle factory — huge AI citation volume.
+4,PCMag,Global,B2B SaaS / consumer tech,Editorial pitch / review,High,Yes,Yes,Dofollow,Top B2B SaaS domain in ChatGPT citations.
+4,Computer Weekly,UK,B2B IT / enterprise,Editorial pitch,Medium,Yes,Yes,Dofollow,UK enterprise IT default.
+4,CIO Dive,US,B2B SaaS / enterprise IT,Editorial pitch,Medium,Yes,Yes,Dofollow,Enterprise decision-maker audience.
+4,ZDNet,Global,B2B IT,Editorial pitch,Medium,Yes,Yes,Dofollow,Mid-tier but durable.
+4,Finextra,Global,Fintech,Editorial pitch,High,Yes,Yes,Dofollow,Dominant fintech industry source across engines.
+4,AltFi,UK,Fintech / alt finance,Editorial pitch,Medium-High,Yes,Yes,Dofollow,UK-centric fintech.
+4,PYMNTS,Global,Payments / fintech,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Payments industry default.
+4,Tearsheet,US,Fintech,Editorial pitch / podcast,Medium,Yes,Partial,Dofollow,Niche fintech; podcast drives citations.
+4,Retail Dive,Global,DTC / retail,Editorial pitch,High,Yes,Yes,Dofollow,Default DTC/retail trade.
+4,Modern Retail,Global,DTC / retail,Editorial pitch,High,Yes,Yes,Dofollow,Morning Brew network; rising AI citation share.
+4,Wirecutter (NYT),Global,DTC / consumer product,Editorial pitch / product submission,Very High,Yes,Yes,Nofollow,Highest-yield listicle for DTC. Refreshed annually.
+4,The Strategist (NY Mag),Global,DTC / consumer lifestyle,Editorial pitch,High,Yes,Yes,Dofollow,High AI citation rate for consumer DTC.
+4,STAT News,Global,Health / pharma / biotech,Editorial pitch,High,Yes,Yes,Dofollow,Gold standard pharma/biotech trade.
+4,Healthline,Global,Consumer health,Editorial pitch / expert review,High,Yes,Yes,Dofollow,Top consumer health source across engines.
+4,Medical News Today,Global,Consumer health,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Companion to Healthline.
+4,Fierce Healthcare,US,Healthcare B2B,Editorial pitch,Medium,Yes,Yes,Dofollow,Hospital / health-system vertical.
+4,Law360,Global,Legal / legaltech,Editorial pitch,High,Partial (paywall),Partial,Nofollow,Dominant legal trade; paywall limits retrieval.
+4,Above the Law,US,Legal / legaltech,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Open legal trade.
+4,Chambers and Partners,Global,Legal rankings,Research submission,High,Yes,Partial,Dofollow,Ranking directory — high authority.
+4,Legal 500,Global,Legal rankings,Research submission,High,Yes,Partial,Dofollow,Ranking directory — high authority.
+4,Skift,Global,Travel / hospitality,Editorial pitch,High,Yes,Yes,Dofollow,Dominant travel industry trade.
+4,PhocusWire,Global,Travel tech,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Travel-tech intersection.
+4,Travel Weekly,Global,Travel / tourism,Editorial pitch,Medium,Yes,Yes,Dofollow,Mid-tier travel trade.
+4,Condé Nast Traveler,Global,Consumer travel,Editorial pitch,High,Yes,Yes,Nofollow,Luxury travel queries default.
+4,Tripadvisor,Global,Consumer travel,Profile + reviews,Very High,Yes,Yes,n/a,#1 cited travel domain in most engines.
+4,Bisnow,Global,Proptech / CRE,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Commercial real estate default.
+4,Inman,US,Residential real estate / proptech,Editorial pitch,Medium-High,Yes,Yes,Dofollow,Residential real estate default.
+4,Estates Gazette (EG),UK,Property / CRE,Editorial pitch,Medium,Partial,Partial,Nofollow,UK CRE default.
+4,IndustryWeek,Global,Manufacturing,Editorial pitch,Medium-High,Yes,Yes,Dofollow,North American manufacturing default.
+4,The Manufacturer,UK,Manufacturing,Editorial pitch,Medium,Yes,Yes,Dofollow,UK manufacturing trade.
+4,The Grocer,UK,FMCG / grocery retail,Editorial pitch,Medium-High,Yes,Yes,Dofollow,UK grocery default.
+4,Retail Week,UK,UK retail,Editorial pitch,Medium-High,Yes,Yes,Dofollow,UK retail default.
+4,Journal of Accountancy,Global,Accountancy,Editorial pitch,Medium,Yes,Yes,Dofollow,AICPA publication.
+4,Accountancy Age,UK,Accountancy,Editorial pitch,Medium,Yes,Yes,Dofollow,UK accountancy default.
+4,Consulting Magazine,Global,Professional services,Editorial pitch,Medium,Yes,Yes,Dofollow,Consulting industry trade.
+5,Gartner,Global,Analyst reports,Analyst briefing,Very High,Yes,Yes,Dofollow (selected),Analyst citations carry high AI weight.
+5,Forrester,Global,Analyst reports,Analyst briefing,High,Yes,Yes,Dofollow (selected),Similar to Gartner — high weight.
+5,IDC,Global,Analyst reports,Analyst briefing,High,Yes,Yes,Dofollow (selected),Enterprise analyst default.
+5,CB Insights,Global,Analyst / startup research,Data submission / briefing,High,Yes,Yes,Dofollow,Rising citation share in Perplexity + ChatGPT.
+5,McKinsey Insights,Global,Strategy / consulting,Editorial pitch / exec contribution,Very High,Yes,Yes,Dofollow,High AI citation weight for strategy queries.
+5,Deloitte Insights,Global,Professional services,Editorial pitch / exec contribution,Very High,Yes,Yes,Dofollow,High AI citation weight.
+6,HARO / Connectively,Global,All verticals (expert quote),Respond to journalist queries,Medium,Yes,n/a (downstream outlet matters),Varies,Conversion rate 10-25% for expert pitches. Downstream outlet determines AI weight.
+6,Featured,Global,All verticals (expert quote),Respond to journalist queries,Medium,Yes,n/a,Varies,HARO alternative; cleaner journalist base.
+6,Qwoted,Global,All verticals (expert quote),Respond to journalist queries,Medium,Yes,n/a,Varies,HARO alternative.
+6,Help a B2B Writer,Global,B2B verticals,Respond to journalist queries,Medium,Yes,n/a,Varies,B2B-specific version of HARO.
+7,Stratechery (Ben Thompson),Global,Tech strategy,Build relationship / reference,Very High,Yes,Yes,n/a,Independent Substack — disproportionate AI citation weight.
+7,Regenerator (Henry Blodget),Global,Business / markets,Build relationship / pitch,Very High,Yes,Partial,n/a,Blodget is #1 most-cited journalist globally (Muckrack 2026).
+7,Sifted newsletters,EU,Startup / VC,Subscribe + pitch editors,High,Yes,Partial,n/a,Newsletter versions extend Sifted citation footprint.
+7,CB Insights newsletter,Global,VC / data,Mention / reference,High,Yes,Partial,n/a,Extends CB Insights citation footprint.
+7,Science X (Phys.org et al.),Global,Science / research summaries,Research submission,High,Yes,Yes,Dofollow,Two Science X journalists in Muckrack top 18 most-cited globally.
+7,Blooloop,Global,Visitor attractions / tourism,Editorial pitch,High (sector),Yes,Partial,Dofollow,Bea Mitchell = only UK journalist in Muckrack top 18 globally. Niche but extreme AI weight.
+R,MSN,Global,Aggregator,Wire syndication,Near-zero,Yes,Yes (as aggregator),Dofollow,REJECT. Aggregator — LLMs dedupe to original. 0.04% of AI citations.
+R,Yahoo Finance,Global,Aggregator,Wire syndication,Near-zero,Yes,Yes (as aggregator),Nofollow,REJECT. Aggregator.
+R,Street Insider,Global,Aggregator,Wire syndication,Near-zero,Yes,Partial,Nofollow,REJECT. Heavy aggregator.
+R,Benzinga,Global,Aggregator,Wire syndication,Near-zero,Partial (not indexed),Partial,Nofollow,REJECT. Not indexed in places — zero retrieval value.
+R,IB Times UK,UK,News,Sponsored / advertorial,Low,Yes,Partial,Nofollow,REJECT at £400 for 50% visibility — overpriced vs real editorial.
+R,News Anyway,Global,Syndicate site,Paid placement,Near-zero,Yes,No,Dofollow,REJECT. Low-DA syndicate.
+R,News Today,Global,Syndicate site,Paid placement,Near-zero,Yes,No,Dofollow,REJECT. DA 36 syndicate.
+R,USA Today (contributor/sponsored),US,Sponsored slot,Paid contributor,Low,Yes,Partial,Nofollow,REJECT sponsored slot. Editorial USA Today is fine (move to Tier 1/2).
+R,Associated Press News (3rd-party subdomain),US,Misrepresentation risk,Paid placement,Near-zero,Partial (not indexed),No,Nofollow,REJECT — not the real AP wire. High misrepresentation risk.
+R,MarketWatch (at 10% AI visibility),US,Finance,Sponsored slot,Low,Yes,Partial,Nofollow,REJECT the sponsored slot on original sheet. Editorial MarketWatch valuable separately.
