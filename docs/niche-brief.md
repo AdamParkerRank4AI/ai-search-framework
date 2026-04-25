@@ -31,18 +31,22 @@ relevant section as a prompt — and the session is fully briefed.
    confidential factoring, spot factoring. Does not stretch into other
    trade-finance products unless they're a direct receivables play.
 5. **SEOCompare** — UK comparison site for SEO services, agencies,
-   freelancers and tools. *(Open question: is AI-search optimisation
-   a co-headline here — i.e. "SEO + AI search" — given the Rank4AI
-   angle? Worth a deliberate decision before niche briefs land.)*
-6. **WebsiteCo** — currently positioned as "a bit of everything" around
-   websites: buying an existing site, building your own (Wix /
-   Squarespace / WordPress / Webflow / Shopify / Framer / no-code +
-   AI builders), hosting, design, agencies, domains. *Flag: a
-   generalist scope is an SEO and AI-search vulnerability — large
-   incumbents already dominate horizontal "best website builder"
-   queries. Long-term this site likely needs a sharper edge (e.g.
-   "websites for UK small businesses", or split buy / build into two
-   sites). Worth resolving before deep niche commitment.*
+   freelancers and tools. Runs on the **80/20 model**: 80% pure SEO
+   comparison content, up to 20% adjacent (e.g. AI-search-optimisation
+   agencies / GEO services where they overlap with SEO buyers).
+6. **WebsiteCo** — repositioned as **"Websites for AI search"**. The
+   home for getting your website seen, cited and recommended by AI
+   platforms (ChatGPT, Claude, Perplexity, Gemini, Copilot, AI
+   Overviews) — drawing directly on the Rank4AI methodology. Covers
+   both **building** an AI-ready website (best builders / themes /
+   schema setups for AI visibility, AI-ready WordPress / Webflow /
+   Shopify / Framer guides, AI-search audits) and **buying** an
+   existing website with AI-search potential (valuation through an
+   AI-citation lens, due diligence on entity strength). 80/20: 80%
+   AI-search-led website content, 20% general website topics that
+   the same buyer searches for (hosting, domains, design,
+   agencies). This is a category-creation positioning — almost no
+   UK competitor owns "websites for AI search" yet.
 
 ### Cross-site vertical hubs
 
@@ -58,13 +62,21 @@ sequence content across the network.
 ## Strategic ground rules — already decided, don't redo
 
 - UK SMB only.
-- Every niche must have a named lender or acquirer downstream that pays
-  for the lead. If you can't draw that line in one breath, kill it.
+- **Traffic is the goal**, but at the niche level there must be a named
+  monetisation path (lender, acquirer, agency partner, marketplace,
+  affiliate). Inside a monetised niche, individual pages can be pure
+  citation / awareness plays if they feed entity authority and link
+  internally to converting pages.
+- **80/20 site model.** Every site has a sharp primary focus (the 80%)
+  and is allowed to flex into adjacent topics (the 20%) where the same
+  buyer is searching. Niches that fit the 80% take priority; 20% niches
+  need a clear bridge to the primary funnel.
 - Multilingual is in scope where a non-English UK community over-indexes
   in a vertical (Polish, Bengali, Urdu, Punjabi, Hindi, Gujarati, Turkish,
   Arabic, Romanian, Mandarin, Albanian, Portuguese, Tagalog, Ukrainian).
-- Crap-traffic filter: kill anything purely informational, jobseeker,
-  international bleed, or non-monetisable.
+- Crap-traffic filter: kill anything jobseeker, international bleed, or
+  fundamentally non-monetisable. Pure informational pages are fine if
+  they feed an entity graph and internal-link to a converting page.
 
 ---
 
@@ -110,9 +122,16 @@ newest first, with a table of contents at the top.
 - **Search demand signal:** strong / moderate / weak — with reasoning. Note
   SERP weakness, AI Overview vacuum, Reddit chatter, named "People also
   ask" queries, community forums or Facebook groups
-- **Optimisation surface:** SEO / AI Overviews / AI Search / all-three —
-  one sentence on why
-- **Time horizon:** quick win / mid-term / long-term — one sentence on why
+- **Primary surface:** SEO / AI Overviews / AI Search — the single
+  dominant one — with one-sentence reasoning
+- **Traffic source mix (estimated %):** must sum to 100. Format:
+  `~X% SEO / ~Y% AI Overviews / ~Z% AI Search / ~W% Other`. "Other"
+  covers community / social / direct / multilingual non-Google. Add a
+  one-line note on the dominant lever (e.g. "comparison content with
+  FAQ schema for AIO citations" or "multilingual community sharing
+  drives the social slice")
+- **Time horizon:** quick win (0–90 days) / mid-term (3–9 months) /
+  long-term (9+ months) — one sentence on why
 - **Commercial path:** at least two named providers / lenders / acquirers
   who'd pay for the lead, with rough commission tier (£CPL band or
   rev-share)
@@ -136,49 +155,157 @@ newest first, with a table of contents at the top.
 
 ---
 
-## Mode 1 — Niche development partner (user-fed ideas)
+## How sessions run — modes and protocol
 
-This is the default mode. The user throws ideas at you — specific verticals,
-communities, products, trigger events, search queries, half-formed hunches —
-and you develop each one into a full niche brief.
+The session is always in exactly **one** mode at a time. The user signals
+which by how they open a turn. You confirm the mode in one line before
+doing anything else.
 
-### How we work in this mode
+### Mode 0 — Session start (always first)
 
-1. User gives you an idea. It might be specific ("card machines for
-   tattooists") or vague ("there's something here in the gig economy").
-2. Research it properly. WebSearch aggressively (include 2026 in queries
-   when freshness matters). Find named providers. Check SERP weakness.
-   Scan Reddit / Trustpilot / Google "People also ask". Look for
-   community-language angles.
-3. Produce one niche brief using the template above.
-4. Append it to `docs/niches.md` (create file with TOC if it doesn't
-   exist). Post a tight chat summary so the user can scan without
-   opening the file.
-5. If the idea fails the quality bar, say so directly and explain why —
-   don't pad to look productive.
-6. If the idea splits into multiple distinct niches, treat them as
-   separate briefs.
-7. If the idea is adjacent to something already in the file,
-   cross-reference rather than duplicating; flag the overlap.
-8. **Don't generate niches the user didn't ask for in this mode.** Wait
-   for the next seed.
+On the very first turn of every session:
+1. Read this file (`docs/niche-brief.md`) and `docs/niches.md` (the running
+   state). If `docs/niches.md` doesn't exist, treat it as empty.
+2. Reply with a one-line state summary in this exact format:
+   `State: N niches tracked — A in build, B classified, C researching,
+   D parked, E dropped. Last update YYYY-MM-DD.`
+3. Then wait silently for a mode trigger from the user. Do not start
+   work.
 
-### First instruction in mode 1
+### Mode 1 — Idea development (user feeds a seed)
 
-Acknowledge the brief in one line. Then wait — the first idea is coming
-from the user.
+This is the default working mode. Triggered by:
+- `Idea: [seed]`
+- `What about [seed]?`
+- Or any clear seed without a hunter command.
+
+Protocol:
+1. Echo the seed back in one line and confirm "Mode 1 — researching".
+2. Research it (see *Research method* below).
+3. Produce one full niche brief using the template above.
+4. Append it to `docs/niches.md` with status `🔬 Researching` updated to
+   `✅ Classified` once the brief is posted.
+5. Update the TOC table at the top of `docs/niches.md`.
+6. Post a tight chat summary (under 300 words).
+7. Stop. Don't generate further niches the user didn't seed.
+
+Edge cases:
+- If the seed splits into multiple distinct niches, write multiple briefs.
+- If it's adjacent to an existing brief, cross-reference rather than
+  duplicate, and flag the overlap to the user.
+- If it fails the quality bar, say so directly. Don't pad to look
+  productive. Log it as `❌ Dropped` with the reason.
+
+### Mode 2 — Hunter (proactive sweep)
+
+Triggered by:
+- `Hunter mode`
+- `Hunter mode: [scope]` (e.g. `Hunter mode: hospitality`)
+- `Find me niches in [X]`
+
+Protocol:
+1. Confirm scope and target count in one line ("Mode 2 — sweeping
+   hospitality, target 30 niches").
+2. Sweep across the dimensions list (below).
+3. Produce 25–40 briefs in one batch (or the count the user asked for).
+4. Append all to `docs/niches.md`, update the TOC.
+5. End the sweep section with two extra sub-sections: **Top 10** ranking
+   and **New-site candidates**.
+6. Post a sweep summary to chat.
+
+### Housekeeping commands
+
+The user can issue any of these at any time. Do the action, then wait.
+
+| Command                             | Action |
+|---|---|
+| `Status` / `Where are we?`           | Re-read `docs/niches.md`, return the state summary |
+| `Show [niche]`                       | Print that niche's full brief |
+| `Update [niche]: [status]`           | Change status in TOC, append dated note to brief |
+| `Drop [niche]: [reason]`             | Set `❌ Dropped`, log reason and date |
+| `Promote [niche]`                    | Set `🛠 In build`, surface what to ship first |
+| `Park [niche]`                       | Set `⏸ Parked` |
+| `Open questions`                     | List every unresolved question across all briefs |
+| `Top 10`                             | Re-rank current niches and post the top 10 |
+
+### Things you must never do
+
+- Generate niches the user didn't seed (in Mode 1).
+- Skip updating `docs/niches.md` — it's the canonical state.
+- Break the routing rules (BBL = loans only, MarketInvoice = invoice
+  finance only, etc.).
+- Write a brief with no named monetisation path at the niche level.
+- Switch modes mid-turn without confirming first.
 
 ---
 
-## Mode 2 — Niche hunter (proactive sweep)
+## State tracking — `docs/niches.md` format
 
-Use this mode when the user explicitly says "hunter mode" or asks for new
-niches across dimensions. Your job is to surface niches the user hasn't
-named yet, classify each, and rank them.
+`docs/niches.md` is the running brain. Keep it tidy. The user reads the
+TOC first; only opens the brief sections when they need detail.
 
-### Dimensions to hunt across
+### Top of file (always kept current)
 
-Don't just give obvious sectors. Cover all of these:
+```
+# Niches — running state
+
+Last updated: YYYY-MM-DD
+State: N niches tracked — A in build, B classified, C researching,
+D parked, E dropped.
+
+## Index
+
+| # | Niche | Site | Primary surface | Horizon | Status | Updated |
+|---|---|---|---|---|---|---|
+| 1 | High-risk merchant (CBD) UK | CardMachines | AI Search | Quick win | ✅ Classified | 2026-04-25 |
+| 2 | Halal business finance | NEW SITE? | All-three | Mid-term | 🔬 Researching | 2026-04-26 |
+```
+
+### Body
+
+One section per niche, **newest at the top**, using the brief template
+from this document. Each section ends with a `Status log` sub-section,
+appended (not overwritten) on every change:
+
+```
+**Status log**
+- 2026-04-25 🌱 Seed — captured from user idea
+- 2026-04-25 🔬 Researching — initial sweep started
+- 2026-04-25 ✅ Classified — full brief written, assigned to CardMachines
+- 2026-04-26 🛠 In build — first page drafted
+```
+
+### Status values
+
+- 🌱 **Seed** — captured, not yet researched
+- 🔬 **Researching** — actively being investigated this session
+- ✅ **Classified** — full brief written, awaiting build decision
+- 🛠 **In build** — pages being created
+- 🚀 **Shipped** — live and indexed
+- ⏸ **Parked** — kept for later, not active
+- ❌ **Dropped** — failed quality bar (reason logged)
+
+---
+
+## Research method (all modes)
+
+- Use WebSearch aggressively. Always include 2026 in queries when freshness
+  matters.
+- Sanity-check every niche on: SERP weakness, named providers, AI Overview
+  vacuum, downstream commission path.
+- Find at least two named providers / lenders / acquirers per niche so the
+  lead has a buyer.
+- Cross-reference Reddit, Trustpilot complaint patterns, and Google "People
+  also ask" to surface real pain points.
+- Where multilingual is relevant, check whether native-language content
+  already ranks (it usually doesn't — confirm).
+
+---
+
+## Hunter-mode dimensions
+
+Use these only when in Mode 2. Don't just give obvious sectors. Cover all
+of them:
 
 1. **Industry vertical** — granular to SIC-code level. Inside hospitality:
    gastropubs, sports bars, nightclubs, shisha lounges, members' clubs,
@@ -226,32 +353,6 @@ Don't just give obvious sectors. Cover all of these:
     purchase-order finance, asset-based lending, construction
     application-stage finance, contractor / umbrella receivables.
 
-### Hunter output format
-
-- Aim for 25–40 niches in the first sweep. Don't pad. Drop anything
-  that fails the quality bar.
-- Use the same brief template above for each niche.
-- Append all to `docs/niches.md`.
-- End the file (or the sweep section) with two extra sections:
-  - **Top 10 in priority order**, with reasoning
-  - **New-site candidates** — any niches arguing for their own domain,
-    with the case for and against
-
----
-
-## Research method (both modes)
-
-- Use WebSearch aggressively. Always include 2026 in queries when
-  freshness matters.
-- Sanity-check every niche on: SERP weakness, named providers, AI
-  Overview vacuum, downstream commission path.
-- Find at least two named providers / lenders / acquirers per niche so
-  the lead has a buyer.
-- Cross-reference Reddit, Trustpilot complaint patterns, and Google
-  "People also ask" to surface real pain points.
-- Where multilingual is relevant, check whether native-language content
-  already ranks (it usually doesn't — confirm).
-
 ---
 
 ## Constraints
@@ -269,6 +370,7 @@ Don't just give obvious sectors. Cover all of these:
 
 ## Deliverables
 
-1. `docs/niches.md` — the running file of all briefs, newest first, with
-   TOC.
-2. A tight chat summary after each brief / sweep, under 300 words.
+1. `docs/niches.md` — running state, always current, with TOC at top.
+2. Confirm the active mode in one line before doing any work.
+3. A tight chat summary after each brief / sweep / status change
+   (under 300 words).
