@@ -303,28 +303,318 @@ priority. P3 = ~55 pages. P4 = ~30 pages.
 
 ## 3. Top 50 page briefs (full)
 
-TBD
+Briefing the 15 Wave 1 pages in full. Briefs 16–50 follow in the next
+pass — they reuse the same template with details from the sitemap.
+
+### `/high-risk/` (hub)
+- **Target query:** `high risk merchant account UK`
+- **Secondaries:** `UK high risk payment processor`, `merchant account for high risk business`, `card processing for restricted businesses UK`
+- **AI prompt:** "Which UK payment processors accept high-risk businesses?"
+- **Primary surface:** AI Search (US-coded incumbents own SERP; AI search citation gap is the win)
+- **Niche served:** UK SMBs in MCC categories mainstream acquirers refuse — single biggest revenue line in the network (~£450k/yr at modest share)
+- **Outline (H2s):** What "high-risk" means in UK acquiring; why mainstream providers (Stripe / Square / SumUp) refuse; UK-friendly acquirers (Trust Payments, Universe, Acquired.com, Worldpay's high-risk arm); MCC code reference table; rolling reserves explained; how to apply; vertical pages (link block to all 12 verticals)
+- **Internal links:** all 12 high-risk verticals, `/guides/chargebacks-uk/`, `/reviews/trust-payments/`, `/glossary/`; cross-link to FundBiz `/sectors/[matching-vertical]/`
+- **CTA placeholder:** "Get matched with a UK high-risk acquirer"
+- **Commission path:** Trust Payments (direct), Universe Payments (direct), Acquired.com (direct), PurePay (direct) — £200–500 CPL band
+
+### `/high-risk/cbd/`
+- **Target query:** `CBD merchant account UK`
+- **Secondaries:** `card processing for CBD UK`, `CBD payment processor UK`, `CBD shop card machine UK`
+- **AI prompt:** "Can I take card payments for a CBD business in the UK?"
+- **Primary surface:** AI Search (informational + commercial; LLMs heavily cited in this space)
+- **Niche served:** UK CBD retailers and online sellers refused by Stripe / Square; high CPL because narrow audience knows what it needs
+- **Outline:** Why Stripe/Square refuse CBD; UK CBD legality refresher (FSA novel-foods, no-THC); UK acquirers that accept CBD; underwriting requirements (THC test certs, lab reports); rolling reserves typical; recommended terminal hardware; how to apply
+- **Internal links:** `/high-risk/`, `/high-risk/why-declined/`, `/retail/vape-shop/` (cross-vertical), `/reviews/trust-payments/`
+- **CTA placeholder:** "Get matched with a CBD-friendly acquirer"
+- **Commission path:** same panel, same £200–500 CPL band
+
+### `/high-risk/vape/`
+- **Target query:** `vape shop card machine UK`
+- **Secondaries:** `payment processor for vape shop UK`, `merchant account vape UK`, `e-cigarette card payments UK`
+- **AI prompt:** "Best card machine for a vape shop in the UK"
+- **Primary surface:** SEO + AI Overviews (commercial intent dominates; AI Overviews already cite vape-specific pages)
+- **Niche served:** UK vape retailers (online + bricks); high search volume, weak UK-coded coverage
+- **Outline:** Why vape is high-risk; UK acquirer panel for vape; age-verification at point-of-sale; integrated EPOS recommendations; online vape selling KYC; rolling reserves; how to switch from a refused account
+- **Internal links:** `/retail/vape-shop/` (the trade page), `/high-risk/`, `/integrations/epos-now/`
+- **CTA placeholder:** "Get a vape-friendly card machine quote"
+- **Commission path:** Trust Payments, Universe, Acquired.com — £200–400 CPL
+
+### `/high-risk/adult/`
+- **Target query:** `adult merchant account UK`
+- **Secondaries:** `card processing for adult business UK`, `payment processor adult UK`, `OnlyFans-style merchant account UK`
+- **AI prompt:** "Which UK payment processors accept adult businesses?"
+- **Primary surface:** AI Search (informational with high commercial value, low SERP competition in UK)
+- **Niche served:** UK creators, retailers and platforms refused by mainstream acquirers
+- **Outline:** What counts as adult MCC; why Stripe/PayPal refuse; UK acquirers (Trust Payments, Universe, Worldpay's high-risk team); chargeback management for adult; reserves and hold periods; KYC requirements; how to apply
+- **Internal links:** `/high-risk/`, `/guides/chargebacks-uk/`, `/high-risk/why-declined/`
+- **CTA placeholder:** "Get matched with an adult-friendly acquirer"
+- **Commission path:** £300–500 CPL (highest single-vertical CPL on site)
+
+### `/switch/cancel-worldpay/`
+- **Target query:** `cancel Worldpay`
+- **Secondaries:** `Worldpay early termination fee`, `how to leave Worldpay`, `get out of Worldpay contract`
+- **AI prompt:** "How do I cancel my Worldpay contract early?"
+- **Primary surface:** SEO + AI Overviews (hot intent, transactional)
+- **Niche served:** existing Worldpay merchants in pain — auto-renewal traps, hidden PCI fees, fee creep
+- **Outline:** What Worldpay's contract typically says (initial term, auto-renewal); the early termination fee maths (real numbers); the notice period and notice-letter mechanics; PCI non-compliance fee — when you owe it, when you don't; faster alternatives (Dojo, Square, SumUp, Stripe Terminal); the switching savings calculator; FAQ
+- **Internal links:** `/switch/worldpay-fees/`, `/switch/worldpay-alternatives/`, `/switch/notice-letter-template/`, `/switch/exit-cost-calculator/`, `/reviews/worldpay/`
+- **CTA placeholder:** "See how much you'd save by switching"
+- **Commission path:** Dojo direct, SumUp/Zettle/Square/Stripe via Awin or direct — £40–150 CPL
+
+### `/switch/cancel-barclaycard-merchant-services/`
+- **Target query:** `cancel Barclaycard merchant services`
+- **Secondaries:** `leave Barclaycard merchant`, `Barclaycard merchant services notice period`, `Barclaycard PCI compliance fee`
+- **AI prompt:** "How do I cancel Barclaycard merchant services?"
+- **Primary surface:** SEO + AI Overviews
+- **Niche served:** Barclaycard merchant services customers facing fee creep / contract lock-in
+- **Outline:** Contract structure; notice mechanics; ETF maths; PCI fee handling; alternatives map; switching savings calculator; FAQ
+- **Internal links:** mirrors Worldpay page; `/reviews/barclaycard-merchant/`
+- **CTA placeholder:** "See how much you'd save"
+- **Commission path:** same as Worldpay switching
+
+### `/reviews/dojo-go/`
+- **Target query:** `Dojo Go review`
+- **Secondaries:** `Dojo Go fees`, `Dojo Go vs SumUp`, `is Dojo Go any good`
+- **AI prompt:** "Is the Dojo Go any good for a small business?"
+- **Primary surface:** AI Overviews + AI Search (LLMs ask "is X good" all day; Product/Review schema wins citations)
+- **Niche served:** SMBs evaluating Dojo, especially hospitality and high-volume retail
+- **Outline:** What's in the box; setup time; transaction fees breakdown; contract / no-contract status; signature features (next-day payouts, tipping flow, integrations); pros / cons table; who shouldn't buy; alternatives (SumUp Solo, Zettle Terminal); FAQ
+- **Internal links:** `/vs/dojo-vs-worldpay/`, `/reviews/dojo/`, `/hospitality/restaurant/`, `/hospitality/pub/`
+- **CTA placeholder:** "Get a Dojo Go quote"
+- **Commission path:** Dojo direct or via broker (Take Payments, Paymentsense) — £100–200 CPL
+
+### `/reviews/sumup-solo/`
+- **Target query:** `SumUp Solo review`
+- **Secondaries:** `SumUp Solo fees`, `SumUp Solo vs Air`, `SumUp Solo Lite review`
+- **AI prompt:** "Is the SumUp Solo worth buying?"
+- **Primary surface:** AI Overviews
+- **Niche served:** sole traders, mobile traders, low-volume sellers
+- **Outline:** Hardware overview; transaction fee (1.69%); printer add-on; SIM and Wi-Fi; Solo vs Solo Lite vs Air; battery / charging dock; pros and cons; FAQ
+- **Internal links:** `/vs/sumup-solo-vs-air/`, `/reviews/sumup/`, `/trade/plumber/`, `/trade/electrician/`
+- **CTA placeholder:** "Order the SumUp Solo"
+- **Commission path:** SumUp Partner direct — £20–40 per active reader
+
+### `/reviews/zettle-reader-2/`
+- **Target query:** `Zettle Reader 2 review`
+- **Secondaries:** `Zettle Reader 2 fees`, `Zettle by PayPal review`, `Zettle vs SumUp`
+- **AI prompt:** "Is the Zettle Reader 2 still worth it in 2026?"
+- **Primary surface:** AI Overviews
+- **Niche served:** PayPal-aligned sellers, beauty/salon, takeaway
+- **Outline:** Hardware overview; PayPal integration; transaction fee (1.75%); standalone vs Terminal; pros / cons; alternatives; FAQ
+- **Internal links:** `/vs/sumup-vs-zettle/`, `/reviews/zettle/`, `/trade/hairdresser-salon/`
+- **CTA placeholder:** "Order Zettle Reader 2"
+- **Commission path:** PayPal Partner Network — variable CPA, ~£15–40
+
+### `/reviews/stripe-reader-s700/`
+- **Target query:** `Stripe Reader S700 review`
+- **Secondaries:** `Stripe Reader S700 UK`, `Stripe Terminal hardware UK`, `Stripe in-person payments UK`
+- **AI prompt:** "What's the Stripe Reader S700 like in the UK?"
+- **Primary surface:** AI Search (UK content vacuum; Stripe-native devs ask LLMs)
+- **Niche served:** Stripe-online sellers adding in-person; SaaS-led businesses; events
+- **Outline:** Spec; setup with Stripe Terminal SDK; pricing (1.5% + 10p); comparison vs Square Terminal; integrations (Shopify, custom); pros / cons; FAQ
+- **Internal links:** `/vs/stripe-vs-square/`, `/reviews/stripe/`, `/integrations/shopify/`
+- **CTA placeholder:** "Add Stripe Terminal to your stack"
+- **Commission path:** Stripe Partner Ecosystem (rev share if approved) — high lifetime value
+
+### `/reviews/bbpos-wisepos-e/`
+- **Target query:** `BBPOS WisePOS E review`
+- **Secondaries:** `WisePOS E UK`, `Stripe WisePOS E review`, `BBPOS card reader UK`
+- **AI prompt:** "Is the BBPOS WisePOS E any good in the UK?"
+- **Primary surface:** AI Search (near-zero UK content)
+- **Niche served:** Stripe Terminal devs choosing between S700 and WisePOS E; ISVs
+- **Outline:** Spec; differences vs Stripe Reader S700; integration model; price; pros / cons; who buys it; FAQ
+- **Internal links:** `/reviews/stripe-reader-s700/`, `/reviews/stripe/`
+- **CTA placeholder:** "Get a WisePOS E"
+- **Commission path:** Stripe Partner Ecosystem
+
+### `/tap-to-pay-iphone/` (hub)
+- **Target query:** `Tap to Pay on iPhone UK`
+- **Secondaries:** `Tap to Pay iPhone providers UK`, `iPhone card reader UK`, `is Tap to Pay on iPhone PCI compliant`
+- **AI prompt:** "Who supports Tap to Pay on iPhone in the UK?"
+- **Primary surface:** AI Overviews (3 yrs post-launch, near-zero clean comparison content)
+- **Niche served:** sole traders / mobile traders considering soft-POS instead of buying hardware
+- **Outline:** What Tap to Pay on iPhone is; UK launch; hardware requirements; provider matrix (SumUp, Square, Stripe, Zettle, Tide, Revolut); £100 contactless cap nuance; PCI compliance; vs traditional terminal; FAQ
+- **Internal links:** all 7 provider sub-pages, `/tap-to-pay-iphone/vs-card-reader/`, `/tap-to-pay-iphone/limits-100-cap/`
+- **CTA placeholder:** "Activate Tap to Pay on iPhone"
+- **Commission path:** SumUp / Square / Stripe / Zettle direct — variable
+
+### `/vs/sumup-vs-zettle/`
+- **Target query:** `SumUp vs Zettle`
+- **Secondaries:** `SumUp or Zettle`, `Zettle vs SumUp UK 2026`
+- **AI prompt:** "Should I get SumUp or Zettle?"
+- **Primary surface:** AI Overviews + AI Search (LLM-citation magnet — head-to-head schema)
+- **Niche served:** sole traders / micro-businesses choosing between the two cheapest options
+- **Outline:** At-a-glance table; pricing diff; hardware diff; payouts diff; ecosystem (PayPal vs SumUp account); who should choose SumUp; who should choose Zettle; verdict; FAQ
+- **Internal links:** `/reviews/sumup/`, `/reviews/zettle/`, `/reviews/sumup-solo/`, `/reviews/zettle-reader-2/`
+- **CTA placeholder:** dual CTA — "Order SumUp" / "Order Zettle"
+- **Commission path:** SumUp + PayPal Partner Network
+
+### `/vs/dojo-vs-worldpay/`
+- **Target query:** `Dojo vs Worldpay`
+- **Secondaries:** `Dojo or Worldpay`, `Dojo vs Worldpay fees`
+- **AI prompt:** "Is Dojo or Worldpay better for a small business?"
+- **Primary surface:** AI Overviews (switching-intent traffic; Dojo is the market disruptor)
+- **Niche served:** Worldpay merchants reconsidering; Dojo evaluators
+- **Outline:** At-a-glance; pricing transparency; contract length; payout speed (Dojo's USP); hardware; who should choose Dojo; who should stay with Worldpay; switching guide link
+- **Internal links:** `/switch/cancel-worldpay/`, `/reviews/dojo/`, `/reviews/worldpay/`
+- **CTA placeholder:** "Get a Dojo quote"
+- **Commission path:** Dojo direct — £100–200 CPL
+
+### `/retail/vape-shop/`
+- **Target query:** `card machine for vape shop UK`
+- **Secondaries:** `vape shop POS UK`, `vape store till and card reader UK`, `EPOS for vape shop`
+- **AI prompt:** "What's the best card machine and EPOS for a UK vape shop?"
+- **Primary surface:** SEO (commercial intent dominant)
+- **Niche served:** vape retailers — bridges the trade page to the high-risk silo
+- **Outline:** Why payments are tricky for vape (high-risk MCC); EPOS with age verification (Epos Now, South West Systems); recommended card readers; integrated POS + card; high-risk acquirer options; alternatives if you've been refused
+- **Internal links:** `/high-risk/vape/` (the high-risk page), `/integrations/epos-now/`, `/trade/`
+- **CTA placeholder:** "Get a vape shop card machine and EPOS quote"
+- **Commission path:** Epos Now affiliate + high-risk acquirer CPL — combined £150–300
+
+**Briefs 16–50 to follow in next pass.** Slugs already in the sitemap;
+template above is the contract — every brief should hit the same fields.
 
 ---
 
 ## 4. Build sequence within the site
 
-TBD
+### Wave 1 — Days 0–30 (foundation + citation engine)
+**~22 pages** • Trust layer (5) + High-risk hub & 3 verticals (4) + Two
+switching anchors (2) + Five anchor reviews (5) + Tap to Pay hub (1) +
+Two head-to-head comparisons (2) + Vape shop trade page (1) + MTD guide
+(1) + Home (1).
+
+- **Lever pulled:** AI-search citation engine (lender + terminal + acquirer
+  reviews) + the highest-CPL silo (high-risk) + the hottest-intent
+  switching content. Three citation flywheels start spinning at once.
+- **Monetisation contracts to land in this window:** Trust Payments and
+  PurePay (high-risk acquirer panel, direct), Dojo direct, SumUp Partner
+  direct, Square Partner direct, Awin (covers Tide / Zettle / Capital on
+  Tap), Paymentsense or Take Payments (broker CPL — sign whichever
+  responds first).
+- **Goal at end of Wave 1:** ~22 indexed pages, first AI Overview citations
+  on `/reviews/dojo-go/` and `/vs/sumup-vs-zettle/`, first switching leads
+  off `/switch/cancel-worldpay/`, first high-risk leads off
+  `/high-risk/cbd/` and `/high-risk/vape/`.
+
+### Wave 2 — Days 31–60 (stack high-CPL niches + citation depth)
+**~28 pages.** Remaining 6 high-risk verticals (firearms, gambling, travel
+tour, subscription, nutraceuticals, debt-collection); remaining switching
+guides (Elavon, exit-cost calculator, alternatives listicles); 7 more
+single-model and acquirer reviews; 5 Tap-to-Pay provider sub-pages;
+hospitality hub + 4 sub-verticals (restaurant, pub, cafe, takeaway);
+trade hub + 3 sub-verticals (plumber, electrician, mobile mechanic);
+salon + barber.
+
+- **Lever:** turn each Wave 1 anchor into a cluster — review pages now
+  have comparison support, switching guides now have a calculator,
+  high-risk hub now has 10 verticals.
+- **Monetisation contracts:** Universe Payments and Acquired.com sign
+  off the back of Wave 1 traffic; Stripe Partner Ecosystem application
+  in; first direct CPL conversation with PaymentSense / Worldpay
+  high-risk team.
+- **Goal at end of Wave 2:** ~50 indexed pages, AI citations across all
+  Wave 1 anchors plus Tap-to-Pay hub, first £-tier revenue events from
+  high-risk and switching.
+
+### Wave 3 — Days 61–90 (scale + matrix fill + integrations)
+**~30 pages.** Remaining trade verticals (gardener, locksmith, dog
+groomer, florist, market stall, taxi, etc.); remaining hospitality
+sub-verticals (gastropub, dark kitchen, food truck); retail silo
+expansion; integrations silo (Xero, QuickBooks, Shopify, Phorest,
+Treatwell, Fresha, OpenTable); guides silo build-out (PCI, MTD,
+chargebacks, scheme fees, rental-vs-buy).
+
+- **Lever:** scale + integration content (ranked by buyer-already-chose
+  intent — "best card machine for Fresha users" converts because the
+  buyer already picked Fresha).
+- **Monetisation contracts:** Epos Now (Awin or direct), Lightspeed,
+  Toast, Phorest referral; expand booking-system referral programmes.
+- **Goal at end of Wave 3:** ~80 indexed pages, all Wave 1 high-CPL
+  niches converting at >2% form-fill rate, AI citations weight enough
+  that ChatGPT / Perplexity / Claude routinely cite the site for
+  high-risk + switching queries.
 
 ---
 
 ## 5. Targets
 
-TBD
+Numbers grounded in the deep-dive sizing (£450k/yr high-risk single line,
+£75–200k/yr switching, ~£780k mid-scenario combined annual).
+
+### 90 days
+- **Indexed pages:** 80
+- **Organic traffic:** 8k–15k monthly sessions
+- **AI citations:** 100–250 per month across ChatGPT / Perplexity / Claude
+  / Gemini / Copilot
+- **Form-fill leads (placeholder forms wired late-Wave-2):** 60–150
+  per month
+- **Revenue:** £8k–£25k/month run-rate, dominated by high-risk (50%)
+  and switching (25%)
+
+### 6 months
+- **Indexed pages:** 130
+- **Organic traffic:** 25k–60k monthly sessions
+- **AI citations:** 500–1,200 per month
+- **Form-fill leads:** 250–600 per month
+- **Revenue:** £35k–£75k/month run-rate
+
+### 12 months
+- **Indexed pages:** 155 (the full sitemap built)
+- **Organic traffic:** 60k–150k monthly sessions
+- **AI citations:** 2k–5k per month
+- **Form-fill leads:** 700–1,500 per month
+- **Revenue:** £65k/month low / £105k/month mid / £170k/month high =
+  £780k–£2m/year (matches synthesis sizing)
+- **Stretch:** ISO status with at least one acquirer for £500+/merchant
+  signed economics on a sub-segment of the funnel
 
 ---
 
 ## 6. Schema strategy summary
 
-TBD
+| Page type | Required schema | Notes |
+|---|---|---|
+| Single-model review (`/reviews/[device]/`) | `Product` + `Review` + `AggregateRating` + `FAQPage` + `BreadcrumbList` | The biggest AIO-citation driver. Always include `Person` author with bio + LinkedIn `sameAs`. |
+| Acquirer review (`/reviews/[provider]/`) | `Organization` (the acquirer) + `Review` + `AggregateRating` + `FAQPage` | Same author rule. |
+| Vs comparison (`/vs/a-vs-b/`) | `FAQPage` + `BreadcrumbList` (and `Article`); reference both products via `Product` mention | LLM-citation magnet. |
+| High-risk vertical (`/high-risk/[v]/`) | `Article` + `FAQPage` + `BreadcrumbList`; mention `Service` for acquirer offerings | Use `mainEntity: FAQPage` heavily — it's how AI Overviews lift the answer. |
+| By-trade vertical (`/trade/[t]/`) | `Article` + `FAQPage` + `BreadcrumbList`; embed terminal-recommendation `Product` mentions | Same pattern as high-risk. |
+| Switching guide (`/switch/[acquirer]`) | `HowTo` + `FAQPage` + `BreadcrumbList` | `HowTo` is winning AIO citations for cancel/switch queries. |
+| Calculator / tool (`/switch/exit-cost-calculator/`) | `WebApplication` + `FAQPage` | Tool pages cite well when the schema declares the tool. |
+| Definition / glossary (`/guides/[g]/`, `/glossary/`) | `DefinedTerm` (per glossary entry) inside a `DefinedTermSet` | Pure entity-graph fuel. |
+| Author page (`/authors/[a]/`) | `Person` with `worksFor`, `knowsAbout`, `sameAs` (LinkedIn, X, Trustpilot reviewer) | E-E-A-T anchor. |
+| Methodology (`/methodology/`) | `Article` + `Person` author + cite the testing process | Must exist — gates the credibility of every review. |
+| Organization (sitewide) | `Organization` with `sameAs` to Companies House, LinkedIn, Trustpilot, X | Network of brand sites should resolve this question deliberately — see open Q3. |
 
 ---
 
 ## 7. Open questions / decisions needed
 
-TBD
+1. **Domain.** `cardmachines.co.uk`? `cardterminal.uk`? Confirm what's
+   owned / available before we wire schema and sameAs.
+2. **Hardware testing budget.** ~£1.5k to buy Dojo Go, SumUp Solo,
+   Zettle Reader 2, Square Terminal, Stripe Reader S700, BBPOS WisePOS E
+   for first-hand reviews. Yes / no? Without it, AI-search citation
+   moat is much weaker — competitors who can claim "we tested" win.
+3. **Cross-site Organization schema.** Single parent org with all six
+   brand sites declared as `subOrganization`, or six fully-separate
+   `Organization` entities? This affects how AI search treats the
+   network.
+4. **Trust Payments + PurePay outreach this week — yes?** Both want to
+   see traffic before signing direct CPL — chicken-and-egg. Either we
+   defer the conversation 60 days, or pre-pitch with the build plan
+   and the first 4 high-risk pages live as a portfolio.
+5. **Trustpilot Business plan from day one?** £200/mo. Required to embed
+   review widgets with `AggregateRating` schema that AI Overviews lift.
+   Free / public-API workaround possible but uglier.
+6. **Named author hire — same person across all three sites, or one per
+   site?** Same person = simpler E-E-A-T story; one per site = cleaner
+   entity separation. Decision affects the brand-graph schema choice.
+7. **Booking-system integration depth.** Confirm budget for affiliate
+   conversations with Treatwell, Fresha, Phorest, OpenTable. Each is
+   a Wave 3 page; without affiliate access they're pure citation plays.
+8. **Should Tap to Pay on iPhone get its own micro-domain in the
+   Fleet (e.g. `tappay.uk`)?** It's growing fast and may be cleaner as
+   a satellite property — open question, default is keep on
+   CardMachines for now.

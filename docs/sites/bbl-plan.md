@@ -638,28 +638,249 @@ Each review uses the schema stack: `Review` + `AggregateRating` +
 
 ## 5. Build sequence
 
-TBD
+Three waves, ~90-day horizon, 50+ pages indexed by Day 90.
+
+### Wave 1 (Days 0–30) — citation foundation (15 pages)
+
+The wedge. Establishes BBL as a real, dated, methodology-led review
+site so AIO and ChatGPT/Perplexity start treating it as citable. Hits
+the persona-axis vacuums (halal, women-led, post-decline) where there
+is zero editorial competition, and ships four anchor lender reviews
+to back the methodology page's "we tested 14 lenders" claim.
+
+Pages:
+
+- Trust anchors: `/methodology/`, `/about/`, `/authors/[lead-author]/` (3)
+- Halal hub + sub-pages: `/halal/`, `/halal/best-sharia-business-loans-uk-2026/`, `/halal/qardus-review/`, `/halal/sharia-finance-explained/` (4)
+- Women-led hub + sub-pages: `/women/`, `/women/best-loans-female-founders-2026/`, `/women/grants-vs-loans/` (3)
+- Post-decline editorial layer: `/declined/`, `/declined/business-loan-rejected-what-next/`, `/declined/best-lenders-after-decline-2026/` (3)
+- Anchor lender reviews: `/reviews/funding-circle/`, `/reviews/iwoca/`, `/reviews/liberis/`, `/reviews/youlend/` (4)
+- Head-term flag-plant: `/best/business-loans-uk-2026/` (1)
+
+Total Wave 1: 18 pages (slightly above the 15-page floor — the trust
+anchors are essential and inexpensive). FundBiz cross-link CTAs live
+on every commercial page from day one even if FundBiz funnel isn't
+yet form-wired (placeholder URLs in place).
+
+### Wave 2 (Days 31–60) — fill the grid (22 pages)
+
+Eight more lender reviews (round the cohort to 12), four head-to-heads
+(the SERP slots that pair with the reviews), six sector listicles
+(industry axis), the glossary hub + first 20 definitions.
+
+Pages:
+
+- 8 lender reviews: `/reviews/capify/`, `/reviews/fleximize/`, `/reviews/allica-bank/`, `/reviews/capital-on-tap/`, `/reviews/tide-loans/`, `/reviews/starling-business-loan/`, `/reviews/365-business-finance/`, `/reviews/gatehouse-bank/` (8)
+- 4 head-to-heads: `/vs/funding-circle-vs-iwoca/`, `/vs/capify-vs-liberis/`, `/vs/iwoca-vs-capital-on-tap/`, `/vs/tide-vs-starling-loans/` (4)
+- 6 sector listicles: `/by-sector/hospitality/`, `/by-sector/restaurants/`, `/by-sector/ecommerce/`, `/by-sector/recruitment/`, `/by-sector/construction/`, `/by-sector/beauty-salons/` (6)
+- Glossary launch: `/glossary/` hub + 20 definition entries (21)
+- Second author: `/authors/[second-author]/` (1)
+
+Total Wave 2: 40 pages (cumulative ~58). The glossary is heavy on
+count but each entry is a focused 400–600-word definition page —
+batchable in a 2-week sprint.
+
+### Wave 3 (Days 61–90) — scale persona, products, and reach 60+ indexed
+
+Persona axis broadens; product axis hubs ship; six more lender
+reviews; expand glossary to 40 entries; ship the three pillar guides.
+
+Pages:
+
+- 6 more lender reviews: `/reviews/qardus/`, `/reviews/oaknorth/`, `/reviews/funding-options/`, `/reviews/capitalise/`, `/reviews/swoop-funding/`, `/reviews/rangewell/` (6)
+- Persona axis: `/by-persona/sole-traders/`, `/by-persona/limited-companies/`, `/by-persona/ethnic-minority-founders/`, `/by-persona/franchisees/`, `/by-persona/charities-and-cics/`, `/by-persona/established-businesses/`, `/by-persona/start-ups/` (7)
+- Product hubs: `/by-product/no-personal-guarantee/`, `/by-product/merchant-cash-advance/`, `/by-product/revenue-based-finance/`, `/by-product/asset-finance/`, `/by-product/secured-business-loans/`, `/by-product/unsecured-business-loans/` (6)
+- 6 more sector listicles: dental, gyms, transport, pubs/bars, hotels, manufacturing (6)
+- 3 pillar guides: `/guides/business-loans-uk/`, `/guides/business-loan-rates-2026/`, `/guides/business-loan-calculator/` (3)
+- 5 more guides: secured-vs-unsecured, PGs explained, GGS, Start Up Loans, Bank Referral Scheme (5)
+- 3 declined sub-pages: with-CCJ, bad-credit, missed-payments (3)
+- Glossary: 20 more entries (20)
+- Second halal review: `/halal/gatehouse-bank-review/` (already in /reviews/, mirror page) (1)
+
+Total Wave 3: 57 pages. Cumulative target: 50–60 indexed by Day 90
+(allowing for indexing lag — total written ~115, indexed ~60).
 
 ---
 
 ## 6. Targets
 
-TBD
+BBL is the trust / citation layer. Most of the network revenue it
+drives is booked at FundBiz, not at BBL — call this out explicitly
+when reporting numbers.
+
+| Metric | 90 days | 6 months | 12 months |
+|---|---|---|---|
+| **Indexed pages** | 50–60 | 80 | 100 |
+| **Organic traffic / month** | 3k–6k | 15k–25k | 50k–80k |
+| **AI citations / month** (Perplexity, ChatGPT, Claude, Gemini, Google AIO) | 50–100 | 300–600 | 1.5k–3k |
+| **Direct revenue (BBL-booked, Awin + direct CPL on review pages)** | £1k–£3k | £8k–£15k | £30k–£75k |
+| **Cross-link contribution to FundBiz revenue** (BBL-attributed clicks into FundBiz funnel × FundBiz CPL) | £5k–£15k | £40k–£90k | £150k–£300k |
+| **Total economic contribution (BBL direct + FundBiz attributable)** | £6k–£18k | £48k–£105k | £180k–£375k |
+
+**How to read the numbers.**
+
+- BBL's direct revenue (£30k–£75k by month 12) is small — it sits at
+  ~6% of network mid-scenario per `synthesis.md` §2. That's expected.
+- BBL's real value is the cross-link contribution. At a credible 30–40%
+  attribution of FundBiz revenue (per `synthesis.md` §2), BBL's
+  economic contribution at month 12 is £150k–£300k+.
+- AI citations are the leading indicator. If month 6 hits 300+ AI
+  citations/month, the BBL → FundBiz handoff is working. If it
+  doesn't, the methodology page and named-author entity strength need
+  rework before the persona axis scales.
+- The 50-page indexed target by month 3 is consistent with the
+  network 30/60/90 plan in `synthesis.md` §5 (BBL: 16 pages by Day
+  90 in that plan; this plan adds the glossary scale layer to push
+  to 50–60).
+
+**KPIs the editorial team owns:**
+
+- Citations per page (Perplexity citation count via Otterly / Profound)
+- `dateModified` freshness (every priority page refreshed within 90 days)
+- Trustpilot widget pull-in live across the lender review programme
+- Methodology link present on every review and listicle
 
 ---
 
 ## 7. Schema strategy summary
 
-TBD
+One sentence per page type — JSON-LD templates and validation harness
+are a separate follow-up brief (`bbl.md` §9 q9).
+
+- **Review (single lender review page):** `Review` with `itemReviewed`
+  → `FinancialProduct` (lender's loan product, with APR range, min/max
+  amount, term), `author` → `Person`, `reviewRating`, `datePublished`,
+  `dateModified`, plus `AggregateRating` for the BBL editorial score
+  visible in the rating box.
+- **AggregateRating (review pages and lender hubs):** Used for both
+  the BBL editorial rating (numerical and visible in UI) and any
+  pulled-in third-party rating (Trustpilot) — visible numbers must
+  match exactly to avoid spam-policy penalties.
+- **FAQPage (every review, listicle, guide):** 6–10 question/answer
+  pairs lifted verbatim from PAA (don't paraphrase) — the
+  highest-citation schema type per 2026 Ahrefs / ALM Corp data.
+- **Article (guides + glossary entries + post-decline editorial):**
+  `Article` with `author` → `Person`, `headline`, `dateModified`,
+  `articleSection` → silo name; mainEntity FAQ where applicable.
+- **Person (every author byline):** `Person` with `sameAs` to
+  LinkedIn + prior bylines (Sifted, Real Business, Money Marketing,
+  City AM ideal); `jobTitle`, `worksFor` → BBL Organization.
+- **Organization (BBL itself, on every page):** `Organization` with
+  `name`, `url`, `logo`, `editorialPolicy` → `/methodology/`,
+  `disclosure` mentioning the FundBiz commercial relationship; one
+  decision pending on parent-org schema disclosure (see §9 q3).
+- **BreadcrumbList (every page):** Consistent silo-shape breadcrumbs;
+  feeds AIO's structural understanding of the site.
+- **FinancialProduct (lender review pages):** Per-lender product —
+  loan name, APR range, min/max amount, term, fees — pulled into the
+  `Review` itemReviewed.
 
 ---
 
 ## 8. Editorial / E-E-A-T checklist
 
-TBD
+Every page must satisfy this checklist before it ships. Run through
+it as a launch gate; if any item is missing, the page goes back.
+
+- [ ] **Named author** with bio + headshot + Person schema; byline
+  links to `/authors/[name]/`.
+- [ ] **Methodology link** in the body — every review and listicle
+  links to `/methodology/` ("How we test" link near the rating box).
+- [ ] **Last-updated date** visible in the UI ("Last updated: 25
+  April 2026") and matching `dateModified` in schema; `Next review
+  due` date also visible.
+- [ ] **Primary research / first-hand testing claim** — the review
+  states what we actually tested ("we submitted a £50k application
+  on 14 April and received a decision in 23 hours"); the listicle
+  states the cohort tested.
+- [ ] **Source citations** — at least 3 named external sources per
+  long-form page (Bank of England base rate, UK Finance figures, ONS
+  data, Trustpilot, Companies House records, FCA register, British
+  Business Bank publications). Cite inline with linked anchor text.
+- [ ] **Disclosure of commercial relationships** — sister-site
+  disclosure on every commercial CTA ("Compare lenders via our sister
+  site FundBiz — we may earn a commission"); standard financial-
+  promotion disclosure per `regulatory-notes.md`.
+- [ ] **Question-form H2s** mirroring PAA verbatim — at least 4 per
+  long-form page.
+- [ ] **Direct-answer summary** — 60–80-word block under H1 (AIO
+  hook).
+- [ ] **Comparison table** (on listicles and head-to-heads) with
+  consistent columns: APR / amount / term / fees / our rating.
+- [ ] **Trustpilot pull-in** on lender review pages (live widget once
+  Business plan procured).
+- [ ] **Internal links upward** to silo pillar; **laterally** to
+  related listicle / review; **outward** to FundBiz application
+  surface via standard CTA pattern.
+- [ ] **Schema validation passed** — Rich Results Test green for
+  Review / FAQPage / AggregateRating / Article as applicable.
 
 ---
 
 ## 9. Open questions / decisions
 
-TBD
+Open from the deep-dive (`bbl.md` §9) plus new ones surfaced by this
+plan. Decisions blocking Wave 1 must clear by end of Week 2.
+
+1. **Named author hire — go/no-go this week.** Wave 1 cannot ship
+   without a real, LinkedIn-verifiable byline. Recommendation: hire
+   one named lead author (UK fintech / SMB journalism background) +
+   a freelance second by Wave 2. (Ref `bbl.md` §9 q1; `synthesis.md`
+   §6 #2; this plan Wave 1.)
+2. **Trustpilot Business plan — buy or workaround?** Wave 1 has 4
+   review pages live; widget licensing wanted by Day 21. (`bbl.md`
+   §9 q2.)
+3. **Cross-site editorial-independence schema.** Separate
+   Organization graphs with shared parent disclosure, OR fully
+   separate brand graphs treating cross-links as standard external
+   links? Decide before any review page ships. (`bbl.md` §9 q3;
+   `synthesis.md` §6 #5.)
+4. **Sharia-compliant scholar review.** External Islamic-finance
+   scholar engaged for `/halal/qardus-review/`, `/halal/sharia-finance-explained/`,
+   `/halal/best-sharia-business-loans-uk-2026/`? Cost vs trust-signal
+   trade-off — recommendation is yes, budget ~£800–£1,500. (`bbl.md`
+   §9 q5.)
+5. **CDFI partnership commercials** for `/by-persona/ethnic-minority-founders/`
+   (BCRS, GC Business Finance, SWIG, Let's Do Business). Authority-only
+   content vs grant-funded partnership? Affects whether the page ships
+   in Wave 3 or slips. (`bbl.md` §9 q6.)
+6. **Methodology rigour.** Confirm internal protocol: do we submit
+   real ltd-co applications to all 14 lenders before any review page
+   ships, or stagger applications across Waves 1–2? Waves 1–2 staggered
+   is the practical answer; document this on `/methodology/`.
+   (`bbl.md` §9 q7.)
+7. **CMS dateModified workflow.** Confirm CMS visibly stamps
+   `Last-updated` and `Next-review-due` and syncs to `dateModified`
+   schema. Block Wave 1 review pages without this. (`bbl.md` §9 q8.)
+8. **Schema templates and validation harness.** Follow-up brief
+   defining JSON-LD per page type; needed by Wave 1 review build.
+   (`bbl.md` §9 q9; `synthesis.md` §6 #18.)
+9. **Persona-axis ordering — confirmed?** Halal first (Wave 1),
+   women-led parallel (Wave 1), ethnic-minority third (Wave 3 — gated
+   on CDFI commercials). (`bbl.md` §9 q10.)
+10. **Trustpilot for BBL itself.** Seed from FundBiz post-funding
+    survey ("did our BBL review match your experience?") — confirm
+    survey copy and timing. (`bbl.md` §9 q11.)
+11. **Multilingual confirmation.** Sharia in Urdu / Arabic and
+    Polish-builder loan content route to **Fleet** microsites, not
+    BBL. Document explicitly in style guide so writers don't drift.
+    (`bbl.md` §9 q12; `niche-brief.md` Fleet rules.)
+12. **`/glossary/` velocity.** 20 entries in Wave 2 needs a
+    template-driven content sprint — confirm freelance writer
+    bandwidth or batch them with the lead author over 2 weeks.
+    (New question — surfaced by this plan.)
+13. **Reviews vs head-to-heads URL pattern.** `/vs/funding-circle-vs-iwoca/`
+    sits as a sub-silo of `/reviews/` in IA but is a top-level URL
+    pattern. Confirm: keep as `/vs/...` (current plan) or canonicalise
+    to `/reviews/vs/...`? Recommendation: keep `/vs/...` — cleaner for
+    direct-match SEO. (New.)
+14. **FundBiz CTA URL conventions.** Brief assumes
+    `?route=sharia`, `?lender=funding-circle`, etc. — confirm FundBiz
+    accepts these query params and pre-fills its eligibility checker
+    accordingly. (New — gates the cross-link CTA pattern.)
+15. **FCA voluntarily for BBL.** Per `regulatory-notes.md`, BBL is
+    pure editorial and outside the FCA perimeter. Confirm BBL never
+    sees a form or a pre-filled funnel hand-off that pulls it into the
+    broker chain. (Cross-link CTAs that pre-fill applicant data on
+    FundBiz are the risk surface — confirm with counsel before
+    launch.)
