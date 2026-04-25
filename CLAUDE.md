@@ -1,9 +1,11 @@
 # Project Preferences
 
 ## Communication Style
-- When writing instructions, messages, or guides for Adam to send to someone or follow himself, always write them out FULLY — complete copy-paste ready text with every step spelled out. No placeholders like "[do this]" — write the actual words, URLs, and commands.
-- When listing domains or tasks, use tables and numbered steps so they can be followed without thinking.
+- When writing instructions, messages, or guides for Adam to send to someone or follow himself, always write them as a file (markdown) so they can be copied in full. Never just put them in chat text.
+- Write them out FULLY, complete copy-paste ready text with every step spelled out. No placeholders like "[do this]", write the actual words, URLs, and commands.
+- When listing domains or tasks, use numbered steps so they can be followed without thinking.
 - Always include verification steps (how to check it worked).
+- Never use em dashes. Use commas or full stops instead.
 
 ## Technical Stack
 - Sites are built on **Astro** (not WordPress)
