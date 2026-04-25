@@ -180,7 +180,9 @@ newest first, with a table of contents at the top.
   long-term (9+ months) — one sentence on why
 - **Commercial path:** at least two named providers / lenders / acquirers
   who'd pay for the lead, with rough commission tier (£CPL band or
-  rev-share)
+  rev-share). Cross-check against `docs/route-to-market.md` and name
+  the affiliate route (Awin, Impact, direct in-house, direct CPL deal,
+  etc.) so we know exactly how the lead converts to revenue.
 - **Underserved why:** the specific gap incumbents are missing
 - **Site assignment:** BBL / FundBiz / CardMachines / MarketInvoice /
   SEOCompare / WebsiteCo / FLEET / NEW SITE — one-sentence
