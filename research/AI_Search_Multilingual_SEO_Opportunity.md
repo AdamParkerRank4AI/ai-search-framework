@@ -461,6 +461,121 @@ The framework is the same wherever you point it: pick the diaspora, find their c
 
 ---
 
+## 14. Covering all three — when the play is mostly SEO + Google AI Overviews
+
+You're right that this is realistically a **Google-led play** for vernacular UK content. Google AI Mode handles Hindi/Punjabi/Gujarati natively and respects `hreflang` + `<html lang>`. ChatGPT, Perplexity and Claude default to English sources even when the query and answer are in another language — they're a smaller, less reliable channel. But the marginal cost of also covering them is low if you've already done the Google work, and the **brand-mention upside** in AI answers is real even without clicks.
+
+### Realistic effort split
+
+| Channel | Share of effort | Why |
+|---|---|---|
+| Google (classic SEO + AI Overviews + AI Mode) | **~70%** | Largest audience, best language handling, respects all your signals, returns clicks. |
+| Microsoft (Bing + Copilot) | **~15%** | Free wins; Bing handles multilingual properly; Copilot inherits it. Most of the work is already done. |
+| ChatGPT / Perplexity / Claude | **~15%** | Defaults to English, smaller share of vernacular search, but generates brand mentions in answers. Worth doing for visibility, not for traffic. |
+
+### What you do *once* that covers all three
+
+These are signals every modern AI search system reads. Doing them gives you Google + Bing + LLMs together:
+
+1. **Native-quality content in target language**, answer-first, in the top 30% of every page. (Highest single-factor signal across all three.)
+2. **The five language tags** from §11: `<html lang>`, hreflang, `Content-Language` header, JSON-LD `inLanguage`, `og:locale`.
+3. **JSON-LD schema** on every page: `Article`, `FAQPage`, `HowTo`, `LocalBusiness`, `Product` — with all string fields in the target language. **LLMs read JSON-LD heavily.** This is the single biggest "covers all three" signal that most sites skip.
+4. **Topical cluster** of 8–12 interconnected pages, internally linked with native-language anchor text.
+5. **Real URL-based language switcher** (no JS-only translation, no auto-redirect).
+
+### What's specific to Google AI Overviews + classic SEO
+
+- `hreflang` cluster, bidirectional, plus `x-default`. (Critical for Google; ChatGPT ignores it.)
+- Search Console set up per language version, sitemaps with `<xhtml:link>` annotations.
+- `LocalBusiness` schema with UK address, UK phone, named UK case studies.
+- Google Business Profile in the local language (you can set the primary language of a GBP listing).
+- Internal linking from your strongest existing English pages into the new vernacular cluster.
+- Backlinks from UK trade press (Asian Trader, Better Retailing, Convenience Store, ACS).
+
+### What's specific to Bing + Copilot
+
+Mostly piggybacks on the Google work, but worth ten minutes:
+
+- **Bing Webmaster Tools** — submit the site, submit each language sitemap separately. Bing supports hreflang and uses it.
+- **IndexNow** — Bing-led protocol for instant URL submission. If you're on Cloudflare or a modern CMS, it's a one-click toggle.
+- **LinkedIn presence** in target language. Bing/Copilot weight LinkedIn content heavily.
+
+### What's specific to ChatGPT, Perplexity and Claude
+
+This is where the work is genuinely different. These LLMs don't respect `hreflang`, they detect language from content/URL/schema, and they retrieve heavily from a small set of trusted aggregators. So:
+
+1. **Allow the bots in `robots.txt`.** This is the single most missed step. Don't block them or you get zero exposure.
+   ```
+   User-agent: GPTBot
+   Allow: /
+
+   User-agent: ChatGPT-User
+   Allow: /
+
+   User-agent: OAI-SearchBot
+   Allow: /
+
+   User-agent: PerplexityBot
+   Allow: /
+
+   User-agent: Perplexity-User
+   Allow: /
+
+   User-agent: ClaudeBot
+   Allow: /
+
+   User-agent: Claude-Web
+   Allow: /
+
+   User-agent: Google-Extended
+   Allow: /
+
+   User-agent: Applebot-Extended
+   Allow: /
+   ```
+   `Google-Extended` controls whether Gemini training and AI Overviews can use your content; `Applebot-Extended` does the same for Apple Intelligence. If you want to *opt out* of training but still appear in answers, you need a more nuanced setup — but for a publisher trying to be cited, allow all of them.
+
+2. **Ship an `llms.txt` file** at `yoursite.co.uk/llms.txt`. Emerging convention (~2025) — a curated map of your site's content for LLMs, in plain English. Even where it's not formally honoured, it's harmless and well-structured pages get cited more often. List your pillar pages and a one-line summary of each.
+
+3. **URL slugs in target language**, or transliterated Roman script. LLMs use the URL as a strong language hint when they don't read hreflang.
+
+4. **JSON-LD `inLanguage` on every entity.** Cannot stress this enough — this is how ChatGPT/Perplexity infer the page's language when they parse structured data.
+
+5. **Get into the aggregators LLMs retrieve.** For UK SME niches in vernacular languages:
+   - **Reddit** — diaspora subs (r/sikh, r/IndiansInUK, r/PolesInTheUK, r/london), niche subs (r/UKPersonalFinance, r/CasualUK, r/sysadmin if relevant). Reddit is heavily retrieved by ChatGPT, often without citation — but the brand mention still seeds the model's "associations". Post in target language where the sub allows.
+   - **Wikipedia** — only where genuinely relevant. Cite your source pages from existing Wikipedia articles where editors agree it's appropriate.
+   - **YouTube** — short native-language explainers (60–180s) with auto-generated captions in the same language. AI Overviews cites YouTube transcripts; LLMs increasingly index them.
+   - **Quora** in target language (yes, it still gets retrieved).
+   - **Trade press digital**: Asian Trader, Better Retailing, Convenience Store, Caterer, MotorTrader. A single quote in a trade article gives you brand-entity reinforcement across all three platforms.
+   - **Local trade-association directories**: ACS (corner shops), NFRN (newsagents), British Takeaway Campaign, NRLA (landlords).
+
+6. **English shadow page in the same cluster.** Because ChatGPT/Perplexity default to English, having a parallel English page (`/card-terminals` mirroring `/pa/card-terminals`) gives the LLM a path to cite *you* even when it ignores the vernacular version. The English page rides on the same brand entity. This is the highest-leverage single thing you can do specifically for ChatGPT/Perplexity.
+
+7. **Brand mentions, not just backlinks.** LLMs weight unlinked brand mentions almost as heavily as linked ones. PR placements that name the brand without linking still help.
+
+8. **Lead with the answer.** First 30% of the page = 44% of LLM citations (Zyppy 2025). FAQ block above the fold, with the question as a heading and a 1–2 sentence answer.
+
+### Per-platform monitoring (10 minutes a week)
+
+Run the top 20 vernacular queries from a UK IP, weekly, and screenshot:
+
+| Platform | What to capture |
+|---|---|
+| Google Search (vernacular query, UK IP) | AIO box appears? Are you cited? Position in 10 blue links? |
+| Google AI Mode (vernacular query, UK IP) | Are you cited? Is the answer in the right language? |
+| Bing Search → Copilot | Same as Google. |
+| ChatGPT (web search on, UK IP) | Are you cited inline? Is the answer in target language or English? |
+| Perplexity (UK IP) | Are you in the source list? |
+| Claude (with web search) | Are you cited? |
+
+Track over 12 weeks. The pattern reveals which channel actually returns value for your niche, and you can re-allocate effort.
+
+### One-line summary
+
+The vernacular play is **Google-first by design**, **Bing free-ride**, and **LLMs as a brand-mention layer**. Native content + the five language tags + schema + an English shadow page covers all three with one production cycle.
+
+---
+
 ## Sources
 
 - [How Google's AI Overviews Are Changing SEO In 2026 — EnFuse Solutions](https://www.enfuse-solutions.com/how-googles-ai-overviews-are-changing-seo-in-2026/)
