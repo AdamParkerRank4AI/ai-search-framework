@@ -278,6 +278,189 @@ How each platform actually uses these:
 
 ---
 
+---
+
+## 12. The basic plan — read this first
+
+Plain-English playbook. If you only read one section, read this one.
+
+### Step 1 — Pick the target before you build anything
+
+Pick **one** language × one country × one niche to start. Do not start with three. Filter:
+
+- Audience is **first-generation, not English-confident**, and is the actual buyer (not their kid).
+- Concentrated in **3–10 known towns or postcodes** so geo-signals are easy.
+- English SERP is dominated by **3+ big national brands** you can't outrank in English.
+- Topic involves **money, regulation or contracts** where mistakes cost real money — that's what makes the user actually search.
+
+Example: "UK + Punjabi + card terminals for corner shops" passes all four. "UK + French + general accountancy" fails — French speakers in the UK skew professional and English-fluent.
+
+### Step 2 — Decide pages vs site
+
+There are three realistic shapes. Pick one.
+
+| Shape | When to pick it | Effort |
+|---|---|---|
+| **A. Subfolder on an existing English site** — e.g., `yoursite.co.uk/pa/...` | You already have a site with some authority you want to extend. Cheapest, fastest, best link equity. **Default choice.** | Low |
+| **B. Standalone vernacular brand** — e.g., `punjabicardterminals.co.uk` | You want a pure-play, no English baggage, sharper brand for the audience. Slower to build authority but cleaner positioning. | Medium |
+| **C. Subdomain** — e.g., `pa.yoursite.co.uk` | Only if you genuinely need separate tech/CMS per language. Otherwise don't bother. | Medium |
+
+**Don't** use a foreign country domain (`.in`, `.pk`) — that signals India/Pakistan, not the UK. Always `.co.uk` for a UK audience.
+
+### Step 3 — Decide what to translate (NOT the whole site)
+
+Translate the **commercial cluster** that the audience actually buys from. Leave the rest in English.
+
+A cluster is roughly **8–12 interconnected pages**:
+
+- 1 pillar page: "Card terminals for UK corner shops" (in Punjabi)
+- 4–6 commercial pages: pricing, contracts, contactless limits, EPOS integration, chargebacks, terminal failure
+- 4–6 informational/FAQ pages: PCI-DSS in plain Punjabi, refunds, what is a chargeback, etc.
+
+Don't translate your About page, investor page, blog archive. Waste of money.
+
+### Step 4 — Same page twice in different languages? Yes — that's the model
+
+This is exactly how multilingual sites work. You have:
+
+- `yoursite.co.uk/card-terminals` (English)
+- `yoursite.co.uk/pa/card-terminals` (Punjabi version of the same thing)
+- `yoursite.co.uk/hi/card-terminals` (Hindi version)
+
+These are **not duplicate content** as far as Google is concerned, *as long as the body is genuinely translated*. They link to each other via hreflang, each has its own self-canonical, and each ranks in its own language. This is the standard pattern.
+
+Critical rules:
+
+- Each version has a **self-canonical** (`/pa/card-terminals` canonicalises to itself, NOT to the English page). Pointing canonicals back to English deindexes the translated versions — common, fatal mistake.
+- All versions reference each other via `hreflang` in the `<head>` and in the sitemap.
+- Each version has its own `<html lang="...">` set correctly.
+- You don't need 1:1 page parity. It's fine if the English site has 200 pages and the Punjabi cluster has 12. Map the 12 to their English equivalents and that's enough.
+
+### Step 5 — Language switcher? Yes, but build it the right way
+
+You DO want a visible "EN | ਪੰਜਾਬੀ | हिन्दी" switcher in the header — it's good UX and a strong language signal. But how you implement it matters a lot:
+
+**Do this:**
+
+- The switcher is a set of **actual links** to actual translated URLs (`/en/card-terminals`, `/pa/card-terminals`, `/hi/card-terminals`).
+- Clicking it changes the URL. The new page is genuinely indexed and crawlable.
+- Remember the user's choice in a cookie so they don't have to pick again next visit.
+- Auto-suggest a language based on `Accept-Language` header *with* their permission, but never auto-redirect — Google's John Mueller has repeatedly said auto-redirect on language breaks crawling.
+
+**Don't do this:**
+
+- ❌ **Google Translate widget** — JavaScript translation that doesn't change the URL. Search engines and LLMs see the original English page only. Zero ranking benefit. Looks like effort but does nothing.
+- ❌ Any **client-side JS translation** for the same reason.
+- ❌ **Auto-redirect** based on IP or browser language — confuses crawlers, traps users in the wrong version.
+- ❌ A **single page that toggles language with a button** but keeps the URL the same. The translated version is invisible to search.
+
+Test: visit your translated page in Chrome incognito with JS disabled. If the translated text is gone, your switcher is broken for SEO and AI search. The translation has to be in the HTML the server returns, not injected by the browser.
+
+### Step 6 — Translate everything on the translated page
+
+On every translated page, translate:
+
+- Body, headings, title tag, meta description, URL slug, image alt text, schema (especially `inLanguage`), Open Graph, breadcrumbs, internal anchor text, form labels, button text, T&Cs link text.
+
+Keep the entity data canonical (UK address, GBP, UK phone). You're "UK in Punjabi", not "Punjab in Punjabi".
+
+### Step 7 — Ship the five language signals
+
+On every translated page, all of these:
+
+1. `<html lang="pa-GB">`
+2. `<link rel="alternate" hreflang="pa-GB" href="...">` cluster, bidirectional, plus `x-default`
+3. `Content-Language: pa-GB` HTTP header
+4. JSON-LD schema with `"inLanguage": "pa-GB"`
+5. `<meta property="og:locale" content="pa_IN">` (use `pa_IN` because OG locales don't take GB-suffixed Punjabi cleanly; the other four signals carry the UK targeting)
+
+Plus sitemap.xml entries with `<xhtml:link rel="alternate" hreflang="...">` annotations.
+
+### Step 8 — Hire a native writer, not a translator
+
+Machine translation is detectable and down-ranked by Google AI Mode. A "translator" who works word-by-word produces stiff text. You want a **native speaker who lives in the UK diaspora context** — someone who knows the audience says "card machine" and "PDQ" and not the textbook word for "payment terminal". For Punjabi specifically, decide which script (Gurmukhi vs Shahmukhi) up front based on audience research — Sikh-heritage UK Punjabi audiences mostly read Gurmukhi.
+
+Plan for **Hinglish/Punglish/Romanised script**: many users type "card machine kitne ka hai" in Roman letters. Cover both the script version and a transliterated Roman version of high-value keywords.
+
+### Step 9 — Get listed where AIs actually look
+
+Google AI Overviews and ChatGPT both heavily retrieve from a small set of trusted aggregators. For UK SME niches, get presence on:
+
+- Asian Trader, Better Retailing, Convenience Store (trade press)
+- Reddit (r/CasualUK, r/UKPersonalFinance, niche subs) — even short comments help
+- Wikipedia (where genuinely relevant)
+- Local trade directories
+- YouTube — short native-language explainers; AI Overviews increasingly cite video transcripts
+
+### Step 10 — Measure the right things
+
+Don't just track sessions. Track:
+
+- AI Overview impressions / clicks (Search Console)
+- Brand mentions in ChatGPT, Perplexity and Google AI Mode answers — run the top 20 vernacular queries weekly from a UK IP and screenshot
+- Click-through rate on translated SERP snippets (low CTR = title/meta need work)
+- Conversion rate vs the English version
+
+**Time horizon:** first AIO appearances on long-tail vernacular queries in 4–8 weeks. Meaningful traffic in 3–6 months. Real moat in 9–12 months.
+
+---
+
+## 13. Target list — language × audience × niches
+
+Don't be precious about stereotyping; this is straight from ONS, ACS and trade-association data on who actually owns what kind of UK business. Pick combos where **all three** boxes are true: (1) audience is concentrated, (2) operator is first-generation, (3) topic is regulated/financial/contractual.
+
+### UK — primary targets
+
+| # | Language | Audience | Where in UK | Niches worth targeting |
+|---|---|---|---|---|
+| 1 | **Punjabi (Gurmukhi)** | Sikh-heritage corner-shop, off-licence, taxi, transport owners | Southall, Hounslow, Wolverhampton, Birmingham (Handsworth), Glasgow, Bradford, Leicester (Belgrave) | Card terminals, EPOS, off-licence/premises licence, alcohol & tobacco wholesale, lottery terminal, taxi PHV licensing, business insurance, MTD/VAT, refrigeration finance |
+| 2 | **Hindi (Devanagari)** | Indian-origin corner-shop, pharmacy, restaurant, motel/B&B owners | Wembley, Harrow, Leicester, Croydon, Manchester | Card terminals, EPOS, pharmacy compliance, NHS contracting, food hygiene, premises licence, business banking, commercial mortgages |
+| 3 | **Gujarati** | Newsagent, off-licence, post-office, jewellery, pharmacy owners (large historic UK community) | Leicester, Wembley, Harrow, Bolton, North London | Newsagent supply, post-office sub-postmaster compliance, jewellery hallmarking, pharmacy ownership, card terminals, business insurance |
+| 4 | **Urdu (Shahmukhi script)** | Pakistani-origin taxi, restaurant, mini-mart, halal butcher, takeaway owners | Bradford, Birmingham (Sparkbrook), Manchester (Rusholme), Luton, East London | Taxi PHV licensing, halal certification, food hygiene, takeaway compliance, business insurance, money-service-business compliance |
+| 5 | **Bengali** | Bangladeshi-origin restaurant (curry house), mini-mart owners | Tower Hamlets, Camden, Oldham, Luton | Restaurant compliance, EHO food hygiene, alcohol licence, employment law (kitchen staff), business banking |
+| 6 | **Tamil** | Sri Lankan-origin convenience store, takeaway, pharmacy, accountancy SMEs | Wembley, Tooting, East Ham, Croydon | Convenience-store ops, pharmacy ownership, accountancy practice setup |
+| 7 | **Polish** | Tradespeople, mechanics, beauticians, food shop owners, cleaners | Ealing, Hammersmith, Slough, Boston (Lincs), Crewe, Northampton, Southampton | CIS/self-assessment, van insurance, MOT/garage compliance, public liability, food hygiene, payroll for 1–3 staff, building regs basics |
+| 8 | **Romanian** | Self-employed builders, car-wash operators, drivers | Harrow, Edmonton, Wood Green, Luton, Wembley | Self-employed registration, UTR, banking with limited credit history, car-wash compliance, CIS |
+| 9 | **Bulgarian** | Drivers, cleaners, small builders | Same areas as Romanian, plus Reading, Slough | Self-employed registration, ride-hail onboarding, cleaning-business setup |
+| 10 | **Turkish / Kurdish (Kurmanji)** | Kebab shops, barbers, mini-marts, bakers | Haringey, Enfield (Green Lanes), Hackney, Lewisham | Catering insurance, EHO food hygiene, barber/salon licensing, premises licence, EPOS for restaurants |
+| 11 | **Mandarin (Simplified)** | Takeaways, Chinese supermarkets, freight forwarders, property landlords | Manchester, Birmingham, Soho, Cricklewood, Cambridge | Restaurant compliance, supplier wholesale accounts, Alipay/WeChat Pay UK acceptance, employment law for sponsored workers, freight forwarding compliance |
+| 12 | **Cantonese / Traditional Chinese** | Older Hong Kong–origin restaurant and takeaway owners | Soho, Manchester Chinatown, Birmingham, Newcastle | Same as Mandarin but cultural language preference for older operators |
+| 13 | **Vietnamese** | Nail-bar owners, bakers (banh mi shops), small restaurants | Hackney, Deptford, Croydon, Birmingham | Salon insurance, COSHH compliance, lease assignments, EHO food hygiene |
+| 14 | **Korean** | Restaurants, beauty stores, K-pop retail | New Malden, central London | Restaurant compliance, import paperwork, EPOS, employment law |
+| 15 | **Arabic (Modern Standard / Levantine / Maghrebi)** | Restaurants, shisha lounges, halal butchers, mini-marts, money-transfer | Edgware Road, Whitechapel, Birmingham (Alum Rock), Manchester (Rusholme) | Halal certification, shisha licensing, money-service-business compliance, restaurant compliance |
+| 16 | **Somali** | Mini-cab firms, mini-marts, money-transfer (hawala-related), cafes | Whitechapel, Streatham, Tower Hamlets, Cardiff (Butetown), Bristol (Easton), Birmingham (Small Heath) | PHV licensing, money-service-business compliance, mini-mart setup, employment law |
+| 17 | **Tigrinya / Amharic** | Cafes, mini-cabs | Camden, Wood Green, Brixton | Same as Somali, smaller volume |
+| 18 | **Yoruba / Igbo / Twi** | Logistics, freight, food import, hair & beauty wholesale, salons (mostly English-speaking but vernacular trust signals work) | Peckham, Thamesmead, Dagenham, Leyton | UK–West Africa freight, halal/cultural food import, hair/beauty wholesale, salon licensing |
+| 19 | **Tagalog (Filipino)** | Care workers, nursing-agency staff, cleaners | Barking, Ilford, Manchester, Earls Court | Care-home compliance, sponsor-licence guidance, NMC pin maintenance, nursing-agency setup |
+| 20 | **Brazilian Portuguese** | Cleaners, builders, beauticians, food trucks | Brent, Bayswater, Stockwell, Willesden | Self-employed registration, CIS, public liability insurance, food-hygiene cert |
+| 21 | **Portuguese (European)** | Construction, restaurants | Stockwell, Vauxhall, Reading | CIS, restaurant compliance |
+| 22 | **Spanish (Latin American)** | Cleaners, food vendors, hospitality | Elephant & Castle, Seven Sisters, Brixton | Self-employed registration, market-stall licensing, food hygiene |
+| 23 | **Russian / Ukrainian** | IT contractors, beauty industry, small import/export, post-2022 Ukrainian small businesses | Dispersed, with concentrations in West London, Manchester | Banking with limited credit history, recognition of foreign qualifications, IT contracting via umbrella, business setup under Homes-for-Ukraine |
+| 24 | **Nepali** | Ex-Gurkha small businesses, restaurants, care workers | Aldershot, Folkestone, Reading | Pension and resettlement, restaurant compliance, care-home setup |
+| 25 | **Albanian** | Construction, car washes, small import | North London (Wood Green), Luton | Self-employed registration, car-wash compliance, construction insurance |
+
+### Tier-1 starting candidates (highest gap × highest value)
+
+If you want to pick the three strongest plays to test first:
+
+1. **Punjabi → corner-shop card terminals & EPOS** — exactly your original thesis. Concentrated audience, regulated topic, English SERP locked up by national brands, almost zero vernacular competition.
+2. **Polish → CIS, van insurance, MOT garage compliance** — huge audience (~700k Polish-born in UK), genuinely first-generation operator, English SERP dominated by big insurers, vernacular content thin.
+3. **Urdu → taxi PHV licensing & halal food compliance** — Bradford/Birmingham/Luton, regulated topic, first-generation audience, English content is generic council-website material that doesn't speak the operator's language.
+
+### Outside the UK (same framework)
+
+- **USA**: Spanish (bodega, taquería, auto-shop in NY/LA/Texas/Miami), Vietnamese (nail salons in CA/TX), Korean (dry cleaners in NJ/LA), Mandarin (restaurants/freight), Hindi/Gujarati (motels — the "Patel motel" network).
+- **Canada**: Punjabi (trucking & freight in Brampton/Surrey), Tagalog (care agencies), Mandarin (property management).
+- **Australia**: Mandarin/Cantonese (hospitality/import), Punjabi (trucking/farming labour), Vietnamese (bakeries/nails).
+- **Germany**: Turkish (kebab/trades in Berlin/Köln/Duisburg), Polish (trades/cleaning), Russian/Ukrainian (IT contracting).
+- **France**: Arabic/Maghrebi (halal supply, taxi, auto), Portuguese (construction).
+- **UAE / Gulf**: Malayalam, Tamil, Bengali, Urdu (restaurant labour, taxi, salon SMEs — wealthy economy, vast vernacular audience).
+- **Singapore / Malaysia**: Tamil and Bahasa for SME compliance, especially F&B.
+
+The framework is the same wherever you point it: pick the diaspora, find their concentration, find the regulated topic, write natively, ship the five signals.
+
+---
+
 ## Sources
 
 - [How Google's AI Overviews Are Changing SEO In 2026 — EnFuse Solutions](https://www.enfuse-solutions.com/how-googles-ai-overviews-are-changing-seo-in-2026/)
