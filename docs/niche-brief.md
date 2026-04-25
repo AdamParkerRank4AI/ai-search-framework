@@ -62,11 +62,15 @@ sequence content across the network.
 ## Strategic ground rules — already decided, don't redo
 
 - UK SMB only.
-- **Traffic is the goal**, but at the niche level there must be a named
-  monetisation path (lender, acquirer, agency partner, marketplace,
-  affiliate). Inside a monetised niche, individual pages can be pure
-  citation / awareness plays if they feed entity authority and link
-  internally to converting pages.
+- **Traffic is the meta-goal**, full stop. Every niche must have a named
+  monetisation path at the niche level (lender, acquirer, agency
+  partner, marketplace, affiliate) — but inside a monetised niche,
+  individual pages can be pure citation / awareness plays if they feed
+  entity authority and link internally to converting pages.
+- **You pick the traffic angle.** SEO, AI Overviews, AI Search, or any
+  combination — choose what wins the most traffic for that specific
+  niche. A niche can be 100% SEO if that's the right call; another can
+  lean entirely on AI search citations. Don't force a spread.
 - **80/20 site model.** Every site has a sharp primary focus (the 80%)
   and is allowed to flex into adjacent topics (the 20%) where the same
   buyer is searching. Niches that fit the 80% take priority; 20% niches
@@ -122,14 +126,15 @@ newest first, with a table of contents at the top.
 - **Search demand signal:** strong / moderate / weak — with reasoning. Note
   SERP weakness, AI Overview vacuum, Reddit chatter, named "People also
   ask" queries, community forums or Facebook groups
+- **Traffic angle (you decide):** which surface(s) you'd lean on for this
+  niche to maximise traffic. Can be **100% one surface** (e.g. "100% SEO
+  — classic long-tail comparison play"), or any split that fits (e.g.
+  "70% SEO / 30% AI Overviews", or "60% AI Search / 40% community-share
+  in Polish"). No requirement to spread across all three — pick what
+  gets the most traffic for *this* niche and explain why in one line.
+  Meta-goal is always traffic; the angle is yours to call.
 - **Primary surface:** SEO / AI Overviews / AI Search — the single
-  dominant one — with one-sentence reasoning
-- **Traffic source mix (estimated %):** must sum to 100. Format:
-  `~X% SEO / ~Y% AI Overviews / ~Z% AI Search / ~W% Other`. "Other"
-  covers community / social / direct / multilingual non-Google. Add a
-  one-line note on the dominant lever (e.g. "comparison content with
-  FAQ schema for AIO citations" or "multilingual community sharing
-  drives the social slice")
+  dominant one for the TOC scan column.
 - **Time horizon:** quick win (0–90 days) / mid-term (3–9 months) /
   long-term (9+ months) — one sentence on why
 - **Commercial path:** at least two named providers / lenders / acquirers
