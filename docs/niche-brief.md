@@ -57,6 +57,44 @@ salon SEO → SEOCompare. When a niche brief surfaces this, flag the
 cross-site hub opportunity in the **Site assignment** field so we can
 sequence content across the network.
 
+### The Fleet — distributed lead-gen network
+
+Beyond the six brand sites, there's the **Fleet**: the network of
+websites we own, manage, or build/run for other people. Fleet sites
+are distributed lead-gen properties — typically smaller, more tightly
+niched, more local, often single-language — that route leads back into
+the same monetisation paths without diluting the brand sites'
+positioning.
+
+**Brand site vs Fleet — the rule of thumb:**
+- **Brand site** — main publishing property with consistent UK-English
+  positioning. Goes deep on its 80% focus. Built for entity authority.
+- **Fleet site** — satellite property captured for lead gen, often
+  hyper-niched, hyper-local, or hyper-language. Easier to rank because
+  it's tightly scoped; protects the brand site's entity graph.
+
+**Default routing to Fleet (not brand sites):**
+- **All multilingual / non-English content** — Polish, Bengali, Urdu,
+  Punjabi, Hindi, Gujarati, Turkish, Arabic, Romanian, Mandarin,
+  Albanian, Portuguese, Tagalog, Ukrainian. A `/pl/` subfolder under an
+  English brand site dilutes its LLM entity description and is fragile
+  to hreflang mistakes; a standalone Polish-language site for Polish
+  builders is cleaner, ranks faster, and monetises as a discrete
+  property.
+- **Hyper-local geographies** — postcode-level or single-town pages.
+- **Single-niche microsites** where the positioning would clash with
+  any brand site.
+
+**Reminder behaviour the agent must follow:**
+Whenever a brief involves multilingual, hyper-local, or otherwise
+fleet-suitable content, the agent must:
+1. Tag **Site assignment** as `FLEET — [one-line reason]` instead of a
+   brand site.
+2. Suggest a working domain or microsite name for the fleet property.
+3. Surface this in the chat summary with an explicit reminder, e.g.
+   *"Routing to Fleet, not BBL — Polish multilingual positioning would
+   dilute BBL's English entity graph."*
+
 ---
 
 ## Strategic ground rules — already decided, don't redo
@@ -77,7 +115,10 @@ sequence content across the network.
   need a clear bridge to the primary funnel.
 - Multilingual is in scope where a non-English UK community over-indexes
   in a vertical (Polish, Bengali, Urdu, Punjabi, Hindi, Gujarati, Turkish,
-  Arabic, Romanian, Mandarin, Albanian, Portuguese, Tagalog, Ukrainian).
+  Arabic, Romanian, Mandarin, Albanian, Portuguese, Tagalog, Ukrainian)
+  — but **multilingual builds default to the Fleet, not the brand sites**
+  (see Fleet section above). Always remind the user when a niche routes
+  to Fleet rather than a brand site.
 - Crap-traffic filter: kill anything jobseeker, international bleed, or
   fundamentally non-monetisable. Pure informational pages are fine if
   they feed an entity graph and internal-link to a converting page.
@@ -142,13 +183,16 @@ newest first, with a table of contents at the top.
   rev-share)
 - **Underserved why:** the specific gap incumbents are missing
 - **Site assignment:** BBL / FundBiz / CardMachines / MarketInvoice /
-  SEOCompare / WebsiteCo / NEW SITE — one-sentence justification +
-  cross-link path. Routing reminders: BBL = loans only (don't dump
-  payments or invoice finance there); MarketInvoice = invoice finance
-  only; FundBiz can absorb adjacent SMB finance topics; CardMachines
-  owns all payments. If the niche spans multiple sites, name the
-  primary one and list the spin-off pages on the others. If NEW SITE,
-  explain why it would dilute an existing brand.
+  SEOCompare / WebsiteCo / FLEET / NEW SITE — one-sentence
+  justification + cross-link path. Routing reminders: BBL = loans only
+  (don't dump payments or invoice finance there); MarketInvoice =
+  invoice finance only; FundBiz can absorb adjacent SMB finance
+  topics; CardMachines owns all payments. **Multilingual /
+  hyper-local / single-niche microsite content routes to FLEET by
+  default** — propose a working domain name when assigning to Fleet.
+  If the niche spans multiple sites, name the primary one and list
+  spin-off pages on the others. If NEW SITE, explain why it would
+  dilute an existing brand.
 - **First 3 pages to build:** URL slug + target search query + the AI
   prompt each one answers
 - **Languages worth translating into (if any):** with community-vertical
