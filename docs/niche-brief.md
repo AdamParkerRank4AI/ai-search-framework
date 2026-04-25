@@ -9,46 +9,49 @@ relevant section as a prompt — and the session is fully briefed.
 
 ## What already exists — six UK sites in build
 
-1. **BestBusinessLoans (BBL)** — editorial / review site for UK business
-   loans and finance. Format: "best X for Y" listicles, head-to-heads,
-   lender reviews, "what is" definitions. Trust + AI-citation play. No
-   application forms.
-2. **FundBiz** — the transactional broker site. Format: sector landers,
-   eligibility checkers, calculators, application forms. Captures qualified
-   loan leads. No editorial comparison content — BBL handles that. The two
-   sites cross-link.
+1. **BestBusinessLoans (BBL)** — UK business loans only. Editorial /
+   review. Format: "best X for Y" listicles, head-to-heads, lender
+   reviews, "what is" definitions. Trust + AI-citation play. No
+   application forms. Stays tightly on loans — does not drift into
+   payments, invoice finance or adjacent finance products.
+2. **FundBiz** — UK business loans broker / transactional, **with
+   permission to venture off**. Format: sector landers, eligibility
+   checkers, calculators, application forms. Captures qualified loan
+   leads. Because it can venture, it's also the natural home for
+   adjacent SMB finance topics that don't belong on BBL or MarketInvoice
+   — e.g. business credit cards, business bank accounts, asset finance,
+   merchant cash advance, business insurance, R&D credits — when those
+   topics ride alongside the loans funnel.
 3. **CardMachines** — UK card terminals, merchant accounts and payment
-   processing. Editorial + transactional combined. Owns terminal reviews,
-   switching content, vertical pages, high-risk merchant content, booking
-   and accounting integrations.
-4. **MarketInvoice** — UK invoice finance, factoring, invoice discounting,
-   selective invoice finance, trade finance, supply-chain finance.
-   Editorial + transactional combined. Owns receivables-finance content
-   the loan sites don't go deep on — sector cash-flow plays (construction,
-   recruitment, manufacturing, wholesale, hauliers).
-   *(Assumption — confirm scope: pure invoice finance, or broader trade
-   finance / receivables marketplace?)*
+   processing. Editorial + transactional combined. Owns terminal
+   reviews, switching content, vertical pages, high-risk merchant
+   content, booking and accounting integrations.
+4. **MarketInvoice** — pure UK invoice finance: factoring, invoice
+   discounting, selective invoice finance, recourse vs non-recourse,
+   confidential factoring, spot factoring. Does not stretch into other
+   trade-finance products unless they're a direct receivables play.
 5. **SEOCompare** — UK comparison site for SEO services, agencies,
-   freelancers and tools — including AI-search optimisation (the Rank4AI
-   angle). Format: agency reviews, tool comparisons, "best SEO for
-   [vertical]" listicles, AI Overview / AI search optimisation guides.
-   *(Assumption — confirm scope: agencies, tools, freelancers, all? And
-   whether it's positioned as "SEO + AI search" together or SEO only.)*
-6. **(Working title — Websites site)** — covers (a) buying an existing
-   website / online business (Flippa-style marketplace listings, valuation,
-   due diligence, escrow) and (b) building your own (Wix / Squarespace /
-   WordPress / Webflow / Shopify / Framer / no-code + AI builder
-   comparisons). Could run as one site with two hubs or split.
-   *(Confirm name, and whether to split into two sites or keep combined.)*
+   freelancers and tools. *(Open question: is AI-search optimisation
+   a co-headline here — i.e. "SEO + AI search" — given the Rank4AI
+   angle? Worth a deliberate decision before niche briefs land.)*
+6. **WebsiteCo** — currently positioned as "a bit of everything" around
+   websites: buying an existing site, building your own (Wix /
+   Squarespace / WordPress / Webflow / Shopify / Framer / no-code +
+   AI builders), hosting, design, agencies, domains. *Flag: a
+   generalist scope is an SEO and AI-search vulnerability — large
+   incumbents already dominate horizontal "best website builder"
+   queries. Long-term this site likely needs a sharper edge (e.g.
+   "websites for UK small businesses", or split buy / build into two
+   sites). Worth resolving before deep niche commitment.*
 
 ### Cross-site vertical hubs
 
-A single vertical (e.g. "salon") can spin out niches across all six sites:
-card terminal → CardMachines, business loan → BBL/FundBiz, supplier invoice
-finance → MarketInvoice, salon website builder → Websites site, salon SEO →
-SEOCompare. When a niche brief surfaces this, flag the cross-site hub
-opportunity in the **Site assignment** field so we can sequence content
-across the network.
+A single vertical (e.g. "salon") can spin out niches across all six
+sites: card terminal → CardMachines, business loan → BBL or FundBiz,
+supplier invoice finance → MarketInvoice, salon website → WebsiteCo,
+salon SEO → SEOCompare. When a niche brief surfaces this, flag the
+cross-site hub opportunity in the **Site assignment** field so we can
+sequence content across the network.
 
 ---
 
@@ -115,10 +118,13 @@ newest first, with a table of contents at the top.
   rev-share)
 - **Underserved why:** the specific gap incumbents are missing
 - **Site assignment:** BBL / FundBiz / CardMachines / MarketInvoice /
-  SEOCompare / Websites / NEW SITE — one-sentence justification +
-  cross-link path. If the niche spans multiple sites, name the primary
-  one and list the spin-off pages on the others. If NEW SITE, explain
-  why it would dilute an existing brand
+  SEOCompare / WebsiteCo / NEW SITE — one-sentence justification +
+  cross-link path. Routing reminders: BBL = loans only (don't dump
+  payments or invoice finance there); MarketInvoice = invoice finance
+  only; FundBiz can absorb adjacent SMB finance topics; CardMachines
+  owns all payments. If the niche spans multiple sites, name the
+  primary one and list the spin-off pages on the others. If NEW SITE,
+  explain why it would dilute an existing brand.
 - **First 3 pages to build:** URL slug + target search query + the AI
   prompt each one answers
 - **Languages worth translating into (if any):** with community-vertical
