@@ -126,6 +126,158 @@ If you commit to this, the playbook:
 
 ---
 
+---
+
+## 9. Language × geography × niche — where vernacular content can actually win
+
+The pattern that works has four ingredients: **(a)** a diaspora or migrant audience large enough to matter, **(b)** concentrated in a specific country/region, **(c)** doing a B2B or high-stakes task where the *operator* is first-generation and not English-confident, **(d)** dominated in English-language SERPs by a few high-DA national players who'll never localise.
+
+### UK matrix (your starting market)
+
+| Audience | Language(s) | UK concentration | Niches with the strongest gap |
+|---|---|---|---|
+| Indian / Pakistani / Bangladeshi corner-shop & off-licence owners | Punjabi (Gurmukhi + Shahmukhi), Hindi, Gujarati, Urdu, Bengali | Southall, Hounslow, Wembley, Leicester, Birmingham, Bradford, Tower Hamlets, Glasgow | Card terminals, EPOS, business banking, off-licence/premises licence, alcohol wholesale, tobacco track-and-trace, MTD/VAT, business insurance, refrigeration finance, lottery terminal setup |
+| Polish small-business owners (builders, mechanics, beauticians, food shops) | Polish | Ealing, Slough, Boston (Lincs), Crewe, Northampton | CIS/self-assessment, van insurance, MOT/garage compliance, food hygiene, payroll for 1–3 staff |
+| Romanian / Bulgarian | Romanian, Bulgarian | Harrow, Edmonton, Wood Green, Luton | Self-employed registration, UTR, settled-status linked banking, car-wash compliance |
+| Turkish / Kurdish (kebab, barber, mini-mart) | Turkish, Kurdish (Kurmanji) | Haringey, Enfield, Hackney | Catering insurance, EHO food hygiene, barber licensing, EPOS for restaurants |
+| Chinese (takeaway, Chinese supermarket, nail bar) | Simplified + Traditional Chinese, Cantonese | Manchester, Birmingham, Soho, Cricklewood | Restaurant compliance, supplier wholesale accounts, Alipay/WeChat Pay UK, work-permit/visa-linked employment law |
+| Vietnamese (nail bar) | Vietnamese | Hackney, Deptford, Croydon | Salon insurance, COSHH compliance, lease assignments |
+| Somali / Eritrean (mini-cab, mini-mart, money transfer) | Somali, Tigrinya | Whitechapel, Streatham, Cardiff | PHV licensing, money-service-business compliance, Uber/Bolt onboarding |
+| Nigerian / Ghanaian (logistics, freight, food import, beauty) | English mostly, but Yoruba/Igbo/Twi for community trust signals | Peckham, Thamesmead, Dagenham | UK-Africa freight, halal/cultural food import, hair/beauty wholesale |
+| Filipino (care work, nursing agency) | Tagalog | Barking, Ilford, Manchester | Care-home compliance, sponsor-licence guidance, NMC pin maintenance |
+| Brazilian / Portuguese (cleaning, construction, beauty) | Brazilian Portuguese | Brent, Bayswater, Stockwell | Self-employed registration, CIS, public liability insurance |
+| Ukrainian (post-2022) | Ukrainian | Nationwide, dispersed | Banking with limited credit history, recognition of foreign qualifications, business setup under Homes-for-Ukraine |
+
+### The same pattern outside the UK
+
+The framework is portable. A few high-confidence examples:
+
+- **USA** — Spanish for bodega/taquería/auto-shop owners (NY, LA, Miami, Texas); Vietnamese for nail salons (CA, TX); Korean for dry-cleaners and BBQ (LA, NJ); Mandarin for restaurants and freight forwarders; Hindi/Gujarati for motel owners (notably the Patel motel network).
+- **Canada** — Punjabi for trucking and freight (Brampton, Surrey); Tagalog for care agencies; Mandarin for property management.
+- **Australia** — Mandarin/Cantonese for hospitality and import; Punjabi for trucking and farming labour (Sydney, Melbourne); Vietnamese for bakeries and nail salons.
+- **Germany** — Turkish for kebab and trades (Berlin, Köln, Duisburg); Polish for trades and cleaning; Russian/Ukrainian for IT contracting.
+- **France** — Arabic / Maghrebi for halal supply, taxi and auto trades; Portuguese for construction.
+- **UAE / Gulf** — Malayalam, Tamil, Bengali, Urdu for restaurant labour, taxi, salon and small-trade owners — vast underserved B2B vernacular market in a wealthy economy.
+- **Singapore / Malaysia** — Tamil and Bahasa for SME compliance, especially F&B.
+
+**Filter test before picking one:** if the *English* version of the niche keyword has 5+ entrenched national brands ranking on page 1 with high DA, AND the audience is concentrated in 3–10 known postcodes/cities, AND the buyer is the first-generation operator (not the kid running admin), AND the topic involves regulation, money or contracts where mistakes are expensive — you have a proper gap. The card-terminal-for-corner-shop hits all four.
+
+---
+
+## 10. Pages or websites? And how much to translate?
+
+### Short answer
+
+- **A single translated page bolted onto an English site does almost nothing.** AI Overviews and AI Mode score *site-level* topical depth and entity association. One Hindi page on an English domain reads as opportunistic.
+- **The minimum that works is a "language section" — a clustered subfolder** (e.g., `yoursite.co.uk/hi/...`) with **at least 8–12 interconnected pages** covering the topic from multiple angles, plus proper hreflang back to the English equivalents.
+- **A standalone vernacular site can also work** and is sometimes faster (no English baggage, every signal is in-language), but you forfeit the consolidated authority of an existing English domain.
+- **Whole site translated 1:1 is usually wasteful.** You don't need a Punjabi version of your investor page. Translate the *commercial cluster* the audience cares about.
+
+### Subfolder vs subdomain vs separate domain
+
+| Option | Best for | Watch-outs |
+|---|---|---|
+| `yoursite.co.uk/hi/` (subfolder) — **recommended** | Inheriting domain authority; cleanest hreflang; cheapest to maintain. | Must have proper hreflang and `lang` attributes; can't easily host on different infra. |
+| `hi.yoursite.co.uk` (subdomain) | When you need a separate tech stack or CMS per language. | Google treats it as more of a separate property; less authority transfer. |
+| `yoursite.in` / `yoursite.co.in` (separate ccTLD) | Strong country signal, e.g., targeting India itself. | Doesn't help "Hindi-speakers in UK" — wrong country signal. |
+| Single dedicated brand (`punjabicardterminals.co.uk`) | Pure-play vernacular brand; full focus; can rank without English baggage. | Builds authority from zero; needs its own backlinks and citations. |
+
+For "UK + Indian-language SME" the realistic shapes are: **(1)** add a `/hi/`, `/pa/`, `/gu/` subfolder to an existing English site, **OR (2)** build a dedicated UK vernacular brand on a `.co.uk`. Don't use an Indian ccTLD — it's a country mismatch.
+
+### What "ranking-ready vs bolted-on" looks like
+
+A cluster that's actually citation-ready in one language has roughly:
+
+- 1 pillar page (e.g., "Card terminals for UK corner shops, in Punjabi")
+- 4–6 supporting commercial pages (pricing comparison, contract gotchas, contactless limits, integration with EPOS, chargebacks, what to do when terminal fails)
+- 4–6 informational/FAQ pages (PCI-DSS in plain Punjabi, contactless limit changes, refund handling, what is a chargeback)
+- All cross-linked, all with FAQ schema, all with the answer in the first 30% of the page
+- Hreflang clusters back to English equivalents
+- Local entity signals (UK address, UK phone, named UK case studies)
+
+Eight to twelve pages is roughly the threshold where the model treats your site as a topical authority in that language for that niche. Below that, you're a translated landing page.
+
+---
+
+## 11. Does the same strategy work for classic SEO and AI search? And does *everything* need to be in the language?
+
+### Strategy overlap
+
+Yes — about **80% of the work is shared**. AI search and classic SEO both reward: clear structure, topical clusters, native-quality language, geo-signals, schema, fast pages, internal linking, citations from trusted sources. The 20% that differs:
+
+- **Classic SEO** still rewards backlinks and exact-match keywords; both matter much less for AIO/LLM citation.
+- **AI search** rewards "extractable" formats (definitions, lists, FAQ blocks, tables) and answer-first structure far more aggressively. The first 30% of a page does ~44% of LLM citation work.
+- **AI search** rewards being mentioned across the wider web (Reddit, Wikipedia, trade press, forums). LLMs heavily retrieve aggregator content. Classic SEO doesn't lean on this as hard.
+- **AI search** doesn't always send a click — your KPI mix shifts toward *brand mentions in answers*, not just sessions.
+
+So: build for AI search and you mostly get classic SEO for free. The reverse is no longer true.
+
+### What needs to be translated
+
+Anything that the search engine, the LLM, *or* the user reads. Practically:
+
+| Element | Translate? | Why |
+|---|---|---|
+| Visible body content | **Yes — natively, by a human** | The single biggest signal. Machine translation is detectable and down-ranked. |
+| H1, H2, H3 headings | **Yes** | Structural extraction signals; AIO pulls from headings. |
+| Title tag | **Yes** | Click-through and language-detection signal. |
+| Meta description | **Yes** | Click-through; appears in SERP snippets in target language. |
+| URL slug | **Yes** (in target script or transliterated Roman) | "mysite.co.uk/hi/कार्ड-टर्मिनल" or "mysite.co.uk/hi/card-terminal-corner-shop" — both acceptable, transliterated Roman is often more practical because of CMS and link-sharing constraints. |
+| Image `alt` text | **Yes** | Accessibility + image search + AIO image grounding. |
+| Image filenames (where reasonable) | Optional | Marginal benefit. |
+| Schema / structured data (`name`, `description`, `offers`, FAQ Q&A) | **Yes** | LLMs read JSON-LD heavily. Mixed-language schema confuses both Google and the model. |
+| `<html lang="hi">` (or `lang="pa"`, etc.) | **Yes — set per page** | Primary language signal Google uses now that it leans away from hreflang for detection. |
+| `hreflang` cluster | **Yes — bidirectional** | `hi-GB`, `pa-GB`, `gu-GB`, `ur-GB`, plus `en-GB` and `x-default`. Every page in the cluster must reference every other. |
+| Open Graph / Twitter card metadata | **Yes** | Social previews drive aggregator pickup, which feeds LLM retrieval. |
+| Breadcrumbs | **Yes** | Both visible and in schema. |
+| Internal anchor text | **Yes** | Topical entity signal in target language. |
+| Form labels, button text, error messages | **Yes** | Trust + bounce-rate signal. |
+| Reviews and testimonials | **Yes if possible — keep originals too** | Native reviews are gold for AIO local snippets. |
+| Privacy policy / T&Cs / cookie banner | **Yes** | Trust signal; affects E-E-A-T. |
+| Phone number, address, opening hours | Keep UK format — don't "translate" the data | Localise *presentation* (script of digits is fine in most languages) but keep the entity data as the canonical UK NAP. |
+| Currency | **GBP — never convert to INR/PKR** | Country signal. The whole point is "UK in Hindi", not "India in Hindi". |
+| Sitemap.xml | **Yes — list both language URLs with proper `xhtml:link` hreflang annotations** | Helps Google index every variant. |
+| robots.txt | No translation needed | It's only directives. |
+| `canonical` | **Self-referencing per language version** | Don't canonicalise the Hindi page to the English page — that wipes it from the index. |
+
+### Is there one tag that flags "this page is in language X" to all three (Google AIO, ChatGPT, Perplexity, Copilot)?
+
+**No single magic tag.** There isn't a universal "I am in Hindi" flag. Each system reads a different combination, and **none of them rely solely on the markup — they all also detect language from the actual content.** The robust pattern is to send the same signal through five different channels so that whichever one a given AI reads, you're covered.
+
+The five signals to ship together on every translated page:
+
+1. **`<html lang="hi-GB">`** (or `pa-GB`, `gu-GB`, `ur-GB`)
+   The primary HTML language attribute. Google has confirmed this is now its main programmatic language signal — it's leaning *away* from hreflang for detection. Always include the country suffix to lock the geo target.
+2. **`<link rel="alternate" hreflang="hi-GB" href="..." />`** in the `<head>`
+   Plus a matching set for every other language version of that page, plus `x-default`. Bidirectional — every page in the cluster references every other. Google AIO and Bing/Copilot use this for *which version to serve* once language is known.
+3. **`Content-Language: hi-GB`** HTTP response header
+   Older standard, still honoured. Costs nothing to set in the server config.
+4. **JSON-LD schema with `"inLanguage": "hi-GB"`** on every entity (Article, FAQPage, LocalBusiness, Product)
+   This is the one most sites miss — and it's the most useful for *LLM* retrievers (ChatGPT, Perplexity, Claude), which lean heavily on structured data.
+5. **`<meta property="og:locale" content="hi_IN">`** (note the underscore + ISO country code; `og:locale` doesn't accept GB-suffixed Hindi cleanly, so use the closest standard locale and rely on the other four signals for the UK targeting)
+   Picked up by social aggregators, which feed LLM training and retrieval indirectly.
+
+Plus the **sitemap.xml** entries with `<xhtml:link rel="alternate" hreflang="..." />` annotations so Google's crawler sees the cluster from the index side.
+
+How each platform actually uses these:
+
+- **Google AI Overviews / AI Mode** — reads all five, plus runs its own content-based detection. `<html lang>` and hreflang carry the most weight.
+- **Bing / Copilot** — reads hreflang and `<html lang>` reliably.
+- **ChatGPT / Perplexity / Claude** — there's **no public evidence they parse hreflang at all**. They infer language primarily from the content itself, the URL, and to some extent the JSON-LD `inLanguage` field. This is why **the content has to be unmistakably native** — the markup alone won't save a machine-translated page.
+
+**Punchline:** ship all five signals (it's <30 minutes of work per template once), but treat them as a backup. The 90% signal is that the visible content, headings, schema and meta description are all in clean, native, human-written target language. If you only do one thing, set `<html lang="hi-GB">` and write the page itself in fluent Punjabi/Hindi/Gujarati. Everything else is reinforcement.
+
+### Things people get wrong
+
+- Translating the body but leaving the title tag, meta description and schema in English. Result: SERP snippet shows in English, click-through tanks, language signal becomes mixed, AI Mode often serves the English version even on a Hindi query.
+- Auto-translating with a plugin and shipping it. Detectable, down-ranked, and AIO will prefer the auto-translated *English* original over a clearly machine-translated "native" page.
+- Pointing canonical from `/hi/page` back to `/en/page`. This deindexes the Hindi version. Use self-canonical + hreflang.
+- Mixing scripts in one URL or page (e.g., body in Devanagari, navigation in English). Pick one primary language per page and stick to it.
+- Forgetting `<html lang="...">`. It's the most reliable signal Google currently uses for language detection.
+- Translating brand names. Don't. "Visa" stays "Visa". "takepayments" stays "takepayments".
+
+---
+
 ## Sources
 
 - [How Google's AI Overviews Are Changing SEO In 2026 — EnFuse Solutions](https://www.enfuse-solutions.com/how-googles-ai-overviews-are-changing-seo-in-2026/)
