@@ -885,6 +885,139 @@ The data product is never ground truth. It's the cleanest documented sample, wit
 
 ---
 
+## 16. Building the prototype: how to actually capture the data
+
+You want a prototype where, when people use the map, you can see where they go. Here is the minimum-viable path that works in a browser without a native app, without BLE beacons, and without solving indoor positioning from scratch.
+
+The headline insight: **don't try to track raw GPS through the venue.** Indoor GPS in browsers is unreliable (50–100m off, or stuck on the last outdoor fix). Instead, capture **explicit interaction events** — QR scan locations, pin taps, navigation requests, "I'm here" confirmations — and infer movement from those. That gives you a clean event log of where people actually engaged, without fighting the limits of browser geolocation.
+
+### The data capture model
+
+Every map session is an anonymous chain of events:
+
+| Event | Captured when | What it tells you |
+|-------|---------------|-------------------|
+| `session_start` | QR scanned, map opens | Venue, anchor pin, time, anonymous session ID |
+| `pin_view` | User taps a pin to see its info | They're interested in this shop |
+| `route_request` | User taps "directions to" a pin | They intend to physically visit this shop |
+| `route_arrive` | Optional confirm-arrival button at destination | They got there |
+| `qr_rescan` | User scans another QR inside the venue | Real "you are here" anchor at a known location |
+| `geo_ping` | Background `watchPosition()` callback | Lat/lng with accuracy — useful outdoors and at venue boundaries, fuzzy indoors |
+| `dwell_threshold` | User stays on the same pin/area for >N seconds | Implied presence at that location |
+| `session_end` | User closes the tab or 30 min idle | Visit duration |
+
+Each event carries: `{event_type, session_id, venue_id, polygon_id?, lat?, lng?, accuracy?, timestamp}`. No personal identifiers. Session ID is a per-visit UUID generated client-side, not tied to a user account.
+
+That event stream is enough to derive:
+- Visit count per shop (from `pin_view` + `route_request` + `qr_rescan` near the polygon).
+- Dwell estimates per area (from `dwell_threshold` and `qr_rescan` deltas).
+- Routes through the venue (sequence of `qr_rescan` and `route_request` events).
+- Conversion funnel (which `pin_view` events became `route_request` then `route_arrive`).
+
+You don't need GPS-precise indoor tracking to get useful data. You just need to capture intent.
+
+### The simplest tech stack that works
+
+Whole prototype in ~1–2 weeks for one developer:
+
+- **Frontend:** plain HTML/JS or Next.js. Render the map with **Mapbox GL JS** (free tier covers prototype). Floor plan as GeoJSON polygons.
+- **Geolocation:** browser `navigator.geolocation.watchPosition()` — yes it's fuzzy indoors, capture it anyway as a secondary signal.
+- **QR codes:** static URLs of the form `https://yourapp/v/lakeside?pin=p042`. Generate via `qrcode` library or any free QR generator. Print as physical signage.
+- **Event capture:** **PostHog** (self-host or cloud, has a generous free tier and is privacy-friendly), or roll your own with a single `POST /event` endpoint. PostHog gives you out-of-the-box session recording, funnels, retention.
+- **Backend:** **Supabase** (managed Postgres + auto-generated APIs + auth, free tier sufficient) or **Neon** + a small Node.js server. One database, three tables: `sessions`, `events`, `polygons`.
+- **Hosting:** **Vercel** for the frontend (free tier), **Supabase** for the backend (free tier).
+- **Dashboard:** PostHog's built-in dashboards cover most of what you need. For custom views, a tiny Next.js admin page that queries Supabase directly.
+
+Total monthly cost for the prototype: £0–£20. No infrastructure expertise needed.
+
+### Schema sketch
+
+```
+sessions(
+  id uuid primary key,
+  venue_id text,
+  started_at timestamptz,
+  ended_at timestamptz,
+  consent_version text,
+  user_agent text  -- coarse only, no fingerprinting
+)
+
+events(
+  id bigserial primary key,
+  session_id uuid references sessions,
+  event_type text,
+  polygon_id text,
+  lat double precision,
+  lng double precision,
+  accuracy_m double precision,
+  timestamp timestamptz
+)
+
+polygons(
+  id text primary key,
+  venue_id text,
+  name text,
+  category text,
+  brand_parent text,
+  rank4ai_entity_id text,
+  geom geometry(polygon, 4326)
+)
+```
+
+That's the entire data model. PostGIS extension (free, included in Supabase) lets you do `ST_Contains(geom, ST_Point(lng, lat))` to figure out which polygon a ping fell inside.
+
+### The consent flow (legal floor, do not skip)
+
+Before any event is captured:
+
+1. First-scan banner: "This map captures your anonymous location and interactions to power wayfinding and improve venue analytics. No personal data is collected. [Continue] [Privacy notice] [Decline]."
+2. If decline: map still works, but no events stored.
+3. Privacy notice page links to: data controller, what's captured, retention period (30 days for raw events, indefinite for aggregates), opt-out instructions, ICO complaint link.
+4. Cookie/consent banner only if you're using cookies — for a stateless session UUID stored in localStorage, you may avoid the cookie banner but still need PECR-compliant consent.
+5. Set `consent_version` per session so you can prove what consent text was active at capture time.
+
+For a UK prototype with no special-category data and aggregated reporting, this is enough. For production, get a lawyer to review.
+
+### What the dashboard would show
+
+Once events are flowing, the prototype dashboard could render:
+
+- **Live visitor counter** per venue (active sessions in the last 5 minutes).
+- **Heatmap** of pin views across the floor plan — hottest shops, coldest corridors.
+- **Top routes** — most common sequences of pin interactions (Boots → Costa → Argos).
+- **Funnel**: pin views → route requests → route arrivals.
+- **Per-shop card**: visits today, dwell estimate, returning vs new, hour-by-hour curve.
+- **Time slider**: scrub through the day to see how busyness moves.
+
+PostHog can render most of these for you straight from the event stream. Custom polygon overlays and heatmap need a small bit of Mapbox layering.
+
+### Honest limits of this prototype
+
+- **Indoor positioning is fuzzy.** You'll see "user is somewhere within ~30m of this shop" not "user is in this shop." That's why we lean on intent events (pin taps, route requests, QR rescans) instead of GPS pings.
+- **Coverage depends on scan rate.** If only 10% of visitors scan, you have 10% of the population to model from. This is the same sample-vs-ground-truth issue as every other footfall product.
+- **No multi-visit identity.** Without an account/login, you can't tell if the same person came twice. That's a feature for privacy and a limit for repeat-visitor analysis. You can use a longer-lived localStorage UUID with consent, but it complicates the privacy story.
+- **iOS Safari quirks.** Background geolocation is restricted. The map only captures `geo_ping` events while the tab is in the foreground.
+- **Data quality improves with QR density.** Five QRs per venue gives sparse anchors; 20+ gives much richer route data.
+
+These are not problems for a demo. They are problems if you tried to ship this as the production grounding feed for OpenAI. The production version replaces fuzzy GPS with a denser BLE beacon network or a native app, increases scan rates with venue partnerships, and runs at much larger scale.
+
+### Recommended first build, in order
+
+1. **Spin up Supabase and Vercel projects.** 30 minutes.
+2. **Pick one venue** and trace its floor plan to GeoJSON. A simple shopping mall: a day's work in QGIS or a vector editor. Lakeside: probably 2–3 days.
+3. **Build the map page.** Render polygons, label them, click to show a side panel. Couple of days.
+4. **Wire up events.** PostHog SDK or a `POST /event` endpoint. Half a day.
+5. **Generate QR codes** for entry plus 5–10 anchor points around the venue. An hour.
+6. **Print and stick up the QRs**, or just simulate on a phone for the demo.
+7. **Walk the venue yourself** — scan, tap pins, request routes — and watch your event stream populate.
+8. **Build the dashboard** in PostHog or a small Next.js page. Day or two.
+
+End of week 2: you have a real, working capture-and-display prototype. One venue, one developer, near-zero infrastructure cost. Sample of one (yourself) initially, but the architecture scales identically to a thousand visitors.
+
+That's the prototype. Once it works for you walking through Lakeside alone, the next step is getting *one other person* to do the same — proves the multi-session aggregation. Then a friendly venue partner to point real visitors at it. Each step is small and de-risks the next.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
