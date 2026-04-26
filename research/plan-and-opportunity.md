@@ -196,6 +196,120 @@ In rough order, none committed.
 
 ---
 
+## 8. The AI search side specifically: who else is there, and can we compete?
+
+The earlier competitor section covered indoor mapping (Pointr, Mapwize, MazeMap, etc.). That's only half the picture. There's a second, faster-moving competitor set on the AI-search side that needs its own honest read.
+
+### Who else is in AI search
+
+**Monitoring / GEO (Generative Engine Optimisation) tools.** A wave of well-funded startups launched in 2024–2025 to track how brands appear in AI answers:
+
+- **Profound** — raised significant funding in 2024, monitors brand mentions across ChatGPT, Perplexity, Gemini, Claude. Reports inclusion rate, sentiment, citation sources.
+- **AthenaHQ** — GEO platform with agency tooling.
+- **Otterly.AI** — AI search visibility tracking, smaller, European.
+- **Peec AI** — generative engine optimisation suite.
+- **Goodie AI, Daydream, Scrunch AI, Evertune** — newer entrants, similar shape.
+- **Brandlight, Brandwatch** — broader social/brand monitoring expanding into AI.
+
+**Structured-data and schema tools.**
+- **Schema App, Yoast, RankMath** — implementation help for the schema layer of AI optimisation.
+- **WordLift** — knowledge-graph tooling for content sites.
+
+**Established SEO platforms moving in.**
+- **SEMrush, Ahrefs, Moz, BrightEdge, Conductor, HubSpot** — all adding AI search visibility modules to existing platforms with millions of users.
+
+**The AI platforms themselves.**
+- OpenAI is rumoured to be building merchant tools, Perplexity has merchant programs, Google has its full Search Console + Merchant Center stack already aimed at AI Overviews.
+
+### What makes Rank4AI different
+
+Honest read, point by point:
+
+- **Methodology, not just monitoring.** Most competitors are dashboards — they tell you *what's happening* in AI answers. Rank4AI is a defined Five Signal Model and an audit — it tells you *what to do about it*. Closer to a McKinsey-style framework than a SaaS dashboard.
+- **Audit produces a score, not just a feed of mentions.** AI Visibility Score (weighted) and Structural Reference Score (unweighted) are concrete deliverables. Most monitoring tools can't tell you whether you're "doing well" — only how often you appear.
+- **Five-signal coverage.** Identity Clarity, Subject Authority, Meaning Architecture, Ecosystem Validation, Signal Consistency — most competitors only cover one or two layers (usually mentions and structured data).
+- **Bundled with a methodology a human can defend.** Founder-led, methodology-led, framework-published. Easier to sell to a CMO who needs to justify the spend than a dashboard subscription is.
+
+### What makes the map + footfall genuinely uncatchable
+
+This is the part that the AI-search monitoring tools structurally cannot do:
+
+- They can monitor what AI platforms say. They cannot give the AI platforms new data to say better things with.
+- They have no offline footprint, no physical-world data, no consent-based collection mechanism.
+- Adding it later would require them to build a consumer product, sign venue deals, and stand up a privacy-first data pipeline — a multi-year detour from their core business.
+- Meanwhile, we'd already be the documented source of "real-world grounding for AI search." First-mover position in a category that doesn't exist yet.
+
+### Can we actually compete?
+
+Three honest answers depending on which slice we're talking about.
+
+- **Pure AI-search monitoring (the Profound / Otterly / AthenaHQ slice).** Probably not, head-on. Profound alone has more funding than Rank4AI is likely to raise this year, and the SEO incumbents (SEMrush, Ahrefs) have distribution we can't match. Don't try to out-monitor the monitors.
+- **Methodology + audit (the McKinsey-of-AI-search slice).** Yes. This is Rank4AI's existing edge. Smaller market by user count but much higher per-customer revenue, and the framework is already published.
+- **Real-world grounding signal for AI platforms (the new slice).** Yes, and probably uncontested for at least 18–24 months. Nobody in the AI-search competitor set is positioned to build this; nobody in the indoor-mapping competitor set has the AI-search expertise to package it. We sit in the only chair where both halves are possible.
+
+The summary: don't compete with Profound on dashboards. Compete with no-one on the part nobody else can do — the offline grounding feed.
+
+---
+
+## 9. The "skip the map, just do the data" alternative
+
+Worth thinking through properly because it's a legitimate strategic question.
+
+### What the alternative would look like
+
+Drop the consumer-facing indoor map entirely. Run a pure data business: aggregate location/footfall data from many places, attach it to Rank4AI entity records, sell the feed to OpenAI and other AI platforms. Closer in shape to Placer.ai, SafeGraph or Huq — but pivoted toward AI grounding instead of retail analytics.
+
+### Where the data would come from without the map
+
+This is the entire question. Options:
+
+1. **Buy SDK location data from existing aggregators.** Outlogic, Cuebiq, Gravy Analytics, Veraset. Margin-thin, no moat, fully dependent on suppliers who themselves sit on shrinking data sources thanks to ATT and Privacy Sandbox.
+2. **License from mobile carriers.** Telefonica Tech, Vodafone Analytics, EE/BT. Rich and reliable but expensive, slow to procure, and most of these vendors have their own competing data products.
+3. **Resell from Placer or SafeGraph.** They sell wholesale; we'd repackage with entity linkage and AI-grounding framing. Hard to defend the margin once they notice the use case and pivot themselves.
+4. **Build our own data-collection SDK and embed it in third-party apps.** This is exactly what Outlogic / X-Mode did. The same regulatory and platform headwinds that hammered them would hit us — and we'd be a year late to a shrinking pool.
+5. **Buy carrier-derived datasets from intermediaries.** Smaller versions of #2.
+
+None of these give us a defensible position. We become a data broker with a thin reseller margin and no unique signal.
+
+### What we lose by dropping the map
+
+- **Consent.** The map gives us an explicit, visitor-initiated permission moment. Without it, every other data source has murkier consent provenance — exactly the thing AI platforms want clean for grounding.
+- **Differentiation.** Without the map, our raw data is the same as Placer's. With the map, we have something nobody else has — first-party scan-anchored presence data tied to a specific entity.
+- **Entity linkage.** The map gives us per-polygon entity IDs that map to specific stores in specific venues. Bought-in SDK data is much fuzzier — "device near 51.5074, 0.1278" vs. "device inside the H&M unit at Lakeside floor 1 between 14:32 and 14:51."
+- **A second revenue line.** Venue SaaS pays bills while the AI deal is being built. Without it we're spending years burning cash to reach data scale.
+- **A consumer-facing reason to exist.** Pure data brokers have no public face, no story, no PR upside. The map gives the project a story.
+- **Privacy moat.** Buying second-hand SDK data inherits its consent baggage. Originating data through a clean consent flow is a defensible posture; reselling someone else's pings is not.
+
+### What we gain by dropping the map
+
+- **Faster to data volume.** Buying / licensing existing data could give us national coverage in months, not years.
+- **No consumer product to build, support, document, debug.**
+- **No venue sales motion.** Selling to landlords is hard; selling to data buyers is a smaller, more concentrated market.
+- **Smaller team needed early.**
+- **Could start AI-platform conversations earlier** because we'd have data scale on day one.
+
+### Honest verdict
+
+The map is not the product, but it's also not optional. Without it we're a data broker reseller in a margin-compressed market with no moat against the existing incumbents. With it we have:
+- Differentiated, first-party data nobody else can replicate without building their own consumer wedge.
+- A clean consent story that AI platforms specifically need.
+- Entity linkage that turns raw pings into structured grounding records.
+- A revenue line that funds the long road to AI-platform deals.
+
+### A sensible hybrid
+
+Worth considering: do both, in sequence.
+
+- **Phase 0 (now):** start a small bought-in / licensed footfall pilot — a few hundred POIs, carrier data or wholesale SDK data — purely to demo the concept to AI platforms. Cheap research, no commitment.
+- **Phase 1 (months 1–12):** run the AI-platform conversations *and* the map pilot in parallel. The bought-in data tests whether AI platforms even want this category; the map builds the differentiated long-term asset.
+- **Phase 2 (year 2+):** as map coverage grows, gradually replace bought-in data with our own first-party feed. Margin and quality both improve. Bought-in data becomes the supplement, not the foundation.
+
+This way we don't bet everything on the map taking off before we know AI platforms care. We also don't bet everything on a commodity data-broker model that has no defensible position. The map is the long-term moat; the early bought-in pilot is what gets us in the OpenAI room within months instead of years.
+
+**Recommendation:** keep the map as the strategic spine. Add a small bought-in data pilot to accelerate the AI-platform conversation. Do not pivot to pure data-broker — that's a worse business than the one we're already designing.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
