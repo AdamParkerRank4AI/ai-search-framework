@@ -11,21 +11,23 @@
 
 ## Executive summary
 
-AI search platforms — ChatGPT, Gemini, Claude, Perplexity, Copilot — currently decide what to recommend almost entirely from **digital signals**: web pages, online reviews, structured data, citations, social mentions. Every one of these signals can be manipulated, and the AI platforms know it. Hallucinated or gamed answers are their single biggest credibility risk.
+**AI search is a trust engine.** When ChatGPT, Gemini, Claude, Perplexity or Copilot decides what to recommend, what they are really doing is judging which entities are real, active, popular and credible. Today they make that judgement almost entirely from **digital signals**: web pages, online reviews, structured data, citations, social mentions. Every one of those signals can be manipulated, and the AI platforms know it. Hallucinated or gamed answers are their single biggest credibility risk.
 
-The next phase the industry is moving toward is "places" — AI-generated maps, location-aware answers, "what should I do here today" queries. But even the new map-and-place layer is still being built on the same online-derived signals: scraped reviews, address data, geocodes, what websites say about businesses.
+The signal they don't have is **physical**. If a business has a real footprint — people actually walking in, spending time, coming back — that is the strongest trust signal in existence and the hardest to fake. Right now, AI platforms cannot see it. They only have access to the digital half of trust.
 
-The gap is **offline truth** — the actual behaviour of real people in real places. Footfall, dwell, return rates, route patterns. This is the hardest thing to fake at scale, and it is currently invisible to LLMs.
+The next industry phase is "places" — AI-generated maps, location-aware answers, "what should I do here today" queries. But even the new map layer is being built on the same online-derived signals. The map is new, the underlying trust data is the same as before. Manipulable.
 
-We propose to build a consent-based pipeline that captures real-world foot traffic via an indoor map product, converts it into LLM-readable structured data attached to entity records, and sells the resulting feed to AI platforms as a grounding signal. Secondary value: the same data stream is exactly what retailers and venue landlords already pay for from companies like Placer.ai, except more granular and consent-clean.
+We propose to close the gap. Build a consent-based pipeline that captures real-world foot traffic, converts it into LLM-readable structured data attached to entity records, and sells the resulting feed to AI platforms as a grounding signal. The product works across the full size range — from Lakeside-class shopping centres down to single independent shops — because every business needs trust signals to be recommended, not just the big ones. Secondary value: the same data stream is exactly what retailers and venue landlords already pay for from companies like Placer.ai, except more granular and consent-clean.
 
 We are looking for honest pushback before committing further. Specific questions at the end.
 
 ---
 
-## 1. Where AI search is today
+## 1. Where AI search is today — and why trust is the whole problem
 
-When you ask ChatGPT "where should I shop for a phone in Essex" or "best coffee in Lakeside," the model is pulling from:
+AI search platforms are, fundamentally, **trust engines**. Every time ChatGPT recommends a phone shop, suggests a restaurant, or answers "what should I do in Lakeside today," it is deciding which businesses to trust enough to surface. That decision is made from a fixed pool of available signals.
+
+Today, that pool is entirely digital:
 
 - Web pages and content marketing.
 - Online reviews (Google, Trustpilot, Yelp).
@@ -33,9 +35,11 @@ When you ask ChatGPT "where should I shop for a phone in Essex" or "best coffee 
 - Citations and backlinks.
 - Social media mentions and posts.
 
-This is **digital trust**. It is what twenty years of SEO was built around, and the AI platforms inherited the same supply.
+This is **digital trust** — what twenty years of SEO was built around, and what the AI platforms inherited.
 
 The problem: every one of these signals is gameable. SEO, paid reviews, link buying, AI-generated content farms, bot networks. Anyone with budget can move the needle. The AI platforms know this and treat the resulting answers with appropriate caution — but they have no better data to draw on for most place-based questions.
+
+**The signal they're missing is physical.** Whether real people actually walk into a place, spend time there, and come back is the strongest trust evidence in existence — and it is invisible to every LLM today. If a business has a footprint, AI platforms need that data, because it's the half of trust they can't currently see. The opportunity is to be the supplier that gives it to them.
 
 ## 2. What's coming next: AI maps
 
@@ -77,7 +81,27 @@ For an AI platform asking "is Acme Coffee in Lakeside actually a real, popular, 
 
 Sold under documented methodology with provenance disclosed per record — exactly what AI platform procurement teams now require under emerging EU AI Act sourcing rules.
 
-## 6. Why AI platforms would buy this
+## 6. Big and small — the product works at both ends of the market
+
+A common mistake when pitching this is to make it sound like it only matters for shopping centres. It doesn't. The trust problem is the same for a single independent coffee shop in Soho as for the H&M flagship in Lakeside — both want to be recommended by ChatGPT, both currently rely on the same gameable digital signals, both would benefit from a footfall trust layer.
+
+The product spans the size range:
+
+- **Large venues (Lakeside, Westfield, large hospitals, airports, universities, stadiums).** Full indoor map, multi-tenant, multi-floor, full footfall analytics, premium SaaS price band. Anchors the network — high foot traffic, many entities, rich data.
+- **Mid-size venues (high streets, retail parks, mid-size hospitals, secondary stations, cultural venues).** Simpler map or area directory, single-floor or small multi-floor, mid-tier SaaS. Fills the geographic and category gaps the big anchors leave.
+- **Small businesses (a single café, an independent bookshop, a barber, a small restaurant).** No indoor map needed for a 50-square-metre shop. Just a QR check-in by the door, a claim-your-business flow, and the same per-visit consent capture. Free or low-cost tier. The data they contribute is smaller per location but the count of locations is enormous.
+
+Why this matters strategically:
+
+- **The addressable market is the whole built environment**, not just a couple of hundred large venues. There are roughly 270,000 retail premises in the UK alone before you count hospitality, healthcare and culture. The big-venue path alone is too narrow to be the whole business.
+- **Small businesses are exactly who AI search currently fails worst.** A user asking ChatGPT "best independent bookshop in Bristol" gets a worse, more outdated answer than the same query for a chain — because small businesses have weaker digital signals. A footprint trust signal helps the underdog disproportionately.
+- **Network effect.** Big venues anchor the data; mid and small venues fill in the long tail. The same AI platform query "where to eat near Liverpool Street" returns more reliable answers as more nearby small businesses are in the network.
+- **Pricing tiers.** Free tier for independents (data contribution is the trade), mid-tier SaaS for high-street and retail-park operators, premium for flagship venues. Same product, different price points, same back-end data pipeline.
+- **Sales motion.** Big venues are slow enterprise deals. Small businesses can self-serve sign up like Stripe or Square. Doing both lets us grow the network faster than either alone.
+
+This expands the proposal in one important way: it isn't just an indoor-map company with an AI data line attached. It's a **footprint trust layer for every business with a physical premises**, scaled from solo independents up to the largest venues in the country, all feeding the same AI-grounding feed.
+
+## 7. Why AI platforms would buy this
 
 Five reasons:
 
@@ -91,7 +115,7 @@ Five reasons:
 
 5. **OpenAI has shown they will pay for grounding data.** AP, Le Monde, Reddit, Stack Overflow, FT, News Corp, Time, Vox, Condé Nast — all licensed in 2024–2025. Pattern is consistent: novel data that improves grounding gets paid for, often $1M–$60M/year depending on scale and exclusivity. Footfall fits the same pattern, in a category they don't yet have a supplier for.
 
-## 7. Why this is better than card-transaction data
+## 8. Why this is better than card-transaction data
 
 Card data (Mastercard SpendingPulse, Visa, Fable, Consumer Edge) and loyalty data are the obvious adjacent signal — and they have a structural flaw.
 
@@ -108,7 +132,7 @@ Combined with the granular pin-point data, route patterns and pattern-of-life si
 
 (Honest note: per-device data also has limits — children typically don't have phones, not every family member will have the map open, and people who don't scan are invisible to us. We document these as part of the methodology rather than hide them. AI platforms specifically prefer suppliers who disclose limitations cleanly.)
 
-## 8. Secondary value: retailers and landlords
+## 9. Secondary value: retailers and landlords
 
 The same data stream we're selling to AI platforms is also what venues and retailers already pay for, today. Placer.ai is reportedly close to a $1B valuation on this market. Springboard, Huq, Sensormatic and Foursquare all sell into it.
 
@@ -120,7 +144,7 @@ Layered onto our base product:
 
 So even if the AI platform play takes longer than expected to land, the indoor map plus retailer/venue analytics is already a working, proven business model. Pointr, Mapwize, Situm have built nine-figure businesses on a more enterprise-heavy version of the same shape.
 
-## 9. Alternative path: aggregate existing sources instead of originating
+## 10. Alternative path: aggregate existing sources instead of originating
 
 Originating data via the indoor map is the long-term moat, but it takes years to reach meaningful coverage. There is a parallel route worth considering — possibly to run *first*, possibly *instead*: aggregate signals from data sources that already exist, build an algorithm that reconciles them into a single entity-keyed feed, and sell that to AI platforms today.
 
@@ -144,7 +168,7 @@ The most likely realistic shape: **Phase 1 (months 1–18) is the aggregation pl
 
 Card data deserves a particular caveat here. As covered in Section 7, card data structurally undercounts groups (one cardholder, four humans) and ignores browsers (no spend, no signal). It is one source in the blend, not a foundation. The algorithm has to weight it accordingly.
 
-## 10. Going nicher — places where data is easier to get
+## 11. Going nicher — places where data is easier to get
 
 The proposal so far has assumed shopping centres (Lakeside-style retail). That is a hard market: retail data is commercially sensitive, incumbents are entrenched, and venue ops teams are slow.
 
@@ -161,7 +185,7 @@ The argument: pick the niche where data acquisition is the least friction *and* 
 
 This needs deciding before the prototype venue is chosen. Same Section 12-style demo, easier real-world deployment.
 
-## 11. Note on kiosks — an adjacent product, already happening
+## 12. Note on kiosks — an adjacent product, already happening
 
 There is already a market for **physical interactive kiosks** in venues. Companies like 22Miles, Visix, Acquire Digital, Mvix and many smaller operators ship touchscreen wayfinding, advertising and self-service hardware into retail, hospitality, hospitals and transit. Some retail chains run their own (McDonald's order screens, supermarket self-checkout, hotel check-in stations).
 
@@ -188,7 +212,7 @@ Implications for our plan:
 
 This is a parallel route worth exploring during the validation phase, not a pivot. It also suggests a useful framing for the vetting conversation: someone has already proven venues will adopt physical placement at the entrance — we are layering a new product on a delivery channel that exists.
 
-## 12. Why now
+## 13. Why now
 
 Several conditions only aligned in the last 12–18 months:
 
@@ -200,7 +224,7 @@ Several conditions only aligned in the last 12–18 months:
 
 Realistic first-mover window: probably 18–24 months before Foursquare, Placer or one of the AI platforms themselves notices the category and pivots into it.
 
-## 13. What's defensible
+## 14. What's defensible
 
 Honest read on what's hard for someone else to copy:
 
@@ -212,7 +236,7 @@ Honest read on what's hard for someone else to copy:
 
 We will not beat the incumbents on raw data volume early on. We can beat them on cleanliness, structure, indoor specificity, and being there first.
 
-## 14. What we don't know yet
+## 15. What we don't know yet
 
 Honest list. These are the things the vetting reader is invited to challenge.
 
@@ -222,7 +246,7 @@ Honest list. These are the things the vetting reader is invited to challenge.
 - **Could OpenAI / Google build this themselves?** They could. Our defence is being smaller, faster, neutral and multi-platform.
 - **Is the market for indoor maps + venue SaaS strong enough to fund the early years?** Pointr/Mapwize numbers suggest yes; we'd need to validate per-venue economics ourselves.
 
-## 15. What we're asking from you
+## 16. What we're asking from you
 
 If you're reading this to vet it, the most useful things you can tell us:
 
@@ -239,4 +263,4 @@ Honest critique appreciated. Sycophantic "this is great" feedback isn't useful �
 
 ## Appendix: one-line framing for the bullet list version
 
-> AI search runs on digital trust. The next layer is maps, but maps are still digital. The layer after that is offline truth — real people, real places, real footfall — converted into LLM-readable data. We're building the pipeline that does that, sold to AI platforms first and venues/retailers second. The map is the wedge. The data is the product. The window is now.
+> AI search is a trust engine. Today its only trust signals are digital — and digital signals can be faked. The signal it's missing is physical: who actually goes where. We're building the pipeline that converts real-world foot traffic into LLM-readable trust data, for every business with a footprint, from a single café up to Lakeside-class venues. Sold to AI platforms first, retailers and landlords second. The map is the wedge. The data is the product. The window is now.
