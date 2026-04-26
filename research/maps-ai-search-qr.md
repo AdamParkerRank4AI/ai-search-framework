@@ -203,3 +203,70 @@ Risks to flag now:
 - **Data exclusivity.** If the same footfall data is available to all AI platforms, it's commoditised. Exclusivity, recency or richer entity linkage is what makes it sellable.
 
 This is the long game. The map is the trojan horse; the footfall-to-AI-truth-signal pipeline is the actual product.
+
+---
+
+## Feasibility scorecard
+
+A rough read on each idea covered above. Ratings: **Likely** (achievable with normal engineering), **Possible** (achievable but with real constraints or partner dependency), **Hard** (technical or legal blockers that need real work to clear), **Speculative** (long-horizon, depends on many other things landing first).
+
+| Idea | Rating | Why |
+|------|--------|-----|
+| Indoor map rendered from a floor plan (Mapbox or Leaflet/OSM) | Likely | Off-the-shelf libraries, well-trodden path. Hardest part is getting the floor-plan data, not the rendering. |
+| QR scan opens map at a specific pin | Likely | A static URL with query params solves it. No new tech needed. |
+| Pin notes linked to Rank4AI entity records | Likely | Just a schema mapping plus a CMS for tenants. Adds value cheaply. |
+| Google Maps indoor publishing | Possible | Programme exists but Google has tightened submissions; may now be invitation-only or restricted to large transit/retail venues. Worth applying for the flagship pilot venue but don't depend on it. |
+| Pub-WiFi-style venue sign-up | Likely | Standard SaaS onboarding. The hard part is sales, not engineering. |
+| Tenant self-claim of pins | Likely | Mirrors Google Business Profile claim flow. Email-domain or document verification handles it. |
+| Sponsored pins / category takeovers | Likely | Standard ad-server logic. Inventory only becomes valuable once we have venue traffic. |
+| Route-end / dwell-triggered offers | Possible | Needs reliable indoor positioning and consent. Without good "blue dot" the targeting is too coarse. |
+| Auto-enable location on sign-up | Hard (in browser) | Browsers explicitly block programmatic geolocation. The realistic version is "prompt at the right moment with a clear reason." A native app would change this. |
+| Cached / offline map experience | Likely | Service workers + Mapbox offline tiles + a small bundle. Standard PWA work. |
+| BLE beacons as no-signal fallback | Possible | Hardware cost per venue and ongoing maintenance, but the tech is mature (Eddystone, iBeacon). Worth it for venues with persistent dead zones. |
+| App-side anonymous presence heatmap | Possible | Requires enough installed base in-venue to be statistically meaningful. Sparse early data will mislead. |
+| Bluetooth scanning of *other people's* phones | Hard | iOS blocks the raw API; Android is tightening; MAC randomisation undermines accuracy; GDPR/PECR exposure is significant. **Probably should not pursue** in this form — venue WiFi analytics or CCTV partnerships are the legal path to the same data. |
+| WiFi-analytics integration (Meraki/Aruba/Purple) | Likely | These vendors already expose APIs. Integration work, not invention. |
+| CCTV / computer vision footfall integration | Possible | Requires venue to have a vendor in place and to share data. Commercial deal, not a tech blocker. |
+| "How busy is it now" pin badge | Possible | Trivial once any one of the footfall sources is wired up. |
+| Footfall dataset sold to retailers/landlords | Possible | Existing market (Springboard, Huq, Placer.ai). We'd need either better data, better entity linkage, or a niche they don't cover. |
+| Footfall as ground-truth signal sold to AI platforms | Speculative | Conceptually strong and on-thesis for Rank4AI, but depends on (a) a network large enough to matter, (b) a clean privacy story, (c) AI platforms being willing buyers of third-party grounding data. Worth designing for from day one; not worth promising for years. |
+
+---
+
+## Other angles worth thinking about
+
+Things not yet covered in this doc that probably need at least a pass.
+
+**Competitive landscape.** Existing players in indoor mapping include Mapwize (acquired by Engie), Pointr, MazeMap, Situm, Inpixon, Esri ArcGIS Indoors, and Apple's Indoor Maps Program. None of them, to our knowledge, lead with the AI-search-truth-signal angle — that's the wedge. Need a proper teardown of two or three of them before we commit to the build.
+
+**Routing and pathfinding.** Wayfinding inside a building isn't just "show a pin," it's "guide me there from where I am." That means a routing graph (nodes = decision points, edges = walkable segments) per floor, multi-floor traversal via lifts/escalators/stairs, and accessibility-aware variants (step-free, sensory-friendly). Non-trivial data work and the thing that makes the product actually useful versus a static directory.
+
+**Indoor positioning options beyond GPS.** GPS doesn't work indoors. Options to consider: BLE beacons (cheap, mature), UWB (very accurate, expensive, narrow device support), geomagnetic fingerprinting (IndoorAtlas), visual positioning via phone camera (Google's VPS, ARCore Geospatial API, Apple ARKit), audio cues. Likely a hybrid stack with QR-anchored "you are here" as the always-available fallback.
+
+**AR overlay.** Google Maps Live View has shifted user expectations — point your phone down a corridor and see arrows on the floor. Very compelling demo, very hard to ship reliably indoors without VPS. Probably a v3+ feature, but worth knowing the tech stack early so we don't paint ourselves into a corner.
+
+**Venue types beyond shopping centres.** The same product applies to airports, hospitals, universities, museums, conference centres, stadiums, theme parks, large hotels, train stations, exhibition halls. Hospitals are a particularly painful wayfinding problem with real human cost — often cited as the *highest-value* indoor wayfinding market because patients arriving stressed and lost is a measurable problem. Worth ranking these by pain, willingness to pay, and footfall quality for the AI-signal play.
+
+**Emergency and safety use case.** Floor plans + pin metadata + real-time presence is one short step from "fire evacuation routing" or "show staff where a missing child was last scanned." Strong PR story, regulatory complexity, and meaningful product responsibility (if we route someone wrong in a fire we own that). Worth a separate think.
+
+**Accessibility as a first-class feature, not a bolt-on.** Step-free routing, screen-reader-compatible map UI, audio descriptions of routes for visually impaired visitors, sensory-friendly hours (lighting, noise), Changing Places toilet listings. UK Equality Act and EU Accessibility Act 2025 both apply. Building this in from v1 costs little; retrofitting it costs a lot.
+
+**Internationalisation.** Lakeside has international visitors. Venues like Westfield, airports and museums even more so. Notes, search, voice prompts and pin metadata need language coverage. Translation cost is real — auto-translation plus tenant overrides is probably the right pattern.
+
+**Personalisation and return visitors.** A returning visitor could see their last destination, their favourites, "shops new since you last visited." Builds stickiness and improves the footfall signal over time.
+
+**Loyalty and gamification.** "Visit five participating shops, get a discount" mechanics drive footfall (good for tenants, good for our data quality). Stamp-card style. Same plumbing also supports treasure hunts, child-friendly venue events, etc.
+
+**API / SDK for tenants and developers.** Once entity records exist, third parties (the tenants' own websites, third-party apps) might want to embed "find us in Lakeside" widgets or programmatically read footfall. An API turns the platform into ecosystem rather than a closed app.
+
+**Data quality and maintenance.** Floor plans go stale fast — shops move, units get refitted, signage changes. Need a process (and probably a paid role at the venue) for keeping the map current. This is what kills most indoor mapping deployments.
+
+**Liability and insurance.** Wayfinding errors in normal use are embarrassing; in emergencies they're dangerous. Need clear T&Cs, appropriate insurance, and probably explicit "this is wayfinding guidance, not safety-critical instruction" disclaimers around emergency routing.
+
+**Branding and white-label.** Does Lakeside want a "Lakeside Map" experience or a generic third-party one? Likely the former. Means the platform has to support per-venue theming (logo, colours, voice, even URL like `map.lakeside.co.uk`) without forking the codebase.
+
+**Data partnerships.** OpenStreetMap is a community — contributing back the indoor data we capture both improves the global map and creates a defensible "we are the largest contributor of indoor OSM data" position. Mapbox, Apple Maps (Indoor Maps Program) and Google Maps all also accept floor-plan submissions. Where we publish what is a strategic choice, not a technical one.
+
+**Privacy posture as marketing.** If the bigger thesis is footfall-as-truth-signal, then being visibly the *most privacy-respecting* operator in the space is a moat. Public-facing privacy white paper, k-anonymity guarantees, opt-out flows and ICO engagement from day one. This is cheap to do and expensive to retrofit.
+
+**Scale economics.** Going from 1 venue to 100 changes everything: floor-plan onboarding pipeline, support, ad sales, data infrastructure. The architecture needs to be multi-tenant from the first line of code, even if commercially we're selling one venue at a time.
