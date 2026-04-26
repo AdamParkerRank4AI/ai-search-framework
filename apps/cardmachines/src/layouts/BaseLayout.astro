@@ -1,0 +1,124 @@
+---
+import { MetaTags, AuthorByline } from '@aisf/ui';
+import { OrganizationSchema, BreadcrumbSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+import '~/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  pathname: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  breadcrumbs?: { name: string; url: string }[];
+  author?: { name: string; url: string; role?: string };
+  publishedDate?: string;
+  updatedDate?: string;
+}
+const {
+  title,
+  description,
+  pathname,
+  ogImage,
+  ogType = 'website',
+  breadcrumbs,
+  author,
+  publishedDate,
+  updatedDate,
+} = Astro.props;
+const canonical = `${SITE.url}${pathname}`;
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <MetaTags
+    title={title}
+    description={description}
+    canonical={canonical}
+    ogImage={ogImage}
+    ogType={ogType}
+  />
+  <OrganizationSchema
+    name={SITE.name}
+    url={SITE.url}
+    description={SITE.tagline}
+    parentOrganization={SITE.parentOrganization}
+  />
+  {breadcrumbs && <BreadcrumbSchema crumbs={breadcrumbs} />}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">{SITE.name}</a>
+      <nav>
+        <a href="/high-risk/">High-risk</a>
+        <a href="/switch/">Switching</a>
+        <a href="/reviews/">Reviews</a>
+        <a href="/tap-to-pay-iphone/">Tap to Pay</a>
+        <a href="/trade/">By trade</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <slot name="hero" />
+    {(author || updatedDate || publishedDate) && (
+      <AuthorByline
+        name={author?.name ?? 'Editorial team'}
+        url={author?.url ?? '/about/'}
+        role={author?.role}
+        publishedDate={publishedDate}
+        updatedDate={updatedDate}
+      />
+    )}
+    <slot />
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} {SITE.name}. Independent UK comparison site. We may earn a commission when you click through to a partner.</p>
+      <nav>
+        <a href="/about/">About</a>
+        <a href="/methodology/">How we test</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
+<style>
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .brand { font-weight: 700; color: var(--text); text-decoration: none; font-size: 1.05rem; }
+  .site-header nav a { color: var(--muted); text-decoration: none; margin-left: 1.25rem; font-weight: 500; font-size: 0.95rem; }
+  .site-header nav a:hover { color: var(--accent); }
+
+  .site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .site-footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .site-footer p { margin: 0; max-width: 60ch; }
+  .site-footer nav a { color: inherit; margin-left: 1.25rem; }
+</style>

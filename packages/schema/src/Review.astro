@@ -1,0 +1,32 @@
+---
+interface Props {
+  itemName: string;
+  itemType?: string; // 'Product' | 'Organization' | etc.
+  authorName: string;
+  authorUrl?: string;
+  datePublished: string; // ISO
+  dateModified?: string;
+  reviewBody: string;
+  rating: { value: number; best?: number; worst?: number };
+  publisherName: string;
+  publisherUrl: string;
+}
+const { itemName, itemType = 'Product', authorName, authorUrl, datePublished, dateModified, reviewBody, rating, publisherName, publisherUrl } = Astro.props;
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  itemReviewed: { '@type': itemType, name: itemName },
+  author: { '@type': 'Person', name: authorName, ...(authorUrl && { url: authorUrl }) },
+  datePublished,
+  ...(dateModified && { dateModified }),
+  reviewBody,
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: rating.value,
+    bestRating: rating.best ?? 5,
+    worstRating: rating.worst ?? 1,
+  },
+  publisher: { '@type': 'Organization', name: publisherName, url: publisherUrl },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline></script>

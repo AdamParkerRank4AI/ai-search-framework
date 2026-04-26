@@ -1,0 +1,40 @@
+---
+interface Props {
+  rank?: number;
+  name: string;
+  summary?: string;
+  bestFor?: string;
+  rating?: number;
+  href?: string;
+  ctaLabel?: string;
+}
+const { rank, name, summary, bestFor, rating, href, ctaLabel = 'Read review' } = Astro.props;
+---
+<li class="entry">
+  <header class="entry-head">
+    {rank !== undefined && <span class="rank">{rank}</span>}
+    <h3 class="entry-name">{name}</h3>
+    {rating !== undefined && <span class="rating" aria-label={`Rated ${rating} out of 5`}>{rating}/5</span>}
+  </header>
+  {summary && <p class="summary">{summary}</p>}
+  <div class="meta">
+    {bestFor && <p class="best-for"><strong>Best for:</strong> {bestFor}</p>}
+  </div>
+  <div class="facts">
+    <slot />
+  </div>
+  {href && <a class="cta" href={href}>{ctaLabel} →</a>}
+</li>
+<style>
+  .entry { background: var(--surface, #fff); border: 1px solid var(--border, #e3e6eb); border-radius: 10px; padding: 1.5rem; }
+  .entry-head { display: flex; align-items: baseline; gap: 0.75rem; margin: 0 0 0.5rem; }
+  .rank { font-weight: 700; font-size: 1.1rem; color: var(--accent, #1f5fff); width: 1.5rem; }
+  .entry-name { margin: 0; font-size: 1.2rem; flex: 1; }
+  .rating { font-size: 0.85rem; color: var(--muted, #5a6270); font-weight: 600; }
+  .summary { margin: 0 0 0.85rem; color: var(--muted, #5a6270); }
+  .meta { margin: 0 0 0.85rem; }
+  .best-for { margin: 0; font-size: 0.95rem; }
+  .facts { display: grid; gap: 0.35rem; font-size: 0.95rem; }
+  .cta { display: inline-block; margin-top: 1rem; color: var(--accent, #1f5fff); font-weight: 600; text-decoration: none; }
+  .cta:hover { text-decoration: underline; }
+</style>

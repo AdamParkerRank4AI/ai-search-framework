@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  twitterHandle?: string;
+}
+const { title, description, canonical, ogImage, ogType = 'website', twitterHandle } = Astro.props;
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={ogType} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+<meta name="twitter:card" content="summary_large_image" />
+{twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{ogImage && <meta name="twitter:image" content={ogImage} />}

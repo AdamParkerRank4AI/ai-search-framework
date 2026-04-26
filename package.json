@@ -1,0 +1,21 @@
+{
+  "name": "ai-search-framework",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Network of UK SMB lead-gen sites optimised for AI search, AI Overviews and SEO",
+  "scripts": {
+    "dev:cm": "pnpm --filter @aisf/cardmachines dev",
+    "dev:bbl": "pnpm --filter @aisf/bbl dev",
+    "dev:fb": "pnpm --filter @aisf/fundbiz dev",
+    "build": "pnpm -r build",
+    "build:cm": "pnpm --filter @aisf/cardmachines build",
+    "build:bbl": "pnpm --filter @aisf/bbl build",
+    "build:fb": "pnpm --filter @aisf/fundbiz build",
+    "check": "pnpm -r check"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.12.0"
+}

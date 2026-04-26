@@ -1,0 +1,30 @@
+---
+import { MetaTags, Hero } from '@aisf/ui';
+import { OrganizationSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <MetaTags
+    title="BestBusinessLoans — Independent UK Business Loan Reviews"
+    description="Independent reviews of UK business loans, lenders and finance products. Halal finance, post-decline help, and the lenders behind every recommendation tested."
+    canonical={`${SITE.url}/`}
+  />
+  <OrganizationSchema name={SITE.name} url={SITE.url} description={SITE.tagline} />
+</head>
+<body>
+  <main style="max-width:960px; margin:0 auto; padding:1.25rem; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">
+    <Hero
+      eyebrow="UK business loans, independently reviewed"
+      title="Find the business loan that's actually right for you."
+      subtitle="No application forms. No commission-driven rankings. We test the lenders, then we tell you which is best for your situation. When you're ready to apply, we'll point you to a sister broker site."
+    />
+    <p style="padding:1rem 0;">
+      <strong>Site scaffolded — pages building.</strong> Wave 1 priorities: halal/Sharia hub, women-led founders hub, post-decline editorial layer, four anchor lender reviews, methodology page.
+    </p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  headline: string;
+  description?: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  authorName: string;
+  authorUrl?: string;
+  publisherName: string;
+  publisherUrl: string;
+  mainEntityOfPage?: string;
+}
+const { headline, description, image, datePublished, dateModified, authorName, authorUrl, publisherName, publisherUrl, mainEntityOfPage } = Astro.props;
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline,
+  ...(description && { description }),
+  ...(image && { image }),
+  datePublished,
+  ...(dateModified && { dateModified }),
+  author: { '@type': 'Person', name: authorName, ...(authorUrl && { url: authorUrl }) },
+  publisher: { '@type': 'Organization', name: publisherName, url: publisherUrl },
+  ...(mainEntityOfPage && { mainEntityOfPage }),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline></script>

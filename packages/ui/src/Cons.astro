@@ -1,0 +1,14 @@
+---
+interface Props { items: string[]; title?: string; }
+const { items, title = 'Cons' } = Astro.props;
+---
+<div class="cons">
+  <h4>{title}</h4>
+  <ul>{items.map((i) => <li>{i}</li>)}</ul>
+</div>
+<style>
+  .cons { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem 1.25rem; }
+  h4 { margin: 0 0 0.5rem; color: #991b1b; }
+  ul { margin: 0; padding-left: 1.25rem; }
+  li { margin: 0.25rem 0; }
+</style>

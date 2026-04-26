@@ -1,0 +1,31 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  role?: string;
+  image?: string;
+  publishedDate?: string;
+  updatedDate?: string;
+}
+const { name, url, role, image, publishedDate, updatedDate } = Astro.props;
+---
+<aside class="byline">
+  {image && <img src={image} alt="" loading="lazy" width="40" height="40" />}
+  <div>
+    <p class="who"><a href={url}><strong>{name}</strong></a>{role && <span class="role">, {role}</span>}</p>
+    <p class="when">
+      {publishedDate && <>Published <time datetime={publishedDate}>{publishedDate}</time></>}
+      {publishedDate && updatedDate && ' · '}
+      {updatedDate && <>Updated <time datetime={updatedDate}>{updatedDate}</time></>}
+    </p>
+  </div>
+</aside>
+<style>
+  .byline { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 0; border-top: 1px solid var(--border, #e3e6eb); border-bottom: 1px solid var(--border, #e3e6eb); margin: 1.5rem 0; }
+  .byline img { border-radius: 50%; }
+  .who { margin: 0; font-size: 0.95rem; }
+  .who a { color: inherit; text-decoration: none; }
+  .who a:hover { text-decoration: underline; }
+  .role { color: var(--muted, #5a6270); font-weight: 400; }
+  .when { margin: 0.15rem 0 0; font-size: 0.85rem; color: var(--muted, #5a6270); }
+</style>

@@ -1,0 +1,69 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Cta } from '@aisf/ui';
+---
+<BaseLayout
+  title="CardMachines — UK Card Terminals & Merchant Accounts Compared"
+  description="Independent UK reviews of card terminals, merchant accounts and payment processing. High-risk merchants, switching guides, Tap to Pay, by trade."
+  pathname="/"
+>
+  <Hero
+    slot="hero"
+    eyebrow="UK card terminals"
+    title="Find the right card machine for your business — without the contract trap."
+    subtitle="Independent reviews. Real switching savings calculator. UK high-risk merchant coverage no one else has."
+  />
+
+  <section class="pillars">
+    <a class="pillar" href="/high-risk/">
+      <h2>High-risk merchant accounts</h2>
+      <p>UK acquirers for CBD, vape, adult, firearms, gambling, travel, subscription and more.</p>
+    </a>
+    <a class="pillar" href="/switch/">
+      <h2>Switching from Worldpay or Barclaycard</h2>
+      <p>Cancel guides, exit-cost calculator, and savings projections for your turnover.</p>
+    </a>
+    <a class="pillar" href="/reviews/">
+      <h2>Terminal &amp; provider reviews</h2>
+      <p>Hands-on reviews of Dojo Go, SumUp Solo, Zettle Reader 2, Stripe Reader S700, and more.</p>
+    </a>
+    <a class="pillar" href="/tap-to-pay-iphone/">
+      <h2>Tap to Pay on iPhone</h2>
+      <p>Every UK provider compared — SumUp, Square, Stripe, Zettle, Tide, Revolut.</p>
+    </a>
+    <a class="pillar" href="/trade/">
+      <h2>By trade &amp; sector</h2>
+      <p>Card readers for plumbers, electricians, salons, takeaways, market stalls and more.</p>
+    </a>
+    <a class="pillar" href="/vs/">
+      <h2>Head-to-heads</h2>
+      <p>SumUp vs Zettle, Dojo vs Worldpay, Square vs Stripe Terminal — settled.</p>
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem 0 3rem;
+  }
+  .pillar {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .pillar:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(31, 95, 255, 0.08);
+  }
+  .pillar h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+  .pillar p { margin: 0; color: var(--muted); }
+</style>

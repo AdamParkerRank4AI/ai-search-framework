@@ -1,0 +1,28 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  jobTitle?: string;
+  description?: string;
+  image?: string;
+  sameAs?: string[];
+  knowsAbout?: string[];
+  worksFor?: { name: string; url: string };
+}
+const { name, url, jobTitle, description, image, sameAs = [], knowsAbout = [], worksFor } = Astro.props;
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name,
+  url,
+  ...(jobTitle && { jobTitle }),
+  ...(description && { description }),
+  ...(image && { image }),
+  ...(sameAs.length && { sameAs }),
+  ...(knowsAbout.length && { knowsAbout }),
+  ...(worksFor && {
+    worksFor: { '@type': 'Organization', name: worksFor.name, url: worksFor.url },
+  }),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline></script>

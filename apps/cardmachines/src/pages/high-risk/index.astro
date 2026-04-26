@@ -1,0 +1,138 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const verticals = [
+  { slug: 'cbd', name: 'CBD', summary: 'Why Stripe / Square refuse, and which UK acquirers do accept CBD.' },
+  { slug: 'vape', name: 'Vape', summary: 'Vape-friendly UK acquirers and EPOS with age verification.' },
+  { slug: 'adult', name: 'Adult', summary: 'UK acquirers that accept adult MCCs, with chargeback management.' },
+  { slug: 'firearms', name: 'Firearms', summary: 'Niche UK acquirer panel for licensed firearms retailers.' },
+  { slug: 'gambling', name: 'Gambling-adjacent', summary: 'Esports, fantasy sports, lottery resellers — what works.' },
+  { slug: 'travel-tour-operator', name: 'Travel & tour operators', summary: 'Post-pandemic chargeback risk and the UK acquirers that still write business.' },
+  { slug: 'subscription', name: 'Subscription boxes', summary: 'Recurring billing, decline waterfalls, retention metrics that matter.' },
+  { slug: 'nutraceuticals', name: 'Nutraceuticals', summary: 'CBD-adjacent supplement claims and the UK panel.' },
+  { slug: 'debt-collection-credit-repair', name: 'Debt collection & credit repair', summary: 'A high-touch underwrite, but the CPLs are the highest on the site.' },
+];
+
+const faqs = [
+  {
+    question: "What does 'high-risk merchant' mean in the UK?",
+    answer: "A high-risk merchant is one that mainstream acquirers (Stripe, Square, SumUp, Zettle) refuse — typically because of chargeback risk, regulatory exposure, or reputational sensitivity. Common examples: CBD, vape, adult, firearms, gambling-adjacent, travel, subscription, and nutraceuticals.",
+  },
+  {
+    question: 'Which UK acquirers accept high-risk businesses?',
+    answer: 'A small panel of specialist UK and UK-friendly acquirers underwrite high-risk MCCs: Trust Payments, Universe Payments, Acquired.com, PurePay, and Worldpay (via their high-risk team). Each has different appetite — for example, some accept CBD but not adult, some take subscription but not gambling.',
+  },
+  {
+    question: 'Why are fees higher on a high-risk merchant account?',
+    answer: 'Higher chargeback risk means the acquirer holds a rolling reserve (typically 5–15% of monthly volume for 90–180 days), and processing fees are 2–5x higher than mainstream. The economics still work for the merchant because the alternative is no card processing at all.',
+  },
+  {
+    question: 'How long does a high-risk merchant account application take?',
+    answer: 'Underwriting is more rigorous than mainstream — expect 1–4 weeks. You will need lab certificates (CBD), age verification systems (vape, adult), licences (firearms), and proof of compliance with the relevant regulator.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'High-risk merchant accounts', url: `${SITE.url}/high-risk/` },
+];
+---
+<BaseLayout
+  title="High-Risk Merchant Accounts UK — Card Processing for CBD, Vape, Adult, Firearms & More"
+  description="UK high-risk merchant account guide. Which UK acquirers accept CBD, vape, adult, firearms, gambling, travel, subscription, nutraceuticals — and how the application works."
+  pathname="/high-risk/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+>
+  <Hero
+    slot="hero"
+    eyebrow="High-risk merchant accounts"
+    title="UK card processing for high-risk businesses — without the US-only runaround."
+    subtitle="Most ranking content for UK high-risk queries is written for US merchants. This is the UK version: which acquirers accept your MCC, what reserves to expect, and how to apply."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="High-risk merchant accounts in the UK — full guide"
+    description="UK card processing for high-risk businesses including CBD, vape, adult, firearms, gambling, travel, subscription, nutraceuticals."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/high-risk/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section>
+    <h2>What "high-risk" means to a UK acquirer</h2>
+    <p>A high-risk MCC (Merchant Category Code) signals one of three things to an acquirer: elevated chargeback rates, regulatory complexity, or reputational sensitivity. The mainstream UK card-processing platforms — Stripe, Square, SumUp, Zettle, most banks — refuse these MCCs by default to keep their underwriting simple.</p>
+    <p>The result is a small but real UK acquirer panel that does write high-risk business — at higher fees, with rolling reserves, and after deeper underwriting.</p>
+  </section>
+
+  <section>
+    <h2>UK-friendly high-risk verticals — pick yours</h2>
+    <div class="vert-grid">
+      {verticals.map((v) => (
+        <a class="vert" href={`/high-risk/${v.slug}/`}>
+          <h3>{v.name}</h3>
+          <p>{v.summary}</p>
+          <span class="more">Read more →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>UK high-risk acquirer panel</h2>
+    <p>The acquirers that consistently write high-risk UK business:</p>
+    <ul>
+      <li><strong>Trust Payments</strong> — broadest UK appetite, especially CBD, vape, subscription, nutraceuticals.</li>
+      <li><strong>Universe Payments</strong> — strong on adult, gambling-adjacent, travel.</li>
+      <li><strong>Acquired.com</strong> — UK-licensed, good for subscription and recurring billing.</li>
+      <li><strong>PurePay</strong> — niche but accepts MCCs others won't (firearms, debt collection).</li>
+      <li><strong>Worldpay (high-risk team)</strong> — separate underwriting line from the mainstream Worldpay product; takes larger merchants.</li>
+    </ul>
+    <p class="placeholder-cta">→ Acquirer profiles and lead matching to come. CTAs will be wired once direct partnerships are signed.</p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  .vert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .vert {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 120ms ease, border-color 120ms ease;
+  }
+  .vert:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .vert h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+  .vert p { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.95rem; }
+  .more { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+  .placeholder-cta {
+    background: #fff7ed;
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #92400e;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+</style>

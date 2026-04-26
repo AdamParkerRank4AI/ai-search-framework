@@ -1,0 +1,33 @@
+---
+import { MetaTags, Hero } from '@aisf/ui';
+import { OrganizationSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <MetaTags
+    title="FundBiz — UK Business Loan Matching for Limited Companies"
+    description="UK business loans for Ltd, LLP and partnerships of 4+. Post-decline help, sector-specific lenders, MCA, asset finance, working capital."
+    canonical={`${SITE.url}/`}
+  />
+  <OrganizationSchema name={SITE.name} url={SITE.url} description={SITE.tagline} />
+</head>
+<body>
+  <main style="max-width:960px; margin:0 auto; padding:1.25rem; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">
+    <Hero
+      eyebrow="UK business loans for limited companies"
+      title="Matched with the lender that'll actually approve you."
+      subtitle="Just declined? Bad credit? CCJ on the file? We route around it. Limited companies, LLPs and partnerships of 4+ only."
+    />
+    <p style="padding:1rem 0;">
+      <strong>Site scaffolded — pages building.</strong> Wave 1 priorities: post-decline funnel (per-bank pages, reason pages, second-chance hub), 8 highest-volume sector landers, MCA + RBF product hubs, business loan calculator stub.
+    </p>
+    <p style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:0.75rem 1rem; font-size:0.9rem;">
+      Eligible structures: {SITE.eligibleStructures.join(', ')}. Sole traders → <a href="https://www.startuploans.co.uk/">Start Up Loans (BBB)</a>.
+    </p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# build output
+dist/
+.astro/
+.output/
+.vercel/
+.netlify/
+.wrangler/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+.dev.vars
+
+# editor
+.vscode/
+.idea/
+.DS_Store
+
+# typescript
+*.tsbuildinfo
+
+# os
+Thumbs.db

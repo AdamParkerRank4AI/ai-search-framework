@@ -1,0 +1,22 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  description?: string;
+  applicationCategory?: string;
+  offers?: { price: number; currency: string };
+}
+const { name, url, description, applicationCategory = 'BusinessApplication', offers } = Astro.props;
+const data: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name,
+  url,
+  applicationCategory,
+  ...(description && { description }),
+};
+if (offers) {
+  data.offers = { '@type': 'Offer', price: offers.price, priceCurrency: offers.currency };
+}
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline></script>
