@@ -310,6 +310,116 @@ This way we don't bet everything on the map taking off before we know AI platfor
 
 ---
 
+## 10. The footfall data landscape: who handles it today and can we see it?
+
+Direct answer first: **no, there is no single place to see all footfall traffic.** The market is fragmented across tens of companies, each holding their own slice with their own methodology, coverage and customer base. There is no master "show me every phone in this geofence right now" service. There are vendors who can give you a *modelled estimate* of how many people were in a defined area over a defined time window, but each estimate is built from a sample and extrapolated.
+
+This fragmentation matters because it is the gap our wedge is built on.
+
+### Who actually holds location/footfall data
+
+Grouped by where the data originates.
+
+**Mobile OS providers (the giants).**
+- **Apple.** Holds iPhone location via Find My, Maps and system services. Does not sell raw or aggregated data. Internal use only.
+- **Google.** Holds Android + Google Maps + Search location. Uses it internally (Maps "popular times", Traffic). Sells limited aggregated mobility insights via Google Maps Platform; does not sell raw pings.
+- **Microsoft, Meta, Amazon.** Hold smaller slices via their apps. Don't sell raw.
+
+These three sit on the largest datasets by far but are not buyable. They are competitors-in-waiting more than suppliers.
+
+**Mobile carriers (UK).**
+- **EE / BT.** Mobility insights products via BT for retail and planning.
+- **Vodafone.** Vodafone Analytics — anonymised cellular-derived flow data, sold for retail, transport, planning.
+- **O2 / Virgin Media O2.** O2 Motion — same shape, was a Telefonica Tech product.
+- **Three UK.** Smaller mobility insights offering.
+
+Carriers see *every phone connected to their network* aggregated to cell-tower level (~100m–1km accuracy outdoors, worse indoors). Coverage is huge but spatial precision is low. Buyable but expensive and slow to procure.
+
+**Mobile SDK location aggregators (the controversial layer).**
+This is the sector that grew up by paying to embed location-collecting SDKs inside random apps (weather, flashlight, games) and selling the aggregated pings.
+
+- **SafeGraph** (US-focused, large POI dataset).
+- **Veraset** (US, supplies many of the analytics players).
+- **Foursquare** (Pilgrim SDK + huge POI graph; also licenses).
+- **Cuebiq** (Italy/US).
+- **Outlogic** (formerly X-Mode — banned by US FTC in 2024 from selling sensitive location data).
+- **Gravy Analytics** (US — suffered a major data breach in January 2025 that exposed the underlying brittleness of the whole sector).
+- **Tamoco, Predicio, Adsquare, Near Intelligence, Kochava, Onfido.**
+
+This whole layer is structurally weakened. ATT (Apple's App Tracking Transparency) cratered iOS data volumes in 2021. Google's Privacy Sandbox is doing the same to Android. The FTC action against X-Mode/Outlogic and the Gravy breach have made buyers nervous and regulators active. Coverage is shrinking, prices are wobbling. **We do not want to inherit this baggage.**
+
+**Footfall analytics products (built on the layers above).**
+- **Placer.ai** — US-focused, retail and real-estate analytics, builds on SDK data plus its own panel. The category leader by visibility.
+- **Huq Industries** — UK and European, council/planner-focused.
+- **Springboard** — UK retail footfall, mostly venue-camera based.
+- **Sensormatic Solutions / ShopperTrak, V-Count, RetailNext, Brickstream, Hoxton Analytics** — camera-based venue counters.
+- **Geoblink, PiinPoint, Mytraffic** — regional location-intel platforms.
+
+These are the buyable products — what someone like a retail planner or a landlord pays for today. Most of them sell to humans for business decisions. **None of them are packaged as AI grounding data.**
+
+**Venue WiFi analytics.**
+- **Cisco Meraki, Aruba (HPE), Ruckus, Extreme Networks** — venue-side WiFi access points that already produce analytics.
+- **Purple WiFi, Cloud4Wi, Tanaza** — guest-WiFi platforms with analytics.
+
+This data sits inside each venue and is owned by the venue / their network operator. Buyable but only one venue at a time.
+
+**Camera / CV vendors.** Already listed under footfall analytics. Out of scope for our project.
+
+**Connected car / vehicle data.** Otonomo (merged), Wejo (troubled), Geotab. Useful for venue-arrival signal, not in-venue movement.
+
+**Card / open-banking transactions.** Out of scope per the location-only decision but listed for completeness: Mastercard SpendingPulse, Visa, Fable Data, Consumer Edge, Earnest, Facteus.
+
+**Data marketplaces (where the above gets resold).**
+- **Snowflake Data Marketplace, AWS Data Exchange, Databricks Marketplace, Datarade, Dawex.** Browseable catalogues of datasets including footfall feeds. Convenient for procurement; doesn't change who originally collected the data.
+
+### Is it one place or hundreds?
+
+Hundreds, by count. **No single source sees the whole market**, and the market itself is split between:
+
+- A few giant non-sellers (Apple, Google).
+- A handful of carriers per country (sells nationally).
+- Tens of SDK aggregators (declining, exposed).
+- A few dozen camera/WiFi/POS vendors operating venue-by-venue.
+- Tens of analytics-product re-packagers.
+
+The closest things to "one view of UK footfall" are:
+- A single major UK carrier dataset (Vodafone or O2) — broad but coarse, single country.
+- Placer.ai or Foursquare for retail POIs — broad but sample-based, not a complete count.
+- Google's internal data — best in class, not for sale.
+
+There is no consolidated "see all phones in this area" service. There is no national footfall registry. Anyone telling you they have one is either a carrier (single network only), an SDK aggregator (sample, weakened) or a POI analytics player (sample plus modelling).
+
+### Could we, for a given geo area, see how many phones were there?
+
+Yes — but with material caveats. Concretely, today, for a defined geofence and a defined time window, you can:
+
+- **Buy a Placer.ai tile.** Get a modelled visit count, dwell distribution, day-part split, demographic estimate, true visit vs. drive-by separation. Subscriptions start in the low thousands per month for serious use; per-tile / per-report buying is also available.
+- **Buy a carrier extract.** Vodafone Analytics or O2 Motion for the area, get cell-tower-derived counts. Coarser spatial precision but full network coverage.
+- **Subscribe to Foursquare's Places / Movement APIs.** Per-call pricing. POI-anchored.
+- **Buy an SDK extract from Veraset / SafeGraph / Outlogic.** Raw or aggregated, declining quality, regulatory risk.
+- **Look at Google "Popular Times".** Free, public, no API, only for known POIs.
+- **Tap into venue WiFi analytics if the venue is a customer of Meraki / Aruba / Purple.** Only that venue.
+
+What none of these will give you is the actual ground truth. Every count is:
+- A sample of the people who happened to be using whatever data source the vendor draws on (an SDK app, a network, a particular phone OS).
+- Extrapolated to a population estimate using a vendor-specific model.
+- Often unreliable below a coverage threshold (rural areas, indoor spaces, niche venues).
+
+For a flagship test: if we wanted to know how many people were in a specific Lakeside store at 2pm last Saturday, the most accurate answer today comes from Lakeside's own venue-side WiFi or camera data, not from any of the third-party sellers. That's part of why our project's first-party map data is differentiated — once it exists at scale, it's higher quality than the bought-in alternatives because it's actually inside the venue with consent.
+
+### What this means for our plan
+
+- **The supply chain is fragmented and weakened.** No incumbent is in a position to dominate. Good news for a new entrant.
+- **Bought-in data is good enough for early demos.** A Placer or Huq tile lets us show OpenAI what an AI-grounding feed could look like, months before our own map network reaches scale. This is the hybrid pilot from Section 9.
+- **Bought-in data is not good enough as a foundation.** Sample-based, modelled, regulatorily fragile, indistinguishable from what every other reseller could buy. Doesn't justify a margin and doesn't last.
+- **Our first-party map data is structurally better** for the specific use case (indoor, entity-anchored, consent-based). Worse coverage early, better quality always.
+- **A mixed pipeline wins.** First-party map data where we have it; carrier or analytics-vendor data filling gaps elsewhere; clear documentation of which slice is which when we sell to AI platforms. AI buyers will respect "this is our consented first-party data; this is licensed carrier data; here's the methodology" much more than "trust us, we have a number."
+- **Watch for marketplace consolidation.** If Snowflake or AWS Data Exchange becomes the de-facto place AI platforms shop for grounding data, being listed there matters more than direct sales. Worth tracking.
+
+So: hundreds of handlers, no master view, every count is a model. Our edge is producing the cleanest slice — first-party, indoor, entity-linked, consent-based — and being the first to package it as AI grounding rather than retail analytics.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
