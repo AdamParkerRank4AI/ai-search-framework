@@ -517,3 +517,123 @@ Each source corrects the others' blind spots. AI platforms don't want a single n
 **Implication for the pitch to AI platforms:** "we have *N* venues, *X* million presences per month, blended with WiFi/CCTV ground truth and reconciled against card-spend totals where available." That sentence is harder to refuse than "we have phone pings."
 
 You're right that a family of four with four maps open is four hits, and right that card data wouldn't catch that. The real win is that no single existing data source catches it — and a blended pipeline does.
+
+---
+
+## Location, geo, and digital footprints: collection and entity matching
+
+The earlier sections framed the *why*. This section is the *how*: what data we can actually capture, how we tie it to a specific physical place, how we sell that to OpenAI, and how we bring retailers along.
+
+### Sources of location and digital-footprint data
+
+Ordered roughly from easiest-to-collect to hardest:
+
+- **Map-app presence.** Every time a visitor opens the venue map, we know the venue, the device, and (with permission) the indoor position. Strongest source we own outright.
+- **GPS / coarse phone location.** Standard browser/native API, accurate to ~5–10m outdoors, mostly useless indoors. Good for arrival/departure detection at the venue boundary.
+- **BLE beacon proximity.** Sub-metre indoor positioning when our beacons are deployed and the visitor's phone has Bluetooth on. Works without internet, fast, cheap, mature.
+- **WiFi access-point triangulation.** When a phone is connected to the venue WiFi, the access points already know where it is. Cisco Meraki, Aruba and Purple expose this via API. Cost: needs a deal with the venue's network owner.
+- **WiFi probe requests (passive scanning of nearby phones).** Historically used to count devices regardless of app or association. Largely killed by MAC randomisation on iOS/Android — modern probe data is noisy and counts shadows. Don't build on this.
+- **Cell-tower / carrier data.** Telefonica Tech, Vodafone Analytics, EE/BT sell aggregated mobility derived from the cellular network. Coarse (100m–1km), but covers everyone with a phone, no app needed. Buy, don't build.
+- **IP geolocation.** Useful for "what region is this user in" online, useless for "which shop are they in." Edge case only.
+- **Mobile advertising IDs (IDFA / GAID).** Apple's App Tracking Transparency (ATT) and Google's Privacy Sandbox have killed this for new entrants. Don't build on this either.
+- **Connected car data.** Otonomo, Wejo, Geotab — carpark arrival times by vehicle, useful for venue-arrival signal but not in-venue movement.
+- **Camera-derived counts.** Hoxton Analytics, V-Count, RetailNext, Brickstream — venue-side counters, often already deployed at the entrance.
+- **Card and open-banking transactions.** Covered above. Joins to time and merchant, not to in-venue movement.
+- **Loyalty / receipt data.** Tesco Clubcard, Pret Club, retailer apps. Per-customer purchase history, retailer-by-retailer.
+- **Wider digital footprints (search and review).** Google Trends per locality, Maps reviews, TripAdvisor mentions, social posts geotagged or text-tagged with the venue. All scrapable to varying degrees, all noisy. Useful as supplementary signal.
+
+The defensible mix for our project: **map presence + BLE beacons + venue WiFi analytics + camera counts at entrances + carrier data for venue-level arrivals**. Each layer covers a blind spot in the others.
+
+### Matching captured data to a specific place
+
+The collection above gives us "device X was here at time T." To make that valuable we need to attach it to a real entity (the H&M at Lakeside, not just "somewhere in Essex"). Three layers:
+
+1. **Polygon per unit.** From the indoor map we already have a GeoJSON polygon for every shop, facility and corridor. A position fix that falls inside the polygon = a presence in that unit.
+2. **Entity link per polygon.** Each polygon carries a stable `entity_id` that resolves to:
+   - The local trading entity (the specific H&M store at Lakeside).
+   - The brand parent (H&M Hennes & Mauritz UK Ltd).
+   - The global brand (H&M, Wikidata Q188326).
+   - The Rank4AI entity record with all five-signal attributes attached.
+3. **External cross-references.** Each entity record links out to Companies House, Wikidata, Google Knowledge Graph, the brand's own URL. This is what makes the data joinable for a buyer like OpenAI — they don't have to trust our IDs, they can pivot through theirs.
+
+With all three in place, a query like "how many people were in H&M Lakeside between 2pm and 3pm last Saturday" becomes a straightforward count of distinct devices observed inside that polygon during that window, deduplicated, weighted for app-adoption coverage, and rolled up to the entity.
+
+The same pipeline supports brand-level aggregation: "across our network, how many people visited any H&M last week, average dwell, peak day." That's the product OpenAI cares about — not single-store, but the whole brand footprint.
+
+### Selling it to OpenAI (and the rest)
+
+OpenAI has already shown they will pay for real-world data when it improves grounding: AP, Le Monde, Reddit, Stack Overflow, Financial Times, News Corp, Axel Springer, Time, Vox, Condé Nast — all signed in 2024–2025. The pattern is consistent: **content or data that reduces hallucination and improves answer quality on questions ChatGPT users actually ask**.
+
+Why this fits that pattern:
+- Place / shopping / "where should I" queries are a high-volume ChatGPT use case.
+- Today the model grounds those answers on web content alone, which is stale, manipulable and silent on whether a place is actually busy or trading.
+- Our feed gives a *recency* signal and a *real-people-actually-go-there* signal that no web page contains.
+- Same product also serves Google AI Overviews, Gemini, Anthropic Claude, Perplexity, Copilot, Mistral, Meta AI. Don't sell exclusively unless the price is genuinely once-in-a-decade.
+
+Sales motion to OpenAI specifically:
+- **Entry route:** OpenAI Data Partnerships team (publicly listed contact). Anthropic has the same. Google has internal teams. Perplexity is the smallest and might move fastest.
+- **Pitch in one sentence:** "You ground place and recommendation answers on stale web content. We give you weekly, consent-based, k-anonymous real-world presence data on UK and EU venues, mapped to entities you already use."
+- **Demo asset:** a side-by-side eval. Take 100 ChatGPT prompts about UK retail destinations. Show baseline answers. Show answers when our feed is injected as context. Measure factuality, recency, recommendation accuracy. If the lift is meaningful, the deal sells itself; if it isn't, we don't have a product.
+- **Commercial shapes that map to existing OpenAI deals:**
+  - Bulk feed licence: annual, tiered by entity coverage (e.g. £500k–£5M/year depending on scale and exclusivity).
+  - API access: per-query pricing for grounding-time lookup.
+  - Hybrid: bulk for training-style use plus API for live grounding.
+- **Term length:** OpenAI's data deals tend to be 2–5 years. Shorter is better for us until we know what the data is worth.
+- **Delivery format:** standardised JSON feed keyed by stable entity IDs, with documented schemas. Probably the same shape as a knowledge-graph delta. They will not accept bespoke formats at any scale.
+
+Things they'll push back on:
+- **Provenance.** Where did each data point come from, who consented, under what legal basis. Need a public privacy paper before the conversation starts.
+- **Coverage.** "How many UK venues, what fraction of UK retail footfall do you see, what's the lag." If the answer is "12 venues" the deal stalls. Below a coverage threshold this is a research project, not a product.
+- **Bias and representativeness.** Skews to digitally-engaged visitors. Need to disclose and ideally weight against ground-truth (camera/WiFi totals).
+- **Refresh cadence.** Daily is the right target. Weekly is acceptable. Monthly is too slow for grounding.
+- **Exclusivity.** They will ask. The right answer is "not exclusive, but you get first-look on new entity types and the lowest-latency feed."
+
+Things in our favour:
+- The Rank4AI brand and existing methodology give us a credible story for *why* this dataset exists in the form it does, rather than being a re-skin of a bought-in feed.
+- Our consent story (visitors actively scan a QR to open the map) is materially cleaner than the legacy mobile-SDK industry's.
+- The framing — "ground-truth offline reality for AI search" — is a category that doesn't exist yet, which means we name it.
+
+### Getting buy-in from retailers, in stages
+
+Retailers are not the buyers — AI platforms are. But retailers have to consent, contribute or at least not block the data flow that makes the product. The plan to bring them along is staged.
+
+**Stage 1: Landlords first, retailers passive.** The first deals are with venue owners (Lakeside, Westfield, Bluewater, large hospitals, airports). The landlord pays for the indoor map. Retailers inside benefit by default — their pin appears on the map, their entity record gets surfaced. We capture footfall as a side effect of the map operating. No retailer signature required at this stage because the data we capture is venue-aggregate and tenant-aggregate, not retailer-specific.
+
+**Stage 2: Retailer claim-and-enrich.** Like Google Business Profile claiming. The H&M store manager (or H&M head office) claims their pin, gets a free dashboard showing their store's visits, dwell, peak hours, returning-visitor rate. Hook: "you can already see this data for your own store, free." Many retailers will sign up just for the analytics — that's the wedge.
+
+**Stage 3: Brand-level deals.** Once enough individual stores in a chain are using the dashboard, approach the head office (H&M UK, Boots, Greggs, JD Sports). Pitch:
+- A consolidated dashboard across every UK store in our network.
+- Better AI search visibility — their stores get cited more often in ChatGPT/Gemini answers when our signal feeds the platforms.
+- Crowd-aware advertising — push offers when their stores are quiet, don't compete with peak-hour traffic.
+- Sponsored placements within the indoor maps.
+- Optional: brand-level enrichment (richer entity descriptions, evidence of stocked categories) feeds back into the AI-search side.
+
+**Stage 4: Consortium model.** Once 50+ retailers are in, formalise it as a consortium dataset — like NielsenIQ for retail. Members contribute (consent to aggregation) and consume (analytics + AI visibility). Members get more value from being in than out. That tips the market.
+
+**What retailers will rightly worry about:**
+- Their competitors seeing their numbers. Mitigation: aggregation thresholds, k-anonymity, no individual-store data exposed to other retailers.
+- Their data being used against them in landlord rent negotiations. Mitigation: contractual firewalls between landlord-side and retailer-side products.
+- Loyalty and CRM data leaking. Mitigation: never ingest this without an explicit per-deal data agreement, and never re-export.
+- Customer trust. Mitigation: they need to be able to point to our public privacy posture and feel comfortable putting their brand alongside it.
+
+**Carrots in priority order:**
+1. Free analytics dashboard for their own stores.
+2. Better AI search visibility (this is genuinely valuable and growing in importance).
+3. Crowd-aware ad inventory at favourable rates for participants.
+4. Anonymised competitive benchmarks ("you are in the top 25% of fashion retailers for dwell time in this venue").
+5. Co-marketing on inclusive design (autism-friendly hours, family-mode) — many retailers want to lead here but lack the platform.
+
+**Sticks, used carefully:**
+- Once enough of a category is in, late entrants are visibly missing from AI answers. That's a real cost we don't have to manufacture.
+- We never go straight to "your competitor is using us" pressure tactics with retailers we're trying to bring along — that breaks trust faster than it closes deals.
+
+### So is the real customer OpenAI?
+
+Probably yes, in revenue terms — and you're right to sense that.
+
+- Venues and retailers are the *operational* customers. They pay for the map, contribute the data, get tactical value from analytics.
+- AI platforms are the *strategic* customer. They pay for the aggregated, mapped-to-entity, refreshed feed and that's the contract that scales.
+- A reasonable revenue split, three years out, might look like: 60–70% from AI-platform data licensing, 20–30% from venue SaaS, 10% from advertising.
+- Day one is the inverse — close to 100% from venue SaaS, because the AI deal needs coverage to exist before it can be sold.
+
+Build for the venue customer. Build the data architecture for the AI customer. Don't pretend either is optional.
