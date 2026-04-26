@@ -8,6 +8,14 @@ It's not a finished plan. It's the start of something. I don't know if it'll wor
 
 Honest "this won't work because..." feedback is what I'm after. Don't be polite, please.
 
+## Where the idea came from
+
+Living Map (https://www.livingmap.com/) is the company that triggered this whole train of thought. UK company, based in Bath, founded 2012, around 30 people, Series A in 2019. They do indoor digital mapping, wayfinding, asset tracking and analytics for venues. Their customers are exactly the kind of places that would matter here: NHS hospitals, Canary Wharf, St Pancras International, Star Alliance, the Met Museum, Detroit Institutes of Arts, the City of Edmonton.
+
+They have a proper product. Web, mobile and kiosk delivery. An analytics dashboard for venue operators. A blog post from them recently about AI's impact on wayfinding, so they're clearly thinking about it. But as far as I can tell from the outside, they're not packaging the footfall data they capture as a feed to sell to AI platforms for grounding LLM answers. That's the bit that's missing.
+
+So the question that hit me was: if a company like Living Map already has venue relationships, captures the data, and has an analytics dashboard, why isn't anyone turning that into the trust signal AI search platforms desperately need? Either I'm missing something obvious about why it can't be done, or there's a real gap. That's what I want help figuring out.
+
 ## The thing I keep coming back to
 
 AI search platforms (ChatGPT, Gemini, Claude, Perplexity, Copilot) are basically trust engines. When someone asks "best phone shop in Essex" or "where should I have lunch in Bristol," the AI is making a trust judgement about which businesses to surface.
@@ -114,6 +122,18 @@ What we could win on:
 - Indoor specificity. Most outdoor footfall products are tile or postcode level. Inside Lakeside, "best phone shop" needs to know which actual unit, not which sector.
 - Methodology bundle. Rank4AI is already published and scored, audit-anchored. The data sits inside a thesis, not as a standalone CSV.
 - Speed. Big incumbents are slow to pivot strategy. Small operators can define a new category faster than they can react to it.
+
+## And on Living Map specifically
+
+Worth being clear since they're the inspiration. I don't think we should compete head-on with Living Map for indoor mapping deployments. They've got a decade's head start, real venue relationships, mature product, established sectors. That fight is lost on day one.
+
+What I think we could do instead is one of three things:
+
+1. Partner with them. Layer the AI grounding data product on top of their installed base. They get a new revenue line from data licensing, we get coverage on day one without years of venue sales. Worth a conversation early.
+2. Compete in adjacent space they don't cover. Small business tier (single shops), QR-to-web no-app entry, scan-to-grounding-feed pipeline. Their model looks more enterprise and more native-app-led.
+3. Treat them as a buyer/acquirer eventually. If the AI-grounding angle works, a company like Living Map (or someone similar) is exactly the kind of buyer that would want it bolted onto their existing footprint.
+
+Honest take: I'd rather work with them than against them, and that should be one of the first conversations after the prototype is built.
 
 ## What I genuinely don't know
 

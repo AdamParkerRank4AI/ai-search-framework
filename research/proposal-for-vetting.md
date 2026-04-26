@@ -203,7 +203,34 @@ The argument: pick the niche where data acquisition is the least friction *and* 
 
 This needs deciding before the prototype venue is chosen. Same Section 12-style demo, easier real-world deployment.
 
-## 12. Note on kiosks — an adjacent product, already happening
+## 12a. Note on Living Map (the company that triggered this idea)
+
+Living Map (livingmap.com) is the UK indoor mapping company that prompted this whole line of thinking. Worth being explicit about them up front because anyone vetting this who knows the space will name them within minutes.
+
+The basics: Bath-based, founded 2012, around 30 people, took a £2.6M Series A in 2019 led by Committed Capital and Mercia. They sell digital indoor mapping, wayfinding, asset tracking and an analytics dashboard. Delivery is web, mobile and kiosk. Their customer list spans the exact sectors this proposal targets: NHS hospitals (in partnership with VitalHub UK), Canary Wharf, St Pancras International, Star Alliance, the Met Museum, Detroit Institutes of Arts, City of Edmonton.
+
+What they have:
+- Real venue relationships in healthcare, transport, culture, retail and smart cities.
+- A mature product across web, mobile and kiosk.
+- An analytics dashboard that captures visitor searches and destinations.
+- Published thinking on AI's impact on wayfinding (their own blog acknowledges the trend).
+
+What they appear not to have (based on public information):
+- A footfall data feed packaged for licensing to AI search platforms as a grounding signal.
+- A small-business / single-shop tier alongside their enterprise venue product.
+- An entity-graph linkage that connects venue pins to a published AI-search optimisation methodology.
+- A QR-to-web, no-app entry model as the primary delivery surface.
+
+Implications for this proposal:
+
+- **We should not compete head-on with Living Map for indoor mapping deployments.** Decade-long head start, real customer base, mature product. That fight is lost on day one.
+- **Partnership is the more interesting first conversation.** Layer the AI grounding data product on their installed base. They get a new revenue line, we get coverage on day one. Worth a direct call early in the validation phase.
+- **Acquisition or being acquired is plausible at maturity.** A company like Living Map (or one of its larger global counterparts) is the kind of buyer that would want an AI-grounding data layer bolted onto its existing venue footprint, three to five years out.
+- **The competitive read is the same conclusion as elsewhere in this doc.** Don't try to rebuild what Living Map (or Pointr, Mapwize, Situm) already do. Build the layer they don't.
+
+This is the most important single competitive datapoint in the document. Anyone reviewing this proposal should be asked specifically whether they have insight into Living Map's strategic intentions on AI grounding, and whether they have a route to an introduction.
+
+## 12b. Note on kiosks — an adjacent product, already happening
 
 There is already a market for **physical interactive kiosks** in venues. Companies like 22Miles, Visix, Acquire Digital, Mvix and many smaller operators ship touchscreen wayfinding, advertising and self-service hardware into retail, hospitality, hospitals and transit. Some retail chains run their own (McDonald's order screens, supermarket self-checkout, hotel check-in stations).
 
