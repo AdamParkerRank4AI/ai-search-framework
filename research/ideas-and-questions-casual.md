@@ -10,11 +10,13 @@ Honest "this won't work because..." feedback is what I'm after. Don't be polite,
 
 ## Where the idea came from
 
-Living Map (https://www.livingmap.com/) is the company that triggered this whole train of thought. UK company, based in Bath, founded 2012, around 30 people, Series A in 2019. They do indoor digital mapping, wayfinding, asset tracking and analytics for venues. Their customers are exactly the kind of places that would matter here: NHS hospitals, Canary Wharf, St Pancras International, Star Alliance, the Met Museum, Detroit Institutes of Arts, the City of Edmonton.
+Living Map (livingmap.com) is the company that triggered this. UK-based, indoor wayfinding for hospitals, airports, shopping centres, museums. They prove venues will buy this kind of product. They aren't (as far as I can tell) packaging the data they capture for AI search platforms. That's the gap I'm interested in.
 
-They have a proper product. Web, mobile and kiosk delivery. An analytics dashboard for venue operators. A blog post from them recently about AI's impact on wayfinding, so they're clearly thinking about it. But as far as I can tell from the outside, they're not packaging the footfall data they capture as a feed to sell to AI platforms for grounding LLM answers. That's the bit that's missing.
+## What's actually happening in AI search right now
 
-So the question that hit me was: if a company like Living Map already has venue relationships, captures the data, and has an analytics dashboard, why isn't anyone turning that into the trust signal AI search platforms desperately need? Either I'm missing something obvious about why it can't be done, or there's a real gap. That's what I want help figuring out.
+ChatGPT, Gemini, Perplexity and the rest are all pushing harder into geo and locations. ChatGPT now has location-aware answers, Google AI Overviews is increasingly map-anchored, Perplexity has been hiring for local search, Apple Intelligence is wiring Maps into their assistant. The "where" question is becoming a first-class part of how AI answers everything.
+
+But the maps and place data they're using underneath are still digital. The base maps come from Mapbox, OpenStreetMap, Apple Maps, Google Maps. The reviews come from Google, Trustpilot, Yelp. The opening hours come from scraped websites. Nothing about it tells the AI whether anyone is actually there.
 
 ## The thing I keep coming back to
 
@@ -33,6 +35,28 @@ That gap is what this idea is about.
 Build something that captures real-world footprint data with consent, packages it into a format AI platforms can actually use, and licenses it to them as a grounding signal. The thing they can't currently see, sold to them as a feed.
 
 Side benefit: the same data is exactly what retailers and venue landlords already pay for from companies like Placer.ai, except more granular and with cleaner consent.
+
+## The phone pings question
+
+This is the bit I keep getting stuck on and I'd love a sanity check.
+
+A phone in someone's pocket walking through a city centre is constantly pinging things. Cell towers (handshakes every minute or two, sometimes more in busy areas). WiFi access points (it scans for nearby networks roughly every 15 to 30 seconds even when not connected). Bluetooth (passive scans for nearby devices and beacons). GPS satellites (if location services are on). Apple or Google's location services for Find My, Maps, weather. Apps that have been granted location permission. Any open beacon operators in the area.
+
+If you add that up, a single phone is generating probably hundreds, maybe low thousands, of "I'm here" signals per hour across all these systems. Multiplied by every phone in the country, that's an enormous amount of presence data being created continuously, every second, of every day.
+
+So the question is: who actually sees all that, and what do they do with it?
+- Apple and Google see most of it via the OS. They use it internally for things like Maps Popular Times and traffic. They don't sell it.
+- Mobile carriers see every cell-tower handshake on their network. Vodafone, O2, EE all have analytics products built on this, but they sell aggregated extracts to retail planners and councils, not to AI platforms.
+- WiFi network operators (BT WiFi, The Cloud, Sky WiFi, plus every venue's own access points) see device presence near every access point. Mostly used for network management, occasionally for analytics.
+- Bluetooth beacon operators see proximity. Mostly retail asset tracking, mostly small-scale.
+- Apps with location permission see their own users only.
+- Footfall data brokers (Placer, SafeGraph, Foursquare, Outlogic) buy SDK data from third-party apps and sell aggregated footfall to retailers.
+
+Two things stand out:
+- The data is enormous and largely sitting in silos. Each silo is doing something with it, but nobody is bringing the slices together into a single trust signal AI platforms could actually use.
+- Nobody is selling any of it as AI grounding data. Every existing buyer is a retailer, a planner or an advertiser. AI platforms aren't on the list.
+
+That's part of where the opportunity feels real. Either I'm missing why nobody is bothering, or it's a category that just hasn't been named yet.
 
 ## How would you actually capture this data
 
@@ -123,17 +147,9 @@ What we could win on:
 - Methodology bundle. Rank4AI is already published and scored, audit-anchored. The data sits inside a thesis, not as a standalone CSV.
 - Speed. Big incumbents are slow to pivot strategy. Small operators can define a new category faster than they can react to it.
 
-## And on Living Map specifically
+## On Living Map and the indoor mapping incumbents
 
-Worth being clear since they're the inspiration. I don't think we should compete head-on with Living Map for indoor mapping deployments. They've got a decade's head start, real venue relationships, mature product, established sectors. That fight is lost on day one.
-
-What I think we could do instead is one of three things:
-
-1. Partner with them. Layer the AI grounding data product on top of their installed base. They get a new revenue line from data licensing, we get coverage on day one without years of venue sales. Worth a conversation early.
-2. Compete in adjacent space they don't cover. Small business tier (single shops), QR-to-web no-app entry, scan-to-grounding-feed pipeline. Their model looks more enterprise and more native-app-led.
-3. Treat them as a buyer/acquirer eventually. If the AI-grounding angle works, a company like Living Map (or someone similar) is exactly the kind of buyer that would want it bolted onto their existing footprint.
-
-Honest take: I'd rather work with them than against them, and that should be one of the first conversations after the prototype is built.
+Quick note since they're the inspiration. I'm not trying to compete head-on with Living Map (or Pointr, Mapwize, MazeMap, Situm). They have years of head start on indoor maps as a product. The bit I want to add is the layer they don't have, which is converting venue presence into a grounding feed for AI search. Probably a partnership conversation rather than a fight.
 
 ## What I genuinely don't know
 
