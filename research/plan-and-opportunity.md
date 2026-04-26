@@ -420,6 +420,110 @@ So: hundreds of handlers, no master view, every count is a model. Our edge is pr
 
 ---
 
+## 11. Map APIs as a data source: what's actually exposed?
+
+Reasonable instinct — if Google, Mapbox and Apple all have huge map products, surely there's an API somewhere that lets us pull "who is in this area, by route, by time"?
+
+**Short answer: no, not really.** Map APIs are excellent for *enrichment* (where places are, what they're called, how to get there) and for *vehicle traffic* (cars on roads), but they are deliberately not exposing pedestrian footfall, in-venue presence or "how many people are here right now." The companies that have that data either keep it internal (Apple, Google) or sell it through separate, paid mobility data products that look more like the footfall vendors in Section 10 than like a normal map API.
+
+Going through them properly.
+
+### Google Maps Platform
+
+What you *can* pull via documented APIs:
+- **Places API** — search POIs, get name/address/type/opening hours/photos/reviews.
+- **Geocoding / Reverse Geocoding** — address ↔ coordinates.
+- **Routes / Directions API** — turn-by-turn routes with traffic-aware ETAs.
+- **Distance Matrix** — travel times between many origin/destination pairs (driving, walking, cycling, transit).
+- **Roads API** — snap-to-road, speed limits.
+- **Maps JavaScript API + Traffic Layer** — visual traffic overlay only, no underlying numbers.
+- **Geolocation API** — estimate device location from WiFi/cell signals.
+
+What you *cannot* pull:
+- Raw or aggregated user pings.
+- "How many people are at this POI right now" — Google Maps shows this in its "Popular times" UI but does not expose it via a stable, supported API. Unofficial scrapers exist (the `populartimes` Python library) and Google periodically clamps down on them. Treat this as unsupported and unreliable.
+- Historical pedestrian flow.
+- In-venue presence.
+
+The traffic-layer data is real but represents *vehicle* movement on roads, derived from Google Maps app users in cars and partner sources. It tells you nothing about footfall to or inside a shop.
+
+### Mapbox
+
+What you can pull:
+- **Vector tiles, geocoding, search, directions, isochrones, matrix, snap-to-roads** — same shape as Google.
+- **Mapbox Boundaries, Mapbox Streets POI dataset** — POI enrichment.
+
+What about movement data:
+- **Mapbox Movement** *was* a paid product giving daily aggregated mobility data tiles from their SDK panel + partners. It has been repositioned over time and is no longer a flagship product. Not currently a reliable foundation.
+
+### Apple Maps / MapKit
+
+- POI search, geocoding, directions, basic embeds, indoor maps for accredited venues.
+- **No movement data, no footfall, no traffic API.** Apple does not sell this category.
+
+### OpenStreetMap
+
+- Map data and tiles, fully open, community-edited.
+- **No movement, footfall or traffic data** at the OSM project level. There are community projects (e.g. OpenTraffic) but no production API to depend on.
+
+### HERE Technologies
+
+This is where it gets more interesting. HERE is not just a map provider — it sells a real mobility data line.
+
+- **HERE Traffic API** — real-time and historical traffic flow on roads.
+- **HERE Probe Data** — anonymised vehicle probe pings (from HERE's automotive partnerships), buyable for transport planning, traffic engineering, real-estate analytics.
+- **HERE Mobility / fleet products.**
+
+Caveat: this is **vehicle-derived**, not pedestrian. Useful for "how many cars arrived at the Lakeside car parks today" — useless for "how many people walked past Boots on the upper level."
+
+### TomTom
+
+- **TomTom Traffic API** — same shape as HERE.
+- **TomTom Traffic Stats / TomTom Move** — historical traffic patterns from probe data.
+- Vehicle-only, same caveat as HERE.
+
+### Foursquare
+
+Worth singling out because Foursquare is half-map, half-mobility-vendor.
+
+- **Places API** — POI data, with the strongest historical footprint of any non-Google POI graph.
+- **Movement SDK / Pilgrim SDK / Movement APIs** — paid products that give aggregated visit and dwell data per POI, sourced from their own SDK panel embedded in third-party apps. This is closest to "an API that gives you footfall by location" — but it's the same SDK-aggregator model that's been weakened by ATT.
+
+### Specialist mobility data APIs (not map APIs but adjacent)
+
+For completeness, paid APIs that *do* serve mobility-style queries:
+
+- **INRIX** — traffic and movement intelligence, mostly automotive but with some pedestrian products.
+- **StreetLight Data** (now part of Jacobs) — origin-destination analysis from probe data.
+- **Wejo** (troubled), **Otonomo / Urgently**, **Geotab** — connected vehicle data.
+- **Placer.ai, Foursquare Movement, Huq, Mytraffic** — already covered in Section 10. Some have API access, all charge for it.
+
+### Useful summary table
+
+| Provider | Map API | Pedestrian footfall via API | Vehicle traffic via API | Buyable mobility extracts |
+|----------|---------|----------------------------|-------------------------|---------------------------|
+| Google Maps Platform | Yes | No (Popular Times not officially exposed) | Visual layer only | No |
+| Mapbox | Yes | Limited (Movement repositioned) | No | Limited |
+| Apple MapKit | Yes | No | No | No |
+| OpenStreetMap | Yes (open) | No | No | No |
+| HERE | Yes | No | Yes | Yes (vehicle probe) |
+| TomTom | Yes | No | Yes | Yes (vehicle probe) |
+| Foursquare | Yes | Yes (paid Movement APIs) | No | Yes |
+| INRIX / StreetLight / TomTom Move | No (not maps per se) | Some pedestrian | Yes | Yes |
+| Placer / Huq / Mytraffic | No | Yes (paid analytics) | No | Yes |
+
+### What this means for our plan
+
+- **Map APIs are inputs, not footfall sources.** We will use Google Places / Mapbox / OSM for things like POI seeding, geocoding, address validation, basemap tiles, route rendering. None of these will give us footfall.
+- **The closest "map API that gives you footfall" is Foursquare Movement.** Same caveats as Placer in Section 10 — sample-based, SDK-derived, regulatorily fragile, paid.
+- **Vehicle probe APIs (HERE / TomTom / INRIX) are useful for venue arrival data** — counting cars into Lakeside's car parks, for example — but not for in-venue presence.
+- **Google's "Popular Times" is the most tantalising free signal** but is not on a stable API surface. Don't build on it; it's fine for one-off benchmarking only.
+- **Confirms the strategic shape.** The reason map APIs don't expose this data is that the companies who *have* it (Apple, Google) deliberately do not sell it, and the companies that try to sell it (Foursquare, the SDK brokers) are running on declining sample quality. There is no off-the-shelf source we can wire up to and resell. The data has to be either licensed from a few credible vendors (carriers, Placer, Huq) or *originated* — which is what the indoor map does.
+
+Restated: map APIs tell you *where* a place is and *how to get to it.* They don't tell you *who's there.* Anyone selling "who's there" is either a footfall vendor (Section 10) or running on the same sample-based stack with the same regulatory exposure. Our wedge — first-party, consent-based, entity-linked indoor data — is the cleanest answer to a question that the existing supply chain genuinely cannot answer well.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
