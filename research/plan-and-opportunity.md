@@ -1097,6 +1097,98 @@ So yes — phones track. That's exactly why the play works. The map is how we pa
 
 ---
 
+## 18. "Don't I need to prove it first? And haven't others thought of this?"
+
+Both correct. The plan has been written as if the bet is obvious. It isn't, and you should not commit serious time or money until two things are true: you have proven the concept stands up under contact with reality, and you have confirmed this isn't already being built by someone better positioned. Both are cheap to do before any big spend.
+
+### Yes — you need to prove it first
+
+Six things need proving, in order. Each one only matters if the one before it is true. Don't try to prove them all at once.
+
+**1. The technical concept works.**
+Can a single developer build a working scan-to-web indoor map that captures consented location events, links them to entity polygons, and renders the result on a dashboard? Section 16 of this doc is exactly that proof, in two weeks at near-zero cost. Until this exists, nothing else gets discussed.
+
+**2. Visitors will actually scan and use it.**
+Stick the prototype QRs up at one friendly venue (or even a smaller location — a museum, a single-floor shopping centre, a university building). Measure the scan rate. If 30% of visitors scan, the model works. If 3%, it doesn't, and we redesign the entry point before doing anything else. This is two to four weeks of pilot in a real venue with real visitors.
+
+**3. The data the prototype produces is interesting.**
+After a few weeks of real usage, look at what you actually have: visit counts per pin, dwell time, route sequences, conversion from view to route-request. Is it noisy junk or is it a coherent pattern? If it's coherent, the architecture is sound and we can scale. If it's noisy, the event model needs rework before the venue conversation.
+
+**4. Venues will pay for the map itself, AI play aside.**
+Take the working prototype to three or four venues and try to sell the indoor map as a SaaS product, with no AI grounding angle attached. If at least one signs a paid pilot, the layer-2 business is real. If none do, the product needs rethinking regardless of the data play.
+
+**5. AI platforms want the grounding data.**
+Five conversations with data-partnership / grounding-team contacts at OpenAI, Anthropic, Google AI, Perplexity, Microsoft. Show them the prototype. Ask: "would you license a feed shaped like this?" Don't ask "is this interesting?" — ask for a signal of intent (price band, coverage threshold, contracting model). If two of five give a credible "yes if you reach X coverage," the layer-4 business is alive. If all five say "we already have what we need internally," the layer-4 business is probably dead and we focus on layers 1–3.
+
+**6. The data actually improves AI grounding.**
+Build the side-by-side eval: 50 prompts about UK retail destinations, baseline ChatGPT/Claude/Gemini answers vs. answers when our entity records and footfall data are injected as context. Score on factuality, recency, recommendation quality. If the lift is meaningful and reproducible, we have evidence the data is worth paying for. If the lift is invisible, the data isn't a grounding signal and we need to rethink what we're selling.
+
+These six together cost maybe £50–150k and three to six months — a fraction of what raising and committing to the full plan would cost. Each "no" along the way saves serious time and money. Each "yes" makes the next step cheaper to fund.
+
+### Yes — others have thought of pieces of this
+
+Honest answer: parts of this idea are obvious enough that lots of people have thought about them. The full combination is less explored, but pretending nobody has noticed any of it would be naïve.
+
+**Who has thought of which piece:**
+
+- **Indoor mapping as a product** — extensively. Pointr, Mapwize (acquired by Engie), MazeMap, Situm, Inpixon, Esri, Apple, Google. This is a mature category.
+- **Footfall analytics for places** — extensively. Placer.ai, SafeGraph, Foursquare, Cuebiq, Outlogic (banned), Huq, Springboard, Mytraffic. Mature category.
+- **AI search optimisation as a service** — emerging. Profound, AthenaHQ, Otterly, Peec, Goodie, all formed in 2023–2024. This is forming now.
+- **AI platforms wanting better grounding data** — internally known want at OpenAI, Anthropic, Google. They've publicly written about hallucination and grounding as core problems. Internal teams are working on it.
+- **Real-world data as anti-manipulation signal** — academically obvious. Several papers from 2024–2025 on robust LLM grounding mention behavioural and physical signals as harder-to-fake than web-derived ones.
+
+**What is genuinely less explored — and why:**
+
+- **The full bundle: indoor mapping + entity linkage + AI grounding feed.** Sits at the intersection of three fields (mapping, footfall, AI search). Anyone working in one usually doesn't have expertise in the other two.
+- **The QR-to-web no-app entry point** in indoor mapping. Almost everyone in the category ships SDKs into native apps. Going web-first is a deliberate UX bet most incumbents haven't made.
+- **Selling footfall as AI grounding data, packaged for licensing to LLM providers.** Existing footfall vendors sell to retailers, landlords and ad-tech. None has retooled for the AI-platform buyer because that buyer barely existed eighteen months ago.
+- **Inclusive design as a first-class product line in indoor maps.** Genuinely under-served.
+- **Bundling all of the above with a published methodology** (Rank4AI's Five Signal Model). Methodology + data product is rare.
+
+That intersection is the genuine wedge. Pieces exist. The combination, productised and aimed at AI-platform procurement, is the part nobody has shipped yet.
+
+**Why might no one have done it yet:**
+
+- The wedge only became obvious once AI search legitimised — late 2023 onwards.
+- Mobile-SDK footfall (the existing channel) is being squeezed by Apple ATT and Google Privacy Sandbox, weakening incumbents at the same time as AI demand emerges. Window opening as another window closes.
+- Indoor mapping is unsexy — slow, capital-intensive, low VC interest. Best-positioned to build it (Pointr et al.) are deep in enterprise sales, not pivoting to AI data.
+- AI-search startups are pure software people without physical-world infrastructure or the appetite to build it.
+- Privacy regulation is now creating a real moat for clean-consent operators rather than just being friction. Late comers won't catch up easily.
+
+The right read: the conditions for this play only aligned recently. That's a real window, not a permanent one. Realistic first-mover advantage is probably 18–24 months before an incumbent (Foursquare, Placer, or one of the AI platforms themselves) notices and pivots. That window is enough if used well; missed if dithered.
+
+**What we should check before committing:**
+
+- A proper competitive sweep. Search for stealth startups in the AI-grounding-data space. LinkedIn, Crunchbase, "AI search data partnerships" and "grounding data" press releases, recent OpenAI / Anthropic / Perplexity hires from location-data backgrounds. Anyone hiring "head of grounding partnerships" is a flag.
+- Anthropic and OpenAI public posts on grounding strategy. Have they signalled "we'll build this internally" or "we'll license it"?
+- Any recent acquisitions of footfall vendors by AI-adjacent companies. Would be a strong "someone else is already doing this" signal.
+
+If a sweep turns up two or three credible competitors actively building this exact thing, the strategy changes — probably narrower scope, faster pilot, or a partnership / acquisition route rather than independent build.
+
+If the sweep turns up no one, that's not a guarantee the field is empty (stealth startups exist) but it raises the probability that the window described above is real.
+
+### The right rhythm: prove cheap, then commit
+
+In order, with rough cost and time:
+
+| Step | What | Cost | Time | Decision after |
+|------|------|------|------|----------------|
+| 1 | Build the Section 16 prototype | £0–5k | 2 weeks | Does the tech work? |
+| 2 | Competitive sweep | £0 | 1 week | Is the window real? |
+| 3 | Demand validation calls (5 AI platforms) | £0–2k | 2–4 weeks | Do AI platforms want this? |
+| 4 | One-venue pilot | £5–20k | 2–3 months | Will visitors scan? Is the data interesting? |
+| 5 | Side-by-side AI grounding eval | £2–5k | 2–4 weeks | Does the data improve AI answers? |
+| 6 | Sell indoor map SaaS to 3 venues | £20–50k | 3–6 months | Will venues pay? Layer 2 confirmed. |
+| 7 | First serious raise / commitment | — | — | Only after the above are mostly green |
+
+Total cost to get through steps 1–6: £30–80k and six to nine months. Half of that is your own time at zero cash cost if you're building it yourself. By the end of step 6 you know whether this is a real business and which layers of it are real. **Do not raise on the dream. Raise on the proven layers.**
+
+The whole plan in this document is structured around that principle even where it doesn't say so explicitly. Sections 12 and 16 are the prototype. Section 15 is the demand-validation play. Section 14 is the layered-business model that makes "even if the AI play doesn't work, we still have a real company" honest rather than aspirational.
+
+So: yes, prove it first. Yes, others have thought of pieces. The bet is that the *combination* is what's not yet built, the conditions only recently aligned, and we have a finite window. Cheap experiments tell us in months whether that bet stands up. Then we commit, or we don't.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
