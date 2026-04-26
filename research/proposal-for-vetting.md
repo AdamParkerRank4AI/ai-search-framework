@@ -120,7 +120,75 @@ Layered onto our base product:
 
 So even if the AI platform play takes longer than expected to land, the indoor map plus retailer/venue analytics is already a working, proven business model. Pointr, Mapwize, Situm have built nine-figure businesses on a more enterprise-heavy version of the same shape.
 
-## 9. Why now
+## 9. Alternative path: aggregate existing sources instead of originating
+
+Originating data via the indoor map is the long-term moat, but it takes years to reach meaningful coverage. There is a parallel route worth considering — possibly to run *first*, possibly *instead*: aggregate signals from data sources that already exist, build an algorithm that reconciles them into a single entity-keyed feed, and sell that to AI platforms today.
+
+The candidate sources, each capturing a different facet of "people are at this place":
+
+- **Card transaction data** — Visa, Mastercard SpendingPulse, Fable Data, Consumer Edge, Earnest, Facteus. Tells us spend patterns by merchant and location.
+- **Venue WiFi networks** — Cisco Meraki, Aruba, Purple WiFi. Tells us connected device counts per venue, in real time, where the venue is a customer.
+- **Mobile phone carriers** — Vodafone Analytics, O2 Motion, EE/BT, Three. Tells us area-level flow and arrival data, by network.
+- **Social check-ins and geotagged posts** — Instagram, X, TikTok, OpenTable bookings, Eventbrite ticket sales. Tells us demand and presence indirectly.
+- **Public transport tap data** — TfL station tap-ins, National Rail stats. Tells us arrivals at major nodes near venues.
+- **Vehicle probe and parking data** — HERE, TomTom, INRIX, RingGo, JustPark. Tells us car arrivals at retail destinations.
+
+The pitch: rather than waiting years to originate at scale, license slices from each of these and build the **algorithm and methodology** that turns disparate signals into a single AI-grounding feed. None of the source vendors does this packaging for AI platforms today. The work is in the reconciliation, the entity linkage, and the documented methodology.
+
+Honest trade-offs:
+
+- **Pros:** live in months not years; no consumer product to support; multi-source blend reduces single-source dependency; gets us into AI-platform conversations with real data far sooner.
+- **Cons:** thin margin per source (we're a re-packager); supplier relationships can be re-traded once they see what AI grounding is worth; less defensible than originated data; exposure to upstream suppliers' privacy and regulatory issues.
+
+The most likely realistic shape: **Phase 1 (months 1–18) is the aggregation play** — get into the OpenAI room with bought-in stitched data and a clean methodology. **Phase 2 onwards (year 2+) is the originated map** — first-party data progressively replaces bought-in slices, margin and quality both improve, the moat compounds.
+
+Card data deserves a particular caveat here. As covered in Section 7, card data structurally undercounts groups (one cardholder, four humans) and ignores browsers (no spend, no signal). It is one source in the blend, not a foundation. The algorithm has to weight it accordingly.
+
+## 10. Going nicher — places where data is easier to get
+
+The proposal so far has assumed shopping centres (Lakeside-style retail). That is a hard market: retail data is commercially sensitive, incumbents are entrenched, and venue ops teams are slow.
+
+Other categories of place may be materially easier to acquire data for, and worth piloting first:
+
+- **Hospitals.** Public funding, public-benefit angle, often willing to share aggregated data with researchers. Wayfinding pain is acute (lost patients arriving for appointments is a measurable problem). NHS trust partnership could open many sites under one signature.
+- **Universities.** Academic-openness culture, student safety angle, high seasonal and event-driven footfall, willing to experiment.
+- **Stadiums and event venues.** Already heavily instrumented (ticketing, security, turnstiles), event-driven so per-event value is easy to demonstrate.
+- **Transport hubs.** TfL already publishes station-level tap data; rail and bus operators have similar feeds. Rich infrastructure, partial open-data attitude.
+- **Tourist and cultural venues** — museums, galleries, heritage sites, zoos. Typically open-data leaning, publicly funded, AI-grounding queries are common ("is this museum open today, how busy").
+- **Single-operator retail estates** — coffee chains, pharmacy chains, restaurant groups. One signature with a head office gets nationwide coverage rather than venue-by-venue sales.
+
+The argument: pick the niche where data acquisition is the least friction *and* where AI grounding queries are common, prove the model end-to-end, then expand outward. Shopping centres can come later once the playbook is proven.
+
+This needs deciding before the prototype venue is chosen. Same Section 12-style demo, easier real-world deployment.
+
+## 11. Note on kiosks — an adjacent product, already happening
+
+There is already a market for **physical interactive kiosks** in venues. Companies like 22Miles, Visix, Acquire Digital, Mvix and many smaller operators ship touchscreen wayfinding, advertising and self-service hardware into retail, hospitality, hospitals and transit. Some retail chains run their own (McDonald's order screens, supermarket self-checkout, hotel check-in stations).
+
+Their primary purposes are wayfinding, in-venue advertising, ordering and check-in. **Not data capture for AI grounding.**
+
+What their existence proves:
+
+- Venues will sign deals to install branded interactive hardware in high-footfall locations.
+- Visitors will engage with venue-placed screens.
+- The placement model (entrance, atrium, food court) works at scale.
+- Hardware operators have established relationships with venue ops teams that we don't.
+
+What they don't currently do:
+
+- Treat each interaction as a footfall-data-generation event.
+- Link kiosk interactions to entity-level AI grounding records.
+- Operate per-visitor consent flows producing licensable data feeds.
+
+Implications for our plan:
+
+- **Partner route, not competitor.** Existing kiosk operators are a potential channel — license our software-and-data layer to them as an upgrade, in exchange for installed-base access.
+- **Hardware variant of the map.** The same scan-to-phone flow can have a kiosk equivalent for visitors who prefer touchscreen — same data model, different interface.
+- **Channel into venues we couldn't otherwise reach.** Kiosk operators already have signed contracts with venues; partnering shortcuts our sales motion.
+
+This is a parallel route worth exploring during the validation phase, not a pivot. It also suggests a useful framing for the vetting conversation: someone has already proven venues will adopt physical placement at the entrance — we are layering a new product on a delivery channel that exists.
+
+## 12. Why now
 
 Several conditions only aligned in the last 12–18 months:
 
@@ -132,7 +200,7 @@ Several conditions only aligned in the last 12–18 months:
 
 Realistic first-mover window: probably 18–24 months before Foursquare, Placer or one of the AI platforms themselves notices the category and pivots into it.
 
-## 10. What's defensible
+## 13. What's defensible
 
 Honest read on what's hard for someone else to copy:
 
@@ -144,7 +212,7 @@ Honest read on what's hard for someone else to copy:
 
 We will not beat the incumbents on raw data volume early on. We can beat them on cleanliness, structure, indoor specificity, and being there first.
 
-## 11. What we don't know yet
+## 14. What we don't know yet
 
 Honest list. These are the things the vetting reader is invited to challenge.
 
@@ -154,7 +222,7 @@ Honest list. These are the things the vetting reader is invited to challenge.
 - **Could OpenAI / Google build this themselves?** They could. Our defence is being smaller, faster, neutral and multi-platform.
 - **Is the market for indoor maps + venue SaaS strong enough to fund the early years?** Pointr/Mapwize numbers suggest yes; we'd need to validate per-venue economics ourselves.
 
-## 12. What we're asking from you
+## 15. What we're asking from you
 
 If you're reading this to vet it, the most useful things you can tell us:
 
