@@ -615,6 +615,68 @@ It's the cheapest, fastest piece of evidence that the whole plan is real. Build 
 
 ---
 
+## 13. Reality check: is there any way to see "actual" data?
+
+Worth answering this head-on because it's the question that matters most for the credibility of the whole plan.
+
+**Short answer: no — and structurally, no.** There is no public, buyable, accessible source of *actual* individual-level "this many real people are at Lakeside right now and here are the shops they visited." It does not exist commercially, and it cannot exist legally without consent. Every footfall product, map API, carrier dataset and analytics tool on the market today is a **sample extrapolated to an estimate**. None of them are ground truth.
+
+This sounds disappointing until you realise it's also true of every competitor and every potential incumbent. **Nobody has actual data. The whole market is models on top of samples.**
+
+### Who comes closest to "actual" — and why we still can't get it
+
+**Apple.** Sees every iPhone's location continuously via the OS, Find My, Maps and system services. Closest thing on Earth to actual UK pedestrian footfall. **Does not sell, does not license, does not expose via API.** Apple's brand is built on not being a data seller. This will not change.
+
+**Google.** Sees every Android phone, plus every Google Maps user on iOS, plus Search, plus Pay, plus Photos location metadata. Even larger dataset than Apple. Uses it internally (Maps "popular times", Traffic, Mobility Reports during Covid). **Does not sell raw data**, sells some aggregated insights via Google Maps Platform / Movement Insights, but never ground-truth "who is here."
+
+**Mobile carriers (Vodafone, O2, EE, Three).** A carrier really does see every one of *its* customers' phones, in real time, via cell-tower handshakes. No sampling for that network. **But:**
+- Aggregated only when sold (legal requirement under GDPR / PECR — they cannot sell individual location data).
+- Coarse spatial precision (cell-tower level, ~100m–1km, much worse indoors).
+- Each carrier sees ~20–30% of the UK population. Not the whole picture.
+- Pricing is enterprise-tier and procurement is slow.
+
+**Venue-side WiFi and cameras.** A shopping centre's own WiFi access points see every connected guest device. The cameras see every visitor. This is real, complete, ground-truth data **for that one venue**. It is not aggregated, not standardised, not licensable across venues without per-venue commercial deals. The venue owns it.
+
+**Mobile SDK aggregators (Outlogic, Veraset, Gravy, etc.).** Used to be the closest thing to a "you can buy individual-level pings" product. **Collapsing.** The FTC banned X-Mode/Outlogic in 2024 from selling sensitive data. Gravy was breached in January 2025 and exposed the brittleness of the whole sector. Apple ATT and Google Privacy Sandbox are throttling the underlying data supply year on year. The "buy real-ish individual location data" route is closing.
+
+### Why "actual" can't legally exist as a public product
+
+Privacy law sets a floor. Under GDPR (Article 5), the UK Data Protection Act 2018, the ePrivacy Directive and PECR, you cannot publish, sell or expose individual-level location data without explicit informed consent from each person whose data it is. Even "anonymised" individual-level data has been repeatedly shown to be re-identifiable (the New York Times' anonymised taxi-trip dataset, Strava's global heatmap revealing US military bases, AOL's anonymised search logs). Regulators know this. The legal floor for what is sellable is **aggregation to a k-anonymity threshold** — and that, by definition, is not "actual" individual data.
+
+So there is no legal path to a product that says "here is exactly which people went where in Lakeside today." Even if such a product existed, anyone buying it would be buying a regulatory time bomb.
+
+### What you can actually see, today
+
+The closest things to "actual" data that are legally available:
+
+- **Aggregated carrier flows for an area.** Real for every phone on that network in that area, but k-anonymised and cell-tower-coarse. Useful for "how many distinct devices entered the Lakeside boundary on Saturday" — not "which shops they visited."
+- **Venue-side WiFi or camera counts** if you have a deal with the venue. Real for that venue, not aggregable across venues without contracts.
+- **Sample-based footfall vendor estimates** (Placer, Foursquare Movement, Huq). Modelled. They will tell you "estimated 4,200 visits" but the underlying sample is a few hundred.
+- **Google Popular Times.** Free, sampled, modelled, unsupported via API. Best free public signal for typical busyness.
+- **Your own first-party data once you build it** (the indoor map). Real for the people who scan and consent. Sample of "everyone who entered the venue" but a clean, documented one.
+
+That last point is the whole point of the project. We don't promise actual ground truth — that doesn't exist on the market and can't legally exist as a global product. **We promise the cleanest available sample, with the best consent provenance, mapped to entities AI platforms can use.** That's a different product, but it's an honest product, and it's the one OpenAI can actually buy without legal risk.
+
+### The right framing for venue and AI-platform conversations
+
+When asked "how many people will you see":
+- Don't claim actual / ground truth — you'll lose credibility immediately.
+- Do say: "every visitor who scans the map gives us their explicit consent and a precise indoor position. That's a documented sample of *N* per venue per day, with consent provenance, polygon-level entity linkage, and dwell data. No competing footfall product can offer the same combination of consent and precision."
+- For the rest of the visitors who don't scan, name the corroborating sources clearly: WiFi counts at the venue, carrier-aggregated arrivals, camera counts where available. Document each.
+- Position the feed sold to AI platforms as "consented, entity-linked, multi-venue presence sample with documented coverage and methodology" — not as a population census.
+
+That positioning is defensible. The "we have ground truth on everyone" positioning isn't, and would attract the wrong kind of buyer and the wrong kind of regulator.
+
+### So is there a way to see actual data?
+
+For one venue, with the venue's permission, via their own WiFi and cameras: yes, with paperwork. They already have it.
+
+For the public market, via an API or a paid data product: no, and there shouldn't be. Every alternative is a sample dressed up as a number.
+
+For our project: the *play* isn't to find a magical source of actual data. It's to build the cleanest sample anyone is selling, document its methodology better than anyone has, and be the first to package it for AI platforms specifically. That's the win available, and it's still a very large business if executed.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
