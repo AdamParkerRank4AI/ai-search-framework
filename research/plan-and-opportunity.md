@@ -677,6 +677,104 @@ For our project: the *play* isn't to find a magical source of actual data. It's 
 
 ---
 
+## 14. So where is the actual business?
+
+Fair pushback. If we can't get ground truth — and nobody else can either — what's the business actually made of? Here's the honest layered answer.
+
+The mistake earlier in this doc was making it sound like *AI data licensing* is the whole business. It is one leg of four, and the least certain. The real business is the stack. Each layer makes sense on its own; the layers above it are upside.
+
+### Layer 1: Rank4AI methodology and audit (revenue today)
+
+This already exists. Documented framework, defined audit, two scoring outputs (AI Visibility Score, Structural Reference Score), established methodology page, founder-led delivery. It runs whether the maps project happens or not.
+
+- **Customer:** any business that wants to be cited and recommended by AI platforms.
+- **Pricing shape:** per-audit fee plus retainer for ongoing optimisation, like a specialist SEO agency.
+- **Market reality:** the GEO/AI-search agency market is *forming now*. Profound, AthenaHQ, Otterly are proof there are buyers. Rank4AI's edge is methodology + audit, not just monitoring.
+- **Certainty:** highest. Works today.
+
+### Layer 2: Indoor map SaaS to venues (year 1–2)
+
+Sell the indoor map to venue landlords as a low-friction, scan-to-web amenity. They pay an annual SaaS fee per venue.
+
+- **Customer:** Lakeside, Westfield, Bluewater, smaller shopping centres, hospitals, universities, museums, stadiums, transit hubs.
+- **Pricing shape:** £10k–£100k per venue per year depending on size, plus setup. Indoor-mapping incumbents (Pointr, Mapwize, MazeMap) prove this market exists and is paying. Hospital and airport contracts can run higher.
+- **Why we win deals:** scan-to-web with no app install, inclusive design out of the box, bundled AI search visibility for tenants, half the price of a Pointr enterprise SDK deployment.
+- **Certainty:** high. The category exists and is paying. We compete on positioning and packaging, not invention.
+
+This layer alone is a business. Pointr is reportedly worth several hundred million on this model. Mapwize was acquired by Engie. We don't need the AI angle to make this layer pay.
+
+### Layer 3: Inside-venue revenue (year 2–3)
+
+Once the map is live, layered revenue stacks on top.
+
+- **Tenant claim and analytics dashboard.** £50–£500/month per tenant for visit analytics, peak hours, dwell, returning rate (location-only, sample-honest). Standard SaaS upsell.
+- **Sponsored pins / category takeovers / route-end suggestions.** High-margin advertising inventory at point of intent (visitor is in the venue and looking). Like in-airport advertising but trackable.
+- **Brand-level deals with chains** (H&M, Boots, Greggs) for consolidated dashboards across every store in our network.
+
+- **Pricing shape:** per-tenant SaaS plus ad spend. Ad CPMs at point-of-intent are premium.
+- **Certainty:** medium-high. Pattern is well-established (Google's whole business is this shape, just outdoors).
+
+### Layer 4: AI platform data licensing (year 3+, the dream)
+
+The big bet. Aggregated, anonymised, entity-linked location feed sold to OpenAI, Anthropic, Google, Perplexity as grounding data.
+
+- **Customer:** AI platforms.
+- **Pricing shape:** £500k–£5M per platform per year if it works, based on OpenAI's known publisher-deal precedents.
+- **Certainty:** speculative. Demand unproven, coverage threshold unclear, competitor reaction unpredictable.
+
+This layer is the upside, not the foundation. If it works, the company is enormous. If it doesn't, the company is still a real SaaS business off layers 1–3.
+
+### What "the business" actually looks like in revenue terms
+
+Year 1: ~100% from Layer 1 (Rank4AI services). Revenue is methodology and audit work.
+
+Year 2: Layer 2 starts (first paid venue). Revenue mix maybe 60/40 services/SaaS.
+
+Year 3: Layers 1, 2, 3 all live. Revenue mix maybe 30/40/30 services/SaaS/ads. First AI-platform conversations happening but no signed deal yet.
+
+Year 4–5: First AI-platform contract if the bet pays off. Layer 4 becomes the largest line. Mix might be 10/20/15/55 services/SaaS/ads/data.
+
+Year 5+: Either Layer 4 dominates (data company outcome) or it doesn't and we have a healthy multi-line SaaS business with a methodology arm.
+
+### Why we'd still beat the existing footfall players to AI platforms
+
+Honest answer: this is the question that decides the upside.
+
+**Why Placer / Foursquare Movement / Huq might beat us:**
+- They have years of data already.
+- They have national coverage.
+- They have data-team headcount.
+- They could pivot to "AI grounding" framing in a quarter if they decided to.
+
+**Why we still have a real shot:**
+- **Consent quality.** Their data sits on SDK panels with murky provenance. The FTC just spent 2024 hammering exactly this category. Ours is built on visitor-initiated QR scans with a clean consent flow. AI platform procurement teams care about this — defensible data sourcing is now a regulatory line, not a marketing nicety.
+- **Entity linkage.** Our data is anchored to per-polygon entity IDs that resolve to Wikidata, Companies House, brand parents and the Rank4AI graph. Their data is "device near coordinates." Linking the latter to the structured entities AI platforms use is real engineering work they haven't done.
+- **Indoor precision.** They are mostly outdoor or tile-based. AI grounding for "best phone shop in Lakeside" needs to know which unit, not just which postcode.
+- **Bundle with methodology.** Rank4AI gives us a ready story for *why* this dataset exists, what its quality properties are, and how it slots into a five-signal model. They sell a feed; we sell a feed inside a thesis.
+- **Speed.** They are big, public-ish, slow. We can define the category and make the first OpenAI deal before they've had the strategy meeting.
+
+We will not beat them on volume. We can beat them on cleanliness, structure, and being there first.
+
+### What if Layer 4 never happens?
+
+Stress-test the plan with that assumption.
+
+- Layers 1–3 still work.
+- Layer 1 alone is a £1–5M/year services business at modest scale.
+- Layer 2 at 50 venues × £30k average is £1.5M/year recurring.
+- Layer 3 at the same scale could match or exceed Layer 2.
+- Combined, that's a £5–15M/year SaaS-plus-services business with growth ahead and the Rank4AI brand attached.
+
+Smaller than the dream, but real, profitable, and worth building on its own merits. Layer 4 is the call option, not the entire bet.
+
+### So where is the business, in one sentence
+
+The business is a **methodology-and-audit services line** with an **indoor-map SaaS attached**, with **tenant analytics and advertising layered on top**, plus a **call option on selling consent-based footfall data to AI platforms** if the category turns out to exist. Three of those four are well-understood. The fourth is the upside.
+
+We don't need to find ground truth in the data to make the business work. We need the cleanest sample, the best entity linkage, the inclusive-design wedge, the AI-search positioning, and disciplined execution across four revenue lines that reinforce each other.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
