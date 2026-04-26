@@ -1018,6 +1018,85 @@ That's the prototype. Once it works for you walking through Lakeside alone, the 
 
 ---
 
+## 17. "But phones track location all the time — surely we can use that?"
+
+You're right that phones track. The answer to "where are people" is sitting on every iPhone and Android device in the country. The misunderstanding earlier in the doc was about who can *access* that data, not whether it exists. Let's pin this down clearly because it's the most common confusion in this whole space.
+
+### What every phone knows about itself
+
+Every modern phone continuously builds its own location picture from:
+- **GPS** — outdoor positioning to ~5–10m.
+- **WiFi triangulation** — indoor and outdoor, often more accurate than GPS in dense areas.
+- **Bluetooth scanning** — proximity to nearby devices and known beacons.
+- **Cell-tower handshakes** — coarse but always on.
+- **Motion sensors** — accelerometer, gyroscope, magnetometer for dead-reckoning when GPS drops.
+- **Connection history** — known networks (home, work, café WiFi).
+
+Apple and Google both stitch these into a continuous location history that lives on the device and (if the user allows) syncs to iCloud / Google Account. Look at iPhone Settings → Privacy & Security → Location Services → System Services → Significant Locations. That history exists. Same on Android via Google Maps Timeline.
+
+So yes — the data exists. **The phone knows. The OS knows. iCloud or Google Account knows.**
+
+### Who can actually see that data
+
+This is where it gets specific. Five parties can each see a piece of it, and only a piece:
+
+1. **The user themselves.** Full location history visible in their phone's settings.
+2. **Apple (for iPhones) and Google (for Androids).** The OS makers. They have the most complete picture. **They do not sell or expose it via any API.** This is a regulatory and brand-strategic decision — Apple's whole brand is built on not being a data seller, and Google has been forced into more privacy posture by GDPR and class actions.
+3. **The mobile carrier** (Vodafone, O2, EE, Three). They see the cell-tower handshakes for every phone on their network. Real-time, complete for that network, but coarse spatially. They will only sell *aggregated* extracts (legal requirement under GDPR/PECR).
+4. **Apps the user has installed and granted location permission to.** Each app sees only its own users, and on iOS only while the app is in use unless the user explicitly allows "Always."
+5. **Find-My / Family-tracking apps** the user has opted in to (Apple Find My, Google Find My Device, Life360, etc.). Same model — explicit per-user consent, visible only to authorised contacts.
+
+That is the entire universe of who can see phone-tracked location data. There is no sixth party that can "tap into the network of all phones." There is no API that exposes it. There is no broker who legally sells it.
+
+### Why "we can't just access it"
+
+Three reasons, all hard:
+
+- **Apple and Google won't sell it.** Even if you offered them billions, the brand and regulatory cost of selling individual-level location data is too high. They use it internally and stop there.
+- **Privacy law forbids public access to individual-level location data without consent.** GDPR Article 5, ePrivacy, PECR. Even if a route to access existed, selling or buying it would expose every party in the chain to regulator action. The FTC's 2024 ban on Outlogic for selling sensitive location data is exactly this principle in enforcement form.
+- **Phone OS sandboxing prevents one app from seeing another app's data.** A weather app can't see where the maps app saw you. A retail app can't see what the parking app captured. Each app is its own silo by design — that's a privacy guarantee, not a missing feature.
+
+So the data exists, but it's locked behind three doors that cannot be picked: the OS owner's commercial decision, the law, and the device's own sandbox.
+
+### What this means for us — the only path that works
+
+Because we cannot tap into existing phone tracking, the only way to get location data of our own is the same way every other app gets it: **build an app, ask the user for permission, and capture from there.**
+
+That is exactly what the indoor map does. It is one of the apps in category 4 above. When a visitor scans the QR and opens the map:
+- The map asks for location permission (browser prompt).
+- If granted, we receive the same `lat/lng` stream the OS provides to any consenting app.
+- We capture it for that session, attach it to the venue context, and store it.
+- That data is ours to aggregate and license.
+
+The map *is* a phone-tracking mechanism — just one that the user has explicitly turned on for our specific app. There is no shortcut around this. Every successful location-data product (Strava, Google Maps, Find My Friends, Snap Map, Life360, every retailer app with a "find your nearest store" feature) works exactly this way: it is an app the user installed and granted location permission to.
+
+### The concrete reframe
+
+- **Wrong question:** "How do I tap into the location data that phones already collect?" There is no answer. That door doesn't open for third parties.
+- **Right question:** "How do I become one of the apps the user has granted location permission to, with the cleanest possible reason for them to grant it?" The map is our answer. A loyalty app, a parking app, or a transport app would be other shapes of the same answer.
+
+The reason we are building the map is *exactly* because phones track. The map is how we get on the consented-app side of that tracking. We don't access existing tracking — we participate in it, with our own users, with our own consent flow.
+
+### Quick comparison: how every successful location data product solved this
+
+| Product | How they got the data | Why users opted in |
+|---------|-----------------------|--------------------|
+| Google Maps | Built the maps app | Free maps and navigation |
+| Apple Maps | Built into iOS | Comes with the phone |
+| Strava | Built the fitness app | Athlete tracking and social |
+| Snapchat / Snap Map | Built into Snap | Social sharing |
+| Life360 | Built family-locator app | Family safety |
+| Foursquare | Built the check-in app, then SDKs | Social discovery |
+| Placer.ai | Buys SDK data from many third-party apps | Each underlying app gave its own users a reason |
+| Vodafone Analytics | Network-level (carrier) | Existed by virtue of being a carrier |
+| **Our map** | Built the indoor map app | Wayfinding inside a venue |
+
+Every one of these is "build an app users want, get permission, aggregate the result." There is no other way that exists. The map is our specific entry into the same model, with the AI-grounding twist downstream.
+
+So yes — phones track. That's exactly why the play works. The map is how we participate in that tracking, with users who have opted in, in a way that is licensable to AI platforms because the consent provenance is clean.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
