@@ -160,3 +160,62 @@ That's a working test of the whole concept on a single real area, before you com
 **Carriers are the cleanest path for "real data, fast" testing** in the UK because their products are sold to UK retail planners already, the contracting is established, and the sample-vs-modelled story is straightforward. Mapbox's product is more polished but slower to procure for a non-strategic customer.
 
 **Free public data is enough for the first prototype.** Nothing in step 2 of the collation plan above costs anything. You can have a credible demo before any budget is committed. Use that to validate AI-platform demand before paying for premium feeds.
+
+---
+
+## Market context: what The Markup investigation showed and what's happened since
+
+The Markup published "There's a Multibillion-Dollar Market for Your Phone's Location Data" in September 2021. Useful baseline read but the picture has shifted materially since.
+
+**What the article documented (2021 baseline):**
+- Estimated $12 billion market for phone location data.
+- 47 companies identified across collectors, aggregators, marketplaces and intelligence firms.
+- Major named players: Advan Research, Complementics, Adsquare, Cuebiq, Near, Mobilewalla, X-Mode.
+- Scale claims: Near "1.6B people across 44 countries," Mobilewalla "1.9B+ devices, 50B signals daily," X-Mode "25%+ of adult US population monthly."
+- Customers: retail, private equity, advertising, government.
+- Key critique: users had no meaningful awareness that location data shared with one app was being syndicated through dozens of brokers.
+
+**What has happened to that market since:**
+- **April 2021.** Apple App Tracking Transparency rolled out. Most users opted out of cross-app tracking. iOS sample volumes in SDK panels dropped 70-90%.
+- **December 2023.** Near Intelligence (Chapter 11 bankruptcy nine months after going public via SPAC). Assets sold to lender Blue Torch in early 2024. FTC ordered deletion of sensitive data.
+- **January 2024.** FTC banned X-Mode/Outlogic from selling sensitive location data.
+- **Late 2024.** Mobilewalla settled with the FTC for unauthorised collection and sale of location data.
+- **2024.** FCC fined US carriers (AT&T, T-Mobile, Verizon, Sprint) approximately $200 million collectively for sharing customer location data without consent.
+- **January 2025.** Gravy Analytics suffered a major data breach that leaked their full supply chain, exposed which apps were SDK partners, and triggered widespread enterprise-buyer caution.
+- **Ongoing.** Google Privacy Sandbox progressively tightening Android-side data collection.
+
+**Implication for our project:** The 2021 incumbents are materially weaker. Probably 30-50% of those 47 companies are bankrupt, banned, settled, breached, or quietly winding down. Buyers (especially enterprise and government) are increasingly cautious about the category's regulatory exposure. The market is still big but in transition, and AI platforms specifically need data sources that can be defended in front of regulators. Clean-consent operators starting fresh are well-positioned.
+
+The bad news read of the same data: this is a politically and legally sensitive market with active regulator interest. Anything we build needs to be visibly distinct from the SDK-broker model in its consent architecture. "Looks like Outlogic but cleaner" is not enough. Has to be a different model.
+
+---
+
+## Commercial models for buying location data
+
+Useful framing borrowed from a recent prompt response. There are several different things you can mean by "buy location data" and they have different shapes, prices and uses.
+
+**1. Annual data licence for bulk datasets.** What you buy when you want a feed to power analytics or grounding products at scale. Examples: Mapbox Movement, Placer, Foursquare Movement, Quadrant, carrier full extracts, Huq. Procurement: 6-12 weeks, signed contracts, NDAs, £20k-£100k+ per year. This is what we'd buy for a production AI grounding feed.
+
+**2. Usage-based API access.** What you embed in your own app to track your own users with permission. Examples: Radar (geofencing/location SDK), Unwired Labs (cellular/WiFi positioning), Mapbox APIs (geocoding, routing, search). Per-call or per-MAU pricing, sign up online, integrate in days. This is what we'd embed in the indoor map app.
+
+**3. POI / map / traffic APIs.** Standard map service stack. Mapbox, Google Maps Platform, Apple MapKit, HERE, TomTom, Foursquare Places. Tells you *where* places are and what's there. Doesn't tell you who's there. Built into anything that renders a map.
+
+**4. Real-time tracking SDKs.** Radar, Mapbox Vision, geofencing platforms. For tracking *your* users on *your* app. Not third-party data sources.
+
+**5. GeoIP enrichment.** MaxMind, IP2Location, IPinfo, Gigasheet. IP address to rough location. Useful for online analytics, useless for footfall. Country-level is reliable, anything finer is approximate.
+
+**6. Data marketplace one-off purchases.** Snowflake Data Marketplace, AWS Data Exchange, Datarade. Closer to self-serve. Limited geographic scope, monthly subscriptions £1k-£5k. Faster procurement than direct vendor licensing.
+
+The two we'd most likely use in different phases of this project: **#1 for the AI-grounding feed production data, #2 to power our own consumer/venue app.** These are completely different commercial worlds despite both being called "buying location data."
+
+---
+
+## Sources / further reading
+
+- The Markup, "There's a Multibillion-Dollar Market for Your Phone's Location Data" (September 2021): https://themarkup.org/privacy/2021/09/30/theres-a-multibillion-dollar-market-for-your-phones-location-data
+- The Markup, "What Happens to Your Sensitive Data When a Data Broker Goes Bankrupt?" (February 2024): https://themarkup.org/privacy/2024/02/23/what-happens-to-your-sensitive-data-when-a-data-broker-goes-bankrupt
+- FTC X-Mode/Outlogic ban announcement (January 2024).
+- Bloomberg, "Data Firm Near Intelligence Files for Bankruptcy Months After Going Public Via SPAC" (December 2023).
+- FCC fines on US carriers for selling location data (2024).
+- Mapbox Movement product page: https://www.mapbox.com/movement-data
+- Mapbox / OpenAI ChatGPT search integration announcement (November 2024).
