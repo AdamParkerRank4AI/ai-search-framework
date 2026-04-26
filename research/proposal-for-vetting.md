@@ -23,6 +23,24 @@ We are looking for honest pushback before committing further. Specific questions
 
 ---
 
+## Honest framing: this is a starting hypothesis, not a finished thesis
+
+A note before the rest of this document.
+
+This is the **start** of an idea, not a fully formed business. We don't yet know:
+
+- Exactly what this footprint data could ultimately be used for once it exists at scale.
+- Whether AI platforms will actually pay for it at the price and in the shape we're imagining.
+- Whether the indoor map is the right wedge, or whether one of the alternative paths (Section 10) is better.
+- Which venue category we should pilot in first.
+- Whether the whole model works end-to-end at all.
+
+What we are confident about is the underlying observation: **footprint data — who actually goes where, in physical space — is not being used by LLMs or AI search platforms today.** Their grounding signals are entirely digital. That gap is real, and someone is going to close it. We think it might as well be us, given the right combination of methodology, consent quality and indoor specificity, because no incumbent is positioned to do it cleanly. But that's a thesis, not a certainty.
+
+Treat the rest of this proposal as a working hypothesis to scrutinise, not as a finished plan to approve. The point of sending it for vetting is to help us figure out what's wrong with it *before* we commit serious money — which is why honest "this won't work because…" feedback is far more useful than encouragement.
+
+---
+
 ## 1. Where AI search is today — and why trust is the whole problem
 
 AI search platforms are, fundamentally, **trust engines**. Every time ChatGPT recommends a phone shop, suggests a restaurant, or answers "what should I do in Lakeside today," it is deciding which businesses to trust enough to surface. That decision is made from a fixed pool of available signals.
