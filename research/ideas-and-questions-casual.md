@@ -46,11 +46,13 @@ If you add that up, a single phone is generating probably hundreds, maybe low th
 
 So the question is: who actually sees all that, and what do they do with it?
 - Apple and Google see most of it via the OS. They use it internally for things like Maps Popular Times and traffic. They don't sell it.
-- Mobile carriers see every cell-tower handshake on their network. Vodafone, O2, EE all have analytics products built on this, but they sell aggregated extracts to retail planners and councils, not to AI platforms.
+- Mobile carriers see every cell-tower handshake on their network. In the UK, Vodafone Analytics, O2 Motion (Telefonica) and BT/EE all sell aggregated mobility products built on this. Spatial precision is coarse (roughly 50 to 150 metres in dense urban areas, much wider in rural), but coverage is total for that network. Each UK carrier sees roughly 20 to 30 per cent of the population, so you'd need multiple feeds for full coverage. Currently sold to retail planners and councils, not to AI platforms.
 - WiFi network operators (BT WiFi, The Cloud, Sky WiFi, plus every venue's own access points) see device presence near every access point. Mostly used for network management, occasionally for analytics.
 - Bluetooth beacon operators see proximity. Mostly retail asset tracking, mostly small-scale.
 - Apps with location permission see their own users only.
 - Footfall data brokers (Placer, SafeGraph, Foursquare, Outlogic) buy SDK data from third-party apps and sell aggregated footfall to retailers.
+
+(Side note on BlackBerry, since it's the obvious "didn't they have something like this" reference. RIM/BlackBerry historically had unique network-level visibility through BBM routing through their data centre, which made them politically controversial in the late 2000s. That infrastructure is essentially gone now. BlackBerry today is enterprise IoT, asset tracking for trailers and containers, cybersecurity and the QNX car OS. They are not a relevant data source for what we're trying to do. The proper carrier route is via Vodafone, O2 or EE directly.)
 
 Two things stand out:
 - The data is enormous and largely sitting in silos. Each silo is doing something with it, but nobody is bringing the slices together into a single trust signal AI platforms could actually use.
