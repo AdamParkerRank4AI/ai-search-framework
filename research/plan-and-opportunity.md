@@ -524,6 +524,97 @@ Restated: map APIs tell you *where* a place is and *how to get to it.* They don'
 
 ---
 
+## 12. Yes, you can build a prototype today — here's how
+
+Section 11 said "off-the-shelf footfall via API doesn't really exist." That's true at the *industrial* level — you can't wire up to one paid API and get clean, complete, real-time footfall. But for a **single-venue demo** that shows the concept layered on a Lakeside map, there's a perfectly realistic build path using free or low-cost data plus a small amount of code.
+
+The goal of the prototype is not perfect data. The goal is a **demoable artefact** — something you can show OpenAI / Anthropic / a venue / an investor and say "this is what an AI grounding feed looks like, layered on a real venue, today." That artefact unlocks every conversation that comes after.
+
+### What the prototype would actually be
+
+A web page that:
+1. Renders a map of Lakeside (or any chosen venue).
+2. Shows every shop as a polygon with the shop's name.
+3. Colours each polygon by how busy it is right now (and at any point in the day).
+4. Lets you scrub a time slider to watch busyness move through the centre across the day.
+5. Optionally: shows simulated routes (fake or one-person-real) walking through shops, to demonstrate the route data shape.
+6. Pin notes per shop pulling Rank4AI entity data (opening hours, category, AI-search summary).
+
+That's the demo. Build time: realistic for a single competent developer in **2–4 weeks**.
+
+### The data sources you can actually use, free or near-free
+
+**For the map and shop polygons:**
+- **OpenStreetMap.** Lakeside is already partially mapped on OSM — you can pull the existing data via the Overpass API and render it via Leaflet or Mapbox GL JS. Free.
+- **Mapbox free tier.** 50,000 map loads/month free. More than enough for a demo.
+- For shops not yet mapped on OSM: trace the floor plan once from a published Lakeside directory PDF into GeoJSON. Hand-trace, a couple of days of work for one venue.
+
+**For real footfall numbers (sample, not perfect):**
+- **Google "Popular Times" via the unofficial `populartimes` Python library.** For every named POI inside Lakeside (each shop has its own Google Places ID), this returns the typical-busyness graph Google shows in Maps — by day of week, by hour. Free, brittle, unsupported, but it works for a one-off demo.
+- **Google Maps "Live" busyness.** Sometimes available alongside typical busyness — when present, it gives current-vs-typical. Same library can pick this up.
+- **Free trials / demos from Placer.ai, Foursquare, Huq.** All three offer demo tiles or limited free POI lookups. Worth requesting for the flagship venue.
+- **OpenStreetMap-derived POIs.** OSM has a shop=* tag with names, opening hours and categories — useful for enrichment when Google data is patchy.
+
+**For route and dwell shape (one-person real, then fake the scaling):**
+- **Walk Lakeside yourself with the demo on your phone.** Build a tiny PWA with `navigator.geolocation.watchPosition()` that records your trail every few seconds. Walk through 10 shops, sit in the food court, leave. Record. That gives you one real route through the venue.
+- **Replay your own track on the map.** Animate the dot moving through the polygons. Then duplicate it 1,000× with random jitter to show what 1,000 routes through the venue would look like. Honest in the demo: "this is one real walk plus simulated peers."
+
+**For the AI search side of the demo:**
+- Use the Rank4AI entity record format you already have in the methodology. For each shop, write a short structured entity description (name, category, parent brand, sub-categories, exclusion statements). Render it on the pin click panel.
+- Optional: paste those descriptions into ChatGPT alongside a query like "best phone shop in Lakeside" and screenshot the answer with vs. without. That's the basic version of the side-by-side eval that pitches the AI-grounding case.
+
+### A concrete build plan, week by week
+
+**Week 1 — Map skeleton.**
+- Pull Lakeside from OpenStreetMap via Overpass.
+- Render via Mapbox GL JS in a single HTML page.
+- Trace any missing shop polygons by hand from the Lakeside directory.
+- Each polygon carries `{shop_id, name, category, brand_parent}`.
+
+**Week 2 — Footfall layer.**
+- Run `populartimes` against every shop's Google Places ID.
+- Store the resulting busyness curves in a small JSON file (no backend needed for a demo).
+- Colour each polygon by the current hour's busyness, with a time slider to scrub the day.
+- Add a venue-wide heatmap layer that aggregates the per-shop curves.
+
+**Week 3 — Route demo.**
+- Build a tiny PWA that records your phone's geolocation as you walk through the venue.
+- Save the trail as GeoJSON.
+- Replay it on the demo map as an animated dot, snapping to the nearest polygon to call out "entered Boots at 14:32, dwelled 7 minutes, moved to Costa."
+- Generate 100 simulated peer routes with jitter to show what "real busy day" looks like.
+
+**Week 4 — AI grounding panel.**
+- For each shop, prepare a Rank4AI-style entity record.
+- On pin click, show the entity record alongside the busyness curve.
+- Build the side-by-side ChatGPT eval: take 10 prompts ("best coffee in Lakeside", "where can I get a kid's birthday gift"), record baseline answers, then re-prompt with the entity records + busyness data injected as context, record the better answers.
+- Capture screenshots — that's your OpenAI deck.
+
+End of week 4: a demo that shows a Lakeside map, with real (sampled) busyness layered on every shop, with at least one real recorded route through the venue, with Rank4AI entity records on each pin, and a screenshot pack showing how injecting this data improves ChatGPT's answers about shopping at Lakeside.
+
+That demo is enough to walk into:
+- A Lakeside / Westfield / Bluewater meeting and say "this could be your venue."
+- An OpenAI / Anthropic data-partnerships meeting and say "this is what a grounding feed could look like."
+- An investor meeting and say "here's the thing, here's the wedge, here's the visible product."
+
+### Honest limits of the prototype
+
+- Google Popular Times is sample-based, modelled, not consent-based. Fine for a demo, **not the data we'd ship to AI platforms in production.** Production data has to come from our own consent-based map (the eventual real product).
+- Scraping Google's Popular Times is unsupported. They could block it tomorrow. Fine for a demo, can't be a foundation.
+- One person's route is anecdotal, not a dataset.
+- The map of Lakeside hand-traced from a directory PDF is approximate — fine for demo polygons, not for legal-grade venue records.
+
+These caveats are features in the demo conversation, not bugs: "this is the shape of the product, with sampled bought-in data; the real version uses our own first-party indoor map data which is cleaner, consented and ours to license."
+
+### What this prototype is *not*
+
+- It is not the indoor-map product (Product A from Section 3). The indoor-map product is what visitors at the venue actually use.
+- It is not the AI grounding feed (Product B from Section 3). The grounding feed is the consented, multi-venue, properly aggregated data product.
+- It is a **demo artefact** that shows both products in miniature, on a venue you don't yet have a contract with, using public data sources as stand-ins.
+
+It's the cheapest, fastest piece of evidence that the whole plan is real. Build this before you raise money. Build this before you sign a venue. Build this before you talk to OpenAI. Everything else gets easier once it exists.
+
+---
+
 ## TL;DR
 
 We're building an indoor map that opens via QR scan when a visitor enters a venue. It's useful in its own right and we'll sell it to venues as a SaaS amenity. The bigger play is that the same map quietly captures consent-based, location-only footfall data, ties it to entity records in the Rank4AI graph, and feeds it to AI platforms as a grounding signal. Today AI platforms answer "where should I go" with online-only signals that are easy to manipulate. We're selling them the offline truth. The map is the wedge. The data is the product. OpenAI is the customer that matters.
