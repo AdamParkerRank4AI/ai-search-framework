@@ -270,3 +270,73 @@ Things not yet covered in this doc that probably need at least a pass.
 **Privacy posture as marketing.** If the bigger thesis is footfall-as-truth-signal, then being visibly the *most privacy-respecting* operator in the space is a moat. Public-facing privacy white paper, k-anonymity guarantees, opt-out flows and ICO engagement from day one. This is cheap to do and expensive to retrofit.
 
 **Scale economics.** Going from 1 venue to 100 changes everything: floor-plan onboarding pipeline, support, ad sales, data infrastructure. The architecture needs to be multi-tenant from the first line of code, even if commercially we're selling one venue at a time.
+
+---
+
+## Inclusive design: families, mobility, age, neurodiversity
+
+Wayfinding is hardest for the people who need it most. Most existing indoor maps treat "accessibility" as a synonym for "step-free routing" and stop there. There is a real product opportunity in going much further.
+
+**Families with buggies / pushchairs.** Lifts (not stairs or escalators), wide aisles, baby-changing facilities, breastfeeding rooms, family toilets, kids' play zones, microwaves for warming food. A "family mode" route filter that prefers buggy-friendly paths and surfaces these facilities on the map.
+
+**Young children.** Big-tap targets, cartoon-style icons for shops kids care about (toy shops, sweet shops, soft play), a "where's the toilet" panic button that's one tap from the home view, lost-child reunification flow (scan the QR on a wristband or sign and it shows the venue's lost-child meeting point and notifies guest services).
+
+**Older visitors.** Larger default font, higher-contrast theme, simpler language, fewer clicks to get to the basics (toilet, exit, café, lift). Seating-along-route filter ("rest every 50m"). Slow-walk routing that prefers shorter, easier paths over the absolute shortest.
+
+**Mobility / disability.** Step-free routing as a hard requirement, not a toggle hidden in settings. Accessible toilets (Changing Places where available), Blue Badge parking, wheelchair hire locations, hearing-loop-equipped tills, BSL-supported counters. Honest path information — "this lift is out of service today" — sourced from venue ops in real time.
+
+**Sensory / autism / ADHD / cognitive load.** This is the most under-served group and the easiest one to differentiate on:
+
+- **Quiet hours / quiet zones** — surface the venue's sensory-friendly hours and show low-stimulation routes (avoiding atria with loud music, busy food courts, escalators).
+- **Predictability** — show what to expect at each step ("you will go through automatic doors, then turn right past a fountain"). For autistic visitors especially, predictability reduces anxiety.
+- **Sensory map layer** — toggle that overlays noise, light, smell and crowd levels per zone, sourced from venue data + footfall + audio sensors where available.
+- **Reduced clutter mode** — a stripped-down map UI with one route, one big arrow, no ads, no popups. ADHD-friendly default.
+- **Predictable language** — short sentences, no metaphors, no jargon. Important for autistic readers and for non-native English speakers (overlap with internationalisation).
+- **Communication cards / visual schedules** — pre-built "I am going to Lakeside today" social stories that families can print or load before the visit.
+- **Calm rooms / sensory rooms** — surface where they are; many large venues now have them but nobody knows.
+- **Crowd avoidance routing** — combine footfall data with route choice so a visitor can ask for the *quietest* path, not the shortest.
+
+This isn't just inclusive design as ethics (though that matters). It's a real commercial wedge:
+
+- Roughly 1 in 7 people are neurodivergent. Families with autistic or ADHD members frequently *avoid* large venues because they're overwhelming. A venue that solves this gets a measurable footfall uplift.
+- Charities and advocacy groups (National Autistic Society, Mencap, Scope, Mumsnet) are powerful distribution and validation channels.
+- Several UK shopping centres already run "quiet hours" but don't promote them well; the map becomes the canonical place these are surfaced.
+- Maps to AI search: structured data about *who a venue serves well* feeds into the Rank4AI entity graph and changes which queries the venue gets recommended for ("autism-friendly shopping centre near Essex").
+
+This deserves its own working group with input from disabled and neurodivergent users, not just an internal opinion about what they need.
+
+---
+
+## What is actually new here?
+
+Honest question, honest answer.
+
+**Indoor mapping itself is not new.** Mapwize, Pointr, MazeMap, Situm, Inpixon, Esri ArcGIS Indoors and Apple's Indoor Maps Program have been doing some version of this for years. Most enterprise venues that wanted indoor maps already have them. So what's different?
+
+The defensible novelty is not the map. It's the stack the map sits inside:
+
+1. **AI search linkage.** No competitor in the indoor-mapping space is connecting venue and tenant entities into an AI-search optimisation framework. The map isn't the product — it's a structured data feed for the Rank4AI graph. Each pin is also a Rank4AI entity, with consistent identity language across the venue, the tenant's site, and external listings. That makes it cite-able by AI platforms in a way pure indoor maps aren't.
+
+2. **QR-to-web, no app install.** The incumbents mostly ship SDKs that get embedded inside the venue's own native app, or they ship their own app. Both add friction. Scan-a-QR-and-it-just-works is a real UX gap — and meaningfully cheaper for venues that don't want to maintain a native app.
+
+3. **Footfall as a ground-truth signal for AI platforms.** Placer.ai, Springboard and Huq sell footfall to retailers and landlords. None of them sell it as **AI grounding data** to OpenAI, Anthropic, Google or Perplexity. That's the long-game wedge and it only exists because we're sitting at the intersection of indoor data + AI search expertise.
+
+4. **Inclusive design as a first-class product line, not a checkbox.** Sensory-friendly routing, neurodivergence-aware UX, family-mode, age-aware defaults. Most indoor map vendors do step-free and stop. There's a clear, under-served audience here.
+
+5. **Privacy-first by construction.** Most footfall vendors are dragging legacy MAC-tracking baggage. Starting fresh with consent-based capture, k-anonymity and a public privacy stance is a moat both for selling to AI platforms (who need defensible data sources) and for venue trust.
+
+6. **Bundled with a methodology, not sold as a tool.** Rank4AI is already a framework with an audit and a strategic narrative. The map plugs into that as one more signal layer (Ecosystem Validation + Signal Consistency, mostly). We're not selling a map; we're selling AI visibility, and the map happens to be the most defensible signal in the stack.
+
+What this means in practice:
+- Don't compete head-on with Pointr/Mapwize for "best indoor map." That fight is lost on day one — they have years of head start, deep enterprise relationships, and better positioning tech.
+- Compete on the slice they don't cover: scan-to-web access, AI search linkage, neurodivergent-friendly UX, and footfall productised as AI training/grounding data.
+- Pitch to venues as: "you get a low-friction indoor map *plus* your tenants become more visible in ChatGPT, Gemini and Perplexity."
+- Pitch to AI platforms (later, much later) as: "ground-truth, consent-based, real-world activity data for the venues and businesses your users ask about."
+
+What we should *not* pretend is new:
+- The map itself.
+- Indoor wayfinding as a category.
+- Footfall analytics as a category.
+- Sensory-friendly hours as a venue concept (lots of venues already have them — they just don't surface them well).
+
+Honest summary: this is a re-bundling of well-understood components into a new product wedge — the AI-search angle and the inclusive-design angle are the two genuine differentiators; everything else is execution.
