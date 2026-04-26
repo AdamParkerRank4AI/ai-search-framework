@@ -456,3 +456,64 @@ The white space is genuinely empty: nobody is selling footfall as **structured g
 That feed becomes a **structured truth layer for AI search** — directly answering your question. Yes, the play is to take footfall from many places and migrate it into the AI search world, which today is mostly online-only, to give those platforms the offline reality their answers currently lack.
 
 **The summary of summaries:** Pointr et al. sell wayfinding to venues. Placer et al. sell footfall to retailers. Nobody sells offline reality as a grounding signal to AI platforms. That's the wedge. The map is how we earn the right to collect the data. The data is the actual product.
+
+---
+
+## Data source comparison: why per-device beats per-transaction
+
+Worth thinking about how our footfall data compares to other "real-world signals" already on the market — particularly card-transaction data, which a few firms already sell.
+
+### Existing real-world data sources
+
+- **Card transaction data.** Mastercard SpendingPulse, Visa Spend Analytics, Fable Data, Consumer Edge, Facteus, Earnest. Aggregated card-spend feeds sold to retailers, hedge funds and economists.
+- **Open banking data.** Plaid, TrueLayer, Tink — transaction-level data with the consumer's consent.
+- **Loyalty schemes.** Tesco Clubcard, Nectar, John Lewis, Pret Club. Per-customer purchasing history within a single retailer.
+- **Mobile-SDK footfall.** Placer, SafeGraph, Cuebiq, Outlogic — passive location pings from SDKs embedded in third-party apps.
+- **WiFi probe analytics.** Cisco Meraki, Aruba, Purple — venue-side counting of nearby devices.
+- **CCTV / computer vision.** Hoxton Analytics, V-Count, RetailNext — head-counting from cameras.
+
+### The party-size problem
+
+Card transaction data has a structural under-counting problem that's exactly what you spotted:
+
+- A family of four walks into Lakeside, has lunch, buys clothes for the kids, leaves. Card data sees **one cardholder** (probably the parent who paid). Spend is counted, but the *humans-in-venue* count is one.
+- Loyalty schemes have the same flaw — one Clubcard, four people.
+- Even worse: card data only registers the visit *if* a purchase happened. A family that browses and leaves is invisible to card-based footfall entirely.
+
+This is the gap. Card data measures *spending*. Footfall measures *presence*. AI platforms answering "is this place actually busy / loved / used by real people" need presence, not just spend.
+
+### How per-device footfall fixes this
+
+If each member of a family has the map open on their own phone, that's four presence signals, not one. Specifically:
+
+- **Better party-size reality.** Four phones in a venue at the same time, moving on the same path, with similar dwell, is detectable as a *group* — and counted as four humans, not one cardholder.
+- **Browsing visits count.** Presence is recorded whether or not anyone spends a penny. That captures the long pre-purchase journey AI platforms care about ("is this place worth visiting" not just "did someone buy something").
+- **Visit duration is real.** Card data gives a single timestamp at point of sale. Phone presence gives arrival, dwell, route, departure. Far richer.
+- **Cross-tenant journeys are visible.** Card data per merchant is siloed. Phone-based data sees the whole route through the venue, including the shops people *didn't* buy from.
+
+### Caveats — and why the dataset still has to be careful
+
+Per-device isn't perfect either. We need to be honest about its limits when pitching it as a grounding signal:
+
+- **Not everyone has the app open.** A family of four might have one phone with the map open and three without. Coverage is partial unless the venue strongly nudges scans (signage at the entrance, free WiFi gated through the map, loyalty perks for using it).
+- **Children often don't have phones.** Under-12s are largely invisible to phone-based capture. Family-targeted venues will under-count for this reason.
+- **One person carrying multiple devices.** A single visitor with a phone + tablet + smartwatch could be counted as three. MAC randomisation and per-device IDs make de-duplication non-trivial.
+- **Selection bias.** People who scan the map skew younger, more digitally engaged, more curious. The data needs weighting before it's a fair sample of "everyone who visited."
+- **Occasional vs frequent visitors.** A regular who never opens the map looks identical to a no-show. Hardware-side capture (WiFi probes, CCTV) catches these; app-side capture misses them.
+
+### The right architecture: blend the sources
+
+The cleanest grounding signal isn't pure phone-based or pure card-based — it's blended:
+
+- **Phone-based map presence** for granular per-person dwell and route data, and to count the children/non-payers card data misses.
+- **WiFi-probe or CCTV counts** as a venue-wide ground-truth check on totals, regardless of app adoption.
+- **Aggregated card-spend** as a separate signal that says "of the people who came, how much did they spend" — useful for tenant-level economics.
+- **Loyalty data** where venues will share it, for repeat-visitor patterns.
+
+Each source corrects the others' blind spots. AI platforms don't want a single noisy feed; they want a documented, multi-source signal with known coverage characteristics. That's the product.
+
+**Implication for the pitch to venues:** the more visitors using the map, the better *every* signal becomes — and the more valuable the venue's slice of the AI-grounding dataset. That gives venues a direct incentive to drive scan rates (signage, WiFi gating, loyalty integration) rather than treat the map as a passive amenity.
+
+**Implication for the pitch to AI platforms:** "we have *N* venues, *X* million presences per month, blended with WiFi/CCTV ground truth and reconciled against card-spend totals where available." That sentence is harder to refuse than "we have phone pings."
+
+You're right that a family of four with four maps open is four hits, and right that card data wouldn't catch that. The real win is that no single existing data source catches it — and a blended pipeline does.
