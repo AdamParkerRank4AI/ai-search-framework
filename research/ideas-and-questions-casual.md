@@ -14,9 +14,21 @@ Living Map (livingmap.com) is the company that triggered this. UK-based, indoor 
 
 ## What's actually happening in AI search right now
 
-ChatGPT, Gemini, Perplexity and the rest are all pushing harder into geo and locations. ChatGPT now has location-aware answers, Google AI Overviews is increasingly map-anchored, Perplexity has been hiring for local search, Apple Intelligence is wiring Maps into their assistant. The "where" question is becoming a first-class part of how AI answers everything.
+ChatGPT, Gemini, Perplexity and the rest are all pushing harder into geo and locations. ChatGPT now has location-aware answers (Mapbox announced in November 2024 that ChatGPT search uses Mapbox maps), Google AI Overviews is increasingly map-anchored, Perplexity has been hiring for local search, Apple Intelligence is wiring Maps into their assistant. The "where" question is becoming a first-class part of how AI answers everything.
 
-But the maps and place data they're using underneath are still digital. The base maps come from Mapbox, OpenStreetMap, Apple Maps, Google Maps. The reviews come from Google, Trustpilot, Yelp. The opening hours come from scraped websites. Nothing about it tells the AI whether anyone is actually there.
+But here's the thing. The map and place data they're using is for *visual rendering* and basic POI/address lookup. The base maps come from Mapbox, OpenStreetMap, Apple Maps, Google Maps. The reviews come from Google, Trustpilot, Yelp. The opening hours come from scraped websites. Nothing in that stack tells the AI whether anyone actually goes there. ChatGPT shows you a Mapbox map of a coffee shop and a list of reviews, but it doesn't know whether the place is busy, fading, fake, or shut down last Tuesday.
+
+That's the trust gap.
+
+## A note on Mapbox specifically
+
+Worth flagging because it's the closest existing player to what we're describing. Mapbox sells a product called **Mapbox Movement** which gives aggregated mobility data drawn from their SDK panel — 700M+ monthly active users across 45,000 apps, 20B+ live location updates daily, aggregated to 100m tiles and admin boundaries. They sell it to retail planners and risk analysts for things like "where should we open a new shop." It is not currently packaged as AI grounding data.
+
+So Mapbox is uncomfortably close to being able to do exactly what we're describing. They have the raw data, they have an existing partnership with OpenAI for the visual map layer in ChatGPT search, and they have the engineering capacity to add entity-linking and methodology on top. They just haven't.
+
+This changes the strategy a bit. The play is probably partnership rather than competition: their data plus our entity-linkage + methodology + indoor specificity + Rank4AI bundle. They get a new revenue line in a new category, we get to market without years of building a panel from scratch. Worth a conversation early.
+
+The flip side is that the window may be shorter than I thought. If Mapbox decides to enter this category themselves, they leapfrog any independent attempt in months. So either move fast or move with them.
 
 ## The thing I keep coming back to
 
