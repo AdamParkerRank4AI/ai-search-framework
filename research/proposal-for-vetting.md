@@ -1,0 +1,174 @@
+# Real-World Footfall as Grounding Data for AI Search Platforms
+
+**A proposal for vetting and feedback**
+
+**Author:** Liam, with the Rank4AI framework
+**Date:** April 2026
+**Length:** ~5 minute read
+**Status:** Early-stage, seeking honest critique before we commit serious time or capital
+
+---
+
+## Executive summary
+
+AI search platforms — ChatGPT, Gemini, Claude, Perplexity, Copilot — currently decide what to recommend almost entirely from **digital signals**: web pages, online reviews, structured data, citations, social mentions. Every one of these signals can be manipulated, and the AI platforms know it. Hallucinated or gamed answers are their single biggest credibility risk.
+
+The next phase the industry is moving toward is "places" — AI-generated maps, location-aware answers, "what should I do here today" queries. But even the new map-and-place layer is still being built on the same online-derived signals: scraped reviews, address data, geocodes, what websites say about businesses.
+
+The gap is **offline truth** — the actual behaviour of real people in real places. Footfall, dwell, return rates, route patterns. This is the hardest thing to fake at scale, and it is currently invisible to LLMs.
+
+We propose to build a consent-based pipeline that captures real-world foot traffic via an indoor map product, converts it into LLM-readable structured data attached to entity records, and sells the resulting feed to AI platforms as a grounding signal. Secondary value: the same data stream is exactly what retailers and venue landlords already pay for from companies like Placer.ai, except more granular and consent-clean.
+
+We are looking for honest pushback before committing further. Specific questions at the end.
+
+---
+
+## 1. Where AI search is today
+
+When you ask ChatGPT "where should I shop for a phone in Essex" or "best coffee in Lakeside," the model is pulling from:
+
+- Web pages and content marketing.
+- Online reviews (Google, Trustpilot, Yelp).
+- Structured data (schema.org, Wikidata, Google Knowledge Graph).
+- Citations and backlinks.
+- Social media mentions and posts.
+
+This is **digital trust**. It is what twenty years of SEO was built around, and the AI platforms inherited the same supply.
+
+The problem: every one of these signals is gameable. SEO, paid reviews, link buying, AI-generated content farms, bot networks. Anyone with budget can move the needle. The AI platforms know this and treat the resulting answers with appropriate caution — but they have no better data to draw on for most place-based questions.
+
+## 2. What's coming next: AI maps
+
+In the next 12–24 months, AI platforms are clearly moving into maps and place-aware answers. OpenAI has signalled interest in commerce and local. Google AI Overviews is increasingly map-anchored. Perplexity is investing in local search. The category is forming.
+
+But the maps that come out of this round will still be built on **digital data**: addresses, geocodes, opening hours scraped from websites, reviews ingested from public sources. The map is new, the underlying trust signal is the same as before. Manipulable.
+
+So the ground question is: what would a *better* signal look like?
+
+## 3. The gap: offline truth
+
+Real-world behaviour is the answer.
+
+Whether 4,000 people actually walked through a venue on Saturday, how long they stayed, which shops they visited and which they skipped — this is the truth that no amount of website manipulation can fake. Footfall is offline, observed and costly to forge.
+
+Today this data exists in fragments — held by carriers, by venue WiFi systems, by camera-based counters, by a few footfall analytics vendors (Placer.ai, Foursquare, Huq). None of it is packaged as **AI grounding data**. It is sold to retailers and landlords for marketing decisions. The AI platforms don't see it. The category is empty.
+
+## 4. The thesis
+
+**Convert real-world foot traffic into LLM-readable data, and sell it to AI search platforms as a grounding feed.**
+
+Stated longer: aggregate consent-based location and presence data from many indoor venues, attach it to stable entity records (each shop, each brand, each chain), format it into the structured grounding shape AI platforms can ingest, and license the result.
+
+For an AI platform asking "is Acme Coffee in Lakeside actually a real, popular, currently-trading place" — instead of triangulating from Google reviews and the company's website, they would also see: 4,200 unique visits last week, average dwell 12 minutes, returning-visitor rate 22%, peak Saturday afternoons. That is a fundamentally different class of evidence — the offline reality their answers currently lack.
+
+## 5. The product
+
+**Front of house: an indoor map.** A scan-to-open, no-app-install, browser-rendered map for venues like Lakeside, Westfield, Bluewater, large hospitals and universities. Visitor scans a QR code on entry, the map opens in their browser showing where they are and where everything in the venue is. Each pin is also a structured entity record so the venue and its tenants become more discoverable to AI platforms.
+
+**Behind the scenes: consent-based location capture.** Every visitor who scans the map gives explicit permission for their anonymous, location-only presence data to be captured for that visit. This is the cleanest possible consent flow — visitor-initiated, single-purpose, with no carry-over to advertising or identity.
+
+**The output: a grounding feed.** Aggregated and anonymised to a k-anonymity threshold, attached to entity IDs that resolve to Wikidata, Companies House and the Rank4AI graph. Daily-refreshed records of:
+
+- Visit counts per shop, per venue, per brand.
+- Dwell distributions and peak-hour profiles.
+- Returning-visitor rates.
+- Common routes and adjacency patterns (which shops are visited together).
+- Change-vs-prior-period and freshness timestamps.
+
+Sold under documented methodology with provenance disclosed per record — exactly what AI platform procurement teams now require under emerging EU AI Act sourcing rules.
+
+## 6. Why AI platforms would buy this
+
+Five reasons:
+
+1. **It reduces hallucination on place questions.** The single biggest credibility risk for ChatGPT and its peers when asked "where should I go" is recommending somewhere that's closed, struggling, or fake. Footfall data prevents that class of error.
+
+2. **It's costly to fake.** Web content, reviews and citations can be manufactured. Real human feet in real venues can't be — at least not at the scale needed to game the data.
+
+3. **It's recent.** Footfall is fresh by definition. Stale web content can't say whether a place is still trading; a footfall feed can.
+
+4. **It cross-references their existing signals.** A business with strong online signals *plus* strong footfall is verifiably real and active. A business with only one is suspicious. The combined signal is more powerful than either alone.
+
+5. **OpenAI has shown they will pay for grounding data.** AP, Le Monde, Reddit, Stack Overflow, FT, News Corp, Time, Vox, Condé Nast — all licensed in 2024–2025. Pattern is consistent: novel data that improves grounding gets paid for, often $1M–$60M/year depending on scale and exclusivity. Footfall fits the same pattern, in a category they don't yet have a supplier for.
+
+## 7. Why this is better than card-transaction data
+
+Card data (Mastercard SpendingPulse, Visa, Fable, Consumer Edge) and loyalty data are the obvious adjacent signal — and they have a structural flaw.
+
+A family of four enters a venue, has lunch, browses three shops, buys clothes, leaves. Card data captures **one cardholder** — the parent who paid. Four humans, one signal. Loyalty data: same flaw, one Clubcard, four people. And card data only registers the visit *if* a purchase happens — browsers and non-payers are invisible.
+
+Per-device location data inverts that:
+
+- Four phones with the map open = four hits, not one.
+- Browsing visits count even with zero spend.
+- Arrival, dwell, route and departure are all captured — not just a single point-of-sale timestamp.
+- Cross-tenant journeys are visible — including the shops people *didn't* buy from.
+
+Combined with the granular pin-point data, route patterns and pattern-of-life signals from the map, this is a much richer picture than any card or loyalty feed can produce.
+
+(Honest note: per-device data also has limits — children typically don't have phones, not every family member will have the map open, and people who don't scan are invisible to us. We document these as part of the methodology rather than hide them. AI platforms specifically prefer suppliers who disclose limitations cleanly.)
+
+## 8. Secondary value: retailers and landlords
+
+The same data stream we're selling to AI platforms is also what venues and retailers already pay for, today. Placer.ai is reportedly close to a $1B valuation on this market. Springboard, Huq, Sensormatic and Foursquare all sell into it.
+
+Layered onto our base product:
+
+- **Venue landlords** pay for the indoor map as a SaaS amenity for visitors, plus get a built-in analytics dashboard.
+- **Retailer brands** (H&M, Boots, Greggs) get a free dashboard for their own stores in our network — visits, dwell, peak hours, returning rate. Many will sign up for the analytics alone.
+- **Sponsored placements** inside the map become high-margin advertising at point-of-intent.
+
+So even if the AI platform play takes longer than expected to land, the indoor map plus retailer/venue analytics is already a working, proven business model. Pointr, Mapwize, Situm have built nine-figure businesses on a more enterprise-heavy version of the same shape.
+
+## 9. Why now
+
+Several conditions only aligned in the last 12–18 months:
+
+- AI search has legitimised. Real budgets are being spent on grounding data; OpenAI's publisher deals confirm a category exists.
+- Mobile-SDK footfall (the legacy way to get this data) is collapsing under Apple's App Tracking Transparency and Google's Privacy Sandbox. The FTC banned X-Mode/Outlogic in 2024. Gravy Analytics was breached in early 2025. The incumbents are weakened, not strengthened.
+- Privacy regulation now creates a moat for clean-consent operators rather than just being friction. Late entrants will struggle to retrofit the consent quality that AI platforms will require.
+- Indoor mapping is mature enough to ship a competent product in months, not years.
+- The Rank4AI methodology already exists and gives the data product a thesis to sit inside.
+
+Realistic first-mover window: probably 18–24 months before Foursquare, Placer or one of the AI platforms themselves notices the category and pivots into it.
+
+## 10. What's defensible
+
+Honest read on what's hard for someone else to copy:
+
+- **Consent quality.** Built from day one on visitor-initiated QR scans. SDK-aggregator competitors carry years of murky consent provenance and active regulator interest.
+- **Entity linkage.** Every record tied to stable IDs that resolve to Wikidata, Companies House, brand parents, the Rank4AI graph. Most footfall vendors sell "device near coordinates" and have no entity layer.
+- **Indoor precision.** Most outdoor footfall products are tile- or postcode-based. Inside Lakeside, "best phone shop" needs to know which unit, not which sector.
+- **Methodology bundle.** Rank4AI is published, scored, audit-anchored. The data product sits inside a thesis and a brand, not as a standalone CSV.
+- **Speed.** Big incumbents are slow to pivot strategy. Small operators can define a new category faster than they can react.
+
+We will not beat the incumbents on raw data volume early on. We can beat them on cleanliness, structure, indoor specificity, and being there first.
+
+## 11. What we don't know yet
+
+Honest list. These are the things the vetting reader is invited to challenge.
+
+- **Will AI platforms actually pay for this?** Plausible but unproven. Direct conversations with grounding-team contacts at OpenAI / Anthropic / Google / Perplexity are the cheapest way to find out.
+- **What's the coverage threshold for the data to be interesting?** Probably hundreds of venues, not tens. The road from venue 1 to venue 100 is real work.
+- **Will visitors actually scan?** Believable for venues that promote the QR well; unproven below ~30% scan rates.
+- **Could OpenAI / Google build this themselves?** They could. Our defence is being smaller, faster, neutral and multi-platform.
+- **Is the market for indoor maps + venue SaaS strong enough to fund the early years?** Pointr/Mapwize numbers suggest yes; we'd need to validate per-venue economics ourselves.
+
+## 12. What we're asking from you
+
+If you're reading this to vet it, the most useful things you can tell us:
+
+1. **Have you seen anyone else building this?** Stealth startups, internal teams at AI platforms, recent moves from footfall vendors? If yes — who, and how seriously.
+2. **Where would you push back hardest?** Which assumption in this document is the weakest?
+3. **Who should we be talking to?** Specifically: data-partnerships people at OpenAI / Anthropic / Google / Perplexity, indoor-mapping operators, venue ops contacts, AI-grounding researchers.
+4. **What kills it?** What's the most likely reason this doesn't work, that we've underweighted?
+
+The plan is to spend the next three to six months proving the prototype, validating AI-platform demand, and signing one pilot venue — total cost £30–80k including time. We won't raise serious capital until those steps are mostly green. This document is a snapshot before that work begins.
+
+Honest critique appreciated. Sycophantic "this is great" feedback isn't useful — we'd rather hear the hardest version of why this might fail.
+
+---
+
+## Appendix: one-line framing for the bullet list version
+
+> AI search runs on digital trust. The next layer is maps, but maps are still digital. The layer after that is offline truth — real people, real places, real footfall — converted into LLM-readable data. We're building the pipeline that does that, sold to AI platforms first and venues/retailers second. The map is the wedge. The data is the product. The window is now.
