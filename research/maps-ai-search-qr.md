@@ -340,3 +340,119 @@ What we should *not* pretend is new:
 - Sensory-friendly hours as a venue concept (lots of venues already have them — they just don't surface them well).
 
 Honest summary: this is a re-bundling of well-understood components into a new product wedge — the AI-search angle and the inclusive-design angle are the two genuine differentiators; everything else is execution.
+
+---
+
+## Competitor gap analysis: what they have that we don't
+
+Splitting this two ways, because the project is really two products stacked on top of each other.
+
+### A. Entry point: the indoor map / wayfinding product
+
+Reference set: Mapwize (Engie), Pointr, MazeMap, Situm, Inpixon, Esri ArcGIS Indoors, Apple Indoor Maps Program, Google Maps Indoor.
+
+What they have that we don't:
+
+- **Real "blue dot" indoor positioning.** Mature stacks using BLE beacons, UWB, magnetic-fingerprinting and visual positioning. Pointr's flagship is sub-metre indoor location. We start from QR-anchored "you are here" which is materially weaker.
+- **Multi-floor routing engines.** Years of work on pathfinding through lifts, escalators, stairs, secured doors, with accessible variants. Non-trivial to replicate.
+- **CAD / BIM ingestion pipelines.** Tooling to import architectural drawings, stitch floors, generate vector tiles automatically. We'd be hand-tracing floors initially.
+- **Native SDKs for iOS and Android.** Venues that already have a native app embed their SDK rather than send users to a web page.
+- **Enterprise sales motion.** Already inside airports, hospitals, universities, large retail. Multi-year contracts, procurement relationships, reference customers.
+- **Compliance certifications.** SOC 2, ISO 27001, HIPAA-readiness. Required for hospital and government procurement; takes 12–18 months to earn from scratch.
+- **3D / extruded floor visualisations and AR Live View.** Pointr and Esri both ship AR overlays. Visual polish that wins demos.
+- **Asset tracking adjacencies.** Hospitals track equipment, warehouses track inventory using the same beacon network. Big deal-expansion lever we don't have.
+- **Apple Indoor Maps Program and Google Indoor accreditation.** Direct relationships with the platform owners.
+- **Localisation out of the box.** Multi-language UX, RTL support, regional formats.
+- **Network-deployment services.** They send engineers to install and calibrate beacon networks. We'd need a partner.
+- **Years of operational data.** Crash reports, edge cases, accessibility refinements they've already learned.
+
+What we have that they mostly don't:
+
+- Scan-a-QR-to-web access without an app install.
+- Inclusive design as a product line, not a setting.
+- The Rank4AI entity linkage on every pin.
+- A clean privacy posture (no legacy MAC-tracking baggage).
+
+Honest take: **on pure indoor mapping we are years behind**. The right move is not to compete head-on. The right move is to be "good enough" on the map and win on what sits behind it.
+
+### B. AI search side
+
+This is where it gets interesting, and where the real product lives.
+
+Two distinct things are bundled in "AI search" and they need to be separated:
+
+#### B1. Per-venue / per-tenant AI visibility (today)
+
+The Rank4AI framework already does this for businesses generally — make each entity (venue, shop, service) clearly described, structurally consistent and externally validated so AI platforms recommend it confidently.
+
+What competitors offer:
+- **Conventional SEO agencies** — still optimising for blue links, mostly weak on AI search.
+- **Emerging AI search / GEO (Generative Engine Optimisation) agencies** — Profound, Otterly, AthenaHQ, Peec AI, Goodie AI. They focus on monitoring brand mentions in LLM answers and reverse-engineering which signals drive inclusion.
+- **Schema / structured-data tools** — Schema App, Yoast.
+
+What they don't offer:
+- A physical-space data pipeline feeding the entity graph (this is where the indoor map plugs in).
+- A footfall-derived authority signal.
+- A consolidated five-signal model with a measurable audit (Rank4AI's existing edge).
+
+#### B2. Sub-project: aggregated real-world data sold to AI platforms (the long game)
+
+This is the question you asked directly. **Yes — that is the play, and the framing is right.**
+
+**The thesis, stated plainly:**
+
+AI platforms today ground their answers about places, businesses and entities almost entirely on **online signals**:
+- Web content (pages, blog posts, news).
+- Reviews (Google, Yelp, Trustpilot).
+- Structured data (schema.org, Wikidata, Google Knowledge Graph).
+- Citations and backlinks.
+- Social media activity.
+
+Every one of these signals is **manipulable at scale** — that's why SEO and reputation management exist as industries. AI platforms know this, and are actively hunting for harder-to-fake grounding sources because hallucinated or manipulated answers are their single biggest credibility risk.
+
+**Real-world behaviour** — actual humans physically going to a place, spending time there, coming back — is the truth signal that no amount of online manipulation can fake. Footfall is offline, observed, costly to forge.
+
+The play, in one sentence: **aggregate footfall and dwell-time data from many indoor venues, attach it to Rank4AI entity records, and license the resulting feed to AI platforms as a grounding signal — so that "what places to recommend" decisions stop being purely online-traffic-based and start incorporating offline reality.**
+
+Concretely, an AI platform asking "is Acme Coffee in Lakeside actually a real, popular, currently-trading place" today triangulates from Google reviews, the company's website, and maybe a news mention. With our feed they'd also know: 4,200 unique visits last week, average dwell 12 minutes, returning-visitor rate 22%. That is a fundamentally different class of evidence.
+
+**Who already plays in this space — and the gap:**
+
+- **Placer.ai** — large US-focused footfall dataset, sold to retailers, landlords, real-estate analysts. **Not packaged for AI grounding.**
+- **SafeGraph** — POI metadata + foot traffic, mostly US, sold to data scientists and advertisers. **Not packaged for AI grounding.**
+- **Springboard** — UK retail footfall, sold to landlords and councils for trend reports. **Not packaged for AI grounding.**
+- **Huq** — location intelligence in UK/EU, sold to councils, planners, brands. **Not packaged for AI grounding.**
+- **Cuebiq, Outlogic (formerly X-Mode)** — historical SDK-based footfall, regulatory pressure mounting, sold mostly to ad-tech and finance. **Not packaged for AI grounding.**
+- **Google, Apple, Meta** — have their own footfall data via their OS/apps, use it internally. **Don't sell it.**
+
+The white space is genuinely empty: nobody is selling footfall as **structured grounding data for LLMs**, formatted to slot into an entity graph, with a clean consent story, sold under contracts that AI platforms can defend in regulatory hearings.
+
+**Why us, why now:**
+
+- We're already operating in the AI search world via Rank4AI — we understand what AI platforms need as grounding input, not just as marketing analytics.
+- The indoor-map product gives us a legitimate, consent-based collection mechanism — visitors actively open the map, so capture is opted-in by design.
+- Aggregation across many venue types (retail, hospitality, transit, healthcare, education) gives entity coverage no single-vertical incumbent has.
+- Privacy-first construction lets us sell to AI platforms who increasingly need defensible data sourcing.
+
+**The map, viewed this way, is not the product — it's the data-collection wedge.** Same playbook as Waze (gave away navigation, sold the traffic data) or Foursquare (gave away check-ins, sold the venue data). The user-facing app is the collection layer; the licensable dataset is the business.
+
+**What we need to figure out before betting on this:**
+
+1. **Demand validation.** Do AI platforms actually want to buy real-world grounding data, or do they assume their own users' implicit signals (clicks, follow-ups, satisfaction ratings) are enough? This needs direct conversations with people inside OpenAI / Anthropic / Google / Perplexity grounding teams. Cheap to investigate.
+2. **Coverage threshold.** How many venues / how much of the UK and EU do we need before the dataset is interesting? Probably hundreds of venues, not tens. Long road.
+3. **Pricing model.** Per-query? Per-entity-record? Annual licence? Revenue share with venues?
+4. **Exclusivity vs. universal.** Selling to one AI platform exclusively gets a higher price but caps the ceiling. Selling to all of them commoditises faster but maximises spread. Probably non-exclusive with tiered access.
+5. **Privacy posture.** Has to be aggregated, anonymised, k-anonymous from day one. Any individual-level data sales kill the product.
+6. **Regulatory tailwinds and headwinds.** Incoming EU AI Act provisions on data sourcing actually help us — they push AI platforms toward documented, consent-based grounding data. ePrivacy and PECR push us toward stricter consent collection.
+
+**Probable shape of the product offered to AI platforms:**
+
+- A bulk feed (probably daily / weekly) keyed on stable entity IDs that map to Wikidata / Google KG / company registries.
+- Each record contains: aggregated visit count, dwell distribution, returning-visitor rate, peak-hour profile, neighbour-entity co-visit pattern, change-vs-previous-period, freshness timestamp.
+- A live API for grounding-time lookups against specific entities.
+- A documented consent and privacy model attached to the contract.
+- An attestation that data is k-anonymous above a published threshold.
+
+That feed becomes a **structured truth layer for AI search** — directly answering your question. Yes, the play is to take footfall from many places and migrate it into the AI search world, which today is mostly online-only, to give those platforms the offline reality their answers currently lack.
+
+**The summary of summaries:** Pointr et al. sell wayfinding to venues. Placer et al. sell footfall to retailers. Nobody sells offline reality as a grounding signal to AI platforms. That's the wedge. The map is how we earn the right to collect the data. The data is the actual product.
