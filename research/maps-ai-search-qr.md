@@ -542,7 +542,19 @@ Ordered roughly from easiest-to-collect to hardest:
 - **Loyalty / receipt data.** Tesco Clubcard, Pret Club, retailer apps. Per-customer purchase history, retailer-by-retailer.
 - **Wider digital footprints (search and review).** Google Trends per locality, Maps reviews, TripAdvisor mentions, social posts geotagged or text-tagged with the venue. All scrapable to varying degrees, all noisy. Useful as supplementary signal.
 
-The defensible mix for our project: **map presence + BLE beacons + venue WiFi analytics + camera counts at entrances + carrier data for venue-level arrivals**. Each layer covers a blind spot in the others.
+**Scope decision: location only.** For this project we are explicitly *not* building on top of loyalty data, CCTV / camera-derived counts, card or open-banking transactions. Those sources have their own legal, commercial and trust complications, and pulling them in would dilute the clean "presence and movement, captured with consent through the map" story that we want to sell to AI platforms.
+
+The defensible mix, scoped to location only: **map presence + BLE beacons + venue WiFi analytics + carrier (cellular) data for venue-level arrivals.** Everything in this list is a *location/geo* signal, captured or licensed under explicit consent, and produces "where, when, how long" data — nothing about purchase, identity or visual capture.
+
+What we are deliberately *not* using, and why:
+
+- **CCTV / camera analytics.** Even when aggregated and anonymised, camera-based counts come with regulatory and PR risk (facial-recognition concerns, ICO scrutiny, visitor pushback). Cleaner story without it.
+- **Loyalty / Clubcard / receipt data.** Tied to identity and purchase, retailer-specific, hard to consent broadly, commercially sensitive. Not what we're selling.
+- **Card / open-banking transactions.** Same reasons — about spend, not presence; per-cardholder, not per-person; locked to a paying retailer, not the venue or AI-grounding use case.
+- **Mobile advertising IDs and SDK pings.** Killed by ATT and Privacy Sandbox; legacy industry we don't want to be confused with.
+- **WiFi probe scanning of unassociated devices.** MAC randomisation makes it unreliable, and it captures data on people who never opted in.
+
+Keeping the dataset purely a **location/geo footprint, consent-based, observable through the map and its supporting infrastructure** is the design constraint. That constraint is also the marketing.
 
 ### Matching captured data to a specific place
 
@@ -613,15 +625,13 @@ Retailers are not the buyers — AI platforms are. But retailers have to consent
 **What retailers will rightly worry about:**
 - Their competitors seeing their numbers. Mitigation: aggregation thresholds, k-anonymity, no individual-store data exposed to other retailers.
 - Their data being used against them in landlord rent negotiations. Mitigation: contractual firewalls between landlord-side and retailer-side products.
-- Loyalty and CRM data leaking. Mitigation: never ingest this without an explicit per-deal data agreement, and never re-export.
-- Customer trust. Mitigation: they need to be able to point to our public privacy posture and feel comfortable putting their brand alongside it.
+- Customer trust. Mitigation: they need to be able to point to our public privacy posture and feel comfortable putting their brand alongside it. The location-only scope helps here — we are not touching their loyalty data, their tills or their cameras.
 
 **Carrots in priority order:**
-1. Free analytics dashboard for their own stores.
+1. Free location-analytics dashboard for their own stores (visits, dwell, peak hours, returning rate — all derived from location signals only).
 2. Better AI search visibility (this is genuinely valuable and growing in importance).
 3. Crowd-aware ad inventory at favourable rates for participants.
-4. Anonymised competitive benchmarks ("you are in the top 25% of fashion retailers for dwell time in this venue").
-5. Co-marketing on inclusive design (autism-friendly hours, family-mode) — many retailers want to lead here but lack the platform.
+4. Co-marketing on inclusive design (autism-friendly hours, family-mode) — many retailers want to lead here but lack the platform.
 
 **Sticks, used carefully:**
 - Once enough of a category is in, late entrants are visibly missing from AI answers. That's a real cost we don't have to manufacture.
