@@ -46,6 +46,7 @@ To approximate national coverage you'd need at least three of these. Each one al
 - **Quadrant.** Anonymised mobile location panels, hundreds of millions of devices, tens of billions of monthly events. https://www.quadrant.io
 - **Geolytix.** UK retail intelligence, includes mobility layers.
 - **CACI.** UK location data products including mobility.
+- **Blis.** UK-founded (2004, now part of T-Ads), operates in 40+ markets. Strictly a programmatic advertising DSP rather than a raw-data broker — they use location plus behavioural and lifestyle signals to target ads for brands like Unilever, Samsung, McDonald's, HSBC. "Privacy-first location-powered" positioning post-cookies, and recently launched Blis AI for audience planning. Not a likely AI-grounding competitor (different business model, ad-targeting commoditises if data is licensed out) but plausible as a data partner or eventual buyer of an AI-grounding business. https://blis.com
 
 ### SDK aggregator brokers (use with caution)
 Sample is shrinking under ATT/Privacy Sandbox, regulatory exposure rising.
