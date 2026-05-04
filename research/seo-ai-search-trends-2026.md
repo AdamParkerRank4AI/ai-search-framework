@@ -23,7 +23,8 @@
 14. [Writing for RAG: H1s, First Paragraphs & Zero Anaphora](#writing-for-rag-h1s-first-paragraphs--zero-anaphora)
 15. [Claude Code .claude/ Folder for Marketers](#claude-code-claude-folder-for-marketers-vicky-lalwani)
 16. [Flipbook: Post-GUI Web Experiences](#flipbook-post-gui-web-experiences)
-17. [Actionable Site Playbook](#actionable-site-playbook)
+17. [Fast-Ranking Playbook: Google + AI Overviews + NotebookLM](#fast-ranking-playbook-google--ai-overviews--notebooklm)
+18. [Actionable Site Playbook](#actionable-site-playbook)
 
 ---
 
@@ -538,6 +539,84 @@ The implication for websites: interfaces that can be anything you describe, on d
 
 ---
 
+## Fast-Ranking Playbook: Google + AI Overviews + NotebookLM
+
+A research-backed playbook for ranking fast on Google and AI Overviews, with a NotebookLM-powered content workflow.
+
+### Fast Wins for Traditional Google SEO
+
+Levers that move rankings in days/weeks, not months:
+
+- **Target long-tail, high-intent keywords.** Don't fight for "running shoes" - go for "best running shoes for flat feet women under $100". Less competition = faster ranking.
+- **Analyse the top 5 results before writing.** Match (and beat) their depth, structure, and intent.
+- **Lock down on-page SEO.** Title tag, H1, headings, URL, image alts, internal links. This is the single most controllable factor and posts can rank in days when done well.
+- **Lead with the answer.** Put the direct answer in the first 2-3 sentences - this is what gets you into featured snippets and AI Overviews.
+- **Topical authority > domain age in 2026.** Publish a cluster of 5-10 connected articles around one subtopic instead of one-off posts.
+- **A few high-quality backlinks** beat hundreds of low-quality ones. Guest posts, digital PR, HARO/Qwoted-style sourcing.
+- **Technical hygiene:** Core Web Vitals, mobile, HTTPS, no intrusive popups, clean schema markup.
+- **E-E-A-T:** Real author bios, credentials, original photos, citations.
+
+### Showing Up in Google AI Overviews (GEO)
+
+AI Overviews now appear on ~25% of Google searches. Cited pages get **35% more organic clicks**. The 2026 ranking factors:
+
+| Factor | Detail | Impact |
+|--------|--------|--------|
+| **Semantic completeness** | Write self-contained 130-160 word blocks that fully answer a question without needing other context | #1 factor. Pages scoring 8.5/10+ are **4.2x** more likely to be cited |
+| **Multimodal content** | Mix text + images + video + diagrams on the same page | #1 new factor, **92% correlation** |
+| **Citable specifics** | "AI campaigns deliver 20-30% higher ROI" gets cited; "AI improves results" doesn't. Use original stats, dates, named studies | High impact |
+| **Freshness** | Add "Last updated" dates and refresh cornerstone content quarterly. AI engines down-weight stale content fast | High impact |
+| **Schema/structured data** | FAQ, HowTo, Article, Product schema - helps Gemini parse your page | Medium-high |
+| **Verifiable facts** | Real-time fact-checkability lifts citation probability by **~89%** | High impact |
+| **Traditional SEO foundation** | AI Overviews still pull mostly from pages that already rank in the top 10 | Foundation |
+
+**Practical page structure:** Q&A blocks, bulleted answers, tables, clear headings phrased as questions.
+
+**The key number: 130-160 words.** Each answer block on your page should be a self-contained 130-160 word passage that fully answers one specific question. This is the optimal length for AI Overview extraction.
+
+### NotebookLM as a Content Engine
+
+NotebookLM is now an "agentic researcher" (since the Nov 2025 Deep Research release) and has become a popular SEO content engine.
+
+**The Workflow:**
+
+1. **Upload sources** - top-10 ranking competitor URLs, PDFs of studies, YouTube transcripts, your own brand docs
+2. **Use Deep Research** to pull fresh outside data into the notebook
+3. **Cluster/outline** - ask NotebookLM to generate a topic map and intent-matched outline
+4. **Draft with citations** - content is grounded in your sources, which keeps facts citable (the exact thing AI Overviews reward)
+5. **Repurpose** - turn one notebook into a blog post, FAQ, audio overview, LinkedIn post, video script
+
+**The Stack:**
+- **NotebookLM** for grounded research and structure
+- **Gemini** for SEO-optimised drafting
+- **ChatGPT/Claude** to humanise the voice
+
+The whole loop runs in minutes per article.
+
+### The Fast-Ranking Process
+
+1. Pick one topic cluster, build 5 long-tail-keyword articles around it
+2. For each article: lead with the answer, include a **130-160 word "AI Overview block"**, add original data + a chart/image, add FAQ schema
+3. Use NotebookLM to research and outline; draft with Gemini; polish manually
+4. Refresh in 60-90 days
+
+**Sources:**
+- [How to Rank Higher on Google in 2026 - Backlinko](https://backlinko.com/rank-high-on-google)
+- [SEO for New Websites: How to Rank Faster in 2026 - Two Stones](https://twostones.co/Blog/digital-marketing/seo-for-new-websites-how-to-rank-faster-on-google/)
+- [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+- [Mastering GEO in 2026 - Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142)
+- [What is GEO? - Frase.io](https://www.frase.io/blog/what-is-generative-engine-optimization-geo)
+- [GEO Complete 2026 Guide - Enrich Labs](https://www.enrichlabs.ai/blog/generative-engine-optimization-geo-complete-guide-2026)
+- [Google AI Overviews Ranking Factors - Wellows](https://wellows.com/blog/google-ai-overviews-ranking-factors/)
+- [AI Overviews Optimization Guide - Search Engine Land](https://searchengineland.com/guide/how-to-optimize-for-ai-overviews)
+- [How to Rank in Google AI Overviews 2026 - Digivate](https://www.digivate.com/blog/ai/how-to-rank-in-google-ai-overviews-2026/)
+- [AI SEO Workflow with NotebookLM - Doug Vos](https://dougvos.com/ai-seo-workflow/)
+- [NotebookLM for Content Creators 2026 - Medevel](https://medevel.com/notebooklm-for-content-creators-8-tips/)
+- [NotebookLM Evolution 2023-2026 - Medium](https://medium.com/@jimmisound/the-cognitive-engine-a-comprehensive-analysis-of-notebooklms-evolution-2023-2026-90b7a7c2df36)
+- [Google NotebookLM Deep Research Guide - Ingeniom](https://www.ingeniom.com/post/google-notebooklm-guide-to-deep-research)
+
+---
+
 ## Actionable Site Playbook
 
 ### Quick Wins (Do This Week)
@@ -550,6 +629,8 @@ The implication for websites: interfaces that can be anything you describe, on d
 - [ ] Check **NAP consistency** across your site and all directory listings
 - [ ] Add an **llms.txt** file to your site root as a structured index of your key content
 - [ ] Rewrite **first paragraphs** on key pages: full entity name + what it does, no anaphora
+- [ ] Add **130-160 word self-contained answer blocks** to key pages (optimal AI Overview extraction length)
+- [ ] Add **multimodal content** (images, diagrams, video) to top pages (92% correlation with AI Overview citation)
 
 ### Medium-Term (This Month)
 
@@ -561,10 +642,13 @@ The implication for websites: interfaces that can be anything you describe, on d
 - [ ] Optimise **Apple Business Connect** and **Bing Places** listings to match site NAP
 - [ ] Test page speed on **slow connections (4G)** - Google's index has a bandwidth token
 - [ ] Audit every page: can the **first 200-500 tokens** stand alone as a self-contained passage?
+- [ ] Set up **NotebookLM workflow**: upload competitor URLs + brand docs, use Deep Research for outlines
+- [ ] Add **"Last updated" dates** to all cornerstone content, schedule quarterly refreshes
+- [ ] Add **citable specifics** - replace vague claims with named stats, dates, and study references
 
 ### Strategic (This Quarter)
 
-- [ ] Develop **topic authority content clusters** (broader subjects, not just individual keywords)
+- [ ] Develop **topic authority content clusters** - 5-10 long-tail articles per subtopic
 - [ ] Publish **proprietary datasets or frameworks** that AI engines need to cite
 - [ ] Build a **PR and brand mention strategy** to increase web mentions (0.664 correlation with AI visibility)
 - [ ] Add **Speakable schema** to content optimised for voice search
