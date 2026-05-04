@@ -1,0 +1,173 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq, Pros, Cons } from '@aisf/ui';
+import { ArticleSchema, ProductSchema, ReviewSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const faqs = [
+  {
+    question: 'How much does Dojo Go cost?',
+    answer: 'Typical UK pricing is around £20 per month for the terminal rental plus a blended transaction fee of 1.4%–1.8% on card payments. The blended rate covers all card-present transactions regardless of card type, with the precise percentage negotiated at onboarding based on your monthly card volume and merchant category. There is no separate PCI compliance fee, no chargeback fee on top of the disputed amount, and refunds are processed free of charge.',
+  },
+  {
+    question: 'Is there a contract with Dojo Go?',
+    answer: 'No long-term lock-in. Dojo Go is sold on a rolling monthly contract — you can give notice and return the terminal without paying an early termination fee. That is the headline difference vs legacy acquirers like Worldpay, Barclaycard Merchant Services and Elavon, which typically write 3–5 year contracts with sizeable ETFs.',
+  },
+  {
+    question: 'How fast are Dojo Go payouts?',
+    answer: 'Next working day is the standard payout speed — card transactions taken on Monday land in your business bank account on Tuesday, and so on through the working week. Faster payouts (including same-day in some cases) are available on request for established merchants and may carry a small additional fee.',
+  },
+  {
+    question: 'Does Dojo Go support tipping?',
+    answer: 'Yes — Dojo Go has an integrated tipping flow with split-tips support, which is one of the reasons it is the strongest mainstream pick for full-service hospitality. The tipping prompt appears on the terminal screen after the bill total, and tips can be split across team members for distribution at the end of service.',
+  },
+  {
+    question: 'Does Dojo Go integrate with my EPOS?',
+    answer: 'Dojo Go integrates with most major UK EPOS systems, but the supported list does vary — check before signing. The integration list changes as Dojo and EPOS providers ship new connectors, so confirm directly with Dojo (and your EPOS vendor) that your specific stack is supported, including the version, before you commit to the terminal.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Reviews', url: `${SITE.url}/reviews/` },
+  { name: 'Dojo Go', url: `${SITE.url}/reviews/dojo-go/` },
+];
+---
+<BaseLayout
+  title="Dojo Go Review (2026) — Fees, Payouts, Pros and Cons"
+  description="Hands-on Dojo Go review for UK businesses: blended 1.4–1.8% transaction fees, £20/mo terminal rental, next-day payouts, no long contract. Who it's for and who should look elsewhere."
+  pathname="/reviews/dojo-go/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+  author={{ name: 'Editorial team', url: '/about/' }}
+>
+  <Hero
+    slot="hero"
+    eyebrow="Reviews › Dojo Go"
+    title="Dojo Go review — the next-day-payouts terminal for UK hospitality and retail."
+    subtitle="Blended 1.4–1.8% transaction fees, £20/mo rental, rolling-monthly contract, Wi-Fi + 4G as standard. Best fit for businesses doing £3k+ a month in card turnover."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="Dojo Go review — fees, payouts, pros and cons (2026)"
+    description="UK editorial review of the Dojo Go card terminal: pricing, contract, payout speed, hardware, alternatives, and verdict."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/reviews/dojo-go/`}
+  />
+  <ProductSchema
+    name="Dojo Go"
+    brand="Dojo"
+    description="Portable card terminal from Dojo with Wi-Fi and 4G connectivity, integrated tipping, and next-working-day payouts on a rolling-monthly contract."
+    rating={{ value: 4.3, best: 5, count: 1 }}
+  />
+  <ReviewSchema
+    itemName="Dojo Go"
+    itemType="Product"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    datePublished="2026-04-26"
+    reviewBody="The Dojo Go is the strongest portable card terminal for UK hospitality and high-volume retail in 2026 — next-working-day payouts, integrated tipping, no long contract and 4G as standard make it a clear pick for businesses doing £3k+ a month in card turnover, even if its blended pricing is less transparent than Stripe or Square's per-transaction model."
+    rating={{ value: 4.3, best: 5 }}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section>
+    <h2>Dojo Go at a glance</h2>
+    <p>The Dojo Go is Dojo's portable card terminal aimed at UK hospitality and high-volume retail. Pricing sits in a <strong>1.4–1.8% blended transaction band</strong> for typical merchants, with a <strong>£20/month terminal rental</strong> and a <strong>rolling-monthly contract</strong> rather than the 3–5 year lock-ins that legacy acquirers like Worldpay still write.</p>
+    <p>Connectivity is <strong>Wi-Fi plus 4G as standard</strong> — the 4G SIM is included, so the terminal keeps taking payments if the venue Wi-Fi drops, which is the failure mode that hurts pubs and restaurants on Friday nights. Settlement is <strong>next-working-day standard</strong>, with a faster-payout option available on request.</p>
+    <p>The headline trade-off vs SumUp, Square and Zettle is transparency: Dojo's blended rate is negotiated case-by-case rather than published per-transaction. For higher-volume merchants the rate works out cheaper than Square's flat 1.75%; for low-volume sole traders it usually doesn't.</p>
+  </section>
+
+  <section>
+    <h2>What's in the box and setup</h2>
+    <p>The Dojo Go ships with the <strong>terminal itself, a charging dock, a pre-activated 4G SIM and a power supply</strong>. There's no separate dongle — the unit is a self-contained portable terminal with a printer in the larger Dojo Pro, but the Go is the slimmer no-printer model designed for handheld use at table.</p>
+    <p>Physical setup is fast: out of the box to first transaction is roughly <strong>five minutes</strong> — power on, log in with the credentials emailed during onboarding, and the terminal is ready to take its first payment. The longer step happens upstream of unboxing.</p>
+    <p>Account setup typically takes <strong>2–5 working days from application</strong>, covering KYC on directors, business verification against Companies House, and a short risk review by the Dojo onboarding team. Hospitality and retail merchants usually clear in 2–3 days; merchants with higher chargeback exposure or unusual MCCs trend towards the 5-day end.</p>
+  </section>
+
+  <section>
+    <h2>Pricing and fees</h2>
+    <p>Dojo prices on a <strong>blended rate</strong>: rather than splitting the bill into interchange + scheme + acquirer margin, you get a single percentage that covers all card-present transactions regardless of card type. For typical hospitality and retail merchants the blended rate lands in the <strong>1.4%–1.8%</strong> band — lower-volume or high-premium-card mixes push the rate up, established higher-volume venues negotiate it down.</p>
+    <p>The peripheral fees are unusually clean for a UK acquirer. <strong>No extra chargeback fee</strong> is charged on top of the disputed amount, <strong>refunds are free</strong> (you don't pay the transaction fee twice), and there's <strong>no separate PCI compliance fee</strong> — PCI handling is included in the blended rate rather than billed as the £15–30/month line that Worldpay and Barclaycard layer on.</p>
+    <p>The hardware-side cost is the <strong>£20/month terminal rental</strong>, billed monthly while the terminal is in service. Bundle that with the rolling-monthly contract and the headline maths is: a hospitality merchant doing £8k/month in card turnover at 1.6% blended pays roughly £128 in transaction fees + £20 rental = £148/month, all-in.</p>
+  </section>
+
+  <section>
+    <h2>Pros and cons</h2>
+    <div class="pros-cons-grid">
+      <Pros items={[
+        'Next-working-day payouts as standard, faster on request',
+        'Rolling-monthly contract — no 3–5 year lock-in',
+        'Integrated tipping flow with split-tips support',
+        'Fast onboarding (2–5 working days from application)',
+        'No separate PCI compliance fee',
+        '4G SIM included as standard alongside Wi-Fi',
+      ]} />
+      <Cons items={[
+        'Not the cheapest option for very low-volume sole traders',
+        'Blended pricing is less transparent than Stripe or Square per-transaction rates',
+        'Some EPOS integrations are limited — confirm yours before signing',
+      ]} />
+    </div>
+  </section>
+
+  <section>
+    <h2>Who Dojo Go is for</h2>
+    <p>The Dojo Go is the right pick for <strong>hospitality, salons and high-volume retail</strong> — restaurants, pubs, cafes, hairdressers and barbers, and busy independent shops where the £20/month rental is comfortably absorbed by the fee saving on volume. The integrated tipping flow makes it the strongest mainstream pick for full-service hospitality, where SumUp and Square both still feel slightly retrofitted on tips.</p>
+    <p>The cleanest fit is any UK business doing <strong>~£3k+ in monthly card turnover</strong> that wants <strong>next-working-day payouts and no contract lock-in</strong>. Above that volume threshold the blended rate beats Square's flat 1.75% and the rental fee dilutes against transaction count; below it, the cheaper sole-trader options usually win.</p>
+  </section>
+
+  <section>
+    <h2>Who shouldn't buy it</h2>
+    <p><strong>Sole traders with low card volume</strong> shouldn't buy Dojo Go. The £20/month rental swallows the per-transaction saving below ~£3k monthly turnover. The <a href="/reviews/sumup-solo/">SumUp Solo</a> at 1.69% per transaction with no monthly fee is a cleaner sub-£3k pick.</p>
+    <p><strong>Pure online businesses</strong> shouldn't buy it either — Dojo Go is a card-present terminal. Stripe (developer-led) or Square Online (no-code) are the right answers for ecommerce-only sellers. <strong>Enterprise-scale merchants</strong> processing seven figures monthly will get sharper interchange-plus pricing from <a href="/reviews/worldpay/">Worldpay</a>'s direct team or Adyen, where the savings on transparent pricing more than cover the longer contract.</p>
+  </section>
+
+  <section>
+    <h2>Alternatives to consider</h2>
+    <p>If the Dojo Go isn't the right shape for your business, the closest UK alternatives are:</p>
+    <ul class="alt-list">
+      <li><a href="/reviews/sumup-solo/">SumUp Solo</a> — the better pick for low-volume sole traders and mobile traders who want no monthly fee.</li>
+      <li><a href="/reviews/zettle-reader-2/">Zettle Reader 2</a> — PayPal-aligned, strong fit for salons and takeaways already using PayPal.</li>
+      <li><a href="/reviews/square-terminal/">Square Terminal</a> — flat 1.75% per-transaction with no monthly fee, easier to model than Dojo's blended rate.</li>
+      <li><a href="/vs/dojo-vs-worldpay/">Dojo vs Worldpay</a> — the head-to-head if you're switching from a legacy long-term Worldpay contract.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Verdict</h2>
+    <p>The Dojo Go earns a <strong>4.3 / 5</strong>. It's the strongest portable card terminal for UK hospitality and high-volume retail in 2026: next-working-day payouts, integrated tipping, a rolling-monthly contract, and 4G plus Wi-Fi as standard. The £20/month rental and 1.4–1.8% blended rate work out cheaper than Square's flat 1.75% once you're past about £3k a month in card turnover, and the absence of a separate PCI fee removes the most common cause of fee-creep complaints aimed at Worldpay and Barclaycard.</p>
+    <p>The marks lost are for pricing transparency — a published per-transaction rate would let prospective merchants self-serve their decision the way Stripe and Square allow — and for occasional EPOS-integration gaps that you should confirm before signing. For its target buyer (a hospitality or retail venue doing £3k+ a month in cards, on a current-or-expiring legacy acquirer contract) the Dojo Go is a clear yes.</p>
+  </section>
+
+  <section>
+    <h2>FAQs</h2>
+    <Faq faqs={faqs} />
+  </section>
+</BaseLayout>
+
+<style>
+  section { margin: 2rem 0; }
+  section h2 { margin-bottom: 0.75rem; }
+  section p { margin: 0 0 1rem; }
+  .pros-cons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 640px) {
+    .pros-cons-grid { grid-template-columns: 1fr; }
+  }
+  .alt-list { margin: 0; padding-left: 1.25rem; }
+  .alt-list li { margin: 0.4rem 0; }
+</style>

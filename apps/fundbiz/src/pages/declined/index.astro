@@ -1,0 +1,215 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const reasonLanders = [
+  { slug: 'bad-credit', name: 'Declined for bad credit', summary: 'Lenders that look beyond the credit score — MCA, RBF, and second-chance term loans.' },
+  { slug: 'with-ccj', name: 'Declined with a CCJ', summary: 'Satisfied vs unsatisfied CCJs and the lenders that still consider you.' },
+  { slug: 'first-year-trading', name: 'Declined — under 12 months trading', summary: 'Younger-business-friendly lenders and the BBB Start Up Loans referral.' },
+  { slug: 'missed-payments', name: 'Declined for missed payments', summary: 'How recent vs historical arrears are weighted, and who looks at performance not paperwork.' },
+];
+
+const perBankLanders = [
+  { slug: 'lloyds', name: 'Lloyds declined my business loan', summary: 'Lloyds criteria, the Bank Referral Scheme, and your three real options.' },
+  { slug: 'natwest', name: 'NatWest declined my business loan', summary: 'NatWest underwriting patterns and where to go next.' },
+  { slug: 'hsbc', name: 'HSBC declined my business loan', summary: 'HSBC SMB criteria and post-decline alternatives.' },
+];
+
+const faqs = [
+  {
+    question: 'How soon can I reapply after a business loan decline?',
+    answer: 'There is no statutory waiting period, but reapplying to the same lender within 30 days without changing anything in your application almost always produces another decline — and a second hard footprint on your business credit file. The pragmatic window is to wait 30–90 days, fix the specific issue the lender flagged (or ask them to tell you), and apply to a different lender class (alt-lender, MCA, RBF) rather than another high-street bank.',
+  },
+  {
+    question: 'What should I fix before reapplying?',
+    answer: 'Three things move the needle: (1) your business credit file — check Experian Business and Creditsafe, dispute errors, settle CCJs if you can; (2) your application story — if turnover is lumpy, attach 6 months of bank statements and a one-page explanation; (3) the product fit — if you were declined for a 5-year term loan, an MCA against card revenue or a 6–12 month working-capital facility may approve where the bank refused.',
+  },
+  {
+    question: 'Am I eligible for FundBiz matching?',
+    answer: 'FundBiz matches limited companies, PLCs, LLPs and partnerships of four or more partners only. If you trade as a sole trader or a partnership of three or fewer, the right route is the British Business Bank Start Up Loans scheme — fixed-rate personal loans for business purposes — rather than a commercial broker.',
+  },
+  {
+    question: 'What are the alternatives to a high-street bank loan?',
+    answer: 'After a bank decline the realistic options are: a merchant cash advance (MCA) repaid as a percentage of your card sales (Liberis, YouLend, Capify, 365); revenue-based finance against any monthly recurring revenue; a short-term unsecured loan from an alt-lender like Iwoca; invoice finance if you raise B2B invoices; or asset finance secured against equipment or vehicles. Each has a different credit appetite and a different cost profile.',
+  },
+  {
+    question: 'Can I get business funding after a CCJ?',
+    answer: 'Yes — a CCJ is not an automatic bar with alt-lenders, particularly if it is satisfied or under £5,000. Capify and Liberis explicitly underwrite over recent CCJs when card-revenue or bank-statement performance supports affordability. You will pay a higher factor rate than a clean-file applicant, but the application is real, not a courtesy.',
+  },
+  {
+    question: 'Can a broker actually help after a decline?',
+    answer: 'A broker is most useful in two situations: (1) you do not know which alt-lender class fits your situation, and trial-and-error applications would each leave a credit footprint; (2) the lender mix has changed since you last applied — the post-decline panel (Liberis, YouLend, Capify, 365, Iwoca) is not the same panel as the high-street banks and a broker maps your profile to the right one in a single soft-search. The downside is commission cost is built into the lender pricing — confirm fee transparency before you accept any matching.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Declined', url: `${SITE.url}/declined/` },
+];
+---
+<BaseLayout
+  title="Business Loan Declined — What Next? UK Post-Decline Guide 2026"
+  description="Just declined for a business loan? The 7 reasons banks say no, the 30-day window, what to fix vs route around, and the UK lenders that take post-decline applicants."
+  pathname="/declined/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+>
+  <Hero
+    slot="hero"
+    eyebrow="Post-decline help"
+    title="Business loan declined — here is what actually works next."
+    subtitle="The seven reasons UK banks decline, what to fix in 30 days, what to route around, and the alt-lender waterfall that approves applications high-street banks refuse."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="Business loan declined — what next? UK post-decline guide"
+    description="A diagnosis-first guide to UK business loan declines: the 7 common reasons, the 30-day window, the lender waterfall, and reason- and bank-specific landers."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/declined/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section class="eligibility-callout">
+    <h2>Who FundBiz can match</h2>
+    <p><strong>Eligible:</strong> {SITE.eligibleStructures.join(', ')}.</p>
+    <p><strong>Not eligible:</strong> sole traders and partnerships of three or fewer. The right route for you is <a href="https://www.startuploans.co.uk/">British Business Bank Start Up Loans</a> — government-backed personal loans for business use, fixed 6% APR, up to &pound;25,000.</p>
+  </section>
+
+  <section>
+    <h2>The seven reasons UK banks decline business loan applications</h2>
+    <p>A high-street decline is almost always one of seven things — and the routing solution is different for each. The bank will not always tell you which one it was; if they did, you would not be reading this page.</p>
+    <ol>
+      <li><strong>Insufficient trading history</strong> — most bank panels want 24 months. Alt-lenders go down to 6.</li>
+      <li><strong>Weak business credit score</strong> — the bank pulls Experian / Creditsafe and the score sits below their cut-off.</li>
+      <li><strong>Director personal credit</strong> — even on an unsecured business loan, banks pull the director's personal file.</li>
+      <li><strong>CCJs, defaults or arrears</strong> — particularly unsatisfied CCJs over &pound;5,000 in the last 24 months.</li>
+      <li><strong>Affordability / DSCR fail</strong> — the proposed repayment exceeds what the bank thinks your free cash flow supports.</li>
+      <li><strong>Sector exclusions</strong> — adult, gambling, CBD, certain crypto-adjacent — banks decline on MCC, not on file.</li>
+      <li><strong>Inadequate documentation</strong> — missing accounts, bank statements not matching declared turnover, no clear use of funds.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>The 30-day window after a decline</h2>
+    <p>The first 30 days after a decline are not "wait and try again" time — they are a triage window. Three things to do, in order:</p>
+    <ul>
+      <li><strong>Get the reason in writing.</strong> Under the Bank Referral Scheme, designated banks (Lloyds, Barclays, HSBC, NatWest, Santander, RBS, Clydesdale, Danske, AIB) must offer to refer you to a designated alternative-finance platform. If you decline that referral, ask the relationship manager for the specific decline reason — they will usually give it informally.</li>
+      <li><strong>Decide: fix or route around.</strong> Some declines you fix (missing documentation, unsatisfied CCJ you could pay off). Others you route around — if it is a "we don't lend to your sector" or "we want 24 months trading" decline, no amount of fixing the file changes the answer. Apply to a different lender class instead.</li>
+      <li><strong>Avoid hard searches.</strong> Multiple bank applications inside 30 days each leave a footprint and each one makes the next decline more likely. Use brokers that quote on a soft search.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What to fix vs what to route around</h2>
+    <p>A simple rule: <em>file</em> issues you fix, <em>fit</em> issues you route around.</p>
+    <ul>
+      <li><strong>Fix:</strong> credit file errors, missing documentation, an unsatisfied CCJ you can settle, an out-of-date set of accounts.</li>
+      <li><strong>Route around:</strong> sector exclusions, trading-history minimums, product mismatches (you needed an MCA, the bank only offers term loans), DSCR fails for a lumpy-revenue business that an MCA prices on card volume not P&amp;L.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>By reason — diagnose your decline</h2>
+    <div class="card-grid">
+      {reasonLanders.map((r) => (
+        <a class="card" href={`/declined/${r.slug}/`}>
+          <h3>{r.name}</h3>
+          <p>{r.summary}</p>
+          <span class="more">Read the playbook &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>By bank — what changes when it is a specific high-street decline</h2>
+    <p>Per-bank pages cover the bank's published criteria, the typical reason for that bank's declines, Bank Referral Scheme status, and the alt-lender chain that fits the customers that bank usually attracts.</p>
+    <div class="card-grid">
+      {perBankLanders.map((b) => (
+        <a class="card" href={`/declined/by-bank/${b.slug}/`}>
+          <h3>{b.name}</h3>
+          <p>{b.summary}</p>
+          <span class="more">Read the playbook &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>The post-decline lender waterfall</h2>
+    <p>For a typical UK SMB just declined by a high-street bank — Ltd, 12+ months trading, some card or bank-deposit revenue, an imperfect but not bankrupt file — the alt-lender waterfall looks like this:</p>
+    <ol>
+      <li><strong>Liberis</strong> — MCA against card sales. Best fit for retail, hospitality, e-commerce. Tolerates light credit issues; underwrites on card revenue.</li>
+      <li><strong>YouLend</strong> — RBF / MCA hybrid integrated with major payment platforms (Shopify, Square, eBay). Fast decisioning where you have platform revenue.</li>
+      <li><strong>Capify</strong> — second-chance MCA / short-term loan. Explicitly underwrites over CCJs and recent missed payments where bank-statement cash flow supports it.</li>
+      <li><strong>365 Business Finance</strong> — MCA / unsecured loan, strong in hospitality and B2B services.</li>
+      <li><strong>Iwoca</strong> — short-term unsecured business loan up to &pound;500k, looser-than-bank criteria, fastest decisioning of the bunch.</li>
+    </ol>
+    <p>Below that, Funding Circle for clean-file term loans and asset-finance specialists for equipment-secured borrowing. The Start Up Loans / British Business Bank route is the right answer for first-year traders who have not yet incorporated long enough to qualify with the alt-lenders.</p>
+  </section>
+
+  <section>
+    <h2>Cross-link &mdash; independent lender reviews</h2>
+    <p>FundBiz matches you to lenders. Our sister site BBL writes the independent reviews. <a href={`${SITE.bblUrl}/declined/best-lenders-after-decline-2026/`}>Read our independent review of post-decline lenders &rarr;</a></p>
+  </section>
+
+  <section class="placeholder-cta">
+    <h2>Get matched with lenders who will consider you</h2>
+    <p>The diagnose-the-decline matcher is being wired. <a href="/declined/match/">Pre-register for the matcher &rarr;</a> &mdash; one soft-search profile, the alt-lender panel above, no high-street rejections.</p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  .eligibility-callout {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .eligibility-callout h2 { margin-top: 0; font-size: 1.05rem; }
+  .eligibility-callout p { margin: 0.25rem 0; font-size: 0.95rem; }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 120ms ease, border-color 120ms ease;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+  .card p { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.95rem; }
+  .more { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+  .placeholder-cta {
+    background: #fff7ed;
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    color: #92400e;
+    margin: 1.5rem 0;
+  }
+  .placeholder-cta h2 { margin-top: 0; font-size: 1.1rem; color: #92400e; }
+  .placeholder-cta p { margin: 0.25rem 0; }
+  .placeholder-cta a { color: #92400e; text-decoration: underline; font-weight: 600; }
+</style>

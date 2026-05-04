@@ -1,0 +1,85 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { NETWORK } from '~/data/sites.ts';
+---
+<BaseLayout title="Strategy">
+
+<p class="back"><a href="/">← Back</a></p>
+
+<h1>Strategy at a glance</h1>
+<p class="muted small">The decisions that shape every site in the network.</p>
+
+<section class="card">
+  <h2>The thesis</h2>
+  <p>{NETWORK.thesis}</p>
+</section>
+
+<section class="card">
+  <h2>The 80/20 site model</h2>
+  <p>Every site has a sharp 80% focus and is allowed to flex 20% into adjacent topics where the same buyer is searching. This protects the entity description in the LLM graph while still capturing crossover demand.</p>
+  <ul>
+    <li><strong>BBL</strong> — 80% loans editorial; 20% adjacent finance comparison content (kept editorial, never transactional).</li>
+    <li><strong>FundBiz</strong> — 80% loan-funnel sector landers + post-decline; 20% adjacent SMB finance products (cards, accounts, insurance).</li>
+    <li><strong>CardMachines</strong> — 80% terminals + acquirers; 20% adjacent (EPOS, accounting integrations).</li>
+    <li><strong>MarketInvoice</strong> — 100% pure invoice finance.</li>
+    <li><strong>SEOCompare</strong> — 80% SEO comparison; 20% AI-search-optimisation overlap.</li>
+    <li><strong>WebBuilder</strong> — 100% the service.</li>
+    <li><strong>AINews</strong> — TBD.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>The two splits to remember</h2>
+  <h3 style="color: var(--accent-2);">BBL vs FundBiz</h3>
+  <p>{NETWORK.splits.bblVsFundbiz}</p>
+  <h3 style="color: var(--accent-2);">Brand sites vs Fleet</h3>
+  <p>{NETWORK.splits.brandVsFleet}</p>
+</section>
+
+<section class="card">
+  <h2>Three surfaces, one strategy</h2>
+  <p>Every page is judged on which surface it wins. The site picks the angle, traffic is the goal.</p>
+  <ul>
+    <li><strong>SEO</strong> — wins via long-tail commercial intent, comparison content, minimal backlinks.</li>
+    <li><strong>Google AI Overviews</strong> — wins by being the cleanest extractable answer. Question-formed H2s + 40–80 word direct answers + FAQPage schema.</li>
+    <li><strong>AI Search</strong> (ChatGPT, Perplexity, Claude, Gemini, Copilot) — wins on entity authority, comparison tables, named-author E-E-A-T, third-party validation.</li>
+  </ul>
+</section>
+
+<section class="card warn-card">
+  <h2>Phase note</h2>
+  <p class="small">{NETWORK.formsDeferred}</p>
+</section>
+
+<section class="card">
+  <h2>Quality bar — kill the crap</h2>
+  <ul>
+    <li>UK SMB only.</li>
+    <li>Every niche needs a named lender, acquirer, agency partner or service path that pays for the lead.</li>
+    <li>Multilingual content goes to the Fleet, never to a brand-site subfolder.</li>
+    <li>No jobseeker / international bleed / informational-with-no-buying-decision content on brand sites.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>What's deferred</h2>
+  <ul>
+    <li>Application forms (no FCA gate — phase 2).</li>
+    <li>Trustpilot Business plan (~£200/mo) — pending decision.</li>
+    <li>Named author hire — pending decision.</li>
+    <li>Trust Payments / PurePay outreach — pending decision.</li>
+    <li>Hardware testing budget for terminal reviews (~£1.5k) — pending decision.</li>
+    <li>Cross-site Organization schema (parent-with-subOrgs vs separate brand-graphs) — pending decision.</li>
+  </ul>
+</section>
+
+</BaseLayout>
+
+<style>
+  .back { margin: 0 0 0.5rem; font-size: 0.85rem; }
+  .back a { color: var(--muted); text-decoration: none; }
+  .card + .card { margin-top: 1rem; }
+  .warn-card { border-color: var(--warn); background: rgba(245,158,11,0.05); }
+  ul { padding-left: 1.25rem; }
+  li { margin: 0.4rem 0; font-size: 0.95rem; }
+</style>

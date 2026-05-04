@@ -1,0 +1,152 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const faqs = [
+  {
+    question: 'Is selling CBD legal in the UK?',
+    answer: 'Yes, with caveats. Finished CBD products sold in the UK must contain no controlled cannabinoids (in practice no detectable THC, with a 1mg-per-container regulatory safe harbour). Ingestible CBD must be on the FSA novel-foods public list with full authorisation or a validated application in progress. Topicals sit under the cosmetics regulations.',
+  },
+  {
+    question: 'Why do Stripe, Square, SumUp and Zettle refuse CBD?',
+    answer: 'It is policy, not legality. All four are headquartered or risk-modelled around the US, where CBD is federally awkward, and their flat-rate underwriting is built for low-touch onboarding that cannot absorb the compliance burden of a CBD MCC. UK CBD merchants who sign up regularly have accounts frozen within weeks of first activity.',
+  },
+  {
+    question: 'Which UK acquirers accept CBD merchant accounts?',
+    answer: 'The core panel is Trust Payments, Universe Payments and Acquired.com. PurePay and the Worldpay high-risk team will quote on larger merchants. Each has slightly different appetite — ingestibles are the cleanest sub-category, topicals next, and CBD vape the most restricted. Apply to two or three in parallel rather than sequentially.',
+  },
+  {
+    question: 'What rolling reserve should I expect on a UK CBD merchant account?',
+    answer: 'Typically 5–15% of monthly volume held for 90–180 days. Established bricks-and-mortar CBD with low chargeback history lands at the 5% / 90-day end; online-led subscription brands without trading history land at the 15% / 180-day end. After 6–12 months of clean processing the reserve can usually be renegotiated down.',
+  },
+  {
+    question: 'How long does a CBD merchant account application take?',
+    answer: 'A clean application runs 2–4 weeks end-to-end. Week 1 is the document pack (COAs, FSA references, KYC, label photos), week 2 is underwriter review with 2–3 rounds of clarification, week 3 is approval and MID issuance, week 4 is gateway and hardware integration. Most delays come from document-quality issues on the merchant side.',
+  },
+  {
+    question: 'Can I keep my existing card terminal if I switch to a CBD-friendly acquirer?',
+    answer: 'Usually not. Mainstream readers like the SumUp Air, Zettle Reader 2 and Square Terminal are tied to their own processors and cannot be ported. High-risk acquirers typically provision a PAX A920 Pro, Castles S1F2 or Ingenico Move/5000 — all standard hardware that integrates with EPOS systems like Epos Now and most ecommerce gateways.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'High-risk merchant accounts', url: `${SITE.url}/high-risk/` },
+  { name: 'CBD merchant account UK', url: `${SITE.url}/high-risk/cbd/` },
+];
+---
+<BaseLayout
+  title="CBD Merchant Account UK — Card Processing for CBD Retailers (2026)"
+  description="UK CBD merchant account guide: why Stripe and Square refuse CBD, which UK acquirers (Trust Payments, Universe, Acquired.com) accept it, underwriting docs, rolling reserves, and how to apply."
+  pathname="/high-risk/cbd/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+  author={{ name: 'Editorial team', url: '/about/' }}
+>
+  <Hero
+    slot="hero"
+    eyebrow="High-risk › CBD"
+    title="CBD merchant account UK — the acquirers that actually accept you."
+    subtitle="Stripe, Square, SumUp and Zettle refuse CBD on application. This is the UK panel that does write the business, the underwriting documents you'll need, and what reserves to expect."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="CBD merchant account UK — full guide for UK CBD retailers"
+    description="UK card processing for CBD businesses: why mainstream providers refuse, the UK acquirer panel (Trust Payments, Universe, Acquired.com), underwriting requirements, reserves, and the application process."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/high-risk/cbd/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section>
+    <h2>Why Stripe, Square, SumUp and Zettle refuse CBD</h2>
+    <p>The four mainstream UK card processors — Stripe, Square, SumUp and Zettle — explicitly list CBD on their prohibited-business pages. The reasons are policy, not legality: their underwriting models are tuned for low-touch onboarding and global uniformity, and a product that is legal in the UK but federally illegal in the US (where Stripe and Square are headquartered) creates a compliance burden their flat-rate economics can't absorb.</p>
+    <p>Practically, this means a UK CBD retailer who signs up to Stripe or Square typically processes for a few weeks, then has the account frozen and funds held when the underwriting team reviews the MCC. The resolution involves a long disclosure process and almost always ends in account closure with a 90–180 day reserve hold. The cleaner route is to start on a CBD-friendly acquirer from day one — see the <a href="/high-risk/">UK high-risk hub</a> for the full pattern across MCCs.</p>
+    <p>Sister verticals see the same pattern: <a href="/high-risk/vape/">vape</a> and <a href="/high-risk/nutraceuticals/">nutraceuticals</a> are refused for the same compliance-burden reason, even though both are fully legal in the UK.</p>
+  </section>
+
+  <section>
+    <h2>UK CBD legality — the FSA novel-foods refresher</h2>
+    <p>CBD is legal to sell in the UK provided the product contains no controlled cannabinoids — in practice, no THC at all in finished retail products, with a 1mg-per-container limit applied as a regulatory safe harbour. The Misuse of Drugs Regulations 2001 govern the THC question; the Food Standards Agency (FSA) governs the food and supplement question through its novel-foods regime.</p>
+    <p>Since 2020 the FSA has required all ingestible CBD products on UK shelves to be on its novel-foods public list, either with full authorisation or with a validated application in progress. Acquirers underwriting CBD will check this list directly when reviewing your application — products that aren't listed (or whose application has lapsed) are an instant decline regardless of how clean the rest of the file looks.</p>
+    <p>Topicals (balms, creams, cosmetics) sit outside novel foods but are governed by the cosmetics regulations and still need MHRA-aware claims. Vapes containing CBD straddle both regimes and are the hardest CBD product to underwrite — most acquirers will accept the rest of your range and ask you to drop CBD vape SKUs.</p>
+  </section>
+
+  <section>
+    <h2>UK acquirers that do accept CBD</h2>
+    <p>The UK panel of acquirers that consistently underwrite CBD is small but real. The main three are <strong>Trust Payments</strong> (the broadest CBD appetite, accepts ingestibles, topicals and most vape categories with documentation), <strong>Universe Payments</strong> (accepts CBD with a tilt towards larger merchants and online-led models), and <strong>Acquired.com</strong> (UK-licensed, strong on subscription-billing CBD brands and recurring boxes).</p>
+    <p>Outside the core three, <strong>PurePay</strong> and the <strong>Worldpay high-risk team</strong> will quote on larger CBD merchants — Worldpay's high-risk underwriting line is separate from the mainstream Worldpay product, so a previous decline on the standard product does not carry across. Each acquirer has slightly different appetite by sub-category: ingestibles are the cleanest, topicals next, and CBD vape the most restricted.</p>
+    <p>The key buyer move is to apply to two or three of the panel in parallel rather than sequentially — the underwriting timelines are long enough that a single rejection costs you a month. See the <a href="/high-risk/why-declined/">why-declined guide</a> for the application-package mistakes that cause avoidable rejections.</p>
+  </section>
+
+  <section>
+    <h2>Underwriting documents you'll need</h2>
+    <p>Expect the underwriting pack for a UK CBD merchant account to be deeper than a mainstream application. The non-negotiables: certificates of analysis (COAs) from a UKAS-accredited lab for every SKU, showing cannabinoid content (THC at non-detectable levels) and absence of heavy metals, pesticides and microbial contaminants. COAs must match batch numbers on your inventory; recycled or supplier-generic COAs are a common reason for decline.</p>
+    <p>You will also need: FSA novel-foods application reference numbers for every ingestible SKU; product label photographs (front and back) showing dosage, ingredients and statutory warnings; a website URL with claims that don't stray into medicinal territory (no "treats", "cures", "anxiety", "pain"); company KYC (Companies House extract, directors' ID and proof of address); 3–6 months of business bank statements; and projected monthly volume with an average transaction value.</p>
+    <p>Subscription / recurring CBD merchants need to add a churn-rate disclosure and a chargeback management policy. Online-only merchants need to add 3D Secure proof and a fraud-screening tool (Sift, Kount or the acquirer's own).</p>
+  </section>
+
+  <section>
+    <h2>Rolling reserves — what's typical for CBD</h2>
+    <p>A rolling reserve is a percentage of your monthly card volume that the acquirer holds back as protection against chargebacks. For UK CBD, expect a rolling reserve of <strong>5–15% of monthly volume held for 90–180 days</strong>. Where you land in that range depends on volume, online vs in-store mix, and chargeback history.</p>
+    <p>An established bricks-and-mortar CBD retailer with low chargeback history will land at the 5% / 90-day end. An online-led subscription CBD brand without trading history will land at the 15% / 180-day end, sometimes with an upfront security deposit on top. After 6–12 months of clean processing, every acquirer on the panel will renegotiate the reserve down — schedule the review proactively rather than waiting for the acquirer to offer it.</p>
+    <p>Processing fees on top of the reserve typically run 2.5–3.9% per transaction for card-present and 3.5–4.9% for card-not-present, plus a monthly gateway fee. That's 2–4x mainstream rates, which is the price of the acquirer accepting the MCC at all.</p>
+  </section>
+
+  <section>
+    <h2>Recommended terminal hardware for CBD shops</h2>
+    <p>The hardware question is downstream of the acquirer choice — most high-risk acquirers will provision a PAX A920 Pro, a Castles Tech S1F2 or an Ingenico Move/5000, all of which run their own gateway and integrate with EPOS systems. You typically can't bring a SumUp Air or Zettle Reader 2 to a high-risk acquirer because those readers are tied to their own processors.</p>
+    <p>For bricks-and-mortar CBD shops, the PAX A920 Pro is the most common pick — it's a full Android terminal with built-in receipt printer, Wi-Fi/4G, and integration into EPOS systems like Epos Now. For online-only CBD merchants the question is gateway choice rather than hardware: Trust Payments' TRU Connect, Acquired.com's hosted-fields gateway, and Universe's gateway all integrate with WooCommerce, Shopify (via custom payment app) and Magento.</p>
+    <p>If you also run a vape range alongside CBD, see the <a href="/high-risk/vape/">vape merchant account guide</a> — the underwriting overlap is significant and most acquirers will write a single MID covering both categories.</p>
+  </section>
+
+  <section>
+    <h2>How to apply — a realistic timeline</h2>
+    <p>A clean UK CBD merchant account application takes <strong>2–4 weeks end-to-end</strong>, occasionally faster for an established merchant moving from a refused mainstream account. Week 1 is the application pack and KYC: company documents, COAs, FSA references, label photos and projections. Week 2 is underwriter review and clarification questions — expect 2–3 rounds of back-and-forth on COAs and label compliance.</p>
+    <p>Week 3 is approval, MID issuance and gateway / hardware provisioning. Week 4 is integration: gateway plumbed into your website or EPOS, test transactions, settlement file format confirmed. The longest delays are almost always document-quality issues on the merchant side — wrong COA batch numbers, expired FSA references, or label claims that the underwriter flags as medicinal.</p>
+    <p>If you've already been declined by a mainstream provider with funds held, see the <a href="/high-risk/why-declined/">why-declined guide</a> — the declined account doesn't damage your high-risk application, but you do need to disclose it.</p>
+  </section>
+
+  <section class="cta-callout">
+    <h2>Get matched with a CBD-friendly UK acquirer</h2>
+    <p>We're standing up a quote-matching tool that pairs your CBD business — by product mix, monthly volume, and online/in-store split — with the UK acquirers most likely to underwrite you.</p>
+    <p><a href="/high-risk/quote/" class="cta-link">Request a CBD merchant account quote →</a></p>
+    <p class="cta-note">Form coming soon. In the meantime, see the <a href="/high-risk/">high-risk hub</a> and the <a href="/high-risk/why-declined/">why-declined guide</a>.</p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  section { margin: 2rem 0; }
+  section h2 { margin-bottom: 0.75rem; }
+  section p { margin: 0 0 1rem; }
+  .cta-callout {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .cta-callout h2 { margin-top: 0; color: #065f46; }
+  .cta-link {
+    display: inline-block;
+    background: #10b981;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .cta-link:hover { background: #059669; }
+  .cta-note { font-size: 0.9rem; color: #065f46; margin-top: 0.75rem; }
+</style>

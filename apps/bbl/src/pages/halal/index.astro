@@ -1,0 +1,205 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const faqs = [
+  {
+    question: 'Is halal business finance really halal, or is it interest by another name?',
+    answer: "Reputable UK Sharia-compliant providers structure their products around real economic transactions — buying and reselling an asset (Murabaha), leasing it (Ijara), or co-investing in a venture (Musharaka, Mudarabah) — and have those structures certified by an external Sharia Supervisory Board. The mark-up or rental is the financier's earned return on a real asset, not interest on a money-for-money loan. Whether any individual product is acceptable is ultimately a matter for your own scholar; the providers we cover all publish their certifications.",
+  },
+  {
+    question: 'Who certifies that a UK Sharia business product is compliant?',
+    answer: 'Each provider appoints a Sharia Supervisory Board (SSB) of qualified scholars who review every product before launch and audit ongoing operations. Gatehouse Bank, Al Rayan and the major UK halal lenders publish their SSB members and the fatwa governing each product. Where an SSB is missing, opaque, or named only in marketing copy without verifiable scholar credentials, treat it as a serious red flag.',
+  },
+  {
+    question: "What's the difference between a Murabaha mark-up and a conventional interest rate?",
+    answer: "A Murabaha mark-up is the financier's profit on a real asset that they actually buy and resell to you — it's fixed at signing, declared up-front, and doesn't compound. A conventional interest rate is a percentage applied to a money balance over time. The two can produce broadly similar total costs, but the legal and ethical structure is different: Murabaha is a sale contract, an interest-bearing loan is a money rental.",
+  },
+  {
+    question: 'What are the eligibility criteria for a UK Sharia-compliant business loan?',
+    answer: "Broadly similar to mainstream UK SME finance: a UK-registered business, typically 6–24 months of trading depending on the lender, demonstrable cash flow, and an acceptable credit profile for the directors. Some Sharia lenders also screen out non-halal trading activity (alcohol, gambling, conventional finance, pork, adult entertainment) — that's a hard filter, not a preference.",
+  },
+  {
+    question: 'How does the application process compare to a conventional business loan?',
+    answer: "The mechanics are similar — application form, financials, ID, often a personal guarantee — but you'll see additional paperwork reflecting the underlying structure: an asset purchase order under Murabaha, a lease schedule under Ijara, or a partnership deed under Musharaka. Decision speeds at the major UK halal lenders are roughly comparable to mainstream alt-fi (days to a couple of weeks), though commercial property structures are usually slower.",
+  },
+  {
+    question: 'Is halal business finance more expensive than a conventional loan?',
+    answer: "Not necessarily. Headline cost is broadly comparable to a conventional SME loan from a similar-risk lender. There can be small structural differences — fewer early-settlement rebates under classical Murabaha, slightly higher legal costs on property structures — but the gap is usually marginal. The reason to choose halal finance is the legal and ethical structure, not a cost saving.",
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Halal business finance', url: `${SITE.url}/halal/` },
+];
+---
+<BaseLayout
+  title="Halal Business Finance UK — Sharia-Compliant Loans, Lenders & Structures (2026)"
+  description="Independent UK guide to halal / Sharia-compliant business finance: Murabaha, Ijara, Musharaka and Mudarabah explained, the UK lenders that offer them, and how it differs from conventional loans."
+  pathname="/halal/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+>
+  <Hero
+    slot="hero"
+    eyebrow="Halal business finance"
+    title="Sharia-compliant business finance in the UK — what it is, who offers it, and how it actually works."
+    subtitle="No riba, no interest, no smoke and mirrors. A plain-English guide to the structures used by UK Sharia-compliant lenders, the providers that offer them, and what to expect when you apply."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="Halal business finance in the UK — full guide"
+    description="UK halal / Sharia-compliant business finance: Murabaha, Ijara, Musharaka, Mudarabah, plus the providers that offer them and how the cost compares to conventional loans."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/halal/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section>
+    <h2>What halal / Sharia-compliant business finance actually is</h2>
+    <p>Halal business finance is funding that complies with Islamic commercial law (<em>fiqh al-muamalat</em>). The defining feature is the prohibition of <strong>riba</strong> — usually translated as "interest", but more accurately the unearned increase a lender takes on a money-for-money loan. Sharia-compliant finance replaces that interest with a real economic transaction: the financier buys, owns, leases or co-invests in something with the business, and earns a return from that asset or partnership rather than from the act of lending money.</p>
+    <p>In practice, that means a UK Sharia-compliant facility is structured around an asset, a lease, or a profit-share — never a sum of money rented out at a percentage. The business still ends up paying a known total cost over a known term; the legal form of how that cost arises is what makes it halal. Every reputable UK provider has its products signed off by a Sharia Supervisory Board (SSB) of qualified scholars, and many publish the fatwa or scholar names directly.</p>
+  </section>
+
+  <section>
+    <h2>The four main Sharia structures, explained</h2>
+    <p>Almost every UK Sharia-compliant business facility you will encounter is built from one of four classical contracts. Understanding which one you're being offered is the single most useful piece of due-diligence you can do.</p>
+    <div class="structures">
+      <div class="card">
+        <h3>Murabaha (cost-plus sale)</h3>
+        <p>The financier buys the asset you want — stock, equipment, a vehicle — and immediately resells it to you at an agreed mark-up, payable in instalments. You take title, the bank takes its declared profit. This is the workhorse structure for UK halal SME working-capital and asset finance, and it's what Qardus and most of Gatehouse's commercial book is built on.</p>
+      </div>
+      <div class="card">
+        <h3>Ijara (leasing)</h3>
+        <p>The financier buys an asset and leases it to your business for a fixed term and rental. At the end of the lease, ownership either transfers to you (Ijara wa Iqtina) or the asset is returned. Used heavily for plant, vehicles, and commercial property — Gatehouse Bank and Al Rayan both run Ijara structures for property and equipment.</p>
+      </div>
+      <div class="card">
+        <h3>Musharaka (partnership)</h3>
+        <p>You and the financier each contribute capital to a venture and share profits according to a pre-agreed ratio; losses are shared in proportion to capital. A diminishing-Musharaka variant is common in UK halal commercial property: the bank's share is bought out gradually until you own the asset outright.</p>
+      </div>
+      <div class="card">
+        <h3>Mudarabah (profit-share)</h3>
+        <p>One party provides the capital (the financier) and the other provides the labour and management (you). Profits are split on a pre-agreed ratio; capital losses fall on the capital provider unless caused by your negligence. Rarer in UK SME finance than the other three, but it underpins some equity-style and ethical-investment vehicles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>UK providers offering Sharia-compliant business finance</h2>
+    <p>The UK Sharia-compliant business finance market is small but real. Four names cover the majority of practical use cases for SME owners; we link to full reviews where we have them.</p>
+    <div class="providers">
+      <div class="card">
+        <h3>Qardus</h3>
+        <p>UK Sharia-compliant SME lender using Murabaha. Focused on unsecured business finance for established Muslim-owned SMEs; positions itself as the closest halal equivalent to mainstream alt-fi like Funding Circle or iwoca.</p>
+      </div>
+      <div class="card">
+        <h3>Gatehouse Bank</h3>
+        <p>PRA-regulated UK Sharia bank. Strong on commercial property (Ijara and diminishing-Musharaka), buy-to-let for landlords, and savings — runs a full Sharia Supervisory Board.</p>
+      </div>
+      <div class="card">
+        <h3>Al Rayan Bank</h3>
+        <p>The UK's longest-established Sharia retail and commercial bank. Commercial property finance, business banking and SME lending, all signed off by an external scholar board.</p>
+      </div>
+      <div class="card">
+        <h3>Wayhome</h3>
+        <p>Gradual-homeownership / shared-ownership specialist using a diminishing-Musharaka-style partnership model. Primarily residential, but the underlying structure is a useful reference point for owner-managers exploring partnership finance for mixed-use property.</p>
+      </div>
+    </div>
+    <p class="placeholder-cta">→ Full review pages for each provider are being written. When you're ready to apply, we'll route you to FundBiz, our sister application site.</p>
+  </section>
+
+  <section>
+    <h2>Who halal business finance is for</h2>
+    <p>The most obvious audience is Muslim business owners who want their commercial finance to align with their faith — and that's the cohort most UK Sharia products are designed around. But in practice the user base is wider:</p>
+    <ul>
+      <li><strong>Muslim-owned SMEs</strong> — sole traders, limited companies and partnerships seeking working capital, asset finance or commercial property funding without riba.</li>
+      <li><strong>Faith-aligned investors and ethical buyers</strong> — non-Muslim businesses that prefer asset-backed, partnership-style finance for ethical reasons; the structures map cleanly onto a wider "real-economy finance" preference.</li>
+      <li><strong>Property developers and landlords</strong> — both Muslim and non-Muslim, attracted to Ijara and diminishing-Musharaka structures that look economically similar to a mortgage but don't carry interest.</li>
+      <li><strong>Founders previously declined by mainstream alt-fi</strong> — Sharia lenders underwrite a slightly different risk profile (asset-backed, profit-share) and can sometimes write business that a riba-based lender will not.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How it differs from a conventional UK business loan</h2>
+    <p>Three differences matter in practice:</p>
+    <ol>
+      <li><strong>No riba / no interest.</strong> A conventional loan rents money to you at a percentage; a Sharia facility earns its return from a real asset, lease or partnership. There is no interest line on the contract — there is a mark-up, a rental, or a profit-share.</li>
+      <li><strong>Asset-backing or partnership.</strong> Sharia finance has to be tied to something real. The financier buys, owns, leases or co-invests. That changes both the paperwork (you'll see purchase agreements, lease schedules, joint-venture deeds) and the risk profile (the financier carries genuine commercial risk on the asset, not just credit risk on you).</li>
+      <li><strong>Profit-share, not lender-takes-all.</strong> Especially under Musharaka and Mudarabah, downside is shared. If the venture loses money for reasons that aren't your fault, the financier wears part of that loss in proportion to its capital — something a conventional lender will never do.</li>
+    </ol>
+    <p>Other features look familiar: credit checks, affordability tests, personal guarantees, debentures, FCA regulation of consumer-facing activity. The economic outcome (you receive funds, you make payments, you keep the asset at the end) often resembles a conventional loan; the legal and ethical architecture underneath is what differs.</p>
+  </section>
+
+  <section>
+    <h2>The cost framing — mark-up, not interest</h2>
+    <p>The most common confusion for new applicants is "this looks like an APR by another name". It's worth being precise.</p>
+    <p>Under <strong>Murabaha</strong>, the financier discloses two figures up-front: the cost price of the asset, and their profit (the mark-up). You agree to pay <em>cost + profit</em> in instalments. The total is fixed at signing and does not move; there's no compounding, no variable rate, no balance to "accrue interest" on. If you settle early, the financier may rebate part of the unearned profit, but they aren't required to (and usually don't, the way a UK lender would refund unearned interest).</p>
+    <p>Under <strong>Ijara</strong>, you pay rent for use of the asset. The rental can be fixed or benchmarked (some UK Ijara products track a benchmark rate as a reference for the rental, while remaining structurally a lease). Under <strong>Musharaka</strong>, you pay an agreed profit share, plus — in the diminishing variant — a buy-out of the financier's equity over time.</p>
+    <p>Headline cost is often broadly comparable to a conventional UK SME loan from a similar-risk lender. The reason to use halal finance isn't that it's cheaper — it's that the legal and ethical structure is different, the asset-backing is real, and for a Muslim owner the entire transaction is permissible.</p>
+  </section>
+
+  <section>
+    <h2>Next steps</h2>
+    <p>If you're at the point of comparing live providers, the listicle below is the starting point. If you want to understand a single structure (Murabaha) before you compare lenders, read the explainer. If you want a direct read on a single provider, jump to the relevant review.</p>
+    <div class="internal-links">
+      <strong>Recommended next reads:</strong>
+      <ul>
+        <li><a href="/halal/best-sharia-business-loans-uk-2026/">Best Sharia-compliant business loans in the UK, 2026</a> — the listicle, with each provider ranked.</li>
+        <li><a href="/halal/qardus-review/">Qardus review</a> — full review of the UK's main Sharia-compliant SME alt-fi lender.</li>
+        <li><a href="/halal/gatehouse-bank-review/">Gatehouse Bank review</a> — full review of the PRA-regulated Sharia bank.</li>
+        <li><a href="/halal/what-is-murabaha/">What is Murabaha? Cost-plus finance explained</a> — deep-dive on the structure most UK halal SME products use.</li>
+      </ul>
+    </div>
+    <p class="placeholder-cta">→ When you're ready to apply, we'll route you to FundBiz, our sister application site. BBL itself doesn't host application forms.</p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  .structures, .providers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .internal-links {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .internal-links ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+  .placeholder-cta {
+    background: #fff7ed;
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #92400e;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+</style>

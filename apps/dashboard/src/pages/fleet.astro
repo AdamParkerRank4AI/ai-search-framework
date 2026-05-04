@@ -1,0 +1,73 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { FLEET } from '~/data/sites.ts';
+---
+<BaseLayout title="Fleet">
+
+<p class="back"><a href="/">← Back</a></p>
+
+<h1>The Fleet</h1>
+<p class="muted small">Separate satellite sites that route leads back to the brand-site monetisation paths without diluting brand-site entity descriptions.</p>
+
+<section class="card">
+  <h2>The rule</h2>
+  <p>{FLEET.rule}</p>
+</section>
+
+<section class="card">
+  <h2>What goes to Fleet (not brand sites)</h2>
+  <ul>
+    {FLEET.triggers.map((t) => <li>{t}</li>)}
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Why multilingual specifically</h2>
+  <p class="small">A <code>/pl/</code> subfolder under a brand site dilutes the brand's English entity description in the LLM graph. AI search engines build a single entity per domain — mixing languages confuses that entity. A standalone Polish-language site for Polish builders ranks faster, monetises cleanly, and protects the brand site.</p>
+</section>
+
+<h2>Examples — what we'd build</h2>
+<p class="muted small">Sketch list. Real domains, communities, and rollout order get confirmed before any Fleet site is scaffolded.</p>
+
+<div class="examples">
+  {FLEET.examples.map((ex) => (
+    <div class="example">
+      <div class="example-head">
+        <strong>{ex.name}</strong>
+        <code class="domain">{ex.domain}</code>
+      </div>
+      <p class="muted small">{ex.community}</p>
+    </div>
+  ))}
+</div>
+
+<section class="card warn-card">
+  <h2>Status</h2>
+  <p class="small">{FLEET.status}</p>
+</section>
+
+</BaseLayout>
+
+<style>
+  .back { margin: 0 0 0.5rem; font-size: 0.85rem; }
+  .back a { color: var(--muted); text-decoration: none; }
+  .card + .card { margin-top: 1rem; }
+  .warn-card { border-color: var(--warn); background: rgba(245,158,11,0.05); }
+  ul { padding-left: 1.25rem; }
+  li { margin: 0.4rem 0; font-size: 0.95rem; }
+
+  .examples { display: grid; gap: 0.5rem; margin: 0.5rem 0 1.5rem; }
+  .example {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+  }
+  .example-head { display: flex; justify-content: space-between; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+  .example p { margin: 0.25rem 0 0; }
+  .domain {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--accent-2);
+  }
+</style>

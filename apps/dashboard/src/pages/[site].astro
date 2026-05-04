@@ -1,0 +1,179 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { SITES } from '~/data/sites.ts';
+
+export function getStaticPaths() {
+  return SITES.map((site) => ({ params: { site: site.slug }, props: { site } }));
+}
+
+const { site } = Astro.props;
+const fmt = (n: number) => '£' + (n / 1000).toFixed(0) + 'k';
+---
+<BaseLayout title={site.name}>
+
+<p class="back"><a href="/">← All sites</a></p>
+
+<section class="head">
+  <div class="head-top">
+    <h1>{site.name}</h1>
+    <span class={`tag tag-${site.status}`}>{site.status}</span>
+  </div>
+  <p class="role muted">{site.role}</p>
+</section>
+
+<section class="card">
+  <h2>What it is</h2>
+  <p>{site.whatItIs}</p>
+
+  <h3 style="color: var(--accent-2);">What's different</h3>
+  <p>{site.whatsDifferent}</p>
+
+  <h3>Monetisation</h3>
+  <p class="small">{site.monetisation}</p>
+</section>
+
+<section class="numbers">
+  <div class="num"><span class="num-label">Domain</span><span class="num-val">{site.domain}</span></div>
+  <div class="num"><span class="num-label">Primary surface</span><span class="num-val">{site.primarySurface}</span></div>
+  <div class="num"><span class="num-label">Pages drafted</span><span class="num-val"><strong>{site.draftedPages}</strong> / {site.totalPlannedPages}</span></div>
+  <div class="num"><span class="num-label">Mid revenue</span><span class="num-val">{site.revenueScenarioMid > 0 ? fmt(site.revenueScenarioMid) + '/yr' : 'Not sized'}</span></div>
+  {site.liveDevPath && <div class="num"><span class="num-label">Dev command</span><span class="num-val mono">{site.liveDevPath}</span></div>}
+  {site.planFile && <div class="num"><span class="num-label">Plan file</span><span class="num-val mono">{site.planFile}</span></div>}
+</section>
+
+{site.pillars.length > 0 ? (
+  <>
+    <h2>Pillars &amp; pages</h2>
+    <p class="muted small">Tap a pillar to expand. {site.pillars.length} pillars, {site.totalPlannedPages} pages planned.</p>
+
+    <div class="pillars">
+      {site.pillars.map((pillar) => (
+        <details class="pillar">
+          <summary class="pillar-head">
+            <div class="pillar-title">
+              <strong>{pillar.name}</strong>
+              <span class="pillar-meta">
+                {pillar.draftedPages > 0 && <span class="tag tag-drafted">{pillar.draftedPages} drafted</span>}
+                <span class="muted small">{pillar.totalPages} pages</span>
+              </span>
+            </div>
+          </summary>
+          <div class="pillar-body">
+            {pillar.note && <p class="pillar-note">{pillar.note}</p>}
+            {pillar.topPages.length > 0 && (
+              <ul class="page-list">
+                {pillar.topPages.map((p) => (
+                  <li>
+                    <span class={`status-dot status-${p.status}`}></span>
+                    <code>{p.slug}</code>
+                    <span class="page-title muted">{p.title}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {pillar.topPages.length === 0 && (
+              <p class="small muted">Top pages to be added to this pillar.</p>
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+  </>
+) : (
+  <section class="card warn-card">
+    <h3>No pillar map yet</h3>
+    <p class="small">This site doesn't have a detailed plan committed yet. Status: <strong>{site.status}</strong>.</p>
+  </section>
+)}
+
+</BaseLayout>
+
+<style>
+  .back { margin: 0 0 0.5rem; font-size: 0.85rem; }
+  .back a { color: var(--muted); text-decoration: none; }
+  .back a:hover { color: var(--accent-2); }
+
+  .head { margin: 0.5rem 0 1.25rem; }
+  .head-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .head h1 { margin: 0; }
+  .role { margin: 0.25rem 0 0; font-size: 0.95rem; }
+
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+  @media (min-width: 600px) {
+    .numbers { grid-template-columns: repeat(3, 1fr); }
+  }
+  .num {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .num-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .num-val { font-size: 0.9rem; word-break: break-word; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.8rem; }
+
+  .pillars { display: grid; gap: 0.5rem; margin: 0.5rem 0 2rem; }
+  .pillar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .pillar[open] { border-color: var(--accent); }
+  .pillar-head {
+    cursor: pointer;
+    padding: 0.85rem 1rem;
+    list-style: none;
+  }
+  .pillar-head::-webkit-details-marker { display: none; }
+  .pillar-title { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .pillar-title strong { font-size: 0.95rem; }
+  .pillar-meta { display: flex; gap: 0.5rem; align-items: center; }
+  .pillar-body { padding: 0 1rem 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
+  .pillar-note {
+    margin: 0 0 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface-2);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .page-list { list-style: none; margin: 0; padding: 0; }
+  .page-list li {
+    display: grid;
+    grid-template-columns: 0.8rem auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-list li:last-child { border-bottom: none; }
+  .page-list code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--accent-2);
+    word-break: break-all;
+  }
+  .page-title { font-size: 0.8rem; }
+  .status-dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    display: inline-block;
+    background: var(--planned);
+  }
+  .status-drafted { background: var(--good); }
+  .status-shipped { background: var(--accent); }
+
+  .warn-card { border-color: var(--warn); background: rgba(245,158,11,0.05); }
+  .warn-card h3 { margin-top: 0; color: var(--warn); }
+</style>

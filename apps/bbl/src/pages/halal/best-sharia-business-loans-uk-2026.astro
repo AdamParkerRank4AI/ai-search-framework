@@ -1,0 +1,196 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq, Listicle, ListicleItem } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const faqs = [
+  {
+    question: 'Are these the only UK Sharia-compliant business finance providers?',
+    answer: 'They are the five we currently rate as most useful for the broad range of UK SME use cases — working capital, commercial property, asset finance, partnership finance and bridging. Other providers exist (some Islamic windows of larger banks, niche brokers, ethical co-operatives) but coverage outside this five is patchy and we prefer to wait until we have first-hand evidence before adding a name to the list.',
+  },
+  {
+    question: 'Which UK Sharia lender is fastest from application to funds?',
+    answer: 'For unsecured SME working capital, Qardus is the fastest of the five — typically days rather than weeks for a clean application. Bridging via Offa can also move quickly when the property security is straightforward. Gatehouse and Al Rayan property facilities are slower (multiple weeks), reflecting the legal complexity of Ijara and diminishing-Musharaka over real estate.',
+  },
+  {
+    question: 'Do these lenders accept non-Muslim applicants?',
+    answer: "Yes. UK Sharia-compliant business finance is open to applicants of any faith — the structure is the product, not a religious test on the borrower. Some lenders do screen out non-halal trading activity (alcohol, gambling, conventional finance, pork, adult), so the underlying business needs to be one a Sharia lender can finance, but the borrower's personal faith is not a criterion.",
+  },
+  {
+    question: 'How do I verify a UK Sharia provider is actually compliant?',
+    answer: 'Three checks: (1) the provider names a Sharia Supervisory Board with verifiable scholar credentials, not just a single in-house "Sharia advisor"; (2) the provider publishes the structure of each product and ideally the fatwa; (3) where the provider is a regulated bank, the SSB is referenced in formal regulatory disclosures. All five providers on this list publish meaningful scholar oversight; we flag any future entrants that do not.',
+  },
+  {
+    question: 'How do these compare on cost to a conventional UK business loan?',
+    answer: 'Headline cost is broadly comparable to a conventional UK SME loan from a similar-risk lender. There can be small differences — Murabaha typically fixes total cost at signing with no early-settlement rebate, conventional loans usually rebate unearned interest — but the two often land in the same range. The reason to choose halal finance is the legal and ethical structure, not a price advantage.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Halal business finance', url: `${SITE.url}/halal/` },
+  { name: 'Best Sharia business loans UK 2026', url: `${SITE.url}/halal/best-sharia-business-loans-uk-2026/` },
+];
+---
+<BaseLayout
+  title="Best Sharia-Compliant Business Loans UK 2026 — Independent Halal Finance Rankings"
+  description="Independent 2026 ranking of UK Sharia-compliant business finance providers: Qardus, Gatehouse Bank, Al Rayan Bank, Wayhome and Offa. Structures, ranges, scholar oversight, and who each one is for."
+  pathname="/halal/best-sharia-business-loans-uk-2026/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+>
+  <Hero
+    slot="hero"
+    eyebrow="Halal · Best of 2026"
+    title="The best Sharia-compliant business loans in the UK, 2026."
+    subtitle="Five UK providers covering working capital, commercial property, asset finance and bridging — independently ranked on structure clarity, scholar oversight, funding speed and accessibility."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="Best Sharia-compliant business loans in the UK, 2026"
+    description="Independent ranking of UK halal / Sharia-compliant business finance providers in 2026: Qardus, Gatehouse Bank, Al Rayan Bank, Wayhome and Offa."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/halal/best-sharia-business-loans-uk-2026/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section>
+    <h2>How we ranked these providers</h2>
+    <p>We've reviewed UK Sharia-compliant business finance providers on four criteria: <strong>structure clarity</strong> (does the provider clearly disclose which classical contract — Murabaha, Ijara, Musharaka, Mudarabah — sits behind each product?), <strong>scholar oversight</strong> (is there a named, externally-credible Sharia Supervisory Board, with published members and live audits?), <strong>funding speed</strong> (how quickly the provider moves from application to drawn funds for a typical SME profile), and <strong>accessibility</strong> (the realistic floor on turnover, trading history and ticket size). This page does not host applications — when you're ready, we link through to FundBiz, our sister application site.</p>
+    <p>The ranking below isn't a league table of "best to worst" — it's an editorial order of who suits the broadest UK halal SME audience first, and then who specialises. A property landlord, an asset-buyer and a bridging borrower will each find their match further down the list.</p>
+  </section>
+
+  <section>
+    <h2>The 2026 ranking</h2>
+    <Listicle title="UK Sharia-compliant business finance — 2026">
+      <ListicleItem
+        rank={1}
+        name="Qardus"
+        summary="Qardus is the UK Sharia-compliant alt-fi lender most directly comparable to mainstream platforms like Funding Circle or iwoca. It writes unsecured SME finance on a Murabaha (cost-plus) structure for established Muslim-owned businesses. For most halal SME borrowers needing working capital, this is the first place to look."
+        bestFor="Established Muslim-owned SMEs needing unsecured working capital"
+        href="/halal/qardus-review/"
+      >
+        <dl class="facts">
+          <dt>Structure</dt><dd>Murabaha (cost-plus sale)</dd>
+          <dt>Range</dt><dd>Approx £25,000 – £400,000 unsecured</dd>
+          <dt>Trading history</dt><dd>Typically 24+ months</dd>
+          <dt>Scholar oversight</dt><dd>External Sharia Supervisory Board (named on site)</dd>
+          <dt>Best for</dt><dd>Working capital, expansion, asset purchase</dd>
+        </dl>
+      </ListicleItem>
+
+      <ListicleItem
+        rank={2}
+        name="Gatehouse Bank"
+        summary="Gatehouse is a PRA-regulated UK Sharia bank with a deep commercial-property book and a proper SSB. It runs Ijara and diminishing-Musharaka structures for owner-occupier commercial property, BTL portfolios and larger asset finance. The right answer when the deal is property-secured and a regulated bank counterparty matters."
+        bestFor="Commercial property finance and landlord BTL portfolios"
+        href="/halal/gatehouse-bank-review/"
+      >
+        <dl class="facts">
+          <dt>Structure</dt><dd>Ijara (lease) and diminishing-Musharaka</dd>
+          <dt>Range</dt><dd>From £500,000 commercial; BTL from c. £75,000</dd>
+          <dt>Regulator</dt><dd>PRA / FCA authorised</dd>
+          <dt>Scholar oversight</dt><dd>Sharia Supervisory Board (published)</dd>
+          <dt>Best for</dt><dd>Owner-occupier commercial property, BTL landlords</dd>
+        </dl>
+      </ListicleItem>
+
+      <ListicleItem
+        rank={3}
+        name="Al Rayan Bank"
+        summary="The UK's longest-established Sharia retail and commercial bank. Al Rayan runs business banking, commercial property finance and SME lending with mature operational scale. Slower decision-making than Qardus or a niche bridging house, but a credible big-bank counterparty with deep scholar infrastructure."
+        bestFor="Muslim-owned SMEs that want a full Sharia banking relationship, not just a single product"
+        href="/halal/al-rayan-bank-review/"
+      >
+        <dl class="facts">
+          <dt>Structure</dt><dd>Murabaha, Ijara, diminishing-Musharaka</dd>
+          <dt>Range</dt><dd>Commercial property and SME finance from c. £100,000</dd>
+          <dt>Regulator</dt><dd>PRA / FCA authorised</dd>
+          <dt>Scholar oversight</dt><dd>Sharia Supervisory Committee (published)</dd>
+          <dt>Best for</dt><dd>Full-relationship Sharia banking for SMEs</dd>
+        </dl>
+      </ListicleItem>
+
+      <ListicleItem
+        rank={4}
+        name="Wayhome"
+        summary="Wayhome is a gradual-homeownership / shared-ownership platform built on a partnership model that's structurally close to diminishing-Musharaka. It's a residential-led product, but useful for owner-managers exploring partnership-style finance for live-work property or as a reference point for partnership structures generally."
+        bestFor="Owner-managers exploring partnership-style residential or live-work property finance"
+        href="/halal/wayhome-review/"
+      >
+        <dl class="facts">
+          <dt>Structure</dt><dd>Partnership / gradual-ownership (diminishing-Musharaka style)</dd>
+          <dt>Range</dt><dd>Residential property up to lender LTV limits</dd>
+          <dt>Regulator</dt><dd>FCA authorised</dd>
+          <dt>Scholar oversight</dt><dd>Product is positioned as ethical / faith-aligned; Sharia certification varies — verify directly</dd>
+          <dt>Best for</dt><dd>Owner-managers needing partnership-style residential finance</dd>
+        </dl>
+      </ListicleItem>
+
+      <ListicleItem
+        rank={5}
+        name="Offa"
+        summary="Offa is the UK's first dedicated Sharia-compliant bridging finance house. It writes short-term, asset-backed bridging on Murabaha and lease structures for property investors and developers. The right answer when the deal is time-critical, secured against property, and conventional bridging is off the table."
+        bestFor="Sharia-compliant property bridging and short-term development finance"
+        href="/halal/offa-review/"
+      >
+        <dl class="facts">
+          <dt>Structure</dt><dd>Sharia-compliant bridging (Murabaha / lease)</dd>
+          <dt>Range</dt><dd>Short-term bridging from c. £100,000</dd>
+          <dt>Regulator</dt><dd>FCA authorised</dd>
+          <dt>Scholar oversight</dt><dd>External Sharia Supervisory Board</dd>
+          <dt>Best for</dt><dd>Time-critical Sharia-compliant property bridging</dd>
+        </dl>
+      </ListicleItem>
+    </Listicle>
+    <p class="placeholder-cta">→ When you're ready to apply, we'll route you to FundBiz, our sister application site. BBL itself doesn't host application forms.</p>
+  </section>
+
+  <section>
+    <h2>Which provider is right for you?</h2>
+    <div class="picker">
+      <ul>
+        <li><strong>You need unsecured working capital, fast.</strong> Start with <a href="/halal/qardus-review/">Qardus</a>. It's the closest halal equivalent to mainstream alt-fi and the fastest sensible route.</li>
+        <li><strong>You're buying or refinancing commercial property.</strong> <a href="/halal/gatehouse-bank-review/">Gatehouse Bank</a> first; <a href="/halal/al-rayan-bank-review/">Al Rayan</a> as a second quote on larger or more complex deals.</li>
+        <li><strong>You want a full Sharia banking relationship — current account, deposits, lending.</strong> <a href="/halal/al-rayan-bank-review/">Al Rayan</a> is the established choice; Gatehouse on the savings and BTL side.</li>
+        <li><strong>You're exploring partnership-style or shared-ownership property finance.</strong> Read <a href="/halal/wayhome-review/">Wayhome</a> as the live UK example of a diminishing-partnership consumer product.</li>
+        <li><strong>You need short-term, property-secured bridging.</strong> <a href="/halal/offa-review/">Offa</a> is the UK's only dedicated Sharia-compliant bridging house and the natural starting point.</li>
+      </ul>
+    </div>
+    <p>For background on what each structure actually is, see the <a href="/halal/">halal hub</a>. For a deep-dive on the most common structure — Murabaha — see <a href="/halal/what-is-murabaha/">what is Murabaha?</a></p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 0.75rem; margin: 0; }
+  dl.facts dt { font-weight: 600; color: var(--muted); }
+  dl.facts dd { margin: 0; }
+  .placeholder-cta {
+    background: #fff7ed;
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #92400e;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+  .picker {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  .picker ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+</style>

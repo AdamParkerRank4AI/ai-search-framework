@@ -1,0 +1,30 @@
+---
+import { MetaTags, Hero } from '@aisf/ui';
+import { SITE } from '~/lib/site.ts';
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <MetaTags
+    title="AI Search News — Coming Soon"
+    description="AI search coverage and analysis for UK businesses. Site planned, scope TBD."
+    canonical={`${SITE.url}/`}
+  />
+</head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; color:#1a1d21; background:#f7f8fa; margin:0;">
+  <main style="max-width:720px; margin:0 auto; padding:3rem 1.25rem;">
+    <Hero
+      eyebrow="Slot reserved"
+      title="AI Search News"
+      subtitle="Coverage, analysis and updates on AI search — for UK businesses, builders, marketers. Positioning and audience TBD."
+    />
+    <section style="background:#fff7ed; border:1px dashed #f59e0b; border-radius:8px; padding:1rem 1.25rem; margin:2rem 0; color:#92400e;">
+      <strong>Status: TBD.</strong> Slot kept in the network so the dashboard
+      reflects the planned property. Decisions still open: editorial vs
+      directory, B2B vs B2C, paid newsletter vs ad-supported, monetisation path.
+    </section>
+  </main>
+</body>
+</html>

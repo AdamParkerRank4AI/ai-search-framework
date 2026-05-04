@@ -4,13 +4,19 @@
   "version": "0.1.0",
   "description": "Network of UK SMB lead-gen sites optimised for AI search, AI Overviews and SEO",
   "scripts": {
+    "dev:dash": "pnpm --filter @aisf/dashboard dev",
     "dev:cm": "pnpm --filter @aisf/cardmachines dev",
     "dev:bbl": "pnpm --filter @aisf/bbl dev",
     "dev:fb": "pnpm --filter @aisf/fundbiz dev",
+    "dev:wb": "pnpm --filter @aisf/webbuilder dev",
+    "dev:ai": "pnpm --filter @aisf/ainews dev",
     "build": "pnpm -r build",
+    "build:dash": "pnpm --filter @aisf/dashboard build",
     "build:cm": "pnpm --filter @aisf/cardmachines build",
     "build:bbl": "pnpm --filter @aisf/bbl build",
     "build:fb": "pnpm --filter @aisf/fundbiz build",
+    "build:wb": "pnpm --filter @aisf/webbuilder build",
+    "build:ai": "pnpm --filter @aisf/ainews build",
     "check": "pnpm -r check"
   },
   "engines": {

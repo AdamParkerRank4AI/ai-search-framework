@@ -1,0 +1,55 @@
+---
+import { MetaTags, Hero, Cta } from '@aisf/ui';
+import { OrganizationSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <MetaTags
+    title="WebBuilder — Websites Built to Be Cited by AI Search"
+    description="UK website builds and audits engineered for AI search visibility. ChatGPT, Perplexity, Claude, Gemini and Google AI Overviews ready."
+    canonical={`${SITE.url}/`}
+  />
+  <OrganizationSchema name={SITE.name} url={SITE.url} description={SITE.tagline} />
+</head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; color:#1a1d21; background:#f7f8fa; margin:0;">
+  <main style="max-width:960px; margin:0 auto; padding:1.25rem;">
+    <Hero
+      eyebrow="Built for AI search"
+      title="Websites engineered to be cited by ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews."
+      subtitle="Most websites are still optimised for blue-link SEO. AI search ranks on entity authority, schema integrity, and citation-grade content. We build for both."
+    />
+
+    <section style="margin: 2rem 0;">
+      <h2>What we do</h2>
+      <p>
+        Three service tiers, each grounded in the Rank4AI methodology — the same
+        framework we use to plan our own publishing network.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-top:1.5rem;">
+        {SITE.tiers.map((tier) => (
+          <div style="background:#fff; border:1px solid #e3e6eb; border-radius:10px; padding:1.5rem;">
+            <h3 style="margin:0 0 0.5rem;">{tier.name}</h3>
+            <p style="margin:0 0 0.75rem; color:#5a6270;">{tier.summary}</p>
+            {tier.priceFromGBP === 0
+              ? <p style="margin:0; font-weight:600; color:#1f5fff;">Free</p>
+              : tier.priceFromGBP === null
+                ? <p style="margin:0; color:#5a6270;">Quote on enquiry</p>
+                : <p style="margin:0; font-weight:600;">From £{tier.priceFromGBP}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section style="background:#fff7ed; border:1px dashed #f59e0b; border-radius:8px; padding:1rem 1.25rem; margin: 2rem 0; color:#92400e;">
+      <strong>Site scaffolded — service positioning to be finalised.</strong>
+      WebBuilder is the only site in the network where we deliver the service
+      ourselves rather than refer to an affiliate. Lead capture goes to our
+      internal funnel, not a third party.
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,177 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { SITES, NETWORK } from '~/data/sites.ts';
+
+const totalDrafted = SITES.reduce((acc, s) => acc + s.draftedPages, 0);
+const totalPlanned = SITES.reduce((acc, s) => acc + s.totalPlannedPages, 0);
+const fmt = (n: number) => '£' + (n / 1000).toFixed(0) + 'k';
+const fmtMillion = (n: number) => '£' + (n / 1_000_000).toFixed(2) + 'm';
+---
+<BaseLayout title="Network overview">
+
+<section class="hero">
+  <h1>Network Dashboard</h1>
+  <p class="muted">{SITES.length} sites + Fleet · {totalDrafted} pages drafted · {totalPlanned} pages planned · ~{fmtMillion(NETWORK.combinedRevenueMidGBP)}/yr at modest market share</p>
+</section>
+
+<section class="card thesis">
+  <h2 class="thesis-title">What we're building</h2>
+  <p>{NETWORK.thesis}</p>
+  <div class="num-row">
+    <div class="num"><span class="num-label">Low scenario</span><span class="num-val">{fmt(NETWORK.combinedRevenueLowGBP)}/yr</span></div>
+    <div class="num accent"><span class="num-label">Mid scenario</span><span class="num-val">{fmtMillion(NETWORK.combinedRevenueMidGBP)}/yr</span></div>
+    <div class="num"><span class="num-label">High scenario</span><span class="num-val">{fmtMillion(NETWORK.combinedRevenueHighGBP)}/yr</span></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>The two splits to remember</h2>
+  <div class="split">
+    <h3>BBL vs FundBiz</h3>
+    <p class="small muted">{NETWORK.splits.bblVsFundbiz}</p>
+  </div>
+  <div class="split">
+    <h3>Brand sites vs Fleet</h3>
+    <p class="small muted">{NETWORK.splits.brandVsFleet}</p>
+  </div>
+</section>
+
+<section class="card warn-card">
+  <h3>Phase note</h3>
+  <p class="small">{NETWORK.formsDeferred}</p>
+</section>
+
+<h2>The sites</h2>
+<p class="muted small">Tap any site for the full pillar map and page list.</p>
+
+<div class="sites">
+  {SITES.map((site) => (
+    <a class="site-card" href={`/${site.slug}/`}>
+      <div class="site-head">
+        <div>
+          <h3 class="site-name">{site.name}</h3>
+          <p class="site-role muted">{site.role}</p>
+        </div>
+        <span class={`tag tag-${site.status}`}>{site.status}</span>
+      </div>
+
+      <p class="site-what">{site.whatItIs}</p>
+
+      <div class="diff">
+        <p class="label">What's different</p>
+        <p class="small">{site.whatsDifferent}</p>
+      </div>
+
+      <dl class="stats">
+        <div><dt>Pages drafted</dt><dd><strong>{site.draftedPages}</strong> / {site.totalPlannedPages}</dd></div>
+        <div><dt>Surface</dt><dd>{site.primarySurface}</dd></div>
+        <div><dt>Mid revenue</dt><dd>{site.revenueScenarioMid > 0 ? fmt(site.revenueScenarioMid) + '/yr' : '—'}</dd></div>
+      </dl>
+
+      <p class="cta">View architecture →</p>
+    </a>
+  ))}
+</div>
+
+<section class="card fleet-card">
+  <div class="site-head">
+    <h3 style="margin:0;">The Fleet</h3>
+    <span class="tag tag-planned">Planned</span>
+  </div>
+  <p class="site-what">Separate satellite domains for multilingual content, hyper-local pages, and single-niche microsites. Routes leads back to the same monetisation paths but protects brand-site entity descriptions.</p>
+  <p class="cta"><a href="/fleet/">See Fleet routing →</a></p>
+</section>
+
+</BaseLayout>
+
+<style>
+  .hero { padding: 1rem 0 1.5rem; }
+  .hero h1 { margin: 0 0 0.4rem; }
+  .hero p { margin: 0; }
+
+  .thesis-title { margin-top: 0; }
+  .num-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .num {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .num.accent { border-color: var(--accent); }
+  .num-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .num-val { font-weight: 700; font-size: 1rem; margin-top: 0.15rem; }
+
+  .split { margin: 0.75rem 0; }
+  .split h3 { margin: 0 0 0.25rem; font-size: 1rem; color: var(--accent-2); }
+  .split p { margin: 0; }
+
+  .warn-card {
+    border-color: var(--warn);
+    background: rgba(245, 158, 11, 0.06);
+  }
+  .warn-card h3 { margin-top: 0; color: var(--warn); font-size: 1rem; }
+
+  .sites {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0.75rem 0 2rem;
+  }
+  .site-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.1rem 0.9rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 120ms ease, transform 120ms ease;
+  }
+  .site-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .site-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .site-name { margin: 0; font-size: 1.1rem; }
+  .site-role { margin: 0.15rem 0 0; font-size: 0.85rem; }
+  .site-what { margin: 0 0 0.7rem; font-size: 0.95rem; }
+  .diff {
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 0.5rem 0.65rem;
+    margin: 0 0 0.7rem;
+  }
+  .diff .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-2);
+    margin: 0 0 0.2rem;
+    font-weight: 600;
+  }
+  .diff p { margin: 0; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    margin: 0 0 0.5rem;
+  }
+  .stats div { display: flex; flex-direction: column; }
+  .stats dt { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .stats dd { margin: 0.15rem 0 0; font-size: 0.85rem; }
+  .cta { margin: 0; color: var(--accent-2); font-size: 0.85rem; font-weight: 600; }
+  .cta a { color: inherit; text-decoration: none; }
+
+  .fleet-card { border-style: dashed; }
+</style>

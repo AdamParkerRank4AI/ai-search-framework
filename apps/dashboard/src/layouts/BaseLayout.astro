@@ -1,0 +1,72 @@
+---
+import '~/styles/global.css';
+interface Props { title: string; }
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>{title} · Network Dashboard</title>
+</head>
+<body>
+  <header class="dash-header">
+    <div class="container">
+      <a class="brand" href="/">Network Dashboard</a>
+      <nav>
+        <a href="/">Overview</a>
+        <a href="/strategy/">Strategy</a>
+        <a href="/fleet/">Fleet</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <slot />
+  </main>
+  <footer class="dash-footer">
+    <div class="container">
+      <p class="tiny muted">Internal dashboard · noindex · {new Date().getFullYear()}</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style>
+  .dash-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .dash-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .dash-header nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  .dash-header nav a:hover { color: var(--accent-2); }
+  .dash-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+</style>

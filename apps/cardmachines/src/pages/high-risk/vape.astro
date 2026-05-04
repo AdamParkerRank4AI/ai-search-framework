@@ -1,0 +1,152 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const faqs = [
+  {
+    question: 'Why is vape classified as high-risk in UK card processing?',
+    answer: 'Vape sits under tobacco-adjacent MCCs (typically 5993 or 5912) which the card schemes treat as elevated regulatory risk worldwide, and it carries age-restricted chargeback exposure that flat-rate processors will not underwrite. The mainstream UK processors (Stripe, Square, SumUp, Zettle, PayPal Here) refuse vape on application regardless of volume.',
+  },
+  {
+    question: 'What age-verification systems do UK vape acquirers expect at the till?',
+    answer: 'Yoti (digital ID app and facial-age-estimation kiosk) and Innovative Technology (the ICU age-estimation camera) dominate the UK vape market. Acquirers do not usually mandate a specific supplier but they do require a written age-verification policy and a record-keeping system that can produce evidence on demand. Most EPOS systems integrate the verification step into the till workflow.',
+  },
+  {
+    question: 'Which EPOS system is best for a UK vape shop?',
+    answer: 'Epos Now is the best general-purpose pick for single-store independents and small chains — clean integrations to high-risk acquirers and a quick setup. South West Systems is the vape-specialist option used by established multi-store retailers, with vape-specific reporting on flavour velocity, batch tracking and supplier reorder.',
+  },
+  {
+    question: 'What do I need to sell vape online in the UK with card payments?',
+    answer: 'A hosted-fields gateway with 3D Secure 2 on every transaction, an online age-verification step before checkout (Yoti Digital ID is the most common), and proof-of-delivery with adult signature on dispatch. Trust Payments and Acquired.com both integrate with WooCommerce and Shopify; Universe suits larger custom-built sites. Online MIDs typically carry stricter reserves than bricks-and-mortar MIDs from the same acquirer.',
+  },
+  {
+    question: 'What rolling reserve should I expect on a UK vape merchant account?',
+    answer: 'Typically 5–10% of monthly volume held for 90–180 days. Bricks-and-mortar with a clean trading record and good age-verification evidence lands at the 5% / 90-day end; online-only vape and combined CBD-plus-vape MIDs land at the 10% / 180-day end. After 6–12 months of clean processing the reserve can usually be renegotiated down.',
+  },
+  {
+    question: 'Can I switch to a vape-friendly acquirer if Stripe or Square has already frozen my account?',
+    answer: 'Yes. The previous decline does not damage your high-risk application but it must be disclosed. Download all transaction data and chargeback records from the frozen account within the 30-day portal window, request a written reason for closure from the previous provider, and apply to two or three of the high-risk panel (Trust Payments, Universe, Acquired.com) in parallel. Handover for a clean file takes 2–4 weeks.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'High-risk merchant accounts', url: `${SITE.url}/high-risk/` },
+  { name: 'Vape shop card machine UK', url: `${SITE.url}/high-risk/vape/` },
+];
+---
+<BaseLayout
+  title="Vape Shop Card Machine UK — Vape-Friendly Merchant Accounts (2026)"
+  description="UK vape shop card machine guide: vape-friendly acquirers (Trust Payments, Universe, Acquired.com), age-verification at point-of-sale, integrated EPOS, online vape KYC, rolling reserves, and switching from a refused account."
+  pathname="/high-risk/vape/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+  author={{ name: 'Editorial team', url: '/about/' }}
+>
+  <Hero
+    slot="hero"
+    eyebrow="High-risk › Vape"
+    title="Vape shop card machine UK — the acquirers and EPOS that work."
+    subtitle="Most mainstream providers refuse vape. This is the UK acquirer panel that does, the age-verification stack you need at the till, and the integrated EPOS recommendations for bricks-and-online vape retailers."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="Vape shop card machine UK — full guide for UK vape retailers"
+    description="UK card processing for vape shops and online vape retailers: vape-friendly acquirers, age-verification systems, EPOS integration, online KYC, reserves, and switching from a refused account."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/high-risk/vape/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section>
+    <h2>Why vape is a high-risk MCC in the UK</h2>
+    <p>Vape is classified as high-risk for two converging reasons. First, the MCC (5993 — cigar stores and stands, sometimes 5912 for online) is on every mainstream acquirer's prohibited list because the parent card schemes (Visa and Mastercard) treat tobacco-adjacent categories as elevated regulatory risk worldwide. Second, age-restricted retail carries chargeback exposure (under-18 transactions, parental disputes) that flat-rate processors don't want to underwrite.</p>
+    <p>The result: Stripe, Square, SumUp, Zettle, PayPal Here and most high-street bank merchant services refuse vape on application. The pattern matches every other tobacco-adjacent vertical — see the <a href="/high-risk/">UK high-risk hub</a> for the full picture across MCCs that mainstream acquirers refuse.</p>
+    <p>Note that UK regulation is also tightening: the Tobacco and Vapes Bill is restricting flavours, packaging and the disposable category, which adds another layer of underwriting questions for any vape acquirer underwriting in 2026.</p>
+  </section>
+
+  <section>
+    <h2>UK acquirer panel for vape</h2>
+    <p>The UK acquirers that consistently underwrite vape merchants are <strong>Trust Payments</strong> (broadest appetite, accepts both bricks-and-mortar and online vape, and writes combined MIDs covering vape plus CBD ranges), <strong>Universe Payments</strong> (strong on multi-store vape chains and higher-volume online retailers), and <strong>Acquired.com</strong> (UK-licensed, particularly good for online vape with subscription flavour clubs).</p>
+    <p>Beyond the core three, <strong>PurePay</strong> writes vape and the <strong>Worldpay high-risk team</strong> will quote on chains with multi-store volume — Worldpay's high-risk underwriting is a separate desk from the standard Worldpay product, so a previous decline there does not block this route. None of the mainstream consumer-grade processors (Stripe, Square, SumUp, Zettle) will write vape regardless of volume.</p>
+    <p>Each acquirer has slightly different appetite by sub-category. Disposable vapes are the most restricted given UK regulatory direction; refillable devices and e-liquid are the cleanest. CBD vape sits at the intersection of two high-risk categories — see the <a href="/high-risk/cbd/">CBD merchant account guide</a> for combined-MID handling.</p>
+  </section>
+
+  <section>
+    <h2>Age verification at point-of-sale</h2>
+    <p>UK vape retailers must verify age at point-of-sale and acquirers will check that you have a credible system in place during underwriting. Two suppliers dominate the UK market: <strong>Yoti</strong> (digital ID app and facial-age-estimation kiosk, used widely by supermarkets and convenience stores) and <strong>Innovative Technology</strong> (the ICU age-estimation camera, popular with vape-specific retailers because it's a hardware drop-in at the till).</p>
+    <p>Both meet the standards expected by Trading Standards officers and form an evidence trail if a test purchase is challenged. Yoti's Digital ID app also handles online age verification, which lets you run a single supplier across both your website and your shop floor.</p>
+    <p>Acquirers don't usually require a specific supplier, but they do require a written age-verification policy in your application pack and a record-keeping system that can produce evidence on demand. EPOS systems (next section) typically integrate the verification step directly into the till workflow.</p>
+  </section>
+
+  <section>
+    <h2>Integrated EPOS recommendations</h2>
+    <p>For vape shops the EPOS choice matters more than for most retail because it has to handle three things at once: age verification at the prompt, batch and flavour SKU tracking (vape inventory is wide and shallow), and the integration with a high-risk acquirer's gateway. Two suppliers stand out for UK vape: <strong>Epos Now</strong> (general-purpose retail EPOS with a vape-specific workflow available, and clean integrations to Trust Payments and Acquired.com) and <strong>South West Systems</strong> (vape-specialist EPOS used by independent vape chains, with deep age-verification and stock-control workflows tailored to the category).</p>
+    <p>Epos Now is the right pick for single-store independents and small chains that want a fast setup with mainstream support. South West Systems is the right pick for established multi-store vape retailers who need vape-specific reporting (flavour velocity, batch tracking, supplier reorder) and don't mind the steeper learning curve.</p>
+    <p>Both integrate with the standard high-risk terminals (PAX A920 Pro, Castles S1F2, Ingenico Move/5000) that the UK vape acquirer panel provisions. See the <a href="/retail/vape-shop/">vape shop trade page</a> for the full EPOS-plus-card-reader recommendation by store size.</p>
+  </section>
+
+  <section>
+    <h2>Selling vape online — KYC and gateway requirements</h2>
+    <p>Online vape carries a deeper underwriting load than bricks-and-mortar because card-not-present chargebacks are higher risk and age verification is harder to enforce. Acquirers will require a hosted-fields gateway with 3D Secure 2 mandatory on every transaction, an online age-verification step before checkout (Yoti Digital ID is the most common supplier), and proof-of-delivery with adult signature on dispatch.</p>
+    <p>Expect to provide on application: full KYC on directors, 3–6 months of business bank statements, projected monthly online volume with average transaction value, your fraud-screening tool of choice (Sift, Kount, or the acquirer's native tool), and screenshots of the age-verification flow on the website. Subscription / flavour-club models additionally need a churn-rate disclosure and a chargeback-management policy.</p>
+    <p>Trust Payments' TRU Connect and Acquired.com's hosted-fields gateway both integrate with WooCommerce and Shopify (the latter via a custom payment app); Universe's gateway is more bespoke and tends to suit larger, custom-built sites. Online vape MIDs will typically have stricter reserves than bricks-and-mortar MIDs from the same acquirer.</p>
+  </section>
+
+  <section>
+    <h2>Rolling reserves — what's typical for vape</h2>
+    <p>UK vape rolling reserves are slightly lower than CBD because chargeback patterns are better understood: expect <strong>5–10% of monthly volume held for 90–180 days</strong>. Bricks-and-mortar vape with a clean trading record and good age-verification evidence lands at the 5% / 90-day end. Online-only vape and combined CBD-plus-vape MIDs land at the 10% / 180-day end.</p>
+    <p>Processing fees on top of the reserve typically run 2.2–3.5% per transaction for card-present and 3.0–4.5% for card-not-present, plus a monthly gateway fee in the £15–35 range. After 6–12 months of clean processing the reserve and fee level can usually be renegotiated; vape merchants who outgrow the initial pricing should request a review at the 12-month renewal mark rather than waiting for the acquirer to offer it.</p>
+    <p>For an explanation of how rolling reserves are calculated and released, see the <a href="/high-risk/">high-risk hub</a> — the same mechanic applies across the panel.</p>
+  </section>
+
+  <section>
+    <h2>How to switch from a refused or frozen account</h2>
+    <p>The most common starting point for a UK vape merchant is the morning after Stripe, Square or a high-street bank merchant account has frozen the account and held funds. The decline does not damage your high-risk application — but it does need to be disclosed, and the acquirer will want a clear paper trail showing what was processing and why the previous provider closed the MID.</p>
+    <p>The switching playbook: download all transaction data and chargeback records from the frozen account immediately (you typically have 30 days of portal access after closure); request a written reason for closure from the previous provider so you can include it in your high-risk application; and apply to two or three of the high-risk panel in parallel. The handover takes 2–4 weeks for a clean file; held funds are released by the previous provider on their own 90–180-day reserve schedule, separately from the new MID going live.</p>
+    <p>If the previous account closed because of an age-verification failure, an underwriter will want to see the upgraded system before approving — consider Yoti or Innovative Technology's ICU camera installed before you submit the new application. See the <a href="/high-risk/why-declined/">why-declined guide</a> for the full disclosure pattern.</p>
+  </section>
+
+  <section class="cta-callout">
+    <h2>Get a vape-friendly card machine and EPOS quote</h2>
+    <p>We match UK vape retailers with acquirers and EPOS providers that accept the MCC, integrate age verification, and offer fair reserves for the volume.</p>
+    <p><a href="/high-risk/quote/" class="cta-link">Request a vape merchant account quote →</a></p>
+    <p class="cta-note">Form coming soon. In the meantime, see the <a href="/retail/vape-shop/">vape shop trade page</a> and the <a href="/high-risk/why-declined/">why-declined guide</a>.</p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  section { margin: 2rem 0; }
+  section h2 { margin-bottom: 0.75rem; }
+  section p { margin: 0 0 1rem; }
+  .cta-callout {
+    background: #eff6ff;
+    border: 1px solid #3b82f6;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .cta-callout h2 { margin-top: 0; color: #1e3a8a; }
+  .cta-link {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .cta-link:hover { background: #2563eb; }
+  .cta-note { font-size: 0.9rem; color: #1e3a8a; margin-top: 0.75rem; }
+</style>

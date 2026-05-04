@@ -1,0 +1,190 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { Hero, Faq } from '@aisf/ui';
+import { ArticleSchema, FaqPageSchema } from '@aisf/schema';
+import { SITE } from '~/lib/site.ts';
+
+const faqs = [
+  {
+    question: 'Why did Lloyds decline my business loan?',
+    answer: 'The four most common Lloyds SMB decline reasons are: (1) trading history under 12 months — Lloyds Business Banking writes very little under that mark; (2) monthly turnover under £10,000 — Lloyds wants to see consistent deposit volume in the business current account; (3) business credit score below their internal cut-off, particularly with an unsatisfied CCJ on the file; (4) sector exclusion — Lloyds keeps a published list of restricted sectors and the application is declined on MCC. Lloyds does not always disclose which one — ask the relationship manager directly, they will usually tell you informally.',
+  },
+  {
+    question: 'Can I reapply to Lloyds after a decline?',
+    answer: 'You can, but reapplying inside 30–90 days without changing anything material in the application almost always produces another decline plus a second hard footprint on your business credit file. The pragmatic answer is: if the decline was a fixable file issue (missing accounts, an unsatisfied CCJ you have now settled, an updated turnover figure), wait 90 days and reapply. If the decline was about trading history, sector or product fit, no waiting period changes the answer — apply to a different lender class instead.',
+  },
+  {
+    question: 'How does the Lloyds Bank Referral Scheme work?',
+    answer: 'Lloyds is a designated bank under the UK Bank Referral Scheme, which means after a decline they must offer to refer you (with consent) to a designated alternative-finance platform — currently Funding Xchange, Alternative Business Funding and Funding Options. If you say yes, your application data is shared with the platform, which matches it across an alt-lender panel. The trade-off is loss of control over which lenders see your data and which alt-finance products you are pushed toward; many borrowers prefer to decline the BRS referral and choose their own broker or apply direct.',
+  },
+  {
+    question: 'Which alt-lenders consider applicants Lloyds has declined?',
+    answer: 'The post-decline UK alt-lender panel is materially different from the high-street panel. For Lloyds-declined applicants the typical fits are: Liberis (MCA against card sales, retail / hospitality / e-commerce), YouLend (platform-integrated MCA / RBF for Shopify, Square, eBay merchants), Capify (second-chance MCA tolerant of recent CCJs and missed payments), 365 Business Finance (MCA / unsecured loan, strong in hospitality and B2B services), and Iwoca (short-term unsecured term loan up to £500k). Each underwrites differently — Liberis cares about card revenue, Iwoca about bank-statement cash flow, Capify about recency rather than history.',
+  },
+  {
+    question: 'Will applying to alt-lenders hit my credit again?',
+    answer: 'Most of the UK alt-lender panel — Liberis, YouLend, Capify, Iwoca, Funding Circle — quote on a soft search at the eligibility stage and only run a hard search once you accept an offer. A broker that aggregates the panel typically does the same. That means you can survey the realistic post-decline market without adding new hard footprints to your business credit file. Confirm "soft search at eligibility stage" with any broker before you start; some platforms still run hard searches earlier than they should.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Declined', url: `${SITE.url}/declined/` },
+  { name: 'By bank', url: `${SITE.url}/declined/by-bank/` },
+  { name: 'Lloyds', url: `${SITE.url}/declined/by-bank/lloyds/` },
+];
+---
+<BaseLayout
+  title="Lloyds Declined My Business Loan — UK Alternative Lenders 2026"
+  description="Lloyds declined your business loan? The Lloyds SMB criteria, why applications fail, the Bank Referral Scheme, and the UK alt-lenders that take Lloyds-declined applicants."
+  pathname="/declined/by-bank/lloyds/"
+  breadcrumbs={breadcrumbs}
+  ogType="article"
+  publishedDate="2026-04-26"
+  updatedDate="2026-04-26"
+>
+  <Hero
+    slot="hero"
+    eyebrow="Declined by Lloyds"
+    title="Lloyds said no — here is the post-decline playbook."
+    subtitle="What Lloyds Business Banking actually underwrites on, why applications fail, the Bank Referral Scheme route, and the UK alt-lenders that consider applicants Lloyds declined."
+    lastUpdated="26 April 2026"
+  />
+
+  <ArticleSchema
+    headline="Lloyds declined my business loan — UK alternatives 2026"
+    description="Lloyds Business Banking criteria, the typical decline reasons, the Bank Referral Scheme, and the alt-lender waterfall for Lloyds-declined applicants."
+    datePublished="2026-04-26"
+    dateModified="2026-04-26"
+    authorName="Editorial team"
+    authorUrl={`${SITE.url}/about/`}
+    publisherName={SITE.name}
+    publisherUrl={SITE.url}
+    mainEntityOfPage={`${SITE.url}/declined/by-bank/lloyds/`}
+  />
+  <FaqPageSchema faqs={faqs} />
+
+  <section class="eligibility-callout">
+    <h2>Who FundBiz can match</h2>
+    <p><strong>Eligible:</strong> {SITE.eligibleStructures.join(', ')}.</p>
+    <p><strong>Not eligible:</strong> sole traders and partnerships of three or fewer. The right route for you is <a href="https://www.startuploans.co.uk/">British Business Bank Start Up Loans</a> &mdash; government-backed personal loans for business use, fixed 6% APR, up to &pound;25,000.</p>
+  </section>
+
+  <section>
+    <h2>What Lloyds Business Banking actually underwrites on</h2>
+    <p>Lloyds Business Banking is one of the largest UK SMB lenders by volume, but its credit appetite is conservative compared with the alt-lender panel. The published and observable criteria for an unsecured Lloyds business loan in 2026 are:</p>
+    <ul>
+      <li><strong>Trading history:</strong> 12+ months actively trading as a UK-registered business — and Lloyds prefers 24 months for amounts above &pound;25,000.</li>
+      <li><strong>Turnover:</strong> &pound;10,000+ in monthly turnover deposited through a business current account, with reasonable consistency month-to-month.</li>
+      <li><strong>Business credit score:</strong> above their internal cut-off — in practice that means a Creditsafe / Experian Business score that is not flagged with recent unsatisfied CCJs of significant value.</li>
+      <li><strong>Director credit:</strong> Lloyds pulls director personal credit even on unsecured business loans. Recent personal defaults or IVAs typically fail underwriting.</li>
+      <li><strong>Sector:</strong> a published exclusion list including adult, gambling, certain crypto and cannabis-adjacent sectors. Sector declines are MCC-based and do not depend on the file.</li>
+      <li><strong>Use of funds:</strong> a clear, written use of funds &mdash; working capital, asset purchase, refurbishment, expansion. "General purposes" gets weaker outcomes than a specific use case.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Why Lloyds typically declines</h2>
+    <p>Of Lloyds SMB declines we see in practice, four reasons account for the overwhelming majority:</p>
+    <ol>
+      <li><strong>Insufficient trading history.</strong> The applicant is 6&ndash;11 months into trading and Lloyds wants 12+. No amount of strong recent revenue rescues this &mdash; it is a hard threshold.</li>
+      <li><strong>Weak business credit performance.</strong> An unsatisfied CCJ in the last 24 months, a recent default, or a Creditsafe score below the internal cut-off. Some of this is fixable (settle the CCJ, dispute file errors); some is not (recent default).</li>
+      <li><strong>Sector exclusion.</strong> Adult, gambling, CBD, certain crypto and digital-asset businesses are declined on MCC. Lloyds does not always make this clear in the decline letter.</li>
+      <li><strong>Affordability / DSCR fail.</strong> Repayment exceeds what Lloyds&rsquo; underwriting model thinks the cash flow supports &mdash; often because turnover is lumpy, or recent months have softened, or the applied-for amount is large relative to turnover.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>The 30-day window after a Lloyds decline</h2>
+    <p>The first 30 days after a Lloyds decline are not "wait and try again" time &mdash; they are a triage window:</p>
+    <ul>
+      <li><strong>Get the reason.</strong> Ask the Lloyds relationship manager directly for the decline reason. They will usually tell you informally even if the decline letter is generic. The reason determines whether you fix or route around.</li>
+      <li><strong>Decline or accept the BRS referral.</strong> Lloyds is required to offer Bank Referral Scheme onward referral. Decide whether you want your data shared with the BRS platforms or whether you would rather control the next application yourself.</li>
+      <li><strong>Avoid further hard searches at high-street banks.</strong> A second high-street application with the same profile inside 30 days will almost certainly decline and will leave a second footprint on the file. Use soft-search alt-lender quotes instead.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Your three real options after a Lloyds decline</h2>
+    <ol>
+      <li>
+        <strong>Accept the Bank Referral Scheme onward referral.</strong>
+        Lloyds passes your data (with consent) to a designated platform &mdash; Funding Xchange, Alternative Business Funding or Funding Options. The platform matches across an alt-lender panel. Pro: zero effort. Con: you lose control over which lenders see your file and which products you are funnelled into.
+      </li>
+      <li>
+        <strong>Apply direct to a single alt-lender.</strong>
+        If you know the right product (e.g. card revenue makes Liberis or YouLend the obvious fit), you can apply direct and skip the broker layer. Pro: cheapest unit economics for the lender, sometimes a better headline rate. Con: if the first alt-lender also declines, you have used a hard search that affects the next application.
+      </li>
+      <li>
+        <strong>Use a broker that runs a soft-search profile across the panel.</strong>
+        One profile, one soft search, the full post-decline panel quoted at once. Pro: maximum information for one credit footprint. Con: broker commission is built into the lender pricing &mdash; confirm fee transparency before accepting.
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Alternative lenders by use-case</h2>
+    <p>The right alt-lender after a Lloyds decline depends on what you are funding and how your revenue arrives:</p>
+    <ul>
+      <li><strong>Card-heavy revenue (retail, hospitality, e-commerce):</strong> a merchant cash advance (MCA) priced on card sales &mdash; <strong>Liberis</strong>, <strong>YouLend</strong>, <strong>Capify</strong>, <strong>365 Business Finance</strong>. These tolerate the credit issues that fail Lloyds underwriting because they price on observable card volume, not on credit score.</li>
+      <li><strong>Recurring revenue (SaaS, subscription, agency retainers):</strong> revenue-based finance &mdash; <strong>YouLend</strong>, <strong>Liberis</strong>, RBF specialists. Repayment scales with monthly receipts.</li>
+      <li><strong>Lumpy B2B revenue, term-loan need:</strong> a short-term unsecured term loan &mdash; <strong>Iwoca</strong> (up to &pound;500k, fastest decisioning), <strong>Capify</strong> (term loan as well as MCA), Funding Circle if the file is clean enough.</li>
+      <li><strong>Equipment or vehicle purchase:</strong> asset finance secured against the asset &mdash; specialist asset-finance lenders write where Lloyds will not because the security mitigates the credit risk.</li>
+      <li><strong>First year of trading:</strong> the right answer is usually the British Business Bank Start Up Loans scheme via the personal loan route &mdash; covered on <a href="/declined/first-year-trading/">our first-year-trading page</a>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The post-decline lender waterfall after a Lloyds no</h2>
+    <ol>
+      <li><strong>Liberis</strong> &mdash; MCA against card sales. First call for retail, hospitality, e-commerce. Tolerates light credit issues; underwrites on card revenue.</li>
+      <li><strong>YouLend</strong> &mdash; RBF / MCA hybrid integrated with Shopify, Square, eBay and the major payment platforms.</li>
+      <li><strong>Capify</strong> &mdash; explicitly underwrites over recent CCJs and missed payments where bank-statement cash flow supports it. Strong second-chance fit.</li>
+      <li><strong>365 Business Finance</strong> &mdash; MCA / unsecured loan, strong in hospitality and B2B services.</li>
+      <li><strong>Iwoca</strong> &mdash; short-term unsecured business loan up to &pound;500k, looser-than-bank criteria, fastest decisioning of the bunch.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Cross-link &mdash; the wider declined hub</h2>
+    <p>If your decline reason is reason-specific rather than bank-specific, the reason landers go deeper:</p>
+    <ul>
+      <li><a href="/declined/bad-credit/">Declined for bad credit</a></li>
+      <li><a href="/declined/with-ccj/">Declined with a CCJ</a></li>
+      <li><a href="/declined/first-year-trading/">Declined &mdash; under 12 months trading</a></li>
+      <li><a href="/declined/missed-payments/">Declined for missed payments</a></li>
+      <li><a href="/declined/">Back to the declined hub</a></li>
+    </ul>
+    <p>Independent reviews of the lenders named on this page sit on our sister site BBL: <a href={`${SITE.bblUrl}/declined/best-lenders-after-decline-2026/`}>best lenders after a decline (2026) &rarr;</a></p>
+  </section>
+
+  <section class="placeholder-cta">
+    <h2>See lenders who will consider what Lloyds would not</h2>
+    <p>The diagnose-the-decline matcher is being wired. <a href="/declined/match/">Pre-register for the matcher &rarr;</a> &mdash; one soft-search profile, the alt-lender panel above, no further high-street rejections.</p>
+  </section>
+
+  <Faq faqs={faqs} />
+</BaseLayout>
+
+<style>
+  .eligibility-callout {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .eligibility-callout h2 { margin-top: 0; font-size: 1.05rem; }
+  .eligibility-callout p { margin: 0.25rem 0; font-size: 0.95rem; }
+  .placeholder-cta {
+    background: #fff7ed;
+    border: 1px dashed #f59e0b;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    color: #92400e;
+    margin: 1.5rem 0;
+  }
+  .placeholder-cta h2 { margin-top: 0; font-size: 1.1rem; color: #92400e; }
+  .placeholder-cta p { margin: 0.25rem 0; }
+  .placeholder-cta a { color: #92400e; text-decoration: underline; font-weight: 600; }
+</style>
