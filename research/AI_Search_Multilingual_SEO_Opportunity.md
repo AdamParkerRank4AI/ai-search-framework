@@ -719,6 +719,93 @@ Same pattern, different markets:
 
 ---
 
+## 17. Refinements from external feedback
+
+External feedback received on the plan above. Most of it reinforces what's in §10–§15 but three points are worth sharpening because they're easy to under-do.
+
+### 17.1 Localise — don't translate
+
+This is the single most under-done step. "Translation" is word-for-word. "Localisation" is replacing concepts with the words the audience *actually uses*. Examples of the trap:
+
+- "AI SEO agency" translated literally into French/Hindi/Punjabi reads as nonsense or jargon. Native speakers don't search for that phrase. They search for whatever their market calls the thing — often a different concept entirely (a "growth agency", a "digital partner", a "Google specialist").
+- "Card terminal" → in Punjabi UK retail slang the device is usually called the "machine" or the "PDQ", not the textbook word for "payment terminal".
+- "Self-employed registration" → in Polish UK trade slang it's "samozatrudnienie" but actually-searched terms include "CIS" (in English) and "rejestracja działalności w UK".
+
+**The 30-minute localisation workflow before writing anything:**
+
+1. Open Google in an incognito window. Set the **country** and **language** to the target (Search settings → Region: United Kingdom, Language: Hindi/Punjabi/Polish).
+2. Type the seed concept in the target language and **let Google autocomplete finish it** for you. Capture every variant. This is what people actually type.
+3. Scroll to the **"People also ask"** and **"Related searches"** boxes. Capture all of them.
+4. Repeat in **Bing**, **YouTube** (the autocomplete is different and surfaces voice-search-style queries), and **AnswerThePublic**.
+5. Cross-check with **Google Trends** in country to see relative volume.
+6. Run the same seed against **AlsoAsked** for question-trees.
+7. Open **r/[community]** subreddits and search for the seed term to see how the community phrases it casually.
+8. Now hand the keyword list to a **native speaker who lives in the target diaspora**, not a translator. Ask them to flag terms that sound textbook, formal, or "back home" rather than how UK-resident community members actually talk.
+
+The output is a list of native-feeling phrases that real users type. *Then* you write.
+
+### 17.2 Start with a minimum viable cluster, expand from there
+
+§10 said "8–12 page cluster". That's the target shape for ranking authority. But you don't ship all 12 on day one. The honest minimum-viable starter — the smallest unit that's worth shipping and won't be ignored — is **4–5 pages per language**:
+
+1. **Homepage** in target language — clear value prop, leads with the audience and outcome
+2. **Main service page** — your core commercial offer
+3. **About / credibility page** — owner photo, named team, UK address, real expertise signal
+4. **Contact / CTA page** — phone, WhatsApp Business, address, opening hours
+5. *(Optional starter)* one **FAQ pillar** — the 8–12 highest-volume questions in target language
+
+3–5 solid, deeply-localised pages beat 1 translated homepage every time. Once you have signal (impressions in Search Console, mentions in AI answers), expand to the full 8–12 page cluster from §10 step 3.
+
+### 17.3 Implementation specifics — Lovable, Webflow, Next.js, WordPress
+
+The feedback called out **Lovable** specifically because we're using it. Same pattern applies across all modern frameworks. The non-negotiables:
+
+- **URL routing per language**: `/`, `/pa`, `/pa/services`, `/pa/about`, `/pa/contact`. Real routes that the framework's router can serve as static or server-rendered HTML — not client-side language swaps.
+- **Content stored per language**: separate content files / CMS entries per language. **Never auto-translate on the fly at request time** — the LLM crawler and Google's bot may see different content on different requests, which is bad.
+- **Language switcher in the header**: real `<a href>` links to the actual translated routes (`<a href="/pa">ਪੰਜਾਬੀ</a>`). Update the URL on click.
+- **Per-route metadata**: each page sets its own `<title>`, `<meta description>`, `<html lang>`, hreflang cluster, JSON-LD. If you set these globally and not per-route, Google sees the wrong language signal on translated pages.
+- **Cookie-remember the user's language choice** so they don't pick again on next visit. Don't auto-redirect on first visit (against Google guidance and breaks crawling).
+- **Static-render or server-render translated content.** If the translated text only appears after JavaScript runs, both Google AIO and LLM crawlers may miss it. Test with JS disabled in incognito — the translated text must be in the initial HTML response.
+
+For Lovable: build pages as separate route components per language. Don't try to internationalise a single component with runtime language switching unless you also pre-render each language version into its own HTML file at build time.
+
+### 17.4 Sharpened "do / don't" list
+
+Mostly aligned with §15 but worth re-stating with sharpened nuances:
+
+**Do:**
+
+- ✅ Use **subfolders** (`/pa/...`) on an existing English `.co.uk` site. Default choice, hands down.
+- ✅ Localise (research what people actually search), don't translate.
+- ✅ Ship 4–5 high-quality pages in **one language first**. Get signal. Then expand.
+- ✅ Add hreflang + `<html lang>` + JSON-LD `inLanguage` on every page.
+- ✅ Keep a clean URL-based language switcher.
+
+**Don't:**
+
+- ❌ Don't ship Google Translate output. Down-ranked, kills trust.
+- ❌ Don't launch 10 languages at once. Ship one well, learn, then expand.
+- ❌ Don't buy a separate domain (`.in`, `.pl`, or even a vernacular `.co.uk` brand) on day one. Defer that decision until you have 3+ months of data showing the play works. Subfolder first.
+- ❌ Don't ship thin pages (<500 words). Both Google AIO and LLMs ignore them.
+- ❌ Don't auto-translate content on the fly at request time.
+- ❌ Don't rely on a JS-only language switcher that doesn't change the URL.
+
+### 17.5 Adjusted v1 launch shape (revised from §10)
+
+Putting the feedback and the original plan together, the cleanest **v1 launch shape** for the Punjabi card-terminal example:
+
+1. Sub-folder on existing UK English domain: `yoursite.co.uk/pa/`
+2. **5 pages in Punjabi (Gurmukhi)**: `/pa` (home), `/pa/card-machines-corner-shop` (main service), `/pa/about`, `/pa/contact`, `/pa/faq`
+3. All five with: native-localised content, the five language signals from §11, JSON-LD with `inLanguage`, owner photo + UK address, click-to-call + WhatsApp Business, Last-updated date in Punjabi
+4. Real link-based language switcher: `EN | ਪੰਜਾਬੀ`
+5. `robots.txt` allowing `GPTBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`
+6. Bing Webmaster Tools submitted; Google Search Console set up with the new section
+7. **Then wait 4–8 weeks**, monitor weekly, and only expand to the full 8–12 page cluster (and to a second language) once the first cluster is showing impressions.
+
+That's the smallest thing worth shipping. Everything else is iteration on top.
+
+---
+
 ## Sources
 
 - [How Google's AI Overviews Are Changing SEO In 2026 — EnFuse Solutions](https://www.enfuse-solutions.com/how-googles-ai-overviews-are-changing-seo-in-2026/)
