@@ -24,7 +24,11 @@
 15. [Claude Code .claude/ Folder for Marketers](#claude-code-claude-folder-for-marketers-vicky-lalwani)
 16. [Flipbook: Post-GUI Web Experiences](#flipbook-post-gui-web-experiences)
 17. [Fast-Ranking Playbook: Google + AI Overviews + NotebookLM](#fast-ranking-playbook-google--ai-overviews--notebooklm)
-18. [Actionable Site Playbook](#actionable-site-playbook)
+18. [AI Bot Crawlability & robots.txt](#ai-bot-crawlability--robotstxt)
+19. [Entity SEO & Knowledge Graph Optimization](#entity-seo--knowledge-graph-optimization)
+20. [Digital PR & Brand Mention Strategy](#digital-pr--brand-mention-strategy)
+21. [Internal Linking & Topic Cluster Architecture](#internal-linking--topic-cluster-architecture)
+22. [Actionable Site Playbook](#actionable-site-playbook)
 
 ---
 
@@ -617,6 +621,175 @@ The whole loop runs in minutes per article.
 
 ---
 
+## AI Bot Crawlability & robots.txt
+
+If AI bots can't crawl your site, you don't exist in AI search. This is table stakes.
+
+### The Numbers
+
+- AI bots now account for **51% of all web traffic**
+- Roughly **50 billion AI crawler requests per day** by late 2025
+- If GPTBot, ClaudeBot, or PerplexityBot are blocked in your robots.txt, you're invisible to those platforms
+
+### What to Check
+
+1. **robots.txt** - Make sure you're NOT blocking these user agents:
+   - `GPTBot` (OpenAI/ChatGPT)
+   - `ClaudeBot` (Anthropic/Claude)
+   - `PerplexityBot` (Perplexity)
+   - `Google-Extended` (Gemini) - note: blocking this blocks Gemini but not Google Search
+   - `CCBot` (Common Crawl - feeds many AI training sets)
+
+2. **No login walls or bot-blocking** on content you want AI to find
+3. **Firewall/CDN rules** - some WAFs aggressively block AI crawlers
+4. **llms.txt** at site root - emerging convention to guide AI crawlers to high-priority content
+
+### The Hierarchy of AI Access
+
+```
+robots.txt (don't block AI bots)
+  → llms.txt (guide them to your best content)
+    → Schema markup (help them understand it)
+      → RAG-ready passages (make it extractable)
+```
+
+**Sources:**
+- [Custom Robots.txt Setup: Allowing AI Bots - LinkedIn](https://www.linkedin.com/pulse/custom-robotstxt-setup-allowing-ai-bots-managing-search-banik-dirsc)
+- [AI & SEO Crawlability Tester - Chris Long on LinkedIn](https://www.linkedin.com/posts/chris-long-marketing_very-cool-seo-tool-the-ai-seo-crawlability-activity-7415025133276344320-s07s)
+
+---
+
+## Entity SEO & Knowledge Graph Optimization
+
+AI platforms don't rank pages in isolation. They construct a **probabilistic graph of entities** (companies, products, people) and their relationships. Your site needs to be a verified node in that graph.
+
+### The Entity Authority Gap
+
+Brands with entity presence on Wikidata, Wikipedia, and 4+ third-party platforms see **2.8x more AI citations** than those without verified entity status. AI systems cross-reference your schema against Wikidata, compare your Wikipedia presence against your domain, and check whether your brand name appears consistently across G2, LinkedIn, Crunchbase, and industry directories.
+
+### Organization Schema: The Foundation
+
+Every site needs comprehensive Organization schema with:
+
+```json
+{
+  "@type": "Organization",
+  "name": "Your Brand",
+  "url": "https://yourbrand.com",
+  "sameAs": [
+    "https://www.linkedin.com/company/yourbrand",
+    "https://www.wikidata.org/wiki/Q123456",
+    "https://en.wikipedia.org/wiki/Your_Brand",
+    "https://www.crunchbase.com/organization/yourbrand",
+    "https://twitter.com/yourbrand",
+    "https://github.com/yourbrand"
+  ]
+}
+```
+
+The **sameAs** property links your website entity to authoritative external profiles, helping AI models understand all references point to the same organisation.
+
+### Canonical Brand Description
+
+Write **one canonical 2-3 sentence company description** and post it verbatim across:
+- Your website (About page, footer, schema)
+- LinkedIn company page
+- Crunchbase
+- G2 / Capterra / Trustpilot
+- Google Business Profile
+- Any industry directories
+
+Consistency is the signal. If different platforms describe your brand differently, AI systems become uncertain. Uncertain systems skip to a competitor they can identify clearly.
+
+### Wikidata vs Wikipedia
+
+- **Wikidata**: Machine-readable structured database queried directly by AI systems. Most businesses can create a Wikidata entry manually **without meeting notability requirements**. High leverage, low barrier.
+- **Wikipedia**: Higher barrier (notability requirements) but massive trust signal if achievable. AI systems heavily weight Wikipedia-verified entities.
+
+### The @id Property
+
+Use `@id` in your schema to create a persistent, unique identifier for your entity. This helps AI systems and knowledge graphs connect all your schema across pages into a single coherent entity.
+
+**Sources:**
+- [Entity Authority in AI Search - Search Engine Land](https://searchengineland.com/entity-authority-ai-search-visibility-471619)
+- [Entity SEO and Brand Authority - Schema App](https://www.schemaapp.com/schema-markup/how-entity-seo-supports-brand-authority-in-ai-search/)
+- [Wikidata and SEO - WikiBusines](https://www.wikibusines.com/wikidata-seo-knowledge-graph)
+- [Organization Schema Guide 2026 - Stackmatix](https://www.stackmatix.com/blog/organization-schema-knowledge-graph)
+
+---
+
+## Digital PR & Brand Mention Strategy
+
+Brand mentions are the **#1 correlated factor** with AI visibility (0.664 correlation - Ahrefs). This section covers how to systematically generate them.
+
+### Why Mentions Beat Links for AI
+
+LLMs can figure out the association between brand mentions and websites without needing a hyperlink. The more important factor is that LLMs use brand mentions on publications like Forbes, Inc., and FastCompany **as training data**. A mention without a link still builds AI visibility.
+
+### Tactics That Work
+
+1. **HARO / Connectively / Qwoted** - Pitch quickly. Journalists receive hundreds of responses and choose from the earliest relevant ones. Focus on providing genuinely useful expert quotes with data points.
+
+2. **Digital PR** - Create original research, data studies, or surveys that journalists want to reference. The research itself becomes the asset.
+
+3. **Guest posting on authority sites** - Not for the backlink (though that helps), but for the brand mention on a trusted domain that AI systems will crawl.
+
+4. **Expert roundups and podcast appearances** - Each appearance is a brand mention on an independent domain.
+
+5. **Press releases** - Stack these on top of social posts that are already ranking. The press release links back to your site AND the already-ranking social content, compounding authority.
+
+6. **Industry awards and directories** - Each listing is a consistent brand mention on a trusted third-party source.
+
+### The Virtuous Cycle
+
+Brand mentions → AI training data → AI citations → More visibility → More mention opportunities → More brand mentions
+
+**Sources:**
+- [Ahrefs Study: Brand Mentions Most Correlated with AI Overviews - Chris Long](https://www.linkedin.com/posts/chris-long-marketing_seo-data-study-an-analysis-from-ahrefs-found-activity-7334185782213033986-NI0k)
+- [Digital PR: From HARO to Strategic Storytelling - Rick Pendrick](https://www.linkedin.com/posts/rick-pendrick-215a0528_digitalpr-prstrategy-mediarelations-activity-7439264274910261248-pbF6)
+
+---
+
+## Internal Linking & Topic Cluster Architecture
+
+How your site is structured internally directly affects both traditional SEO and AI citation eligibility.
+
+### Topic Cluster Model
+
+Build content around **pillar pages** with supporting cluster articles:
+
+```
+Pillar Page (broad topic, comprehensive)
+  ├── Cluster Article 1 (specific subtopic)
+  ├── Cluster Article 2 (specific subtopic)
+  ├── Cluster Article 3 (specific subtopic)
+  ├── Cluster Article 4 (specific subtopic)
+  └── Cluster Article 5 (specific subtopic)
+```
+
+- Each cluster post links back to the pillar
+- Cluster posts link to each other where relevant
+- This creates a **semantic web** that search engines and AI can crawl and understand as topical authority
+- **5-10 connected articles** per subtopic is the sweet spot for topical authority in 2026
+
+### Internal Linking Rules
+
+- **No orphan pages** - every page should be reachable via internal links
+- **Contextual links** within body content (not just nav/footer)
+- **Descriptive anchor text** that tells AI what the target page is about
+- **Logical hierarchy** reflected in URL structure, breadcrumbs, and internal linking
+- **No content collision** - no two pages should compete to answer the same primary question (run a quarterly collision scan)
+
+### Single Subject Discipline
+
+Each page should have a **single, clear subject focus**. A page that tries to cover three topics will rank for none of them in AI search. AI systems associate entities with subjects through structured depth. A business that clearly owns a subject gets recommended as the authority on that subject. A business that covers everything superficially gets recommended for nothing.
+
+**Sources:**
+- [Keyword Clustering for Topical Authority 2026 - Samuel Schmitt](https://www.linkedin.com/posts/samuelschmitt_if-you-want-your-content-to-stay-visible-activity-7413844300066738176-mM2n)
+- [Topic Clusters Framework - Akram Ali](https://www.linkedin.com/pulse/topic-clusters-framework-seo-content-marketing-akram-ali-dmo5c)
+
+---
+
 ## Actionable Site Playbook
 
 ### Quick Wins (Do This Week)
@@ -629,6 +802,9 @@ The whole loop runs in minutes per article.
 - [ ] Check **NAP consistency** across your site and all directory listings
 - [ ] Add an **llms.txt** file to your site root as a structured index of your key content
 - [ ] Rewrite **first paragraphs** on key pages: full entity name + what it does, no anaphora
+- [ ] Check **robots.txt** - ensure GPTBot, ClaudeBot, PerplexityBot are NOT blocked
+- [ ] Add **Organization schema with sameAs** linking to LinkedIn, Wikidata, Crunchbase, social profiles
+- [ ] Write **one canonical 2-3 sentence brand description** and deploy it identically across all platforms
 - [ ] Add **130-160 word self-contained answer blocks** to key pages (optimal AI Overview extraction length)
 - [ ] Add **multimodal content** (images, diagrams, video) to top pages (92% correlation with AI Overview citation)
 
@@ -645,6 +821,10 @@ The whole loop runs in minutes per article.
 - [ ] Set up **NotebookLM workflow**: upload competitor URLs + brand docs, use Deep Research for outlines
 - [ ] Add **"Last updated" dates** to all cornerstone content, schedule quarterly refreshes
 - [ ] Add **citable specifics** - replace vague claims with named stats, dates, and study references
+- [ ] Create a **Wikidata entry** for your brand (no notability requirement, direct AI signal)
+- [ ] Run a **content collision scan** - find pages competing for the same primary question
+- [ ] Sign up for **HARO/Connectively/Qwoted** and start pitching expert quotes weekly
+- [ ] Audit **internal linking** - eliminate orphan pages, add contextual body links with descriptive anchors
 
 ### Strategic (This Quarter)
 
