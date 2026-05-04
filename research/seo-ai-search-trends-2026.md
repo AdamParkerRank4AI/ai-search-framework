@@ -303,6 +303,39 @@ Rewriting product descriptions to include measurable specs, scientific data, and
 ### 10. Only 7.2% of Sites Win in Both AI and Traditional Search
 The vast majority of sites that get cited by AI engines are **not** the same ones that rank well in Google. These are nearly separate games requiring separate on-site strategies.
 
+### 11. Google Reads Text ON Images via OCR (Jesper Nissen)
+Google is using **Optical Character Recognition (OCR)** to read text on images and using it to write the SEO title for social media posts. When you post an image on Facebook with text on it, Google reads that text via OCR and uses it for image search ranking. The image itself can rank #1 or #2 in image search depending on the browser. This means text on images is now a ranking signal - local businesses and webshops can use this to rank their images.
+
+### 12. Cloudflare Blocks AI Crawlers by Default
+Since July 2025, **Cloudflare blocks AI crawlers by default** - over 1 million sites affected. If you use Cloudflare, go to dashboard > AI Crawl Control and explicitly allow AI crawlers, or your robots.txt Allow directives are overridden at infrastructure level. **27% of B2B SaaS sites unknowingly block AI crawlers at CDN level.**
+
+### 13. 76.4% of ChatGPT's Most-Cited Pages Updated Within 30 Days
+Content freshness isn't just nice-to-have - it's decisive. Zyppy/SparkToro research found that the vast majority of pages ChatGPT cites have been updated very recently. Stale content gets dropped fast.
+
+### 14. Pages with FCP Under 0.4s Get 3.2x More ChatGPT Citations
+Page speed directly correlates with AI citation rates. Fast-loading pages get cited dramatically more than slow ones - and AI crawlers abandon after ~10 seconds. Sites with comprehensive schema receive **3.2x more AI citations** overall.
+
+### 15. YouTube Is the #1 Most-Cited Domain in AI Overviews
+YouTube accounts for **29.5% of all AI Overview citations** (OtterlyAI, March 2026, 100M+ citations analysed). Custom transcripts = 40-80 citations per 100K views vs 2-5 without. Chapters with timestamps: 78% of timestamped videos are cited multiple times. And crucially: views/likes/subscribers have almost zero correlation (r=-0.03) with AI citations - **description length** is the strongest signal (r=0.31).
+
+### 16. Q&A Format Outperforms Narrative by 340%
+Content structured in explicit question-and-answer format gets **+340% more AI citations** than narrative prose covering the same information. This is consistent across ChatGPT, Perplexity, and Google AI Overviews.
+
+### 17. Google AI Mode: 93% Zero-Click Rate
+Google AI Mode (launched April 2026 with side-by-side browsing) has a **93% zero-click rate**. AI Mode clicks don't appear in Google Search Console (the "Not Provided 2.0" problem). Google self-cites **17.42%** in AI Mode - tripled from 5.7%.
+
+### 18. FAQ & HowTo Schema Deprecated by Google - But Still Work for AI
+Google deprecated FAQ schema (Jan 2026) and HowTo schema (Feb 2026) for their own features. But these schema types are **still read and used by ChatGPT, Perplexity, Claude, and other AI engines**. Keep them.
+
+### 19. Foursquare Powers 70%+ of ChatGPT Local Results
+For local business queries, ChatGPT pulls from Foursquare for **70%+ of results**. If your business isn't on Foursquare with accurate data, you're invisible to ChatGPT local queries.
+
+### 20. Sites with 15+ Entities Have 4.8x Higher Citation Probability
+The more distinct entities (products, people, services, locations) properly marked up with schema on your site, the more likely AI systems are to cite you. Sites with 15+ entities see **4.8x higher citation probability**.
+
+### 21. The Information Gain Patent (Google US 11,354,315 B2)
+Google has a patent specifically for scoring "information gain" - content that adds something new vs. what already exists. Original data = +22% AI visibility. Original quotations = +37% AI visibility. First-hand case studies = up to 2.7x more citations. The March 2026 core update specifically targeted low-information-gain AI content, with AI content farms losing 60-80% traffic.
+
 ---
 
 ## Google's "Searchable Index" Patent (US20250217356A1, July 2025)
