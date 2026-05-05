@@ -357,13 +357,23 @@ Detail: `docs/site-builds/parked-dropped.md` §3
 
 ---
 
+## Section 10 — Additions (141+)
+
+141. **UK Peptides Hub** — Active Priority, build-ready · Pattern: Resurfacing + Long-tail + AI Visibility Gap · YMYL with disciplined four-tier architecture (cosmetic / collagen / GLP-1 prescription / research-grade)
+    - Cross-links with #53 NEW 2 Menopause / HRT as sister site
+    - Cross-links with #75 NEW 24 Gym & Fitness (recovery / supplements crossover)
+    - Front-door candidate for a wider women's-wellness vertical
+    - Detail: `docs/site-builds/peptides-hub.md` + `docs/site-builds/peptides-pilot-v0.md`
+
+---
+
 ## Counts
 
-- Active builds (priority + active): ~36 sites
+- Active builds (priority + active): ~37 sites (Peptides Hub added)
 - Phase 2: ~7 sites
 - Parked: ~10 sites
 - Dropped (kept on record): ~14 plays
 - CPL tools: 12 utilities
-- Estimated total Astro pages across active build set: ~17,000–20,000
+- Estimated total Astro pages across active build set: ~17,500–20,500
 
-The numbered index above runs **1–140**. Every play we've discussed has a number. New ideas slot in at 141+.
+The numbered index above runs **1–141**. Every play we've discussed has a number. New ideas slot in at 142+.

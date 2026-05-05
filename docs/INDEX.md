@@ -115,6 +115,31 @@ Last updated: 2026-04-26 · Branch: `claude/niche-development-setup-PJpQh`
 - Affiliate stack with apply-Week-1 list
 - All decisions locked except who-does-the-visits
 
+**`site-builds/peptides-hub.md`** (~440 lines)
+- Full UK master plan for the peptides hub (#141)
+- 16 sections matching FindATradey + gym-hub depth
+- **Four-tier regulatory architecture** — cosmetic / food-grade collagen / prescription GLP-1 / research-grade
+- The strategic question: standalone vs inside women's-wellness umbrella (recommends standalone for Path A, with cross-link to future menopause hub)
+- Audience: women 35–60 primary, longevity / biohacking secondary
+- Modifier matrix per tier
+- ~600 URLs at full UK scale
+- Data model (per peptide / per cosmetic product / per collagen brand / per UK GLP-1 clinic / per research-supplier purity-comparison record)
+- Editorial discipline rules (no human dosing on tier-4, ever)
+- Monetisation stack (Awin/Impact for tier 1+2; clinic affiliate for tier 3; direct-supplier-only for tier 4; Phase-2 own white-label collagen)
+- Risk register (MHRA action, affiliate deplatforming, payment-processor freeze, GLP-1 clinic compliance change, AI Overview refusal, reputational)
+- Year-1 success criteria targeting £24k/month
+- Strategic insight: the front door for a women's-wellness vertical worth £500k–£2m/year at maturity
+
+**`site-builds/peptides-pilot-v0.md`** (~530 lines)
+- v0.1 locked pilot scope: 35 URLs across all four tiers
+- Locked: domain `findapeptide.co.uk`, brand voice (wellness-led, not bro-biohacker), editorial policy, pre-launch legal review (£1,500–3,000 budget) **required** before tier-4 pages go live
+- 5 site-chrome + 8 cosmetic + 7 collagen + 8 GLP-1 + 4 research + 3 cross-tier women's = 35 URLs
+- Per-tier page templates fully spec'd (TierBanner + ResearchStatusBanner the structural defenders)
+- Astro project structure for `sites/findapeptide/`
+- 4-week build checklist (Week 2 = legal review + editorial policy)
+- v0.1 success criteria including **0 MHRA contact incidents** as the headline goal
+- 4 decisions still open (lawyer choice, tier-4 risk appetite, supplier selection, writer capacity)
+
 ### Reference / portable
 
 **`reference/portable-prompts.md`** (NEW)
@@ -157,12 +182,12 @@ The two sites are scaffolded in `sites/`, separate from the docs. README at `sit
 | Category | Files | Lines |
 |---|---|---|
 | Operating layer | 1 | 180 |
-| Master inventory | 1 | 369 |
+| Master inventory | 1 | 380 |
 | Lane-specific deep docs | 2 | 899 |
-| Per-site briefs | 4 | 1,922 |
-| Reference / portable | 3 (NEW) | ~1,800 |
-| **Docs total** | **11** | **~5,170** |
-| Sites scaffolded | 89 source files | ~10k LOC |
-| **Repo total** | **100 files** | **~15k LOC** |
+| Per-site briefs | 6 (FindATradey × 2, Gym × 2, Peptides × 2) | ~2,890 |
+| Reference / portable | 3 | ~1,800 |
+| **Docs total** | **13** | **~6,150** |
+| Sites scaffolded | 89 source files (FindATradey + FindAGym) | ~10k LOC |
+| **Repo total** | **102 files** | **~16k LOC** |
 
-Every play we discussed in chat is now in a file. Every prompt is paste-ready. Every site has a master plan + a pilot scope + scaffolded code.
+Every play we discussed in chat is now in a file. Every prompt is paste-ready. Every site (FindATradey, FindAGym, Peptides Hub) has a master plan + a pilot scope; FindATradey + FindAGym also have scaffolded code, Peptides Hub is docs-only awaiting your go-ahead.
