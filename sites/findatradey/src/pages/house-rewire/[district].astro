@@ -1,0 +1,93 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, niceic, electricianPricing } from '../../lib/data';
+import { rewireFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = niceic.districts[pc]?.registered_count ?? 0;
+const top3 = niceic.districts[pc]?.top_3 ?? [];
+const pricing = electricianPricing.districts[pc];
+const rewirePrice = pricing?.rewire_3bed_average_gbp ?? 4500;
+
+const faqs = rewireFAQs({ d: district, rewirePrice });
+const factLine = `A 3-bed full rewire in ${town} (${pc}) typically runs £${rewirePrice.toLocaleString()} in 2026, including Part P certification. ${district.housing_stock_dominant.includes('Victorian') || district.median_property_year < 1980 ? 'Older properties commonly need this — fabric/rubber-insulated cabling is past safe service life.' : 'Modern properties rarely need full rewires unless previous work was botched.'}`;
+const verdict = `Round-pin sockets? Rewireable fuses? Three NICEIC / NAPIT registered electricians in your inbox within the hour.`;
+
+const title = `House Rewire in ${town} (${pc}) — From £${rewirePrice.toLocaleString()} 2026 | FindATradey`;
+const description = `Full house rewire in ${town}. NICEIC / NAPIT / ELECSA registered electricians. 3-bed rewire from £${rewirePrice.toLocaleString()}, Part P self-certified. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Electrician', url: 'https://findatradey.co.uk/electrician/' },
+  { name: `House rewire ${town}`, url: `https://findatradey.co.uk/house-rewire/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `House rewire in ${town}`,
+    serviceType: 'Domestic rewiring',
+    district,
+    description,
+    averagePrice: rewirePrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="House rewire" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="electrician" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="electrician" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={niceic._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="electrician" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 rewire prices in ${town}`}
+      rows={[
+        { label: '1-bed flat', value: `£${Math.round(rewirePrice * 0.55).toLocaleString()}–${Math.round(rewirePrice * 0.7).toLocaleString()}` },
+        { label: '2-bed property', value: `£${Math.round(rewirePrice * 0.7).toLocaleString()}–${Math.round(rewirePrice * 0.85).toLocaleString()}` },
+        { label: '3-bed property', value: `£${rewirePrice.toLocaleString()}`, note: `Standard ${town} 3-bed rewire including new consumer unit` },
+        { label: '4-bed property', value: `£${Math.round(rewirePrice * 1.3).toLocaleString()}–${Math.round(rewirePrice * 1.6).toLocaleString()}` },
+        { label: 'Period property uplift', value: '+15–25%', note: 'Lath-and-plaster ceilings, lime-mortar walls, lifting floorboards over joists' },
+        { label: 'Making-good plastering', value: 'Quoted separately', note: 'Most electricians sub-contract or scope this out' },
+      ]}
+      footnote="Prices include Part P self-certification and a new consumer unit. Excludes redecoration."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">Does {town} housing stock typically need rewiring?</h2>
+    <p class="text-ink-700">
+      The housing in {pc} is predominantly {district.housing_stock_dominant.toLowerCase()}, with the median property dating from around {district.median_property_year}. {district.median_property_year < 1965 ? 'Properties this old were originally fitted with rubber- or fabric-insulated cabling that's now well past safe service life — full rewires are common.' : district.median_property_year < 1985 ? 'Properties this age were originally PVC-insulated but on smaller cable sizes than modern standards. Many have had partial work done, so a full EICR will tell you whether a full rewire or targeted upgrade is more economic.' : 'Properties this age generally do not need full rewires unless previous work was substandard. An EICR will identify any specific circuits needing attention.'}
+    </p>
+    <p class="text-ink-700 mt-3">
+      Rewires are notifiable under Part P. Use a registered electrician (NICEIC / NAPIT / ELECSA) and they self-certify. Get a registered company name + cert number in writing before deposit.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/house-rewire" pageLabel="rewiring electrician" />
+  <RelatedServices district={district} currentService="house-rewire" />
+</TradePage>

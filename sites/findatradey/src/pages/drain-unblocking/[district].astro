@@ -1,0 +1,91 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, gasSafe, plumberPricing } from '../../lib/data';
+import { drainUnblockingFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = gasSafe.districts[pc]?.registered_count ?? 0;
+const top3 = gasSafe.districts[pc]?.top_3 ?? [];
+const pricing = plumberPricing.districts[pc];
+const averagePrice = pricing?.drain_unblocking_average_gbp ?? 105;
+
+const faqs = drainUnblockingFAQs({ d: district, averagePrice });
+const factLine = `Drain unblocking in ${town} (${pc}) typically costs £${averagePrice} for a single household connection. Shared sewers outside your boundary are the water company's responsibility — call them first.`;
+const verdict = `Slow drain or full back-up? Three local drainage specialists in your inbox within the hour.`;
+
+const title = `Drain Unblocking in ${town} (${pc}) — From £${averagePrice} | FindATradey`;
+const description = `Drain unblocking in ${town}. High-pressure jetting, rod & camera, CCTV survey. Typical price from £${averagePrice}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Plumber', url: 'https://findatradey.co.uk/plumber/' },
+  { name: `Drain unblocking ${town}`, url: `https://findatradey.co.uk/drain-unblocking/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Drain unblocking in ${town}`,
+    serviceType: 'Drainage',
+    district,
+    description,
+    averagePrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Drain unblocking" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="plumber" district={district.postcode_district} intent="emergency" />
+
+  <TrustBlock trade="plumber" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={gasSafe._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="plumber" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 drain unblocking prices in ${town}`}
+      rows={[
+        { label: 'Single household drain unblock', value: `£${averagePrice}`, note: 'Standard rod / jet, accessible chamber' },
+        { label: 'Major blockage / root ingress', value: `£${Math.round(averagePrice * 2.2)}+`, note: 'Heavy jetting + cutter head' },
+        { label: 'CCTV drain survey', value: '£90–180', note: 'Diagnostic only — does not include unblocking' },
+        { label: 'Out-of-hours premium', value: '+50–100%' },
+      ]}
+      footnote="If the blockage is in the shared sewer outside your boundary, the water company unblocks free. Call them before paying privately."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">Boundary check before you pay</h2>
+    <p class="text-ink-700">
+      In England, sewers and lateral drains shared with neighbours have been the water company's responsibility since 2011. If the blockage is in a shared sewer outside your property boundary, your local water company (Anglian, Thames, Southern, etc.) will unblock it at no charge. Call their emergency line before booking a private contractor.
+    </p>
+    <p class="text-ink-700 mt-3">
+      Drains within your boundary, and any pipework feeding only your property, remain your responsibility. {town}'s {district.housing_stock_dominant.toLowerCase()} stock often shares chambers with neighbours — get the property deeds out and check the drainage layout if you're not sure.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/drain-unblocking" pageLabel="drainage specialist" />
+  <RelatedServices district={district} currentService="drain-unblocking" />
+</TradePage>

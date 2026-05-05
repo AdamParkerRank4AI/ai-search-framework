@@ -1,0 +1,23 @@
+---
+const nav = [
+  { href: '/plumber/', label: 'Plumbers' },
+  { href: '/electrician/', label: 'Electricians' },
+  { href: '/heating-engineer/', label: 'Heating engineers' },
+  { href: '/how-we-vet-tradesmen/', label: 'How we vet' },
+];
+---
+<header class="border-b border-ink-900/10 bg-white sticky top-0 z-30">
+  <div class="container-wide flex items-center justify-between py-4">
+    <a href="/" class="text-lg font-bold text-brand-700 no-underline">
+      FindATradey
+    </a>
+    <nav class="hidden md:flex items-center gap-6">
+      {nav.map((item) => (
+        <a href={item.href} class="text-ink-700 text-sm font-medium no-underline hover:text-brand-700">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <a href="#lead-form" class="btn-primary text-sm">Get 3 quotes</a>
+  </div>
+</header>

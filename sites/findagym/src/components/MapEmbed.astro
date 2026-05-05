@@ -1,0 +1,36 @@
+---
+export interface Props {
+  lat: number;
+  lng: number;
+  label: string;
+  zoom?: number;
+}
+
+const { lat, lng, label, zoom = 13 } = Astro.props;
+const id = `map-${Math.random().toString(36).slice(2, 8)}`;
+---
+<section class="bg-white border border-ink-900/10 rounded-xl overflow-hidden">
+  <div id={id} data-lat={lat} data-lng={lng} data-zoom={zoom} data-label={label} class="w-full h-72 bg-ink-900/5"></div>
+</section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const containers = document.querySelectorAll<HTMLElement>('[id^="map-"][data-lat]');
+    if (containers.length === 0) return;
+
+    const { default: L } = await import('https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js');
+    containers.forEach((el) => {
+      const lat = parseFloat(el.dataset.lat ?? '0');
+      const lng = parseFloat(el.dataset.lng ?? '0');
+      const zoom = parseInt(el.dataset.zoom ?? '13', 10);
+      const label = el.dataset.label ?? '';
+      const map = L.map(el).setView([lat, lng], zoom);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
+        maxZoom: 18,
+      }).addTo(map);
+      L.marker([lat, lng]).addTo(map).bindPopup(label);
+    });
+  });
+</script>

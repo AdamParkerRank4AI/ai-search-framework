@@ -1,0 +1,15 @@
+{
+  "_comment": "Per-district counts and top-3-by-proximity. Populate from Gas Safe register search per postcode. Counts are seed values to refine post-scrape.",
+  "_refresh_frequency": "weekly",
+  "_last_refresh": null,
+  "districts": {
+    "CO1": { "registered_count": 0, "top_3": [] },
+    "SL4": { "registered_count": 0, "top_3": [] },
+    "GU15": { "registered_count": 0, "top_3": [] },
+    "GU1": { "registered_count": 0, "top_3": [] },
+    "GU7": { "registered_count": 0, "top_3": [] },
+    "RG21": { "registered_count": 0, "top_3": [] },
+    "GU11": { "registered_count": 0, "top_3": [] },
+    "GU14": { "registered_count": 0, "top_3": [] }
+  }
+}

@@ -1,0 +1,49 @@
+---
+export interface Props {
+  trade: 'plumber' | 'electrician' | 'boiler';
+  registeredCount: number;
+  town: string;
+  postcodeDistrict: string;
+  lastRefresh?: string;
+}
+
+const { trade, registeredCount, town, postcodeDistrict, lastRefresh } = Astro.props;
+
+const badges = trade === 'plumber'
+  ? [
+      { label: 'Gas Safe', desc: 'Required for any work touching gas appliances', registerUrl: 'https://www.gassaferegister.co.uk' },
+      { label: 'WaterSafe', desc: 'Approved for plumbing on the mains supply', registerUrl: 'https://www.watersafe.org.uk' },
+    ]
+  : trade === 'electrician'
+    ? [
+        { label: 'NICEIC', desc: 'Industry-leading electrical certification body', registerUrl: 'https://niceic.com' },
+        { label: 'NAPIT', desc: 'Government-approved Part P registered installer', registerUrl: 'https://www.napit.org.uk' },
+        { label: 'ELECSA', desc: 'Domestic electrical installer competent person scheme', registerUrl: 'https://www.elecsa.co.uk' },
+      ]
+    : [
+        { label: 'Gas Safe', desc: 'Required for any gas boiler or appliance work', registerUrl: 'https://www.gassaferegister.co.uk' },
+        { label: 'OFTEC', desc: 'Required for oil-fired boilers and heating', registerUrl: 'https://www.oftec.org' },
+        { label: 'MCS', desc: 'Required for heat pumps + the Boiler Upgrade Scheme', registerUrl: 'https://mcscertified.com' },
+      ];
+
+const refreshLine = lastRefresh
+  ? `Verified weekly. Last refresh: ${lastRefresh}.`
+  : 'Verified weekly. Refresh underway.';
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <div class="flex flex-wrap items-center gap-3 mb-4">
+    <span class="text-xs font-bold uppercase tracking-wider text-brand-700">How we vet</span>
+    <span class="text-xs text-ink-500">{refreshLine}</span>
+  </div>
+  <p class="text-ink-900 mb-4">
+    Every {trade === 'boiler' ? 'heating engineer' : trade} we match you with is checked against the registers below. We only show engineers whose registration is current. <strong>{registeredCount}</strong> registered cover {town} ({postcodeDistrict}).
+  </p>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+    {badges.map((b) => (
+      <a href={b.registerUrl} target="_blank" rel="noopener noreferrer" class="border border-ink-900/10 rounded-lg p-3 hover:border-brand-300 transition no-underline">
+        <span class="block text-sm font-semibold text-ink-900">{b.label} ↗</span>
+        <span class="block text-xs text-ink-700 mt-1">{b.desc}</span>
+      </a>
+    ))}
+  </div>
+</section>

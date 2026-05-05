@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Contact FindATradey';
+const description = 'Get in touch with FindATradey. Homeowner queries, tradesmen, press and partnerships.';
+---
+<BaseLayout title={title} description={description}>
+  <article class="container-prose py-12 max-w-none">
+    <h1 class="text-4xl font-bold text-ink-900">Contact</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Questions about a job, a quote, an engineer? Or want to list as a tradesman?
+    </p>
+
+    <div class="mt-8 grid sm:grid-cols-2 gap-6">
+      <div class="bg-white border border-ink-900/10 rounded-xl p-6">
+        <p class="font-semibold text-ink-900">Homeowners</p>
+        <p class="mt-2 text-ink-700 text-sm">
+          Got a job to do? The fastest way is the form on any of our service pages — we'll match you with three vetted engineers in an hour.
+        </p>
+        <a href="/" class="mt-4 inline-block text-brand-700 font-medium">Find a tradesman →</a>
+      </div>
+      <div class="bg-white border border-ink-900/10 rounded-xl p-6">
+        <p class="font-semibold text-ink-900">Tradesmen</p>
+        <p class="mt-2 text-ink-700 text-sm">
+          Want to receive vetted local leads at £25–60 per won job?
+        </p>
+        <a href="/for-tradesmen/" class="mt-4 inline-block text-brand-700 font-medium">Apply →</a>
+      </div>
+    </div>
+
+    <div class="mt-10 bg-white border border-ink-900/10 rounded-xl p-6">
+      <p class="font-semibold text-ink-900">General enquiries</p>
+      <p class="mt-2 text-ink-700 text-sm">
+        For anything else — press, partnerships, lead-quality complaints, or general questions — email
+        <a href="mailto:hello@findatradey.co.uk" class="text-brand-700 font-medium">hello@findatradey.co.uk</a>.
+        We aim to reply within one working day.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

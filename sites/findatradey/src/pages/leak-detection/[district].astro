@@ -1,0 +1,91 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, gasSafe, plumberPricing } from '../../lib/data';
+import { leakDetectionFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = gasSafe.districts[pc]?.registered_count ?? 0;
+const top3 = gasSafe.districts[pc]?.top_3 ?? [];
+const pricing = plumberPricing.districts[pc];
+const averagePrice = pricing?.leak_detection_average_gbp ?? 130;
+
+const faqs = leakDetectionFAQs({ d: district, averagePrice });
+const factLine = `Specialist leak detection in ${town} (${pc}) typically runs £${averagePrice} for a non-invasive trace using thermal imaging or acoustic gear. Most insurance policies pay for it under "trace and access".`;
+const verdict = `Don't lift the floor first. Find the leak first. Three local specialists in your inbox within the hour.`;
+
+const title = `Leak Detection in ${town} (${pc}) — Non-Invasive Trace 2026 | FindATradey`;
+const description = `Specialist water leak detection in ${town}. Thermal imaging, acoustic & tracer-gas tracing. Typical cost from £${averagePrice}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Plumber', url: 'https://findatradey.co.uk/plumber/' },
+  { name: `Leak detection ${town}`, url: `https://findatradey.co.uk/leak-detection/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Leak detection in ${town}`,
+    serviceType: 'Plumbing — leak detection',
+    district,
+    description,
+    averagePrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Leak detection" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="plumber" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="plumber" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={gasSafe._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="plumber" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 leak detection prices in ${town}`}
+      rows={[
+        { label: 'Standard trace (1–2 hrs on site)', value: `£${averagePrice}`, note: 'Thermal + acoustic kit, single area of concern' },
+        { label: 'Complex trace (multi-area)', value: `£${Math.round(averagePrice * 1.6)}–${Math.round(averagePrice * 2.2)}`, note: 'When more than one room is affected or pipes are buried under floors' },
+        { label: 'Tracer gas (helium / hydrogen)', value: `£${Math.round(averagePrice * 1.4)}+`, note: 'Used for inaccessible pipes — drives, walls, slabs' },
+        { label: 'Insurance "trace & access" cover', value: 'Usually included', note: 'Once a water-damage claim is open' },
+      ]}
+      footnote="Detection costs are usually claimable on home insurance under trace-and-access. Always quote before authorising work."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">When to call a specialist (and when not to)</h2>
+    <p class="text-ink-700">
+      Call a leak-detection specialist if water is appearing somewhere you can see but you can't trace its source — wet patches in a ceiling, a pressure drop in your boiler that won't hold, a meter ticking when nothing is on. Don't call one if there's an obvious source (visible drip, joint, valve) — a regular plumber will fix that for less.
+    </p>
+    <p class="text-ink-700 mt-3">
+      A {town} property of around {district.median_property_year} typically uses a mix of original copper and modern plastic pushfit. Most leaks at this age sit at the joint between the two, often where the original mains comes into the kitchen. A thermal trace finds it in under an hour.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/leak-detection" pageLabel="leak detection specialist" />
+  <RelatedServices district={district} currentService="leak-detection" />
+</TradePage>

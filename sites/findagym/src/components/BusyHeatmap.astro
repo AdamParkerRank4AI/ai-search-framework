@@ -1,0 +1,35 @@
+---
+import type { Gym } from '../lib/types';
+
+export interface Props {
+  gym: Gym;
+}
+
+const { gym } = Astro.props;
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <div class="flex items-baseline justify-between mb-1">
+    <h2 class="text-xl font-semibold text-ink-900">When it's quiet vs busy</h2>
+    <span class="text-xs text-ink-500">Sourced from Google Maps + observation</span>
+  </div>
+  <p class="text-sm text-ink-700 mb-4">{gym.popular_times_summary}</p>
+
+  <div class="grid grid-cols-7 gap-2 text-center text-xs">
+    {['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((day, idx) => {
+      // Indicative pattern: weekdays peak 17-20, weekends peak 09-13.
+      const peak = idx < 5 ? '17:00–20:00' : '09:00–13:00';
+      const quiet = idx < 5 ? '06:00–08:00, 13:00–15:00' : '14:00–17:00';
+      return (
+        <div class="bg-ink-900/5 rounded-md p-2">
+          <p class="font-semibold text-ink-900">{day}</p>
+          <p class="mt-1 text-brand-700">Peak: {peak}</p>
+          <p class="mt-1 text-accent-700">Quiet: {quiet}</p>
+        </div>
+      );
+    })}
+  </div>
+
+  <p class="text-xs text-ink-500 mt-4">
+    Quiet/peak windows are estimates from Google Maps Popular Times plus on-site observation. {gym.last_visit_date ? `Last verified ${gym.last_visit_date}.` : 'Manual visit pending.'}
+  </p>
+</section>

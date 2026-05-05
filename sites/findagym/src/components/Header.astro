@@ -1,0 +1,19 @@
+---
+const nav = [
+  { href: '/colchester/', label: 'Colchester' },
+  { href: '/best-gyms-colchester/', label: 'Best gyms' },
+  { href: '/quietest-gyms-colchester/', label: 'Quietest gyms' },
+  { href: '/how-we-rate-gyms/', label: 'How we rate' },
+];
+---
+<header class="border-b border-ink-900/10 bg-white sticky top-0 z-30">
+  <div class="container-wide flex items-center justify-between py-4">
+    <a href="/" class="text-lg font-bold text-brand-700 no-underline">FindAGym</a>
+    <nav class="hidden md:flex items-center gap-6">
+      {nav.map((item) => (
+        <a href={item.href} class="text-ink-700 text-sm font-medium no-underline hover:text-brand-700">{item.label}</a>
+      ))}
+    </nav>
+    <a href="#enquire" class="btn-primary text-sm">Find a gym</a>
+  </div>
+</header>

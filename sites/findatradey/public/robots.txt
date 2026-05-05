@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://findatradey.co.uk/sitemap-index.xml

@@ -1,0 +1,95 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, mcs, boilerPricing } from '../../lib/data';
+import { heatPumpInstallerFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = mcs.districts[pc]?.heat_pump_count ?? 0;
+const top3 = mcs.districts[pc]?.top_3 ?? [];
+const pricing = boilerPricing.districts[pc];
+const hpPrice = pricing?.heat_pump_install_average_gbp ?? 11500;
+const netCost = Math.max(0, hpPrice - 7500);
+
+const faqs = heatPumpInstallerFAQs({ d: district, hpPrice });
+const factLine = `${registered || 'Multiple'} MCS-certified heat pump installers cover ${town} (${pc}). Typical air source heat pump install: £${hpPrice.toLocaleString()} before grants. After £7,500 BUS grant, net cost ≈ £${netCost.toLocaleString()}. From July 2026, oil/LPG-replacement grant rises to £9,000.`;
+const verdict = `Considering the BUS grant? Three MCS-certified installers in your inbox within the hour.`;
+
+const title = `Heat Pump Installer in ${town} (${pc}) — MCS-Certified, BUS Grant 2026 | FindATradey`;
+const description = `Air source heat pump installation in ${town}. MCS-certified installers, £7,500 BUS grant (£9,000 for oil/LPG replacement from July 2026). Typical net cost £${netCost.toLocaleString()}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Heating engineer', url: 'https://findatradey.co.uk/heating-engineer/' },
+  { name: `Heat pump ${town}`, url: `https://findatradey.co.uk/heat-pump-installer/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Heat pump installer in ${town}`,
+    serviceType: 'Heat pump installation (MCS)',
+    district,
+    description,
+    averagePrice: hpPrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Heat pump installer" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="boiler" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="boiler" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={mcs._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="boiler" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 heat pump prices in ${town}`}
+      rows={[
+        { label: 'Air source heat pump (1-bed flat)', value: `£${Math.round(hpPrice * 0.7).toLocaleString()}` },
+        { label: 'Air source heat pump (3-bed home, gas swap)', value: `£${hpPrice.toLocaleString()}`, note: 'Standard install — most common' },
+        { label: 'Air source heat pump (4–5 bed home)', value: `£${Math.round(hpPrice * 1.4).toLocaleString()}–${Math.round(hpPrice * 1.7).toLocaleString()}` },
+        { label: 'Ground source heat pump', value: '£18,000–35,000', note: 'Borehole or trenches required' },
+        { label: 'BUS grant (gas / electric replacement)', value: '–£7,500', note: 'Direct discount applied by installer' },
+        { label: 'BUS grant (oil / LPG replacement, from July 2026)', value: '–£9,000' },
+        { label: 'Air-to-air heat pump (since April 2026)', value: '–£2,500', note: 'New BUS category for split-unit installs' },
+      ]}
+      footnote="Net cost shown is after BUS grant. Heat-loss survey, radiator upgrades and new pipework can change the headline figure significantly."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">Is your {town} property heat-pump ready?</h2>
+    <p class="text-ink-700">
+      Heat pumps run at lower flow temperatures (45–55°C) than gas boilers (~70°C), which means existing radiators sized for the old system often need uprating. The first step on every legitimate quote is a heat-loss survey — room by room, calculating the kW needed for the new system and the radiator capacity required to deliver it. If a quote skips the survey, walk away.
+    </p>
+    <p class="text-ink-700 mt-3">
+      In {town}, properties dating from around {district.median_property_year} typically have either single-panel radiators or older convector types — most need at least 2–3 rooms upgraded to deliver the lower flow temperature comfortably. The MCS installer's role is to model that, present options, and apply the grant on your behalf to Ofgem. You don't apply yourself.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/heat-pump-installer" pageLabel="MCS heat pump installer" />
+  <RelatedServices district={district} currentService="heat-pump-installer" />
+</TradePage>

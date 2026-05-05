@@ -1,0 +1,30 @@
+---
+import type { Gym } from '../lib/types';
+
+export interface Props {
+  gym: Gym;
+}
+
+const { gym } = Astro.props;
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <h2 class="text-xl font-semibold text-ink-900 mb-4">Honest pros & cons</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-accent-700 font-bold mb-2">Pros</p>
+      <ul class="space-y-2 text-sm">
+        {gym.honest_pros.map((p) => (
+          <li class="flex gap-2 text-ink-900"><span class="text-accent-700">✓</span><span>{p}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-brand-700 font-bold mb-2">Cons</p>
+      <ul class="space-y-2 text-sm">
+        {gym.honest_cons.map((c) => (
+          <li class="flex gap-2 text-ink-900"><span class="text-brand-700">×</span><span>{c}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

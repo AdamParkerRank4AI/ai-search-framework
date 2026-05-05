@@ -1,0 +1,93 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, gasSafe, boilerPricing } from '../../lib/data';
+import { newBoilerInstallFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = gasSafe.districts[pc]?.registered_count ?? 0;
+const top3 = gasSafe.districts[pc]?.top_3 ?? [];
+const pricing = boilerPricing.districts[pc];
+const combiPrice = pricing?.new_combi_install_average_gbp ?? 2700;
+
+const faqs = newBoilerInstallFAQs({ d: district, combiPrice });
+const factLine = `A new combi boiler installation in ${town} (${pc}) typically runs £${combiPrice.toLocaleString()} in 2026 fitted, including 8–10 year warranty if installed by an accredited installer. Heat-pump-replacement grants of £7,500 (£9,000 for oil/LPG from July 2026) apply to heat pumps only.`;
+const verdict = `Ageing boiler? Three quotes from accredited Gas Safe installers in your inbox within the hour.`;
+
+const title = `New Boiler Install in ${town} (${pc}) — From £${combiPrice.toLocaleString()} | FindATradey`;
+const description = `New combi boiler installation in ${town}. Worcester / Vaillant / Ideal accredited installers. Typical fitted price from £${combiPrice.toLocaleString()}, 8–10 year warranty. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Heating engineer', url: 'https://findatradey.co.uk/heating-engineer/' },
+  { name: `New boiler ${town}`, url: `https://findatradey.co.uk/new-boiler-install/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `New boiler installation in ${town}`,
+    serviceType: 'Boiler installation',
+    district,
+    description,
+    averagePrice: combiPrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="New boiler install" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="boiler" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="boiler" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={gasSafe._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="boiler" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 new boiler prices in ${town}`}
+      rows={[
+        { label: 'Combi boiler (1 bathroom)', value: `£${combiPrice.toLocaleString()}`, note: 'Fitted, like-for-like swap' },
+        { label: 'Combi boiler (2 bathrooms — 30–35 kW)', value: `£${Math.round(combiPrice * 1.15).toLocaleString()}` },
+        { label: 'System boiler (cylinder retained)', value: `£${Math.round(combiPrice * 1.2).toLocaleString()}–${Math.round(combiPrice * 1.4).toLocaleString()}` },
+        { label: 'Conversion (regular → combi, cylinder removed)', value: `£${Math.round(combiPrice * 1.4).toLocaleString()}–${Math.round(combiPrice * 1.7).toLocaleString()}`, note: 'Includes new gas pipe, possibly flue relocation' },
+        { label: 'Power flush (system clean)', value: '£400–700', note: 'Required by most manufacturers to honour warranty' },
+        { label: 'Smart thermostat (Hive / Nest / tado°)', value: '£200–350' },
+      ]}
+      footnote="Prices include 8–10 year manufacturer warranty if installed by an accredited installer. Annual service required to keep warranty active."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">Sizing your boiler in {town}</h2>
+    <p class="text-ink-700">
+      Combi boilers in the UK come in 24 kW, 30 kW, 35 kW and 42 kW sizes. The right size depends on your hot-water demand (number of bathrooms, simultaneous showers) more than central-heating load. A 1-bathroom {town} flat is comfortable on a 24 kW; a 3-bed family home with one bathroom typically does well on a 30 kW; two bathrooms or a power-shower install need 35 kW+.
+    </p>
+    <p class="text-ink-700 mt-3">
+      Avoid quotes that don't include a heat-loss calculation. Oversizing is the most common mis-sale in the UK boiler market — a too-big boiler short-cycles, runs inefficiently, and dies faster.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/new-boiler-install" pageLabel="new boiler installer" />
+  <RelatedServices district={district} currentService="new-boiler-install" />
+</TradePage>

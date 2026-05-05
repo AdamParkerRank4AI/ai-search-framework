@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { districts } from '../../lib/data';
+
+const services = [
+  { slug: 'emergency-plumber', label: 'Emergency plumber', desc: '24-hour, burst pipes, leaks, breakdowns' },
+  { slug: 'leak-detection', label: 'Leak detection', desc: 'Thermal, acoustic and tracer-gas tracing' },
+  { slug: 'drain-unblocking', label: 'Drain unblocking', desc: 'Rod, jet, CCTV survey for blocked drains' },
+];
+
+const title = 'Plumbers UK — Emergency, Leak Detection, Drainage | FindATradey';
+const description = 'Find a verified Gas Safe / WaterSafe plumber in your UK town. Emergency callouts, leak detection, drain unblocking. Three vetted quotes within an hour.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Plumbers</p>
+      <h1 class="mt-2 text-4xl font-bold text-ink-900">UK plumbers — emergency, leak detection, drainage</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">Verified Gas Safe and WaterSafe registered plumbers across the UK. Pick a service below.</p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12 grid md:grid-cols-3 gap-4">
+    {services.map((s) => (
+      <a href={`/${s.slug}/`} class="block bg-white border border-ink-900/10 rounded-xl p-6 hover:border-brand-300 transition no-underline">
+        <p class="text-lg font-semibold text-ink-900">{s.label}</p>
+        <p class="mt-2 text-ink-700 text-sm">{s.desc}</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="container-wide py-8 border-t border-ink-900/10">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">Plumbers by town</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      {districts.map((d) => (
+        <a href={`/emergency-plumber/${d.slug}/`} class="block border border-ink-900/10 rounded-lg p-3 hover:border-brand-300 transition no-underline">
+          <p class="font-medium text-ink-900">{d.town}</p>
+          <p class="text-xs text-ink-500 mt-1">{d.postcode_district} · {d.county}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

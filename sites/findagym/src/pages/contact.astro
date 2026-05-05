@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Contact FindAGym';
+const description = 'Get in touch with FindAGym. Member feedback, gym operators, press, partnerships.';
+---
+<BaseLayout title={title} description={description}>
+  <article class="container-prose py-12 max-w-none">
+    <h1 class="text-4xl font-bold text-ink-900">Contact</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Got something to add? Spotted a fact we got wrong? Run a gym you'd like reviewed?
+    </p>
+
+    <div class="mt-8 grid sm:grid-cols-2 gap-6">
+      <div class="bg-white border border-ink-900/10 rounded-xl p-6">
+        <p class="font-semibold text-ink-900">Members</p>
+        <p class="mt-2 text-ink-700 text-sm">
+          Train at a gym we cover and our read is off? Tell us — that's how the data improves. Email
+          <a href="mailto:hello@findagym.co.uk" class="text-brand-700 font-medium">hello@findagym.co.uk</a>.
+        </p>
+      </div>
+      <div class="bg-white border border-ink-900/10 rounded-xl p-6">
+        <p class="font-semibold text-ink-900">Gym operators</p>
+        <p class="mt-2 text-ink-700 text-sm">
+          Want a premium listing or to claim your profile?
+        </p>
+        <a href="/for-gyms/" class="mt-4 inline-block text-brand-700 font-medium">For gym operators →</a>
+      </div>
+    </div>
+
+    <div class="mt-10 bg-white border border-ink-900/10 rounded-xl p-6">
+      <p class="font-semibold text-ink-900">Press, partnerships, anything else</p>
+      <p class="mt-2 text-ink-700 text-sm">
+        Email <a href="mailto:hello@findagym.co.uk" class="text-brand-700 font-medium">hello@findagym.co.uk</a>.
+        We aim to reply within one working day.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

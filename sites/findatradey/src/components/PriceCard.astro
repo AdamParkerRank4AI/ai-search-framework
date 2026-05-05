@@ -1,0 +1,26 @@
+---
+export interface Props {
+  title: string;
+  rows: Array<{ label: string; value: string; note?: string }>;
+  footnote?: string;
+}
+
+const { title, rows, footnote } = Astro.props;
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <h2 class="text-xl font-semibold text-ink-900 mb-4">{title}</h2>
+  <div class="divide-y divide-ink-900/10">
+    {rows.map((row) => (
+      <div class="flex items-baseline justify-between py-3 first:pt-0 last:pb-0 gap-3">
+        <div>
+          <p class="text-sm font-medium text-ink-900">{row.label}</p>
+          {row.note && <p class="text-xs text-ink-500 mt-1">{row.note}</p>}
+        </div>
+        <p class="text-base font-bold text-brand-700 whitespace-nowrap">{row.value}</p>
+      </div>
+    ))}
+  </div>
+  {footnote && (
+    <p class="text-xs text-ink-500 mt-4">{footnote}</p>
+  )}
+</section>

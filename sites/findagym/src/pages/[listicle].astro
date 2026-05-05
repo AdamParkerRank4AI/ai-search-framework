@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GymCard from '../components/GymCard.astro';
+import LeadFormGym from '../components/LeadFormGym.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import { listicles, getListicleGyms } from '../lib/listicles';
+import { colchester, fmtMoney } from '../lib/data';
+import { faqSchema, placeSchema } from '../lib/schema';
+
+export async function getStaticPaths() {
+  return listicles.map((l) => ({
+    params: { listicle: l.slug },
+    props: { config: l },
+  }));
+}
+
+const { config } = Astro.props;
+const gyms = getListicleGyms(config);
+
+const cheapest = gyms.length > 0 ? gyms.reduce((min, g) => (g.monthly_price_2026_gbp < min.monthly_price_2026_gbp ? g : min), gyms[0]) : null;
+const dearest = gyms.length > 0 ? gyms.reduce((max, g) => (g.monthly_price_2026_gbp > max.monthly_price_2026_gbp ? g : max), gyms[0]) : null;
+
+const faqs = [
+  {
+    q: `How many ${config.h1.toLowerCase()} are there?`,
+    a: `We've reviewed ${gyms.length} ${gyms.length === 1 ? 'option' : 'options'} that fit this category in Colchester. Each gym below has a full review with quiet times, demographic profile, equipment audit, and what each is genuinely best for.`,
+  },
+  ...(cheapest ? [{
+    q: `What is the cheapest option in this category?`,
+    a: `${cheapest.name} at ${fmtMoney(cheapest.monthly_price_2026_gbp)}/month. ${cheapest.no_contract ? 'No contract.' : 'Standard 12-month contract.'} ${cheapest.open_24_7 ? 'Open 24/7.' : `Hours: ${cheapest.open_hours_summary}.`}`,
+  }] : []),
+  ...(dearest && cheapest && dearest.gym_id !== cheapest.gym_id ? [{
+    q: `What is the most expensive option?`,
+    a: `${dearest.name} at ${fmtMoney(dearest.monthly_price_2026_gbp)}/month. ${dearest.tier === 'premium' || dearest.tier === 'luxury' ? 'Premium tier — typically smaller membership cap, more recovery facilities.' : ''}`,
+  }] : []),
+  {
+    q: 'How are the rankings decided?',
+    a: 'Rankings combine published facts (price, hours, contract terms, equipment counts) with our own observation of crowd, atmosphere and equipment condition. We don\'t take payment for placement. Read more on our /how-we-rate-gyms/ page.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findagym.co.uk/' },
+  { name: 'Colchester', url: 'https://findagym.co.uk/colchester/' },
+  { name: config.h1, url: `https://findagym.co.uk/${config.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(colchester._town, colchester._lat, colchester._lng),
+  faqSchema(faqs),
+];
+---
+<BaseLayout title={config.title} description={config.metaDescription} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Colchester · {colchester._county}</p>
+      <h1 class="mt-2 text-4xl md:text-5xl font-bold text-ink-900 leading-tight">{config.h1}</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">{config.intro}</p>
+    </div>
+  </section>
+
+  <div class="container-wide py-10 md:py-12 grid gap-6 md:gap-8">
+    {gyms.length === 0 ? (
+      <p class="text-ink-700">No gyms currently fit this category in Colchester. {config.bottomNote ?? ''}</p>
+    ) : (
+      <section>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {gyms.map((g, idx) => (
+            <div>
+              <p class="text-xs uppercase tracking-wider text-brand-700 font-bold mb-1">#{idx + 1}</p>
+              <GymCard gym={g} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {config.bottomNote && (
+      <p class="text-sm text-ink-500 italic">{config.bottomNote}</p>
+    )}
+
+    <MapEmbed lat={colchester._lat} lng={colchester._lng} label={`${config.h1} — Colchester`} />
+
+    <FAQBlock faqs={faqs} />
+
+    <LeadFormGym town={colchester._town} context={config.slug} />
+  </div>
+</BaseLayout>

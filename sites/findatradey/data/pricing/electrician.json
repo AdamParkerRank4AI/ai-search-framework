@@ -1,0 +1,71 @@
+{
+  "_comment": "Per-district electrician pricing seeds.",
+  "_refresh_frequency": "quarterly",
+  "_last_refresh": "2026-04-28",
+  "districts": {
+    "CO1": {
+      "average_emergency_callout_2026_gbp": 85,
+      "median_hourly_rate_2026_gbp": 55,
+      "eicr_3bed_average_gbp": 200,
+      "rewire_3bed_average_gbp": 4500,
+      "consumer_unit_replacement_average_gbp": 700,
+      "regional_premium_pct": 0
+    },
+    "SL4": {
+      "average_emergency_callout_2026_gbp": 110,
+      "median_hourly_rate_2026_gbp": 70,
+      "eicr_3bed_average_gbp": 260,
+      "rewire_3bed_average_gbp": 5800,
+      "consumer_unit_replacement_average_gbp": 900,
+      "regional_premium_pct": 25
+    },
+    "GU15": {
+      "average_emergency_callout_2026_gbp": 100,
+      "median_hourly_rate_2026_gbp": 65,
+      "eicr_3bed_average_gbp": 240,
+      "rewire_3bed_average_gbp": 5400,
+      "consumer_unit_replacement_average_gbp": 850,
+      "regional_premium_pct": 20
+    },
+    "GU1": {
+      "average_emergency_callout_2026_gbp": 105,
+      "median_hourly_rate_2026_gbp": 67,
+      "eicr_3bed_average_gbp": 250,
+      "rewire_3bed_average_gbp": 5500,
+      "consumer_unit_replacement_average_gbp": 870,
+      "regional_premium_pct": 22
+    },
+    "GU7": {
+      "average_emergency_callout_2026_gbp": 105,
+      "median_hourly_rate_2026_gbp": 67,
+      "eicr_3bed_average_gbp": 250,
+      "rewire_3bed_average_gbp": 5500,
+      "consumer_unit_replacement_average_gbp": 870,
+      "regional_premium_pct": 22
+    },
+    "RG21": {
+      "average_emergency_callout_2026_gbp": 95,
+      "median_hourly_rate_2026_gbp": 60,
+      "eicr_3bed_average_gbp": 220,
+      "rewire_3bed_average_gbp": 4900,
+      "consumer_unit_replacement_average_gbp": 770,
+      "regional_premium_pct": 12
+    },
+    "GU11": {
+      "average_emergency_callout_2026_gbp": 95,
+      "median_hourly_rate_2026_gbp": 60,
+      "eicr_3bed_average_gbp": 220,
+      "rewire_3bed_average_gbp": 4900,
+      "consumer_unit_replacement_average_gbp": 770,
+      "regional_premium_pct": 12
+    },
+    "GU14": {
+      "average_emergency_callout_2026_gbp": 97,
+      "median_hourly_rate_2026_gbp": 62,
+      "eicr_3bed_average_gbp": 225,
+      "rewire_3bed_average_gbp": 5000,
+      "consumer_unit_replacement_average_gbp": 790,
+      "regional_premium_pct": 14
+    }
+  }
+}

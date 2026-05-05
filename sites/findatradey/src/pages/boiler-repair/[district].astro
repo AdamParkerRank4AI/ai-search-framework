@@ -1,0 +1,94 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, gasSafe, boilerPricing } from '../../lib/data';
+import { boilerRepairFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = gasSafe.districts[pc]?.registered_count ?? 0;
+const top3 = gasSafe.districts[pc]?.top_3 ?? [];
+const pricing = boilerPricing.districts[pc];
+const repairPrice = pricing?.boiler_repair_average_gbp ?? 250;
+const callout = pricing?.average_emergency_callout_2026_gbp ?? 95;
+
+const faqs = boilerRepairFAQs({ d: district, repairPrice, callout });
+const factLine = `${registered || 'Multiple'} Gas Safe registered engineers cover ${town} (${pc}). A typical boiler repair runs £${repairPrice} in 2026, including the £${callout} callout. Major component repairs (heat exchanger, PCB) cost more.`;
+const verdict = `No heat or hot water? Boiler error code? Three Gas Safe engineers in your inbox within the hour.`;
+
+const title = `Boiler Repair in ${town} (${pc}) — From £${repairPrice} | FindATradey`;
+const description = `Boiler breakdown repair in ${town}. Gas Safe registered engineers. Average repair £${repairPrice} including callout. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Heating engineer', url: 'https://findatradey.co.uk/heating-engineer/' },
+  { name: `Boiler repair ${town}`, url: `https://findatradey.co.uk/boiler-repair/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Boiler repair in ${town}`,
+    serviceType: 'Boiler repair',
+    district,
+    description,
+    averagePrice: repairPrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Boiler repair" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="boiler" district={district.postcode_district} intent="emergency" />
+
+  <TrustBlock trade="boiler" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={gasSafe._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="boiler" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 boiler repair prices in ${town}`}
+      rows={[
+        { label: 'Diagnostic callout (no fix)', value: `£${callout}`, note: 'First 30 minutes on site, no parts' },
+        { label: 'Standard repair (with parts)', value: `£${repairPrice}`, note: 'Pump, sensor, diverter valve typical' },
+        { label: 'Major component (PCB / heat exchanger)', value: `£${Math.round(repairPrice * 2.5)}–${Math.round(repairPrice * 4.5)}`, note: 'Often the rule-of-half threshold for replacement vs repair' },
+        { label: 'Out-of-hours premium', value: '+50–100%' },
+      ]}
+      footnote="If repair quote exceeds half the cost of a new boiler and the existing unit is over 10 years old, replacement is usually the better choice."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">Common error codes (and what to try first)</h2>
+    <ul class="text-ink-700 space-y-2 list-disc pl-5">
+      <li><strong>F22 / F1 (Worcester / Vaillant)</strong> — low water pressure. Top up via the filling loop until needle is between 1.0 and 1.5 bar.</li>
+      <li><strong>F75 (Vaillant)</strong> — pump or pressure sensor. Sometimes clears after pressure top-up; persistent codes need an engineer.</li>
+      <li><strong>F28 / F29 (Vaillant)</strong> — ignition fault. Check gas supply at the meter; if other gas appliances work, call an engineer.</li>
+      <li><strong>EA / E168 (Worcester)</strong> — generic ignition lockout. Press reset twice; if it relights and holds, fine. If it locks again, stop.</li>
+      <li><strong>Frozen condensate pipe</strong> — common in cold snaps. White plastic pipe outside the boiler (often through a kitchen wall to a drain) is frozen. Pour warm (not boiling) water along it.</li>
+    </ul>
+    <p class="text-ink-700 mt-3 text-sm">Always cross-check the code with your manufacturer's manual before paying for a callout. Resetting more than twice in 24 hours usually voids the warranty.</p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/boiler-repair" pageLabel="boiler repair engineer" />
+  <RelatedServices district={district} currentService="boiler-repair" />
+</TradePage>

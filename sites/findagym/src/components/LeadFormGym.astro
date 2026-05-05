@@ -1,0 +1,70 @@
+---
+export interface Props {
+  town?: string;
+  context?: string;
+}
+
+const { town = 'Colchester', context = 'gym-enquiry' } = Astro.props;
+---
+<section id="enquire" class="bg-brand-50 border border-brand-200 rounded-xl p-6 md:p-8">
+  <div class="grid md:grid-cols-2 gap-8 items-start">
+    <div>
+      <h2 class="text-2xl md:text-3xl font-bold text-ink-900">
+        Not sure which {town} gym to pick?
+      </h2>
+      <p class="mt-3 text-ink-700">
+        Tell us your goal and your schedule. We'll match you with the gym that actually fits — based on equipment, hours and crowd, not what shows up first on a sponsored ad.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-ink-700">
+        <li>Match in under 24 hours.</li>
+        <li>No spam — we don't share your number with every gym in {town}.</li>
+        <li>Free for you. We earn from the gym only when you join.</li>
+      </ul>
+    </div>
+
+    <form class="bg-white border border-ink-900/10 rounded-lg p-5 space-y-4 shadow-sm"
+          action="https://tally.so/r/REPLACE_WITH_GYM_FORM_ID"
+          method="POST"
+          data-context={context}>
+      <div>
+        <label for="goal" class="block text-sm font-medium text-ink-900 mb-1">Your main goal</label>
+        <select id="goal" name="goal" class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base">
+          <option value="lose-weight">Lose weight</option>
+          <option value="build-muscle">Build muscle</option>
+          <option value="get-fit">Get fit, no specific goal</option>
+          <option value="train-event">Train for an event (marathon / Hyrox)</option>
+          <option value="rehab">Post-injury / rehab</option>
+          <option value="postnatal">Postnatal recovery</option>
+          <option value="classes">Classes / community</option>
+        </select>
+      </div>
+      <div>
+        <label for="schedule" class="block text-sm font-medium text-ink-900 mb-1">When can you train?</label>
+        <select id="schedule" name="schedule" class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base">
+          <option>Early morning (06:00–08:00)</option>
+          <option>Daytime weekday (09:00–17:00)</option>
+          <option>Weekday evening (17:00–22:00)</option>
+          <option>Weekends only</option>
+          <option>Flexible</option>
+        </select>
+      </div>
+      <div>
+        <label for="budget" class="block text-sm font-medium text-ink-900 mb-1">Monthly budget</label>
+        <select id="budget" name="budget" class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base">
+          <option>Under £25</option>
+          <option>£25–40</option>
+          <option>£40–75</option>
+          <option>£75+</option>
+        </select>
+      </div>
+      <div>
+        <label for="contact" class="block text-sm font-medium text-ink-900 mb-1">Email</label>
+        <input type="email" id="contact" name="contact" required class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base" />
+      </div>
+      <input type="hidden" name="town" value={town} />
+      <input type="hidden" name="context" value={context} />
+      <button type="submit" class="btn-primary w-full">Get my matches</button>
+      <p class="text-xs text-ink-500 text-center">No spam. We unsubscribe you the moment you've joined a gym.</p>
+    </form>
+  </div>
+</section>

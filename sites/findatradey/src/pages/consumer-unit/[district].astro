@@ -1,0 +1,81 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, niceic, electricianPricing } from '../../lib/data';
+import { consumerUnitFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = niceic.districts[pc]?.registered_count ?? 0;
+const top3 = niceic.districts[pc]?.top_3 ?? [];
+const pricing = electricianPricing.districts[pc];
+const cuPrice = pricing?.consumer_unit_replacement_average_gbp ?? 700;
+
+const faqs = consumerUnitFAQs({ d: district, cuPrice });
+const factLine = `Replacing a fuse box / consumer unit in ${town} (${pc}) typically runs £${cuPrice} in 2026 — fitted with RCBOs to 18th Edition standard, including Part P self-certification.`;
+const verdict = `Old wooden fuse box? Pre-2018 unit? Three NICEIC / NAPIT electricians in your inbox within the hour.`;
+
+const title = `Consumer Unit (Fuse Box) Replacement in ${town} (${pc}) — From £${cuPrice} | FindATradey`;
+const description = `Consumer unit / fuse box replacement in ${town}. NICEIC / NAPIT registered, RCBO-fitted, Part P certified. Typical fitted price from £${cuPrice}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Electrician', url: 'https://findatradey.co.uk/electrician/' },
+  { name: `Consumer unit ${town}`, url: `https://findatradey.co.uk/consumer-unit/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Consumer unit replacement in ${town}`,
+    serviceType: 'Electrical — consumer unit',
+    district,
+    description,
+    averagePrice: cuPrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Consumer unit / fuse box" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="electrician" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="electrician" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={niceic._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="electrician" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 consumer unit prices in ${town}`}
+      rows={[
+        { label: 'Basic RCD-only consumer unit', value: `£${Math.round(cuPrice * 0.75)}`, note: 'Older RCD-bank specification, fewer protections' },
+        { label: 'RCBO consumer unit (modern standard)', value: `£${cuPrice}`, note: 'One RCBO per circuit — recommended' },
+        { label: 'RCBO + SPD (surge protection)', value: `£${Math.round(cuPrice * 1.25)}`, note: 'Extra protection for properties with sensitive electronics' },
+        { label: 'Add second-circuit upgrades', value: '+£60–150 per circuit' },
+      ]}
+      footnote="Pricing includes Part P self-cert. Excludes earthing-system upgrades if existing TT system needs converting to TN-S/TN-C-S."
+    />
+  </div>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/consumer-unit" pageLabel="consumer unit electrician" />
+  <RelatedServices district={district} currentService="consumer-unit" />
+</TradePage>

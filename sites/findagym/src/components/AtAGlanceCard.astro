@@ -1,0 +1,61 @@
+---
+import type { Gym } from '../lib/types';
+import { fmtMoney } from '../lib/data';
+
+export interface Props {
+  gym: Gym;
+}
+
+const { gym } = Astro.props;
+
+const vibe =
+  gym.demographic_profile.intimidation_factor_1_5 >= 4
+    ? 'busy / serious'
+    : gym.demographic_profile.intimidation_factor_1_5 >= 3
+      ? 'medium'
+      : 'quiet / relaxed';
+---
+<aside class="bg-white border border-ink-900/10 rounded-xl p-5 sticky top-20">
+  <p class="text-xs font-bold uppercase tracking-wider text-brand-700">At a glance</p>
+  <h3 class="mt-1 text-xl font-bold text-ink-900">{gym.name}</h3>
+  <p class="text-sm text-ink-500 mt-1">{gym.tier_label}</p>
+
+  <dl class="mt-5 space-y-3 text-sm">
+    <div class="flex items-baseline justify-between">
+      <dt class="text-ink-500">Hours</dt>
+      <dd class="font-medium text-ink-900">{gym.open_hours_summary}</dd>
+    </div>
+    <div class="flex items-baseline justify-between">
+      <dt class="text-ink-500">Monthly</dt>
+      <dd class="font-bold text-brand-700">{fmtMoney(gym.monthly_price_2026_gbp)}</dd>
+    </div>
+    {gym.joining_fee_2026_gbp > 0 && (
+      <div class="flex items-baseline justify-between">
+        <dt class="text-ink-500">Joining fee</dt>
+        <dd class="font-medium text-ink-900">{fmtMoney(gym.joining_fee_2026_gbp)}</dd>
+      </div>
+    )}
+    <div class="flex items-baseline justify-between">
+      <dt class="text-ink-500">Contract</dt>
+      <dd class="font-medium text-ink-900">{gym.no_contract ? 'No contract' : '12 months'}</dd>
+    </div>
+    <div class="flex items-baseline justify-between">
+      <dt class="text-ink-500">Vibe</dt>
+      <dd class="font-medium text-ink-900 capitalize">{vibe}</dd>
+    </div>
+  </dl>
+
+  <div class="mt-5">
+    <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Best for</p>
+    <div class="flex flex-wrap gap-2">
+      {gym.best_for.slice(0, 3).map((tag) => (
+        <span class="pill-good">{tag}</span>
+      ))}
+    </div>
+  </div>
+
+  <a href={gym.website} target="_blank" rel="noopener noreferrer" class="btn-primary w-full mt-6 text-center">
+    View on {gym.brand} ↗
+  </a>
+  <a href="#enquire" class="btn-secondary w-full mt-2 text-center">Get a free day pass</a>
+</aside>

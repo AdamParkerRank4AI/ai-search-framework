@@ -1,0 +1,99 @@
+---
+import type { Gym } from '../lib/types';
+
+export interface Props {
+  gym: Gym;
+}
+
+const { gym } = Astro.props;
+const e = gym.equipment_audit;
+
+const cardio = [
+  { label: 'Treadmills', value: e.treadmill_count },
+  { label: 'Bikes', value: e.bike_count },
+  { label: 'Rowers', value: e.rower_count },
+  { label: 'Ski ergs', value: e.ski_erg_count },
+];
+
+const strength = [
+  { label: 'Squat racks', value: e.squat_rack_count },
+  { label: 'Power cages', value: e.power_cage_count },
+  { label: 'Deadlift platforms', value: e.deadlift_platform_count },
+  { label: 'Barbells', value: e.barbell_count },
+  { label: 'Cable stations', value: e.cable_station_count },
+];
+
+const limits = [
+  { label: 'Dumbbell ceiling', value: `${e.dumbbell_ceiling_kg} kg` },
+  { label: 'Kettlebell range', value: `${e.kettlebell_range_kg} kg` },
+  { label: 'Functional zone', value: e.functional_zone },
+];
+
+const recovery = [
+  { label: 'Pool', value: e.pool ? 'Yes' : 'No', good: e.pool },
+  { label: 'Sauna', value: e.sauna ? 'Yes' : 'No', good: e.sauna },
+  { label: 'Steam', value: e.steam ? 'Yes' : 'No', good: e.steam },
+];
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <h2 class="text-xl font-semibold text-ink-900 mb-1">Equipment audit</h2>
+  <p class="text-sm text-ink-700 mb-5">What's actually on the floor — counts, ceilings, condition.</p>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Cardio</p>
+      <ul class="space-y-1 text-sm">
+        {cardio.map((c) => (
+          <li class="flex justify-between border-b border-ink-900/5 py-1">
+            <span class="text-ink-700">{c.label}</span>
+            <span class="font-semibold text-ink-900">{c.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Strength</p>
+      <ul class="space-y-1 text-sm">
+        {strength.map((s) => (
+          <li class="flex justify-between border-b border-ink-900/5 py-1">
+            <span class="text-ink-700">{s.label}</span>
+            <span class="font-semibold text-ink-900">{s.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Free-weight ceilings</p>
+      <ul class="space-y-1 text-sm">
+        {limits.map((l) => (
+          <li class="flex justify-between border-b border-ink-900/5 py-1">
+            <span class="text-ink-700">{l.label}</span>
+            <span class="font-semibold text-ink-900">{l.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Recovery facilities</p>
+      <ul class="space-y-1 text-sm">
+        {recovery.map((r) => (
+          <li class="flex justify-between border-b border-ink-900/5 py-1">
+            <span class="text-ink-700">{r.label}</span>
+            <span class={`font-semibold ${r.good ? 'text-accent-700' : 'text-ink-500'}`}>{r.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  {e.broken_or_worn.length > 0 && (
+    <div class="mt-5 bg-brand-50 border border-brand-200 rounded-lg p-3 text-sm">
+      <p class="font-semibold text-brand-700">Currently noted</p>
+      <ul class="mt-1 list-disc pl-5 text-ink-700">
+        {e.broken_or_worn.map((n) => (
+          <li>{n}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+</section>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GymCard from '../../components/GymCard.astro';
+import LeadFormGym from '../../components/LeadFormGym.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import { colchester } from '../../lib/data';
+
+const angles = [
+  { href: '/best-gyms-colchester/', label: 'Best gyms in Colchester' },
+  { href: '/cheap-gyms-colchester/', label: 'Cheap gyms (under £25/mo)' },
+  { href: '/luxury-gyms-colchester/', label: 'Luxury gyms' },
+  { href: '/24-hour-gyms-colchester/', label: '24-hour gyms' },
+  { href: '/gym-day-pass-colchester/', label: 'Day pass / no-contract' },
+  { href: '/womens-gym-colchester/', label: 'Women-friendly' },
+  { href: '/student-gym-colchester/', label: 'Student gyms' },
+  { href: '/over-50s-gym-colchester/', label: 'Over-50s gyms' },
+  { href: '/quietest-gyms-colchester/', label: 'Quietest gyms' },
+  { href: '/best-equipped-gym-colchester/', label: 'Best-equipped' },
+  { href: '/least-intimidating-gym-colchester/', label: 'Least intimidating' },
+  { href: '/best-gym-classes-colchester/', label: 'Best gym classes' },
+];
+
+const title = 'Gyms in Colchester (Essex) — Honest Reviews 2026 | FindAGym';
+const description = `${colchester.gyms.length} gyms reviewed in Colchester with quiet times, demographic profile, equipment audit, and what each gym is genuinely best (and worst) for.`;
+---
+<BaseLayout title={title} description={description}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">{colchester._county} · {colchester._town}</p>
+      <h1 class="mt-2 text-4xl md:text-5xl font-bold text-ink-900">Gyms in Colchester</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">
+        {colchester.gyms.length} gyms and {colchester.specialism_studios.length} specialism studios reviewed honestly. Quiet times, demographics, equipment audits, and what each gym is genuinely best for.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">All Colchester gyms</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {colchester.gyms.map((g) => <GymCard gym={g} />)}
+    </div>
+  </section>
+
+  <section class="container-wide py-12 border-t border-ink-900/10">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">Specialism studios</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {colchester.specialism_studios.map((s) => (
+        <a href={`/${s.specialism_slug}-colchester/`} class="block bg-white border border-ink-900/10 rounded-xl p-5 hover:border-brand-300 transition no-underline">
+          <p class="text-lg font-semibold text-ink-900">{s.name}</p>
+          <p class="text-sm text-ink-500 mt-1">{s.specialism}</p>
+          <p class="mt-3 text-2xl font-bold text-brand-700">£{s.monthly_price_2026_gbp}<span class="text-xs text-ink-500 font-normal">/month</span></p>
+          {s.underrated_for.length > 0 && (
+            <p class="mt-3 text-xs text-ink-700 italic">"{s.underrated_for[0]}"</p>
+          )}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-wide py-12 border-t border-ink-900/10">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">Pick your angle</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      {angles.map((a) => (
+        <a href={a.href} class="block border border-ink-900/10 rounded-lg p-3 hover:border-brand-300 transition no-underline">
+          <span class="text-sm font-medium text-ink-900">{a.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <div class="container-wide pt-6">
+    <MapEmbed lat={colchester._lat} lng={colchester._lng} label={colchester._town} />
+  </div>
+
+  <div class="container-wide pt-12">
+    <LeadFormGym town={colchester._town} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,63 @@
+{
+  "_comment": "Per-district plumber pricing seeds. Refine after first 10 real leads in each district.",
+  "_refresh_frequency": "quarterly",
+  "_last_refresh": "2026-04-28",
+  "districts": {
+    "CO1": {
+      "average_emergency_callout_2026_gbp": 95,
+      "median_hourly_rate_2026_gbp": 60,
+      "leak_detection_average_gbp": 130,
+      "drain_unblocking_average_gbp": 105,
+      "regional_premium_pct": 0
+    },
+    "SL4": {
+      "average_emergency_callout_2026_gbp": 120,
+      "median_hourly_rate_2026_gbp": 75,
+      "leak_detection_average_gbp": 165,
+      "drain_unblocking_average_gbp": 130,
+      "regional_premium_pct": 25
+    },
+    "GU15": {
+      "average_emergency_callout_2026_gbp": 110,
+      "median_hourly_rate_2026_gbp": 70,
+      "leak_detection_average_gbp": 150,
+      "drain_unblocking_average_gbp": 120,
+      "regional_premium_pct": 20
+    },
+    "GU1": {
+      "average_emergency_callout_2026_gbp": 115,
+      "median_hourly_rate_2026_gbp": 72,
+      "leak_detection_average_gbp": 155,
+      "drain_unblocking_average_gbp": 125,
+      "regional_premium_pct": 22
+    },
+    "GU7": {
+      "average_emergency_callout_2026_gbp": 115,
+      "median_hourly_rate_2026_gbp": 72,
+      "leak_detection_average_gbp": 155,
+      "drain_unblocking_average_gbp": 125,
+      "regional_premium_pct": 22
+    },
+    "RG21": {
+      "average_emergency_callout_2026_gbp": 105,
+      "median_hourly_rate_2026_gbp": 65,
+      "leak_detection_average_gbp": 140,
+      "drain_unblocking_average_gbp": 115,
+      "regional_premium_pct": 12
+    },
+    "GU11": {
+      "average_emergency_callout_2026_gbp": 105,
+      "median_hourly_rate_2026_gbp": 65,
+      "leak_detection_average_gbp": 140,
+      "drain_unblocking_average_gbp": 115,
+      "regional_premium_pct": 12
+    },
+    "GU14": {
+      "average_emergency_callout_2026_gbp": 108,
+      "median_hourly_rate_2026_gbp": 67,
+      "leak_detection_average_gbp": 145,
+      "drain_unblocking_average_gbp": 117,
+      "regional_premium_pct": 14
+    }
+  }
+}
