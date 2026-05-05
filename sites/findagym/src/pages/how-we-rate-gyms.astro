@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'How We Rate Gyms | FindAGym Methodology';
+const description = 'FindAGym methodology: how we capture quiet times, demographic profile, equipment audit, and honest verdicts. The full process.';
+---
+<BaseLayout title={title} description={description}>
+  <article class="container-prose py-12 max-w-none">
+    <h1 class="text-4xl font-bold text-ink-900">How we rate gyms</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      The same process applied to every gym we publish. Nothing here is "we ran a ChatGPT prompt".
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 1 — Public data pull</h2>
+    <p class="mt-3 text-ink-700">
+      Brand websites for hours, prices, contract terms, class rosters. Google Maps for address, lat/lng, photos, Popular Times. Trustpilot and Google Reviews for review counts and average. Companies House SIC 93.13 (fitness facilities) for independent gyms not in major-chain databases.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 2 — Manual visit</h2>
+    <p class="mt-3 text-ink-700">
+      For every gym we publish about, we visit at:
+    </p>
+    <ul class="mt-3 text-ink-700">
+      <li><strong>Peak slot:</strong> Monday 18:00–19:30</li>
+      <li><strong>Off-peak slot:</strong> Saturday 09:00–10:30</li>
+    </ul>
+    <p class="mt-3 text-ink-700">
+      During each visit we capture: equipment count by type, dumbbell ceiling, racks and platforms, anything broken or worn, atmosphere read (gender mix, age mix, music volume, intimidation factor), instructor names from class noticeboards.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 3 — Demographic profile</h2>
+    <p class="mt-3 text-ink-700">
+      We don't claim exact percentages — they're directional estimates from observation. A 60/38/2 male/female/other split means: clearly male-leaning, with a meaningful female presence, a few non-binary or unverified members. We disclose the estimate range and the limitation clearly.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 4 — Best / Underrated / Worst</h2>
+    <p class="mt-3 text-ink-700">
+      Three slots. <strong>Best for</strong> = where the gym genuinely shines (3–5 user types). <strong>Underrated for</strong> = the surprising win nobody mentions in the brand's marketing. <strong>Worst for</strong> = where the gym fails (2–3 user types) — we don't soften this. Honest "worst for" sections are what build trust over time.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 5 — Refresh</h2>
+    <p class="mt-3 text-ink-700">
+      Brand pricing: quarterly. Popular Times: quarterly. Trustpilot and Google review aggregates: monthly. Equipment audits and demographic profiles: annually, or when we hear from users that something has changed.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">What we don't do</h2>
+    <p class="mt-3 text-ink-700">
+      We don't take payment to remove "worst for" sections. We don't accept gym-supplied photos or marketing copy without re-verification. We don't run "sponsored placement" rankings dressed up as editorial. Where a gym pays us a premium listing fee we disclose it visibly on the gym's profile.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Help us improve</h2>
+    <p class="mt-3 text-ink-700">
+      If you train at a gym we cover and our read is off — let us know. Especially if equipment has changed, if a class has moved, if our estimated demographic mix doesn't match what you see on the floor. We refresh on user feedback. <a href="/contact/" class="text-brand-700">Get in touch →</a>
+    </p>
+  </article>
+</BaseLayout>

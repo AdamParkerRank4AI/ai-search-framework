@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import LeadFormGym from '../components/LeadFormGym.astro';
+import { colchester, fmtMoney, getGymsByBrandSlug } from '../lib/data';
+import { faqSchema, placeSchema } from '../lib/schema';
+
+const pureGym = getGymsByBrandSlug('puregym')[0];
+const gymGroup = getGymsByBrandSlug('the-gym-group')[0];
+
+const rows = [
+  { label: 'Monthly cost (2026)', a: fmtMoney(pureGym?.monthly_price_2026_gbp ?? 21.99), b: fmtMoney(gymGroup?.monthly_price_2026_gbp ?? 19.99) },
+  { label: 'Joining fee', a: fmtMoney(pureGym?.joining_fee_2026_gbp ?? 0), b: fmtMoney(gymGroup?.joining_fee_2026_gbp ?? 0) },
+  { label: 'Contract', a: pureGym?.no_contract ? 'No contract' : '12 months', b: gymGroup?.no_contract ? 'No contract' : '12 months' },
+  { label: 'Hours', a: pureGym?.open_hours_summary ?? '24/7', b: gymGroup?.open_hours_summary ?? '24/7' },
+  { label: 'Treadmills', a: pureGym?.equipment_audit.treadmill_count ?? '—', b: gymGroup?.equipment_audit.treadmill_count ?? '—' },
+  { label: 'Squat racks', a: pureGym?.equipment_audit.squat_rack_count ?? '—', b: gymGroup?.equipment_audit.squat_rack_count ?? '—' },
+  { label: 'Deadlift platforms', a: pureGym?.equipment_audit.deadlift_platform_count ?? '—', b: gymGroup?.equipment_audit.deadlift_platform_count ?? '—' },
+  { label: 'Dumbbell ceiling', a: `${pureGym?.equipment_audit.dumbbell_ceiling_kg ?? 50}kg`, b: `${gymGroup?.equipment_audit.dumbbell_ceiling_kg ?? 40}kg` },
+  { label: 'Free classes included', a: 'Yes', b: 'Yes (+ Fiit Studio app)' },
+  { label: 'Pool / sauna', a: 'No', b: 'No' },
+];
+
+const faqs = [
+  {
+    q: 'PureGym or The Gym Group in Colchester — which is cheaper?',
+    a: `The Gym Group at ${fmtMoney(gymGroup?.monthly_price_2026_gbp ?? 19.99)}/month is roughly £2/month cheaper than PureGym. Both have no joining fee and no contract.`,
+  },
+  {
+    q: 'Which has better equipment for serious lifters?',
+    a: `PureGym Stanway has a higher dumbbell ceiling (50kg vs 40kg) and one more squat rack. For serious lifting, PureGym wins on equipment. For everyone else, the difference is negligible.`,
+  },
+  {
+    q: 'Which is quieter at peak times?',
+    a: `Both peak Mon–Thu 17:30–20:00. The Gym Group goes quietest mid-morning weekdays (09:30–11:30) thanks to the student crowd shifting to lectures. PureGym Stanway has its quietest hour 06:00–08:00.`,
+  },
+  {
+    q: 'Which has better classes?',
+    a: `The Gym Group includes the Fiit Studio (app-led HIIT) for Ultimate-tier members. PureGym\'s classes are coach-led group sessions. Different products — Fiit Studio if you like programming and tracking; PureGym if you prefer a coach in the room.`,
+  },
+];
+
+const title = 'PureGym vs The Gym Group in Colchester 2026 — Honest Comparison | FindAGym';
+const description = 'PureGym vs The Gym Group in Colchester: head-to-head comparison on price, hours, equipment, classes, and crowd. Which is right for which goal?';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findagym.co.uk/' },
+  { name: 'Colchester', url: 'https://findagym.co.uk/colchester/' },
+  { name: 'PureGym vs The Gym Group', url: 'https://findagym.co.uk/puregym-vs-the-gym-group-colchester/' },
+];
+
+const jsonLd = [
+  placeSchema(colchester._town, colchester._lat, colchester._lng),
+  faqSchema(faqs),
+];
+---
+<BaseLayout title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Colchester · Comparison</p>
+      <h1 class="mt-2 text-4xl font-bold text-ink-900">PureGym vs The Gym Group in Colchester</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">
+        Both are budget-tier 24/7 chains within walking distance of central Colchester. But the equipment, crowd, and class mix differ. Here's a like-for-like read.
+      </p>
+    </div>
+  </section>
+
+  <div class="container-wide py-10 grid gap-6 md:gap-8">
+    <section class="bg-white border border-ink-900/10 rounded-xl overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-ink-900/5">
+          <tr>
+            <th class="text-left p-4 font-semibold text-ink-900">Compared on</th>
+            <th class="text-left p-4 font-semibold text-ink-900">PureGym Colchester Stanway</th>
+            <th class="text-left p-4 font-semibold text-ink-900">The Gym Group Colchester</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-ink-900/10">
+          {rows.map((r) => (
+            <tr>
+              <td class="p-4 text-ink-700">{r.label}</td>
+              <td class="p-4 font-medium text-ink-900">{r.a}</td>
+              <td class="p-4 font-medium text-ink-900">{r.b}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-4">
+      <a href="/puregym-colchester-review/" class="block bg-white border border-ink-900/10 rounded-xl p-6 hover:border-brand-300 transition no-underline">
+        <p class="text-xs uppercase tracking-wider text-brand-700 font-bold">Pick PureGym if</p>
+        <ul class="mt-3 space-y-2 text-sm text-ink-900">
+          <li>+ You lift heavier free-weights regularly (50kg DBs available)</li>
+          <li>+ You want the Stanway location (free retail-park parking)</li>
+          <li>+ You prefer coach-led classes</li>
+        </ul>
+        <p class="mt-4 text-brand-700 font-medium">Read the full PureGym Colchester review →</p>
+      </a>
+      <a href="/the-gym-group-colchester-review/" class="block bg-white border border-ink-900/10 rounded-xl p-6 hover:border-brand-300 transition no-underline">
+        <p class="text-xs uppercase tracking-wider text-brand-700 font-bold">Pick The Gym Group if</p>
+        <ul class="mt-3 space-y-2 text-sm text-ink-900">
+          <li>+ Saving £2/month matters and you don't lift over 40kg DBs</li>
+          <li>+ You're a University of Essex student near the Cowdray Centre</li>
+          <li>+ You want the Fiit Studio app-led HIIT</li>
+        </ul>
+        <p class="mt-4 text-brand-700 font-medium">Read the full Gym Group Colchester review →</p>
+      </a>
+    </section>
+
+    <MapEmbed lat={colchester._lat} lng={colchester._lng} label="PureGym vs The Gym Group — Colchester" />
+
+    <FAQBlock faqs={faqs} />
+
+    <LeadFormGym town={colchester._town} context="puregym-vs-gym-group" />
+  </div>
+</BaseLayout>

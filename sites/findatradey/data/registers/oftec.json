@@ -1,0 +1,15 @@
+{
+  "_comment": "OFTEC-registered oil-firing engineers per district. Relevant for off-grid heating + heat pump installer cross-overlap.",
+  "_refresh_frequency": "weekly",
+  "_last_refresh": null,
+  "districts": {
+    "CO1": { "registered_count": 0, "top_3": [] },
+    "SL4": { "registered_count": 0, "top_3": [] },
+    "GU15": { "registered_count": 0, "top_3": [] },
+    "GU1": { "registered_count": 0, "top_3": [] },
+    "GU7": { "registered_count": 0, "top_3": [] },
+    "RG21": { "registered_count": 0, "top_3": [] },
+    "GU11": { "registered_count": 0, "top_3": [] },
+    "GU14": { "registered_count": 0, "top_3": [] }
+  }
+}

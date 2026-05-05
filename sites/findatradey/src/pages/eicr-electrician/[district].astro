@@ -1,0 +1,93 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, niceic, electricianPricing } from '../../lib/data';
+import { eicrFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = niceic.districts[pc]?.registered_count ?? 0;
+const top3 = niceic.districts[pc]?.top_3 ?? [];
+const pricing = electricianPricing.districts[pc];
+const eicrPrice = pricing?.eicr_3bed_average_gbp ?? 200;
+
+const faqs = eicrFAQs({ d: district, eicrPrice });
+const factLine = `${registered || 'Multiple'} NICEIC / NAPIT / ELECSA registered electricians cover ${town} (${pc}). A 3-bed EICR typically runs £${eicrPrice} in 2026 — landlords are legally required to renew every 5 years.`;
+const verdict = `Landlord renewal due, or buying a property and need a check? Three local registered electricians in your inbox within the hour.`;
+
+const title = `EICR Electrician in ${town} (${pc}) — Landlord Reports From £${eicrPrice} | FindATradey`;
+const description = `EICR (Electrical Installation Condition Report) in ${town}. ${registered || 'Multiple'} NICEIC / NAPIT / ELECSA registered electricians, typical 3-bed EICR from £${eicrPrice}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Electrician', url: 'https://findatradey.co.uk/electrician/' },
+  { name: `EICR ${town}`, url: `https://findatradey.co.uk/eicr-electrician/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `EICR electrician in ${town}`,
+    serviceType: 'Electrical certification',
+    district,
+    description,
+    averagePrice: eicrPrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="EICR electrician" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="electrician" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="electrician" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={niceic._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="electrician" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 EICR prices in ${town}`}
+      rows={[
+        { label: '1-bed flat / studio', value: `£${Math.round(eicrPrice * 0.7)}–${Math.round(eicrPrice * 0.85)}` },
+        { label: '2-bed flat / small house', value: `£${Math.round(eicrPrice * 0.85)}–${eicrPrice}` },
+        { label: '3-bed property', value: `£${eicrPrice}`, note: 'The market baseline for landlord EICRs' },
+        { label: '4-bed property', value: `£${Math.round(eicrPrice * 1.25)}–${Math.round(eicrPrice * 1.5)}` },
+        { label: 'HMO (per circuit count)', value: `£${Math.round(eicrPrice * 1.4)}+`, note: 'Larger HMO portfolios negotiate per-bedroom rates' },
+        { label: 'Remedial work after C1/C2', value: 'Quoted separately', note: 'Covered under separate certificate, not part of EICR fee' },
+      ]}
+      footnote="EICR validity is 5 years for private rented homes. Sale-of-property EICRs are increasingly demanded by buyers' surveyors."
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">What an EICR actually looks at in {town}</h2>
+    <p class="text-ink-700">
+      An EICR tests the entire fixed wiring of the property: consumer unit, RCD performance, earth bonding, ring-final continuity, sample-test of socket outlets and lighting circuits. The report grades each fault as C1 (immediate danger), C2 (potentially dangerous), C3 (improvement recommended) or FI (further investigation). C1 and C2 codes mark the report Unsatisfactory and require remedial work before a Satisfactory certificate can be issued.
+    </p>
+    <p class="text-ink-700 mt-3">
+      {town}'s housing stock — predominantly {district.housing_stock_dominant.toLowerCase()} from around {district.median_property_year} — frequently throws up code-2 results around earth bonding, ageing rubber-insulated cabling at the consumer unit, and unsuitable RCD coverage. Expect minor remedial work on most pre-1980 EICRs.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/eicr-electrician" pageLabel="EICR specialist" />
+  <RelatedServices district={district} currentService="eicr-electrician" />
+</TradePage>

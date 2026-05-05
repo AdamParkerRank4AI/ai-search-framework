@@ -1,0 +1,84 @@
+---
+import type { Gym } from '../lib/types';
+
+export interface Props {
+  gym: Gym;
+}
+
+const { gym } = Astro.props;
+const dp = gym.demographic_profile;
+
+function bar(pct: number, color: string) {
+  return { width: `${pct}%`, backgroundColor: color };
+}
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <h2 class="text-xl font-semibold text-ink-900 mb-4">Who actually goes there</h2>
+  <p class="text-sm text-ink-700 mb-5">{dp.atmosphere_notes}</p>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Gender split (estimate)</p>
+      <div class="space-y-2">
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-ink-700">Male</span>
+            <span class="font-semibold text-ink-900">{dp.gender_split_estimate.male}%</span>
+          </div>
+          <div class="h-2 bg-ink-900/5 rounded mt-1">
+            <div class="h-2 rounded bg-brand-600" style={`width: ${dp.gender_split_estimate.male}%`}></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-ink-700">Female</span>
+            <span class="font-semibold text-ink-900">{dp.gender_split_estimate.female}%</span>
+          </div>
+          <div class="h-2 bg-ink-900/5 rounded mt-1">
+            <div class="h-2 rounded bg-accent-500" style={`width: ${dp.gender_split_estimate.female}%`}></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm">
+            <span class="text-ink-700">Other / unknown</span>
+            <span class="font-semibold text-ink-900">{dp.gender_split_estimate.other}%</span>
+          </div>
+          <div class="h-2 bg-ink-900/5 rounded mt-1">
+            <div class="h-2 rounded bg-ink-700" style={`width: ${dp.gender_split_estimate.other}%`}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Age bands</p>
+      <ul class="space-y-2 text-sm">
+        <li class="flex justify-between"><span class="text-ink-700">18–25</span><span class="font-semibold text-ink-900">{dp.age_bands_estimate['18_25']}%</span></li>
+        <li class="flex justify-between"><span class="text-ink-700">26–40</span><span class="font-semibold text-ink-900">{dp.age_bands_estimate['26_40']}%</span></li>
+        <li class="flex justify-between"><span class="text-ink-700">41–55</span><span class="font-semibold text-ink-900">{dp.age_bands_estimate['41_55']}%</span></li>
+        <li class="flex justify-between"><span class="text-ink-700">56+</span><span class="font-semibold text-ink-900">{dp.age_bands_estimate['56_plus']}%</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase tracking-wider text-ink-500 mb-2">Skill mix</p>
+      <ul class="space-y-2 text-sm">
+        <li class="flex justify-between"><span class="text-ink-700">Beginner</span><span class="font-semibold text-ink-900">{dp.skill_split_estimate.beginner}%</span></li>
+        <li class="flex justify-between"><span class="text-ink-700">Intermediate</span><span class="font-semibold text-ink-900">{dp.skill_split_estimate.intermediate}%</span></li>
+        <li class="flex justify-between"><span class="text-ink-700">Advanced</span><span class="font-semibold text-ink-900">{dp.skill_split_estimate.advanced}%</span></li>
+      </ul>
+      <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-ink-900/5 rounded p-2">
+          <p class="text-ink-500">Intimidation factor</p>
+          <p class="font-bold text-ink-900 text-base">{dp.intimidation_factor_1_5} / 5</p>
+        </div>
+        <div class="bg-ink-900/5 rounded p-2">
+          <p class="text-ink-500">Music volume</p>
+          <p class="font-bold text-ink-900 text-base">{dp.music_volume_1_5} / 5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-xs text-ink-500 mt-5">Splits are observational estimates — directional, not exact. Refreshed at every revisit.</p>
+</section>

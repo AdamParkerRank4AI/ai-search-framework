@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadFormGym from '../components/LeadFormGym.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import { colchester, fmtMoney } from '../lib/data';
+import { faqSchema, placeSchema } from '../lib/schema';
+
+// One additional specialism slug — climbing-wall — that doesn't have a studio record
+// gets a stub page. CrossFit + reformer-pilates do. Boxing + Hyrox-prep are also stubbed for v0.1.
+
+const SPECIALISMS = [
+  { slug: 'crossfit', label: 'CrossFit', desc: 'Functional fitness, timed WODs, community-led training' },
+  { slug: 'hyrox-prep', label: 'Hyrox prep', desc: 'Compound conditioning for the world\'s fastest-growing fitness race' },
+  { slug: 'reformer-pilates', label: 'Reformer pilates', desc: 'Low-impact strength on the reformer machine — postnatal-friendly' },
+  { slug: 'climbing-wall', label: 'Climbing wall', desc: 'Bouldering and roped climbing for all skill levels' },
+  { slug: 'boxing-gym', label: 'Boxing', desc: 'White-collar, fitness boxing and competitive amateur boxing' },
+];
+
+export async function getStaticPaths() {
+  return SPECIALISMS.map((s) => ({
+    params: { specialism: s.slug },
+    props: { specialismKey: s.slug, label: s.label, desc: s.desc },
+  }));
+}
+
+const { specialismKey, label, desc } = Astro.props as { specialismKey: string; label: string; desc: string };
+
+// Look up matching studio (CrossFit, reformer-pilates have records; others stub).
+const studio = colchester.specialism_studios.find((s) => s.specialism_slug === specialismKey);
+
+const title = `${label} in Colchester 2026 — Honest Review | FindAGym`;
+const description = `${label} in Colchester. ${desc}. Honest review of cost, atmosphere, who attends, what it's genuinely best (and worst) for.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findagym.co.uk/' },
+  { name: 'Colchester', url: 'https://findagym.co.uk/colchester/' },
+  { name: `${label} Colchester`, url: `https://findagym.co.uk/${specialismKey}-colchester/` },
+];
+
+const faqs = [
+  {
+    q: `How much does ${label.toLowerCase()} cost in Colchester?`,
+    a: studio ? `${studio.name} runs ${fmtMoney(studio.monthly_price_2026_gbp)}/month with drop-in classes from ${fmtMoney(studio.drop_in_2026_gbp)}.` : `${label} studios in UK towns of Colchester's size typically run £100–£160/month for unlimited classes, or £15–£25 per drop-in class.`,
+  },
+  {
+    q: `Is ${label.toLowerCase()} suitable for beginners?`,
+    a: studio && studio.best_for.length > 0
+      ? `Best for: ${studio.best_for.join(', ')}. ${studio.underrated_for.length > 0 ? `Underrated for: ${studio.underrated_for[0]}.` : ''}`
+      : `${label} suits both beginners and experienced trainees if the studio runs proper on-ramp / introduction classes. Always book an intro before committing to a monthly membership.`,
+  },
+  {
+    q: `What's the atmosphere like at a ${label.toLowerCase()} class?`,
+    a: studio ? studio.class_roster_summary : `Specialism studios skew community-led and supportive — far less anonymous than a big-chain gym. Most run a strict on-ramp / beginner programme before letting you join the regular classes.`,
+  },
+];
+
+const jsonLd = [
+  placeSchema(colchester._town, colchester._lat, colchester._lng),
+  faqSchema(faqs),
+];
+---
+<BaseLayout title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Specialism · Colchester</p>
+      <h1 class="mt-2 text-4xl font-bold text-ink-900">{label} in Colchester</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">{desc}</p>
+    </div>
+  </section>
+
+  <div class="container-wide py-10 grid gap-6 md:gap-8">
+    {studio ? (
+      <section class="bg-white border border-ink-900/10 rounded-xl p-6">
+        <h2 class="text-2xl font-semibold text-ink-900">{studio.name}</h2>
+        <p class="text-sm text-ink-500 mt-1">{studio.address}</p>
+        <p class="mt-3 text-3xl font-bold text-brand-700">{fmtMoney(studio.monthly_price_2026_gbp)}<span class="text-sm text-ink-500 font-normal"> /month · {fmtMoney(studio.drop_in_2026_gbp)} drop-in</span></p>
+        <p class="mt-4 text-ink-700">{studio.class_roster_summary}</p>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-xs uppercase tracking-wider text-accent-700 font-bold mb-2">Best for</p>
+            <ul class="text-sm space-y-1">
+              {studio.best_for.map((b) => <li class="text-ink-900">+ {b}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-wider text-brand-700 font-bold mb-2">Underrated for</p>
+            <ul class="text-sm space-y-1">
+              {studio.underrated_for.map((u) => <li class="text-ink-900">★ {u}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-wider text-ink-700 font-bold mb-2">Worst for</p>
+            <ul class="text-sm space-y-1">
+              {studio.worst_for.map((w) => <li class="text-ink-900">− {w}</li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="bg-white border border-ink-900/10 rounded-xl p-6">
+        <p class="text-ink-700">
+          We're verifying {label.toLowerCase()} options in Colchester for the v0.1 launch. If you run a {label.toLowerCase()} studio in Colchester, get in touch — we'd like to review you for this page.
+        </p>
+        <a href="/for-gyms/" class="btn-secondary mt-4">List your studio →</a>
+      </section>
+    )}
+
+    <MapEmbed lat={colchester._lat} lng={colchester._lng} label={`${label} in ${colchester._town}`} />
+
+    <FAQBlock faqs={faqs} />
+
+    <LeadFormGym town={colchester._town} context={`specialism-${specialismKey}`} />
+  </div>
+</BaseLayout>

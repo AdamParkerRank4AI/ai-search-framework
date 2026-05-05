@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About FindAGym | Honest UK Gym Reviews';
+const description = 'About FindAGym: an independent UK gym review site that captures what generic ranking sites won\'t — quiet times, demographic profile, equipment audits.';
+---
+<BaseLayout title={title} description={description}>
+  <article class="container-prose py-12 max-w-none">
+    <h1 class="text-4xl font-bold text-ink-900">About FindAGym</h1>
+
+    <p class="mt-4 text-lg text-ink-700">
+      FindAGym was built because the UK gym review space is broken. Generic gym ranking sites tell you which gym is cheapest. They don't tell you when each gym is empty, who actually goes there, what the equipment is really like, or what each gym is genuinely best at.
+    </p>
+
+    <h2 class="mt-8 text-2xl font-semibold">What we capture</h2>
+
+    <ul class="mt-3 text-ink-700">
+      <li><strong>Quiet times</strong> — daily heatmap from Google Maps Popular Times plus our own observation</li>
+      <li><strong>Who actually goes there</strong> — gender split, age bands, beginner-to-advanced ratio, atmosphere read</li>
+      <li><strong>Equipment audit</strong> — cardio counts, dumbbell ceilings, squat racks, deadlift platforms, what's broken</li>
+      <li><strong>Class roster</strong> with named instructors where known</li>
+      <li><strong>Best for / Underrated for / Worst for</strong> — genuinely honest assessments</li>
+    </ul>
+
+    <h2 class="mt-8 text-2xl font-semibold">How we work</h2>
+
+    <p class="mt-3 text-ink-700">
+      We start with public data — brand websites, Google Maps, Trustpilot, Google Reviews — then we visit. Every gym we publish about gets a real visit at peak (Mon 18:00) and off-peak (Sat 09:00). The audit we publish is what we saw on the day, refreshed annually or whenever we hear something has changed.
+    </p>
+
+    <h2 class="mt-8 text-2xl font-semibold">How we make money</h2>
+
+    <p class="mt-3 text-ink-700">
+      Affiliate commissions when readers join a gym we link to (Hussle, ClassPass, PureGym, The Gym Group, Anytime Fitness, JD Gyms). Listing fees from gyms that want a featured profile (visible disclosure on every page). Display ads at scale (post-50k sessions). PT directory listings (Phase 2).
+    </p>
+
+    <p class="mt-3 text-ink-700">
+      We don't take payment to omit cons. We don't take payment to move a gym up a ranking. The "worst for" sections are the same on a paid-listing gym as on an unaffiliated one. That's the whole moat.
+    </p>
+
+    <h2 class="mt-8 text-2xl font-semibold">Pilot scope</h2>
+
+    <p class="mt-3 text-ink-700">
+      v0.1 ships in Colchester (Essex) covering ~12 gyms and specialism studios. Once the model is proven, we expand to Chelmsford, Ipswich, Cambridge, Romford, Southend, then nationally. Up to 16,000 programmatic pages possible across all UK towns.
+    </p>
+
+    <p class="mt-8 text-ink-700">
+      <a href="/how-we-rate-gyms/" class="text-brand-700">Read our full rating methodology →</a>
+    </p>
+  </article>
+</BaseLayout>

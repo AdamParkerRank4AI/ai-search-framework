@@ -1,0 +1,79 @@
+{
+  "_comment": "Per-district boiler / heating engineer pricing seeds.",
+  "_refresh_frequency": "quarterly",
+  "_last_refresh": "2026-04-28",
+  "districts": {
+    "CO1": {
+      "average_emergency_callout_2026_gbp": 95,
+      "median_hourly_rate_2026_gbp": 65,
+      "annual_service_average_gbp": 100,
+      "boiler_repair_average_gbp": 250,
+      "new_combi_install_average_gbp": 2700,
+      "heat_pump_install_average_gbp": 11500,
+      "regional_premium_pct": 0
+    },
+    "SL4": {
+      "average_emergency_callout_2026_gbp": 120,
+      "median_hourly_rate_2026_gbp": 80,
+      "annual_service_average_gbp": 130,
+      "boiler_repair_average_gbp": 320,
+      "new_combi_install_average_gbp": 3500,
+      "heat_pump_install_average_gbp": 13800,
+      "regional_premium_pct": 25
+    },
+    "GU15": {
+      "average_emergency_callout_2026_gbp": 110,
+      "median_hourly_rate_2026_gbp": 75,
+      "annual_service_average_gbp": 120,
+      "boiler_repair_average_gbp": 300,
+      "new_combi_install_average_gbp": 3300,
+      "heat_pump_install_average_gbp": 13200,
+      "regional_premium_pct": 20
+    },
+    "GU1": {
+      "average_emergency_callout_2026_gbp": 115,
+      "median_hourly_rate_2026_gbp": 76,
+      "annual_service_average_gbp": 122,
+      "boiler_repair_average_gbp": 305,
+      "new_combi_install_average_gbp": 3350,
+      "heat_pump_install_average_gbp": 13400,
+      "regional_premium_pct": 22
+    },
+    "GU7": {
+      "average_emergency_callout_2026_gbp": 115,
+      "median_hourly_rate_2026_gbp": 76,
+      "annual_service_average_gbp": 122,
+      "boiler_repair_average_gbp": 305,
+      "new_combi_install_average_gbp": 3350,
+      "heat_pump_install_average_gbp": 13400,
+      "regional_premium_pct": 22
+    },
+    "RG21": {
+      "average_emergency_callout_2026_gbp": 105,
+      "median_hourly_rate_2026_gbp": 70,
+      "annual_service_average_gbp": 115,
+      "boiler_repair_average_gbp": 280,
+      "new_combi_install_average_gbp": 3050,
+      "heat_pump_install_average_gbp": 12700,
+      "regional_premium_pct": 12
+    },
+    "GU11": {
+      "average_emergency_callout_2026_gbp": 105,
+      "median_hourly_rate_2026_gbp": 70,
+      "annual_service_average_gbp": 115,
+      "boiler_repair_average_gbp": 280,
+      "new_combi_install_average_gbp": 3050,
+      "heat_pump_install_average_gbp": 12700,
+      "regional_premium_pct": 12
+    },
+    "GU14": {
+      "average_emergency_callout_2026_gbp": 107,
+      "median_hourly_rate_2026_gbp": 72,
+      "annual_service_average_gbp": 117,
+      "boiler_repair_average_gbp": 285,
+      "new_combi_install_average_gbp": 3100,
+      "heat_pump_install_average_gbp": 12900,
+      "regional_premium_pct": 14
+    }
+  }
+}

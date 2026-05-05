@@ -1,0 +1,94 @@
+---
+import GymPage from '../layouts/GymPage.astro';
+import AtAGlanceCard from '../components/AtAGlanceCard.astro';
+import BusyHeatmap from '../components/BusyHeatmap.astro';
+import DemographicProfile from '../components/DemographicProfile.astro';
+import EquipmentAudit from '../components/EquipmentAudit.astro';
+import HonestVerdict from '../components/HonestVerdict.astro';
+import ProsConsTable from '../components/ProsConsTable.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import LeadFormGym from '../components/LeadFormGym.astro';
+import { colchester } from '../lib/data';
+import { fmtMoney } from '../lib/data';
+import { localBusinessSchema, faqSchema, placeSchema } from '../lib/schema';
+
+export async function getStaticPaths() {
+  return colchester.gyms.map((g) => ({
+    params: { brand: g.brand_slug },
+    props: { gym: g },
+  }));
+}
+
+const { gym } = Astro.props;
+
+const faqs = [
+  {
+    q: `How much does ${gym.name} cost in 2026?`,
+    a: `${gym.name} costs ${fmtMoney(gym.monthly_price_2026_gbp)}/month in 2026. ${gym.joining_fee_2026_gbp > 0 ? `Joining fee: ${fmtMoney(gym.joining_fee_2026_gbp)}.` : 'No joining fee.'} ${gym.no_contract ? 'No contract — cancel anytime.' : 'Standard 12-month contract.'}`,
+  },
+  {
+    q: `When is ${gym.name} quiet?`,
+    a: gym.popular_times_summary,
+  },
+  {
+    q: `Who actually goes to ${gym.name}?`,
+    a: gym.demographic_profile.atmosphere_notes,
+  },
+  {
+    q: `What's ${gym.name} best for?`,
+    a: `Best for: ${gym.best_for.join(', ')}. ${gym.underrated_for.length > 0 ? `Underrated for: ${gym.underrated_for[0]}.` : ''}`,
+  },
+  {
+    q: `What's ${gym.name} not so good for?`,
+    a: `Worst for: ${gym.worst_for.join('; ')}.`,
+  },
+];
+
+const verdict = `${gym.name} is a ${gym.tier_label.toLowerCase()} ${gym.brand} gym in Colchester at ${fmtMoney(gym.monthly_price_2026_gbp)}/month — ${gym.no_contract ? 'no contract' : '12-month contract'}, ${gym.open_24_7 ? 'open 24/7' : gym.open_hours_summary.toLowerCase()}.`;
+
+const title = `${gym.name} Review 2026 — Honest Take, Quiet Times, Equipment Audit | FindAGym`;
+const description = `Honest review of ${gym.name}. Quiet times, demographic profile, real equipment audit, what it's best and worst for. ${fmtMoney(gym.monthly_price_2026_gbp)}/month.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findagym.co.uk/' },
+  { name: 'Colchester', url: 'https://findagym.co.uk/colchester/' },
+  { name: `${gym.name} review`, url: `https://findagym.co.uk/${gym.brand_slug}-colchester-review/` },
+];
+
+const jsonLd = [
+  localBusinessSchema(gym),
+  placeSchema(colchester._town, colchester._lat, colchester._lng),
+  faqSchema(faqs),
+];
+---
+<GymPage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <section slot="hero" class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-10 md:py-14">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">
+        Colchester · {gym.tier_label} · {gym.brand}
+      </p>
+      <h1 class="mt-2 text-3xl md:text-4xl font-bold text-ink-900 leading-tight">
+        {gym.name} — Honest Review 2026
+      </h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">{verdict}</p>
+    </div>
+  </section>
+
+  <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+    <div class="md:col-span-2 space-y-6 md:space-y-8">
+      <BusyHeatmap gym={gym} />
+      <DemographicProfile gym={gym} />
+      <EquipmentAudit gym={gym} />
+      <HonestVerdict gym={gym} />
+      <ProsConsTable gym={gym} />
+      <MapEmbed lat={gym.lat} lng={gym.lng} label={gym.name} />
+      <FAQBlock faqs={faqs} />
+    </div>
+    <div>
+      <AtAGlanceCard gym={gym} />
+    </div>
+  </div>
+
+  <LeadFormGym town="Colchester" context={`brand-review-${gym.brand_slug}`} />
+</GymPage>

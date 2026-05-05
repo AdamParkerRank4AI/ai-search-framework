@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'For Gym Operators — Premium Listings | FindAGym';
+const description = 'Operate a UK gym? Premium listings on FindAGym from £99/year. Featured placement, claim your profile, get qualified enquiries from people choosing in your town.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">For gym operators</p>
+      <h1 class="mt-2 text-4xl font-bold text-ink-900">Get found by people actively choosing a gym in your town</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">
+        Premium listings from £99/year. Featured placement on town and category pages, claim your profile, edit equipment and class details, get qualified enquiries from members researching the right gym for their goal.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12 grid md:grid-cols-2 gap-8">
+    <div>
+      <h2 class="text-2xl font-semibold text-ink-900">What you get</h2>
+      <ul class="mt-4 space-y-3 text-ink-700">
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Featured placement on the Colchester town hub</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Verified badge on your profile</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Self-service edit access for equipment, hours, classes, photos</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Direct enquiry form on your profile (not shared with competitors)</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Quarterly traffic + enquiry report</span></li>
+      </ul>
+    </div>
+    <div class="bg-white border border-ink-900/10 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-ink-900">What we don't promise</h2>
+      <ul class="mt-4 space-y-3 text-ink-700">
+        <li class="flex gap-3"><span class="text-ink-700 font-bold">×</span><span>We don't remove honest "worst for" sections from your review.</span></li>
+        <li class="flex gap-3"><span class="text-ink-700 font-bold">×</span><span>We don't move you up a ranking based on payment.</span></li>
+        <li class="flex gap-3"><span class="text-ink-700 font-bold">×</span><span>We don't omit reviews you don't like.</span></li>
+      </ul>
+      <p class="mt-4 text-sm text-ink-500 italic">
+        Trust is the entire moat. We won't trade it for £499.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12 border-t border-ink-900/10">
+    <h2 class="text-2xl font-semibold text-ink-900">Apply for a listing</h2>
+    <form class="mt-6 max-w-xl bg-white border border-ink-900/10 rounded-xl p-6 space-y-4" action="https://tally.so/r/REPLACE_WITH_GYM_OPERATOR_FORM_ID" method="POST">
+      <div>
+        <label for="gym_name" class="block text-sm font-medium text-ink-900 mb-1">Gym name</label>
+        <input type="text" id="gym_name" name="gym_name" required class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base" />
+      </div>
+      <div>
+        <label for="town" class="block text-sm font-medium text-ink-900 mb-1">Town</label>
+        <input type="text" id="town" name="town" required placeholder="Colchester" class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base" />
+      </div>
+      <div>
+        <label for="role" class="block text-sm font-medium text-ink-900 mb-1">Your role</label>
+        <input type="text" id="role" name="role" required placeholder="Owner / manager" class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base" />
+      </div>
+      <div>
+        <label for="contact" class="block text-sm font-medium text-ink-900 mb-1">Email</label>
+        <input type="email" id="contact" name="contact" required class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base" />
+      </div>
+      <button type="submit" class="btn-primary w-full">Request a listing</button>
+    </form>
+  </section>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, gasSafe, boilerPricing } from '../../lib/data';
+import { boilerServiceFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = gasSafe.districts[pc]?.registered_count ?? 0;
+const top3 = gasSafe.districts[pc]?.top_3 ?? [];
+const pricing = boilerPricing.districts[pc];
+const servicePrice = pricing?.annual_service_average_gbp ?? 100;
+
+const faqs = boilerServiceFAQs({ d: district, servicePrice });
+const factLine = `${registered || 'Multiple'} Gas Safe registered heating engineers cover ${town} (${pc}). A standard annual boiler service is around £${servicePrice} in 2026, and required annually to maintain manufacturer warranty.`;
+const verdict = `Annual service due, or buying the property and want a clean handover? Three Gas Safe engineers in your inbox within the hour.`;
+
+const title = `Boiler Service in ${town} (${pc}) — Annual Service From £${servicePrice} | FindATradey`;
+const description = `Annual boiler service in ${town}. Gas Safe registered engineers, full flue gas analysis, manufacturer-warranty-compliant. Typical price from £${servicePrice}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Heating engineer', url: 'https://findatradey.co.uk/heating-engineer/' },
+  { name: `Boiler service ${town}`, url: `https://findatradey.co.uk/boiler-service/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Boiler service in ${town}`,
+    serviceType: 'Boiler service',
+    district,
+    description,
+    averagePrice: servicePrice,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Boiler service" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="boiler" district={district.postcode_district} intent="quote" />
+
+  <TrustBlock trade="boiler" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={gasSafe._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="boiler" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 boiler service prices in ${town}`}
+      rows={[
+        { label: 'Combi boiler service', value: `£${servicePrice}`, note: '30–60 minutes including flue gas analysis' },
+        { label: 'System / regular boiler service', value: `£${Math.round(servicePrice * 1.2)}`, note: 'Cylinder + immersion checks add time' },
+        { label: 'Landlord gas safety certificate (CP12)', value: `£${Math.round(servicePrice * 0.95)}`, note: 'Often bundled with service for a small uplift' },
+        { label: 'Service plan (12 monthly)', value: `£${Math.round(servicePrice / 12)}/mo`, note: 'Many engineers offer monthly DD plans covering service + emergency callouts' },
+      ]}
+      footnote="Avoid services under 30 minutes — they aren't a real service. The flue gas analysis alone takes 15 minutes done correctly."
+    />
+  </div>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/boiler-service" pageLabel="boiler service engineer" />
+  <RelatedServices district={district} currentService="boiler-service" />
+</TradePage>

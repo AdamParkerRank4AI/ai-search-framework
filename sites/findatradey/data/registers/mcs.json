@@ -1,0 +1,15 @@
+{
+  "_comment": "MCS-certified renewable installers per district. Used for heat-pump-installer pages.",
+  "_refresh_frequency": "monthly",
+  "_last_refresh": null,
+  "districts": {
+    "CO1": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "SL4": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "GU15": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "GU1": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "GU7": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "RG21": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "GU11": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] },
+    "GU14": { "registered_count": 0, "heat_pump_count": 0, "solar_count": 0, "top_3": [] }
+  }
+}

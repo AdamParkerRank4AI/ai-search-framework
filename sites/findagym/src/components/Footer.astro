@@ -1,0 +1,49 @@
+---
+const colchesterLinks = [
+  { href: '/colchester/', label: 'All Colchester gyms' },
+  { href: '/best-gyms-colchester/', label: 'Best gyms in Colchester' },
+  { href: '/cheap-gyms-colchester/', label: 'Cheap gyms' },
+  { href: '/24-hour-gyms-colchester/', label: '24-hour gyms' },
+  { href: '/quietest-gyms-colchester/', label: 'Quietest gyms' },
+  { href: '/least-intimidating-gym-colchester/', label: 'Least intimidating' },
+];
+
+const trust = [
+  { href: '/about/', label: 'About FindAGym' },
+  { href: '/how-we-rate-gyms/', label: 'How we rate' },
+  { href: '/for-gyms/', label: 'For gym operators' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+<footer class="border-t border-ink-900/10 bg-ink-900/5 mt-16">
+  <div class="container-wide py-12 grid gap-10 md:grid-cols-3">
+    <div>
+      <p class="font-bold text-brand-700 text-lg">FindAGym</p>
+      <p class="text-sm text-ink-700 mt-2">
+        Honest UK gym reviews. When it's quiet, who goes, what the equipment is really like.
+      </p>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-ink-900 mb-3">Colchester</p>
+      <ul class="space-y-2 text-sm">
+        {colchesterLinks.map((c) => (
+          <li><a href={c.href} class="text-ink-700 hover:text-brand-700">{c.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-ink-900 mb-3">About</p>
+      <ul class="space-y-2 text-sm">
+        {trust.map((t) => (
+          <li><a href={t.href} class="text-ink-700 hover:text-brand-700">{t.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-ink-900/10">
+    <div class="container-wide py-4 text-xs text-ink-500 flex justify-between">
+      <span>© {new Date().getFullYear()} FindAGym. All rights reserved.</span>
+      <span>Last data refresh: April 2026</span>
+    </div>
+  </div>
+</footer>

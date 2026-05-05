@@ -1,0 +1,109 @@
+---
+export interface Props {
+  trade: 'plumber' | 'electrician' | 'boiler';
+  district?: string;
+  postcode?: string;
+  intent?: string;
+  submitLabel?: string;
+}
+
+const {
+  trade,
+  district = '',
+  postcode = '',
+  intent = '',
+  submitLabel = 'Get 3 vetted quotes',
+} = Astro.props;
+
+const tradeLabel = trade === 'boiler' ? 'heating engineer' : trade;
+---
+<section id="lead-form" class="bg-brand-50 border border-brand-200 rounded-xl p-6 md:p-8">
+  <div class="grid md:grid-cols-2 gap-8 items-start">
+    <div>
+      <h2 class="text-2xl md:text-3xl font-bold text-ink-900">
+        Tell us about your job. We'll match you with up to 3 verified local {tradeLabel}s within 1 hour.
+      </h2>
+      <ul class="mt-6 space-y-3 text-ink-700">
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>All engineers verified on Gas Safe / NICEIC / NAPIT / OFTEC.</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>We do <strong>not</strong> sell your phone number to dozens of contractors.</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>You get <strong>3 named engineers</strong> — closest, fastest, best-reviewed.</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Free for you. Engineers pay only when they win the job.</span></li>
+        <li class="flex gap-3"><span class="text-brand-600 font-bold">✓</span><span>Once the job's done, we don't ring you again.</span></li>
+      </ul>
+    </div>
+
+    <form
+      class="bg-white border border-ink-900/10 rounded-lg p-5 space-y-4 shadow-sm"
+      action="https://tally.so/r/REPLACE_WITH_TALLY_FORM_ID"
+      method="POST"
+      data-trade={trade}
+      data-district={district}
+    >
+      <div>
+        <label for="postcode" class="block text-sm font-medium text-ink-900 mb-1">
+          Your postcode
+        </label>
+        <input
+          type="text"
+          id="postcode"
+          name="postcode"
+          value={postcode}
+          required
+          autocomplete="postal-code"
+          placeholder="e.g. CO1 1AA"
+          class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base"
+        />
+      </div>
+
+      <div>
+        <label for="intent" class="block text-sm font-medium text-ink-900 mb-1">
+          What's the job?
+        </label>
+        <select
+          id="intent"
+          name="intent"
+          class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base"
+        >
+          <option value="emergency">Emergency — need someone now</option>
+          <option value="quote" selected={intent === 'quote'}>Need a quote — within a few days</option>
+          <option value="planned">Planned work — not urgent</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="job_detail" class="block text-sm font-medium text-ink-900 mb-1">
+          A brief description (optional)
+        </label>
+        <input
+          type="text"
+          id="job_detail"
+          name="job_detail"
+          placeholder="e.g. burst pipe under sink"
+          maxlength="60"
+          class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base"
+        />
+      </div>
+
+      <div>
+        <label for="contact" class="block text-sm font-medium text-ink-900 mb-1">
+          Phone or email
+        </label>
+        <input
+          type="text"
+          id="contact"
+          name="contact"
+          required
+          placeholder="07700 900000"
+          class="w-full border border-ink-900/20 rounded-md px-3 py-2 text-base"
+        />
+        <p class="text-xs text-ink-500 mt-1">Phone is faster for emergencies. We use it once.</p>
+      </div>
+
+      <input type="hidden" name="trade" value={trade} />
+      <input type="hidden" name="district" value={district} />
+
+      <button type="submit" class="btn-primary w-full">{submitLabel}</button>
+      <p class="text-xs text-ink-500 text-center">Free for homeowners. No commitment.</p>
+    </form>
+  </div>
+</section>

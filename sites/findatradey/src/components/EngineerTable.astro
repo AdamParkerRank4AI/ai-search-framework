@@ -1,0 +1,51 @@
+---
+import type { RegisterEntry } from '../lib/types';
+
+export interface Props {
+  entries: RegisterEntry[];
+  registeredCount: number;
+  town: string;
+  trade: 'plumber' | 'electrician' | 'boiler';
+}
+
+const { entries, registeredCount, town, trade } = Astro.props;
+const tradeLabel = trade === 'boiler' ? 'heating engineers' : trade === 'plumber' ? 'plumbers' : 'electricians';
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="text-xl font-semibold text-ink-900">Top {tradeLabel} in {town}</h2>
+    <p class="text-xs text-ink-500">{registeredCount} registered</p>
+  </div>
+
+  {entries.length === 0 ? (
+    <div class="border border-dashed border-ink-900/15 rounded-lg p-5 text-center">
+      <p class="text-sm text-ink-700">
+        We're refreshing the register for this district. Submit the form above and we'll match you with the closest verified {tradeLabel.replace(/s$/, '')} within an hour.
+      </p>
+    </div>
+  ) : (
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-xs uppercase tracking-wider text-ink-500 text-left">
+            <th class="py-2 pr-4">Name</th>
+            <th class="py-2 pr-4">Register ID</th>
+            <th class="py-2 pr-4">Postcode</th>
+            <th class="py-2 pr-4">Phone</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-ink-900/10">
+          {entries.map((e) => (
+            <tr>
+              <td class="py-2 pr-4 font-medium text-ink-900">{e.name}</td>
+              <td class="py-2 pr-4 text-ink-500">{e.registration_id}</td>
+              <td class="py-2 pr-4 text-ink-700">{e.postcode ?? '—'}</td>
+              <td class="py-2 pr-4 text-ink-700">{e.phone ?? '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+  <p class="text-xs text-ink-500 mt-3">Top three by proximity, refreshed weekly. Submit the form above for our matched 3.</p>
+</section>

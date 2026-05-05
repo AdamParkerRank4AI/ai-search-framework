@@ -1,0 +1,61 @@
+---
+const trades = [
+  { href: '/plumber/', label: 'Plumbers' },
+  { href: '/electrician/', label: 'Electricians' },
+  { href: '/heating-engineer/', label: 'Heating engineers' },
+];
+
+const counties = [
+  { href: '/county/berkshire/', label: 'Berkshire' },
+  { href: '/county/surrey/', label: 'Surrey' },
+  { href: '/county/hampshire/', label: 'Hampshire' },
+  { href: '/county/essex/', label: 'Essex' },
+];
+
+const trust = [
+  { href: '/about/', label: 'About FindATradey' },
+  { href: '/how-we-vet-tradesmen/', label: 'How we vet tradesmen' },
+  { href: '/for-tradesmen/', label: 'For tradesmen' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+<footer class="border-t border-ink-900/10 bg-ink-900/5 mt-16">
+  <div class="container-wide py-12 grid gap-10 md:grid-cols-4">
+    <div>
+      <p class="font-bold text-brand-700 text-lg">FindATradey</p>
+      <p class="text-sm text-ink-700 mt-2">
+        Three vetted local engineers. No spam. Pay only when the job's done.
+      </p>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-ink-900 mb-3">Trades</p>
+      <ul class="space-y-2 text-sm">
+        {trades.map((t) => (
+          <li><a href={t.href} class="text-ink-700 hover:text-brand-700">{t.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-ink-900 mb-3">Areas</p>
+      <ul class="space-y-2 text-sm">
+        {counties.map((c) => (
+          <li><a href={c.href} class="text-ink-700 hover:text-brand-700">{c.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-ink-900 mb-3">About</p>
+      <ul class="space-y-2 text-sm">
+        {trust.map((t) => (
+          <li><a href={t.href} class="text-ink-700 hover:text-brand-700">{t.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-ink-900/10">
+    <div class="container-wide py-4 text-xs text-ink-500 flex justify-between">
+      <span>© {new Date().getFullYear()} FindATradey. All rights reserved.</span>
+      <span>Engineer registers refreshed weekly.</span>
+    </div>
+  </div>
+</footer>

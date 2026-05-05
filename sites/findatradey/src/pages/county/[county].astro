@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { districts, getDistrictsByCounty } from '../../lib/data';
+import type { District } from '../../lib/types';
+
+export async function getStaticPaths() {
+  const byCounty = getDistrictsByCounty();
+  return Object.entries(byCounty).map(([slug, ds]) => ({
+    params: { county: slug },
+    props: {
+      countySlug: slug,
+      countyName: ds[0].county,
+      districts: ds as District[],
+    },
+  }));
+}
+
+const { countySlug, countyName, districts: countyDistricts } = Astro.props as {
+  countySlug: string;
+  countyName: string;
+  districts: District[];
+};
+
+const services = [
+  { slug: 'emergency-plumber', label: 'Emergency plumber' },
+  { slug: 'leak-detection', label: 'Leak detection' },
+  { slug: 'drain-unblocking', label: 'Drain unblocking' },
+  { slug: 'eicr-electrician', label: 'EICR electrician' },
+  { slug: 'house-rewire', label: 'House rewire' },
+  { slug: 'emergency-electrician', label: 'Emergency electrician' },
+  { slug: 'consumer-unit', label: 'Consumer unit' },
+  { slug: 'boiler-service', label: 'Boiler service' },
+  { slug: 'boiler-repair', label: 'Boiler repair' },
+  { slug: 'new-boiler-install', label: 'New boiler install' },
+  { slug: 'heat-pump-installer', label: 'Heat pump installer' },
+];
+
+const title = `Tradesmen in ${countyName} — Plumbers, Electricians, Heating Engineers | FindATradey`;
+const description = `Find verified plumbers, electricians and heating engineers across ${countyName}. ${countyDistricts.length} ${countyDistricts.length === 1 ? 'town covered' : 'towns covered'}. Three vetted quotes within an hour.`;
+---
+<BaseLayout title={title} description={description}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">{countyName}</p>
+      <h1 class="mt-2 text-4xl font-bold text-ink-900">Tradesmen in {countyName}</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">
+        Verified Gas Safe, NICEIC, OFTEC and MCS engineers across {countyDistricts.length} {countyName} {countyDistricts.length === 1 ? 'town' : 'towns'}. Pick a town below or jump to a service.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">Towns covered in {countyName}</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {countyDistricts.map((d) => (
+        <div class="bg-white border border-ink-900/10 rounded-xl p-5">
+          <p class="text-lg font-semibold text-ink-900">{d.town}</p>
+          <p class="text-xs text-ink-500 mt-1">{d.postcode_district} · {d.borough_council}</p>
+          <ul class="mt-4 space-y-1 text-sm">
+            {services.slice(0, 4).map((s) => (
+              <li>
+                <a href={`/${s.slug}/${d.slug}/`} class="text-brand-700 hover:underline">
+                  {s.label} in {d.town}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-wide py-8 border-t border-ink-900/10">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">All services across {countyName}</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+      {services.flatMap((s) =>
+        countyDistricts.map((d) => ({
+          href: `/${s.slug}/${d.slug}/`,
+          label: `${s.label} in ${d.town}`,
+          town: d.town,
+        }))
+      ).map((link) => (
+        <a href={link.href} class="block border border-ink-900/10 rounded-lg p-3 hover:border-brand-300 transition no-underline">
+          <span class="text-sm font-medium text-ink-900">{link.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

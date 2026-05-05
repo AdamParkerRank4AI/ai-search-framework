@@ -1,0 +1,94 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, niceic, electricianPricing } from '../../lib/data';
+import { emergencyElectricianFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = niceic.districts[pc]?.registered_count ?? 0;
+const top3 = niceic.districts[pc]?.top_3 ?? [];
+const pricing = electricianPricing.districts[pc];
+const callout = pricing?.average_emergency_callout_2026_gbp ?? 85;
+const hourly = pricing?.median_hourly_rate_2026_gbp ?? 55;
+
+const faqs = emergencyElectricianFAQs({ d: district, callout });
+const factLine = `${registered || 'Multiple'} NICEIC / NAPIT registered electricians cover ${town} (${pc}). Typical 2026 emergency callout: £${callout}, then £${hourly}/hr on site. Power cut on your street alone? — call 105 first (free).`;
+const verdict = `Lights out? Repeated trips? Burning smell? Three local registered electricians in your inbox within the hour.`;
+
+const title = `Emergency Electrician in ${town} (${pc}) — 24h | FindATradey`;
+const description = `24-hour emergency electrician in ${town}. ${registered || 'Multiple'} NICEIC / NAPIT / ELECSA registered, callout from £${callout}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Electrician', url: 'https://findatradey.co.uk/electrician/' },
+  { name: `Emergency electrician ${town}`, url: `https://findatradey.co.uk/emergency-electrician/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Emergency electrician in ${town}`,
+    serviceType: 'Emergency electrical',
+    district,
+    description,
+    averagePrice: callout,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict slot="hero" district={district} serviceLabel="Emergency electrician" factLine={factLine} verdict={verdict} />
+
+  <LeadForm trade="electrician" district={district.postcode_district} intent="emergency" />
+
+  <TrustBlock trade="electrician" registeredCount={registered} town={town} postcodeDistrict={pc} lastRefresh={niceic._last_refresh ?? undefined} />
+
+  <EngineerTable entries={top3} registeredCount={registered} town={town} trade="electrician" />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 emergency electrician prices in ${town}`}
+      rows={[
+        { label: 'Standard daytime callout', value: `£${callout}`, note: 'First 30 min on site included' },
+        { label: 'Hourly rate after callout', value: `£${hourly}/hr` },
+        { label: 'Out-of-hours premium', value: '+50–100%', note: 'Weekends + 18:00–07:00' },
+        { label: 'Bank holiday premium', value: '+100%' },
+        { label: 'Materials', value: 'On top, at-cost' },
+      ]}
+      footnote={pricing?.regional_premium_pct ? `${district.county} typically runs ~${pricing.regional_premium_pct}% above national baseline pricing.` : undefined}
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">Before you call: a 60-second triage</h2>
+    <ol class="list-decimal pl-5 text-ink-700 space-y-2">
+      <li><strong>Whole street dark?</strong> Call 105 (free). It's your network operator, not an electrician.</li>
+      <li><strong>Just your house?</strong> Check the consumer unit. If a switch is in the down/middle position, reset it once.</li>
+      <li><strong>Trips immediately?</strong> Stop. That's a hard fault. Don't keep resetting — call an electrician.</li>
+      <li><strong>Trips after a delay?</strong> Unplug all appliances, reset, plug them back in one at a time. The last one connected before the trip is the likely fault.</li>
+      <li><strong>Burning smell, scorch marks, smoke?</strong> Isolate at the consumer unit's main switch. Call immediately. Do not try to investigate.</li>
+    </ol>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/emergency-electrician" pageLabel="emergency electrician" />
+  <RelatedServices district={district} currentService="emergency-electrician" />
+</TradePage>

@@ -1,0 +1,39 @@
+---
+import type { District, Trade } from '../lib/types';
+
+export interface Props {
+  district: District;
+  currentService: string; // e.g. "emergency-plumber" — to exclude
+}
+
+const { district, currentService } = Astro.props;
+
+const services: Array<{ slug: string; label: string; trade: Trade }> = [
+  { slug: 'emergency-plumber', label: 'Emergency plumber', trade: 'plumber' },
+  { slug: 'leak-detection', label: 'Leak detection', trade: 'plumber' },
+  { slug: 'drain-unblocking', label: 'Drain unblocking', trade: 'plumber' },
+  { slug: 'eicr-electrician', label: 'EICR electrician', trade: 'electrician' },
+  { slug: 'house-rewire', label: 'House rewire', trade: 'electrician' },
+  { slug: 'emergency-electrician', label: 'Emergency electrician', trade: 'electrician' },
+  { slug: 'consumer-unit', label: 'Consumer unit / fuse box', trade: 'electrician' },
+  { slug: 'boiler-service', label: 'Boiler service', trade: 'boiler' },
+  { slug: 'boiler-repair', label: 'Boiler repair', trade: 'boiler' },
+  { slug: 'new-boiler-install', label: 'New boiler install', trade: 'boiler' },
+  { slug: 'heat-pump-installer', label: 'Heat pump installer', trade: 'boiler' },
+];
+
+const others = services.filter((s) => s.slug !== currentService).slice(0, 6);
+---
+<section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6">
+  <h2 class="text-xl font-semibold text-ink-900 mb-4">Other trades in {district.town}</h2>
+  <ul class="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+    {others.map((s) => (
+      <li>
+        <a href={`/${s.slug}/${district.slug}/`} class="block border border-ink-900/10 rounded-lg p-3 hover:border-brand-300 transition no-underline">
+          <span class="block text-sm font-medium text-ink-900">{s.label}</span>
+          <span class="block text-xs text-ink-500">{district.town} ({district.postcode_district})</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

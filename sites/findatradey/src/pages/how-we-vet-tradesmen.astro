@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'How We Vet Tradesmen | FindATradey';
+const description = 'FindATradey verification: weekly Gas Safe, NICEIC, NAPIT, ELECSA, OFTEC and MCS register checks; review-quality triage; no-show removal. The full process.';
+---
+<BaseLayout title={title} description={description}>
+  <article class="container-prose py-12 max-w-none">
+    <h1 class="text-4xl font-bold text-ink-900">How we vet tradesmen</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Every engineer we send to a homeowner has been through this process. None of it requires the engineer's word for it; we cross-check public registers and review aggregates.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 1 — Register check (weekly)</h2>
+    <p class="mt-3 text-ink-700">
+      For each engineer we list, we verify their registration is current on the relevant UK register every week:
+    </p>
+    <ul class="mt-3 text-ink-700">
+      <li><strong>Gas Safe Register</strong> — required for any work touching gas appliances. <a href="https://www.gassaferegister.co.uk" target="_blank" rel="noopener noreferrer">Check engineers here ↗</a></li>
+      <li><strong>NICEIC / NAPIT / ELECSA</strong> — Part P registered electrical installer schemes. <a href="https://niceic.com" target="_blank" rel="noopener noreferrer">NICEIC ↗</a> · <a href="https://www.napit.org.uk" target="_blank" rel="noopener noreferrer">NAPIT ↗</a> · <a href="https://www.elecsa.co.uk" target="_blank" rel="noopener noreferrer">ELECSA ↗</a></li>
+      <li><strong>OFTEC</strong> — required for oil-fired boilers and heating. <a href="https://www.oftec.org" target="_blank" rel="noopener noreferrer">Check ↗</a></li>
+      <li><strong>MCS</strong> — required for heat pumps under the Boiler Upgrade Scheme. <a href="https://mcscertified.com" target="_blank" rel="noopener noreferrer">Check ↗</a></li>
+      <li><strong>WaterSafe</strong> — approved for plumbing on the mains supply. <a href="https://www.watersafe.org.uk" target="_blank" rel="noopener noreferrer">Check ↗</a></li>
+    </ul>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 2 — Review aggregate (monthly)</h2>
+    <p class="mt-3 text-ink-700">
+      We pull the engineer's review counts and average scores from Google and Trustpilot every month. Engineers with averages below 4.0 stars or under 10 reviews don't qualify. This isn't a tip-the-balance check — it's a floor.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 3 — Response-time check (per-job)</h2>
+    <p class="mt-3 text-ink-700">
+      When we ring three engineers about your job, the timer starts. Engineers who take longer than 60 minutes to respond drop down our roster ranking for the next job. Three consecutive 60+ minute responses = removal.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">Step 4 — Outcome check (post-job)</h2>
+    <p class="mt-3 text-ink-700">
+      After your job's done, we ring you to ask whether the engineer turned up, did the work, and would you use them again. Three negative outcomes for the same engineer = removal. We don't publish "review pages" for tradesmen we removed; we just don't list them.
+    </p>
+
+    <h2 class="mt-10 text-2xl font-semibold text-ink-900">What we don't claim</h2>
+    <p class="mt-3 text-ink-700">
+      We don't claim our engineers will always be the cheapest, that quotes will always match the on-site reality, or that no engineer ever lets a customer down. We do claim the process above is more rigorous than what national lead-networks apply, and that we remove bad actors from the roster faster.
+    </p>
+
+    <p class="mt-10 text-ink-700">
+      Questions about a specific engineer or a job that didn't go right? <a href="/contact/" class="text-brand-700">Get in touch →</a>
+    </p>
+  </article>
+</BaseLayout>

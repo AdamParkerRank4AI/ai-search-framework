@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { districts } from '../../lib/data';
+
+const services = [
+  { slug: 'boiler-service', label: 'Boiler service', desc: 'Annual service to maintain manufacturer warranty' },
+  { slug: 'boiler-repair', label: 'Boiler repair', desc: 'Breakdown diagnosis and parts replacement' },
+  { slug: 'new-boiler-install', label: 'New boiler install', desc: 'Combi, system, regular boilers — 8–10 yr warranty' },
+  { slug: 'heat-pump-installer', label: 'Heat pump installer', desc: 'MCS-certified, BUS grant up to £9,000 from July 2026' },
+];
+
+const title = 'Heating Engineers UK — Boiler Service, Repair, Install, Heat Pump | FindATradey';
+const description = 'Find a Gas Safe / OFTEC / MCS heating engineer in your UK town. Boiler service, repair, new install, heat pump install with BUS grant. Three vetted quotes within an hour.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="bg-gradient-to-b from-brand-50 to-white border-b border-ink-900/10">
+    <div class="container-wide py-12 md:py-16">
+      <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Heating engineers</p>
+      <h1 class="mt-2 text-4xl font-bold text-ink-900">UK heating engineers — boiler &amp; heat pump</h1>
+      <p class="mt-4 text-lg text-ink-700 max-w-2xl">Verified Gas Safe, OFTEC and MCS-certified engineers across the UK. Pick a service.</p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {services.map((s) => (
+      <a href={`/${s.slug}/`} class="block bg-white border border-ink-900/10 rounded-xl p-6 hover:border-brand-300 transition no-underline">
+        <p class="text-lg font-semibold text-ink-900">{s.label}</p>
+        <p class="mt-2 text-ink-700 text-sm">{s.desc}</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="container-wide py-8 border-t border-ink-900/10">
+    <h2 class="text-2xl font-semibold text-ink-900 mb-6">Heating engineers by town</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      {districts.map((d) => (
+        <a href={`/boiler-service/${d.slug}/`} class="block border border-ink-900/10 rounded-lg p-3 hover:border-brand-300 transition no-underline">
+          <p class="font-medium text-ink-900">{d.town}</p>
+          <p class="text-xs text-ink-500 mt-1">{d.postcode_district} · {d.county}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

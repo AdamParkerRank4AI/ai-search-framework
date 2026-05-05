@@ -1,0 +1,108 @@
+---
+import TradePage from '../../layouts/TradePage.astro';
+import HeroDistrict from '../../components/HeroDistrict.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import TrustBlock from '../../components/TrustBlock.astro';
+import EngineerTable from '../../components/EngineerTable.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedDistricts from '../../components/RelatedDistricts.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import { getAllDistrictParams, gasSafe, plumberPricing } from '../../lib/data';
+import { emergencyPlumberFAQs } from '../../lib/faqs';
+import { faqSchema, placeSchema, serviceSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  return getAllDistrictParams();
+}
+
+const { district } = Astro.props;
+const { postcode_district: pc, town } = district;
+
+const registered = gasSafe.districts[pc]?.registered_count ?? 0;
+const top3 = gasSafe.districts[pc]?.top_3 ?? [];
+const pricing = plumberPricing.districts[pc];
+
+const callout = pricing?.average_emergency_callout_2026_gbp ?? 95;
+const hourly = pricing?.median_hourly_rate_2026_gbp ?? 60;
+
+const faqs = emergencyPlumberFAQs({ d: district, callout, hourly });
+
+const factLine = `${registered || 'Multiple'} Gas Safe registered plumbers cover ${town} (${pc}). Typical 2026 emergency callout in this district: £${callout}, with an average hourly rate of £${hourly} once on site.`;
+const verdict = `If your pipe's burst, your boiler's flooding the kitchen, or your toilet won't stop running — get three named local plumbers in your inbox within the hour.`;
+
+const title = `Emergency Plumber in ${town} (${pc}) — 24h Quotes 2026 | FindATradey`;
+const description = `24-hour emergency plumber in ${town}. ${registered || 'Multiple'} Gas Safe registered local plumbers, typical callout from £${callout}. Get 3 vetted quotes in 1 hour.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://findatradey.co.uk/' },
+  { name: 'Plumber', url: 'https://findatradey.co.uk/plumber/' },
+  { name: `Emergency plumber ${town}`, url: `https://findatradey.co.uk/emergency-plumber/${district.slug}/` },
+];
+
+const jsonLd = [
+  placeSchema(district),
+  serviceSchema({
+    serviceName: `Emergency plumber in ${town}`,
+    serviceType: 'Emergency plumbing',
+    district,
+    description,
+    averagePrice: callout,
+  }),
+  faqSchema(faqs),
+];
+---
+<TradePage title={title} description={description} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <HeroDistrict
+    slot="hero"
+    district={district}
+    serviceLabel="Emergency plumber"
+    factLine={factLine}
+    verdict={verdict}
+  />
+
+  <LeadForm trade="plumber" district={district.postcode_district} intent="emergency" />
+
+  <TrustBlock
+    trade="plumber"
+    registeredCount={registered}
+    town={town}
+    postcodeDistrict={pc}
+    lastRefresh={gasSafe._last_refresh ?? undefined}
+  />
+
+  <EngineerTable
+    entries={top3}
+    registeredCount={registered}
+    town={town}
+    trade="plumber"
+  />
+
+  <div id="prices">
+    <PriceCard
+      title={`Typical 2026 emergency plumber prices in ${town}`}
+      rows={[
+        { label: 'Average emergency callout', value: `£${callout}`, note: '24h, includes first 30 minutes on site' },
+        { label: 'Hourly rate after callout', value: `£${hourly}/hr` },
+        { label: 'Out-of-hours premium', value: '+50–100%', note: 'Weekends and 18:00–07:00 weekdays' },
+        { label: 'Materials & parts', value: 'On top', note: 'Trade rate at-cost from a reputable plumber' },
+      ]}
+      footnote={`Prices are 2026 averages. ${pricing?.regional_premium_pct ? `${district.county} carries a ~${pricing.regional_premium_pct}% premium over the national baseline.` : ''} Refine after first 10 real leads.`}
+    />
+  </div>
+
+  <section class="bg-white border border-ink-900/10 rounded-xl p-5 md:p-6 prose-sm max-w-none">
+    <h2 class="text-xl font-semibold text-ink-900 mb-3">What you should expect from an emergency plumber in {town}</h2>
+    <p class="text-ink-700">
+      {town}'s housing stock is dominated by {district.housing_stock_dominant.toLowerCase()}, with the median property dating from around {district.median_property_year}. That mix means three callouts dominate emergency work in {pc}: burst pipes during cold snaps (older lead and copper joints), boiler condensate failures (any post-2005 condensing boiler), and unmanaged stopcock failures in the original kitchen position. A competent emergency plumber arrives with the right isolation kit, isolates the leak in the first 15 minutes, and only then quotes the repair. Walk away from anyone who quotes before isolating.
+    </p>
+  </section>
+
+  <MapEmbed lat={district.lat} lng={district.lng} label={`${town} (${pc})`} />
+
+  <FAQBlock faqs={faqs} />
+
+  <RelatedDistricts district={district} pathPrefix="/emergency-plumber" pageLabel="emergency plumber" />
+  <RelatedServices district={district} currentService="emergency-plumber" />
+</TradePage>
