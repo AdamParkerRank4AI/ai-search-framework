@@ -1,0 +1,1206 @@
+{
+  "generated": "2026-04-03 05:36",
+  "total_checked": 59,
+  "available": [
+    {
+      "domain": "centriccommercialfinance.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "griffinfactors.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "alexlawriefactors.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinanceguide.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancedirect.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinanceonline.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "tradedebtfinance.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    }
+  ],
+  "expiring_soon": [
+    {
+      "domain": "workingcapitalfinance.com",
+      "status": "registered",
+      "registration_date": "2004-05-03T13:37:27Z",
+      "expiry_date": "2026-05-03T13:37:27Z",
+      "last_changed": "2025-05-04T10:30:36Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 21.9,
+      "days_until_expiry": 30,
+      "error": null
+    },
+    {
+      "domain": "factoringguide.com",
+      "status": "registered",
+      "registration_date": "2009-05-11T16:19:43Z",
+      "expiry_date": "2026-05-11T16:19:43Z",
+      "last_changed": "2025-12-08T04:21:53Z",
+      "registrar": "eNom, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 16.9,
+      "days_until_expiry": 38,
+      "error": null
+    },
+    {
+      "domain": "cashflowfinance.com",
+      "status": "registered",
+      "registration_date": "2018-06-15T19:01:19Z",
+      "expiry_date": "2026-06-15T19:01:19Z",
+      "last_changed": "2025-06-22T03:40:44Z",
+      "registrar": "GoDaddy Online Services Cayman Islands Ltd.",
+      "nameservers": [
+        "ns3.afternic.com",
+        "ns4.afternic.com",
+        "verification-frsgyqgb387khmr9jzuunx.ns101.verify.hn"
+      ],
+      "age_years": 7.8,
+      "days_until_expiry": 73,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancebroker.com",
+      "status": "registered",
+      "registration_date": "2020-07-01T12:28:03Z",
+      "expiry_date": "2026-07-01T12:28:03Z",
+      "last_changed": "2025-06-30T08:55:41Z",
+      "registrar": "eNom, LLC",
+      "nameservers": [
+        "dns1.name-services.com",
+        "dns2.name-services.com",
+        "dns3.name-services.com",
+        "dns4.name-services.com",
+        "dns5.name-services.com"
+      ],
+      "age_years": 5.8,
+      "days_until_expiry": 89,
+      "error": null
+    },
+    {
+      "domain": "receivablesfinance.com",
+      "status": "registered",
+      "registration_date": "2007-07-31T18:12:10Z",
+      "expiry_date": "2026-07-31T18:12:10Z",
+      "last_changed": "2025-08-01T07:28:39Z",
+      "registrar": "Annulet LLC",
+      "nameservers": [
+        "ns.buydomains.com",
+        "this-domain-for-sale.com"
+      ],
+      "age_years": 18.7,
+      "days_until_expiry": 119,
+      "error": null
+    },
+    {
+      "domain": "compare-invoice-factoring.com",
+      "status": "registered",
+      "registration_date": "2011-09-02T11:58:08Z",
+      "expiry_date": "2026-09-02T11:58:08Z",
+      "last_changed": "2025-09-03T07:13:58Z",
+      "registrar": "IONOS SE",
+      "nameservers": [
+        "ns1048.ui-dns.biz",
+        "ns1048.ui-dns.com",
+        "ns1048.ui-dns.de",
+        "ns1048.ui-dns.org"
+      ],
+      "age_years": 14.6,
+      "days_until_expiry": 152,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancesolutions.com",
+      "status": "registered",
+      "registration_date": "2010-09-22T15:16:57Z",
+      "expiry_date": "2026-09-22T15:16:57Z",
+      "last_changed": "2025-09-23T10:22:54Z",
+      "registrar": "123-Reg Limited",
+      "nameservers": [
+        "ns13.domaincontrol.com",
+        "ns14.domaincontrol.com"
+      ],
+      "age_years": 15.5,
+      "days_until_expiry": 172,
+      "error": null
+    }
+  ],
+  "aged_registered": [
+    {
+      "domain": "assetbasedlending.com",
+      "status": "registered",
+      "registration_date": "1999-03-22T05:00:00Z",
+      "expiry_date": "2027-03-22T04:00:00Z",
+      "last_changed": "2026-03-22T10:43:02Z",
+      "registrar": "123-Reg Limited",
+      "nameservers": [
+        "ns1.hostingnet.com",
+        "ns2.hostingnet.com"
+      ],
+      "age_years": 27.0,
+      "days_until_expiry": 352,
+      "error": null
+    },
+    {
+      "domain": "assetbasedfinance.com",
+      "status": "registered",
+      "registration_date": "2004-03-11T19:39:01Z",
+      "expiry_date": "2028-03-11T18:39:01Z",
+      "last_changed": "2026-03-25T01:17:18Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com",
+        "verification-3gqtdhpbiyzxyxfohn3frg.ns101.verify.hn"
+      ],
+      "age_years": 22.1,
+      "days_until_expiry": 708,
+      "error": null
+    },
+    {
+      "domain": "debtfactoring.com",
+      "status": "registered",
+      "registration_date": "2004-05-13T12:33:43Z",
+      "expiry_date": "2027-05-14T12:33:43Z",
+      "last_changed": "2025-12-01T17:54:19Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns3.afternic.com",
+        "ns4.afternic.com"
+      ],
+      "age_years": 21.9,
+      "days_until_expiry": 406,
+      "error": null
+    },
+    {
+      "domain": "workingcapitalfinance.com",
+      "status": "registered",
+      "registration_date": "2004-05-03T13:37:27Z",
+      "expiry_date": "2026-05-03T13:37:27Z",
+      "last_changed": "2025-05-04T10:30:36Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 21.9,
+      "days_until_expiry": 30,
+      "error": null
+    },
+    {
+      "domain": "receivablesfinance.com",
+      "status": "registered",
+      "registration_date": "2007-07-31T18:12:10Z",
+      "expiry_date": "2026-07-31T18:12:10Z",
+      "last_changed": "2025-08-01T07:28:39Z",
+      "registrar": "Annulet LLC",
+      "nameservers": [
+        "ns.buydomains.com",
+        "this-domain-for-sale.com"
+      ],
+      "age_years": 18.7,
+      "days_until_expiry": 119,
+      "error": null
+    },
+    {
+      "domain": "factoringguide.com",
+      "status": "registered",
+      "registration_date": "2009-05-11T16:19:43Z",
+      "expiry_date": "2026-05-11T16:19:43Z",
+      "last_changed": "2025-12-08T04:21:53Z",
+      "registrar": "eNom, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 16.9,
+      "days_until_expiry": 38,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancesolutions.com",
+      "status": "registered",
+      "registration_date": "2010-09-22T15:16:57Z",
+      "expiry_date": "2026-09-22T15:16:57Z",
+      "last_changed": "2025-09-23T10:22:54Z",
+      "registrar": "123-Reg Limited",
+      "nameservers": [
+        "ns13.domaincontrol.com",
+        "ns14.domaincontrol.com"
+      ],
+      "age_years": 15.5,
+      "days_until_expiry": 172,
+      "error": null
+    },
+    {
+      "domain": "compare-invoice-factoring.com",
+      "status": "registered",
+      "registration_date": "2011-09-02T11:58:08Z",
+      "expiry_date": "2026-09-02T11:58:08Z",
+      "last_changed": "2025-09-03T07:13:58Z",
+      "registrar": "IONOS SE",
+      "nameservers": [
+        "ns1048.ui-dns.biz",
+        "ns1048.ui-dns.com",
+        "ns1048.ui-dns.de",
+        "ns1048.ui-dns.org"
+      ],
+      "age_years": 14.6,
+      "days_until_expiry": 152,
+      "error": null
+    },
+    {
+      "domain": "oxfordfunding.com",
+      "status": "registered",
+      "registration_date": "2012-04-15T18:47:51Z",
+      "expiry_date": "2027-04-15T18:47:51Z",
+      "last_changed": "2026-03-31T07:15:37Z",
+      "registrar": "Bluehost Inc.",
+      "nameservers": [
+        "ns1.bluehost.com",
+        "ns2.bluehost.com"
+      ],
+      "age_years": 14.0,
+      "days_until_expiry": 377,
+      "error": null
+    },
+    {
+      "domain": "invoicefinanceuk.com",
+      "status": "registered",
+      "registration_date": "2018-01-28T19:12:32Z",
+      "expiry_date": "2027-01-28T19:12:32Z",
+      "last_changed": "2026-01-29T08:37:21Z",
+      "registrar": "TurnCommerce, Inc. DBA NameBright.com",
+      "nameservers": [
+        "nsg1.namebrightdns.com",
+        "nsg2.namebrightdns.com"
+      ],
+      "age_years": 8.2,
+      "days_until_expiry": 300,
+      "error": null
+    },
+    {
+      "domain": "cashflowfinance.com",
+      "status": "registered",
+      "registration_date": "2018-06-15T19:01:19Z",
+      "expiry_date": "2026-06-15T19:01:19Z",
+      "last_changed": "2025-06-22T03:40:44Z",
+      "registrar": "GoDaddy Online Services Cayman Islands Ltd.",
+      "nameservers": [
+        "ns3.afternic.com",
+        "ns4.afternic.com",
+        "verification-frsgyqgb387khmr9jzuunx.ns101.verify.hn"
+      ],
+      "age_years": 7.8,
+      "days_until_expiry": 73,
+      "error": null
+    },
+    {
+      "domain": "invoicediscounting.com",
+      "status": "registered",
+      "registration_date": "2019-05-04T18:43:40Z",
+      "expiry_date": "2027-05-04T18:43:40Z",
+      "last_changed": "2026-03-16T13:16:26Z",
+      "registrar": "TurnCommerce, Inc. DBA NameBright.com",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 6.9,
+      "days_until_expiry": 396,
+      "error": null
+    },
+    {
+      "domain": "compareinvoicefactoring.com",
+      "status": "registered",
+      "registration_date": "2019-11-28T23:27:09Z",
+      "expiry_date": "2026-11-28T23:27:09Z",
+      "last_changed": "2025-11-29T09:38:50Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.siteground.net",
+        "ns2.siteground.net"
+      ],
+      "age_years": 6.3,
+      "days_until_expiry": 239,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancebroker.com",
+      "status": "registered",
+      "registration_date": "2020-07-01T12:28:03Z",
+      "expiry_date": "2026-07-01T12:28:03Z",
+      "last_changed": "2025-06-30T08:55:41Z",
+      "registrar": "eNom, LLC",
+      "nameservers": [
+        "dns1.name-services.com",
+        "dns2.name-services.com",
+        "dns3.name-services.com",
+        "dns4.name-services.com",
+        "dns5.name-services.com"
+      ],
+      "age_years": 5.8,
+      "days_until_expiry": 89,
+      "error": null
+    },
+    {
+      "domain": "platformfunding.com",
+      "status": "registered",
+      "registration_date": "2020-10-23T18:03:01Z",
+      "expiry_date": "2026-10-23T18:03:01Z",
+      "last_changed": "2025-10-24T14:46:42Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "carioca.ns.cloudflare.com",
+        "nicolas.ns.cloudflare.com"
+      ],
+      "age_years": 5.4,
+      "days_until_expiry": 203,
+      "error": null
+    }
+  ],
+  "all_results": [
+    {
+      "domain": "compareinvoicefactoring.com",
+      "status": "registered",
+      "registration_date": "2019-11-28T23:27:09Z",
+      "expiry_date": "2026-11-28T23:27:09Z",
+      "last_changed": "2025-11-29T09:38:50Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.siteground.net",
+        "ns2.siteground.net"
+      ],
+      "age_years": 6.3,
+      "days_until_expiry": 239,
+      "error": null
+    },
+    {
+      "domain": "compare-invoice-factoring.com",
+      "status": "registered",
+      "registration_date": "2011-09-02T11:58:08Z",
+      "expiry_date": "2026-09-02T11:58:08Z",
+      "last_changed": "2025-09-03T07:13:58Z",
+      "registrar": "IONOS SE",
+      "nameservers": [
+        "ns1048.ui-dns.biz",
+        "ns1048.ui-dns.com",
+        "ns1048.ui-dns.de",
+        "ns1048.ui-dns.org"
+      ],
+      "age_years": 14.6,
+      "days_until_expiry": 152,
+      "error": null
+    },
+    {
+      "domain": "compareinvoicefactoring.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "cattlesinvoicefinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "venturesfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "oxfordfunding.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "oxfordfunding.com",
+      "status": "registered",
+      "registration_date": "2012-04-15T18:47:51Z",
+      "expiry_date": "2027-04-15T18:47:51Z",
+      "last_changed": "2026-03-31T07:15:37Z",
+      "registrar": "Bluehost Inc.",
+      "nameservers": [
+        "ns1.bluehost.com",
+        "ns2.bluehost.com"
+      ],
+      "age_years": 14.0,
+      "days_until_expiry": 377,
+      "error": null
+    },
+    {
+      "domain": "centriccommercialfinance.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "centriccommercialfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "platformfunding.com",
+      "status": "registered",
+      "registration_date": "2020-10-23T18:03:01Z",
+      "expiry_date": "2026-10-23T18:03:01Z",
+      "last_changed": "2025-10-24T14:46:42Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "carioca.ns.cloudflare.com",
+        "nicolas.ns.cloudflare.com"
+      ],
+      "age_years": 5.4,
+      "days_until_expiry": 203,
+      "error": null
+    },
+    {
+      "domain": "platformfunding.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "positivecashflow.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "advantagebusinessfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "positivecashflowfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "griffinfactors.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "griffinfactors.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "alexlawrie.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "kellockfactors.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "alexlawriefactors.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinanceguide.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "alexlawriefactors.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicefinanceguide.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancebroker.com",
+      "status": "registered",
+      "registration_date": "2020-07-01T12:28:03Z",
+      "expiry_date": "2026-07-01T12:28:03Z",
+      "last_changed": "2025-06-30T08:55:41Z",
+      "registrar": "eNom, LLC",
+      "nameservers": [
+        "dns1.name-services.com",
+        "dns2.name-services.com",
+        "dns3.name-services.com",
+        "dns4.name-services.com",
+        "dns5.name-services.com"
+      ],
+      "age_years": 5.8,
+      "days_until_expiry": 89,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancebroker.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "factoringguide.com",
+      "status": "registered",
+      "registration_date": "2009-05-11T16:19:43Z",
+      "expiry_date": "2026-05-11T16:19:43Z",
+      "last_changed": "2025-12-08T04:21:53Z",
+      "registrar": "eNom, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 16.9,
+      "days_until_expiry": 38,
+      "error": null
+    },
+    {
+      "domain": "factoringbroker.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "factoringguide.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "ukinvoicefinance.com",
+      "status": "registered",
+      "registration_date": "2024-12-17T11:38:03Z",
+      "expiry_date": "2026-12-17T11:38:03Z",
+      "last_changed": "2025-12-15T16:24:04Z",
+      "registrar": "Register SPA",
+      "nameservers": [
+        "ns0.lcn.com",
+        "ns1.lcn.com",
+        "ns2.lcn.com"
+      ],
+      "age_years": 1.3,
+      "days_until_expiry": 258,
+      "error": null
+    },
+    {
+      "domain": "ukinvoicefinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicefinancedirect.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicefinancedirect.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancesolutions.com",
+      "status": "registered",
+      "registration_date": "2010-09-22T15:16:57Z",
+      "expiry_date": "2026-09-22T15:16:57Z",
+      "last_changed": "2025-09-23T10:22:54Z",
+      "registrar": "123-Reg Limited",
+      "nameservers": [
+        "ns13.domaincontrol.com",
+        "ns14.domaincontrol.com"
+      ],
+      "age_years": 15.5,
+      "days_until_expiry": 172,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancesolutions.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicefinanceuk.com",
+      "status": "registered",
+      "registration_date": "2018-01-28T19:12:32Z",
+      "expiry_date": "2027-01-28T19:12:32Z",
+      "last_changed": "2026-01-29T08:37:21Z",
+      "registrar": "TurnCommerce, Inc. DBA NameBright.com",
+      "nameservers": [
+        "nsg1.namebrightdns.com",
+        "nsg2.namebrightdns.com"
+      ],
+      "age_years": 8.2,
+      "days_until_expiry": 300,
+      "error": null
+    },
+    {
+      "domain": "invoicefinanceuk.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicediscounting.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicediscounting.com",
+      "status": "registered",
+      "registration_date": "2019-05-04T18:43:40Z",
+      "expiry_date": "2027-05-04T18:43:40Z",
+      "last_changed": "2026-03-16T13:16:26Z",
+      "registrar": "TurnCommerce, Inc. DBA NameBright.com",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 6.9,
+      "days_until_expiry": 396,
+      "error": null
+    },
+    {
+      "domain": "bestinvoicefinance.com",
+      "status": "registered",
+      "registration_date": "2023-12-20T12:13:12Z",
+      "expiry_date": "2027-12-20T12:13:12Z",
+      "last_changed": "2025-12-21T09:46:01Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns77.domaincontrol.com",
+        "ns78.domaincontrol.com"
+      ],
+      "age_years": 2.3,
+      "days_until_expiry": 626,
+      "error": null
+    },
+    {
+      "domain": "bestinvoicefinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicefinanceonline.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "invoicefinancenews.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "invoicefinanceonline.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "receivablesfinance.com",
+      "status": "registered",
+      "registration_date": "2007-07-31T18:12:10Z",
+      "expiry_date": "2026-07-31T18:12:10Z",
+      "last_changed": "2025-08-01T07:28:39Z",
+      "registrar": "Annulet LLC",
+      "nameservers": [
+        "ns.buydomains.com",
+        "this-domain-for-sale.com"
+      ],
+      "age_years": 18.7,
+      "days_until_expiry": 119,
+      "error": null
+    },
+    {
+      "domain": "tradedebtfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "receivablesfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "debtfactoring.com",
+      "status": "registered",
+      "registration_date": "2004-05-13T12:33:43Z",
+      "expiry_date": "2027-05-14T12:33:43Z",
+      "last_changed": "2025-12-01T17:54:19Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns3.afternic.com",
+        "ns4.afternic.com"
+      ],
+      "age_years": 21.9,
+      "days_until_expiry": 406,
+      "error": null
+    },
+    {
+      "domain": "tradedebtfinance.com",
+      "status": "available",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": null
+    },
+    {
+      "domain": "debtfactoring.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "assetbasedlending.com",
+      "status": "registered",
+      "registration_date": "1999-03-22T05:00:00Z",
+      "expiry_date": "2027-03-22T04:00:00Z",
+      "last_changed": "2026-03-22T10:43:02Z",
+      "registrar": "123-Reg Limited",
+      "nameservers": [
+        "ns1.hostingnet.com",
+        "ns2.hostingnet.com"
+      ],
+      "age_years": 27.0,
+      "days_until_expiry": 352,
+      "error": null
+    },
+    {
+      "domain": "assetbasedlending.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "assetbasedfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "assetbasedfinance.com",
+      "status": "registered",
+      "registration_date": "2004-03-11T19:39:01Z",
+      "expiry_date": "2028-03-11T18:39:01Z",
+      "last_changed": "2026-03-25T01:17:18Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com",
+        "verification-3gqtdhpbiyzxyxfohn3frg.ns101.verify.hn"
+      ],
+      "age_years": 22.1,
+      "days_until_expiry": 708,
+      "error": null
+    },
+    {
+      "domain": "ablfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "cashflowfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "cashflowfinance.com",
+      "status": "registered",
+      "registration_date": "2018-06-15T19:01:19Z",
+      "expiry_date": "2026-06-15T19:01:19Z",
+      "last_changed": "2025-06-22T03:40:44Z",
+      "registrar": "GoDaddy Online Services Cayman Islands Ltd.",
+      "nameservers": [
+        "ns3.afternic.com",
+        "ns4.afternic.com",
+        "verification-frsgyqgb387khmr9jzuunx.ns101.verify.hn"
+      ],
+      "age_years": 7.8,
+      "days_until_expiry": 73,
+      "error": null
+    },
+    {
+      "domain": "workingcapitalfinance.com",
+      "status": "registered",
+      "registration_date": "2004-05-03T13:37:27Z",
+      "expiry_date": "2026-05-03T13:37:27Z",
+      "last_changed": "2025-05-04T10:30:36Z",
+      "registrar": "GoDaddy.com, LLC",
+      "nameservers": [
+        "ns1.afternic.com",
+        "ns2.afternic.com"
+      ],
+      "age_years": 21.9,
+      "days_until_expiry": 30,
+      "error": null
+    },
+    {
+      "domain": "workingcapitalfinance.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "cashflowsolutions.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    },
+    {
+      "domain": "cashflowfunding.co.uk",
+      "status": "error",
+      "registration_date": null,
+      "expiry_date": null,
+      "last_changed": null,
+      "registrar": null,
+      "nameservers": [],
+      "age_years": null,
+      "days_until_expiry": null,
+      "error": "HTTP 503: Service Unavailable"
+    }
+  ]
+}
