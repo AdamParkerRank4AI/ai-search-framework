@@ -217,6 +217,18 @@ The focus shifts from traditional SEO metrics like keyword rankings to interpret
 
 DuckDuckGo is not a single ranking system. It is an assembled results page drawn from several sources, and showing up on it means satisfying each source in turn. Understanding where its results come from is the prerequisite for influencing them.
 
+### Market context: where DuckDuckGo sits
+
+DuckDuckGo is the privacy-first challenger in the search market, not a volume leader. It is consistently positioned as one of the most-used search engines after Google and Bing, but its share is small in absolute terms.
+
+- **Global search market share:** roughly 0.7–0.9% as of 2026.
+- **US search market share:** roughly 1.8%, materially higher than its global figure.
+- **Daily searches:** approximately 100–145 million.
+- **Annual searches:** around 36 billion, up from roughly 15 billion in 2019.
+- **Users:** over 100 million globally, of which around 30 million are in the US.
+
+Two implications follow for strategy. First, the audience skews towards privacy-conscious, often higher-intent users, and is concentrated in the US and a handful of Western markets — valuable for some businesses well beyond what raw share suggests. Second, because the engine is small and Bing-derived, it almost never justifies dedicated optimisation spend. It is a beneficiary of doing the underlying work well, not a separate campaign. (Figures vary by source and measurement method; treat them as directional.)
+
 ### How DuckDuckGo sources results
 
 **Traditional web results (Bing index).** DuckDuckGo's "ten blue links" are drawn primarily from Bing's index, and this remains the case in 2026. DuckDuckGo is not a rebranded Bing, and it re-ranks and presents results differently, but Bing's index is the single biggest factor in whether a page is eligible to appear at all. Critically, because DuckDuckGo does not track users, it cannot personalise results. Content must rank on relevance to the exact query, with no lift from click history or brand familiarity.
@@ -242,6 +254,35 @@ Because DuckDuckGo aggregates rather than originates, visibility is won by satis
 **Keep entity language consistent.** Because DuckDuckGo cannot personalise and stitches together multiple independent sources, contradictions between your site, Bing's index, Wikidata and review platforms are exposed rather than smoothed over. Identical identity language across every surface is what allows the assembled page to resolve to a single, confident entity. *(Signal 01: Identity Clarity and Signal 05: Signal Consistency.)*
 
 **Structure passages for extraction.** DuckAssist and Duck.ai both favour clean, self-contained, extractable passages. The RAG-ready passage discipline — primary answer in the first 150 words, full entity names, no ambiguous pronouns — applies directly. *(Signal 03: Meaning Architecture.)*
+
+### Practical tips and tricks (beyond the Five Signals)
+
+These are tactical levers that sit alongside the signal work. None is a substitute for the structural foundations, but each removes friction or unlocks a specific surface.
+
+- **Win Bing first, and prove it.** Verify the site in Bing Webmaster Tools and submit the sitemap there. Bing Webmaster Tools is, in practice, the closest thing to a "DuckDuckGo Search Console" — DuckDuckGo offers no webmaster console of its own.
+- **Serve HTTPS and load fast.** DuckDuckGo favours secure, fast-loading sites and will upgrade sites to encrypted connections where available. Slow or insecure sites are disadvantaged.
+- **Claim Apple Maps and Apple Business Connect for local.** DuckDuckGo's map and local results are drawn from Apple Maps, not Google Business Profile. For any business with a physical location, an accurate Apple Maps listing is the single highest-leverage local action — and one most competitors overlook.
+- **Lean on local keywords in content.** Because DuckDuckGo does not track location the way Google does, explicit location terms in the page text do more work to surface you for local intent.
+- **Keep titles tight.** Concise title tags (roughly 50–60 characters) with the primary term near the front render cleanly and match how DuckDuckGo presents results.
+- **Add schema for Instant Answers.** Structured data improves eligibility for the Instant Answer and rich-result surfaces above the blue links.
+- **Avoid black-hat shortcuts.** With no personalisation and no click-history lift, DuckDuckGo rewards genuine relevance and penalises keyword stuffing, cloaking and thin content more starkly than engines that can lean on behavioural signals.
+- **Use the `!bang` ecosystem to your advantage.** DuckDuckGo `!bangs` route users straight to a site's own search. A clean, well-indexed on-site search experience captures that intent once users arrive.
+
+### How to check your DuckDuckGo rankings
+
+DuckDuckGo gives publishers no analytics or position data of its own, so visibility has to be measured indirectly.
+
+- **Check manually, neutrally.** Search your target phrases in a private/incognito window so no history or extensions skew the page. Because DuckDuckGo does not personalise, what you see is close to what every user in that region sees — a genuine advantage over checking Google.
+- **Set the region deliberately.** Use DuckDuckGo's region setting to view results as a user in a specific country would, rather than assuming your default locale.
+- **Use a rank tracker that supports DuckDuckGo.** Dedicated and multi-engine tools — for example Ranktracker's DuckDuckGo rank checker, Nightwatch and SE Ranking — track keyword positions on DuckDuckGo specifically, alongside Bing and Google.
+- **Track Bing as a proxy.** Since web results derive from Bing's index, Bing rankings and Bing Webmaster Tools impression and position data are a strong leading indicator of DuckDuckGo performance.
+- **Read traffic by referrer.** In analytics, identify DuckDuckGo visits via the `duckduckgo.com` referral source and page-level performance. Expect limited detail: DuckDuckGo strips search terms and identifiers, so keyword-level referral data is intentionally sparse.
+
+### A note on Duck.ai and the AI surface
+
+Duck.ai is DuckDuckGo's free, privacy-preserving AI chat product (also reached at `duck.ai`). It does not run its own model. Instead it anonymises the user's prompt — stripping IP and identifying information at DuckDuckGo's servers — and forwards it to third-party models. As of 2026 the free tier includes models such as Anthropic's Claude Haiku, OpenAI's GPT-mini variants, Meta's Llama and Mistral's small models, with larger models (including Claude Sonnet and Opus and GPT-5 variants) on paid Plus and Pro tiers. Answers can expose intermediate reasoning and the external web sources consulted.
+
+For visibility purposes, the key point is that Duck.ai is a thin privacy layer over other vendors' models. Whether a business surfaces inside a Duck.ai answer is governed by the underlying model and its retrieval — the same Identity, Authority, Validation and Consistency signals that drive Claude, ChatGPT and the others — not by any DuckDuckGo-specific ranking. Optimising for the major AI platforms is, in effect, optimising for Duck.ai.
 
 ### Why this matters
 
