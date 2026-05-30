@@ -213,6 +213,42 @@ The focus shifts from traditional SEO metrics like keyword rankings to interpret
 
 ---
 
+## Platform Focus: DuckDuckGo
+
+DuckDuckGo is not a single ranking system. It is an assembled results page drawn from several sources, and showing up on it means satisfying each source in turn. Understanding where its results come from is the prerequisite for influencing them.
+
+### How DuckDuckGo sources results
+
+**Traditional web results (Bing index).** DuckDuckGo's "ten blue links" are drawn primarily from Bing's index, and this remains the case in 2026. DuckDuckGo is not a rebranded Bing, and it re-ranks and presents results differently, but Bing's index is the single biggest factor in whether a page is eligible to appear at all. Critically, because DuckDuckGo does not track users, it cannot personalise results. Content must rank on relevance to the exact query, with no lift from click history or brand familiarity.
+
+**DuckDuckBot.** DuckDuckGo runs its own crawler, DuckDuckBot, which supplements and patches Bing-sourced results with independently crawled content.
+
+**Instant Answers.** Above the web links, DuckDuckGo assembles Instant Answers from curated partners, including Wikipedia, Wikidata, Wolfram Alpha and Apple Maps.
+
+**DuckAssist and DuckAssistBot.** DuckAssist is DuckDuckGo's AI answer layer. It is gathered by a dedicated crawler, DuckAssistBot (`DuckAssistBot/1.2; (+http://duckduckgo.com/duckassistbot.html)`), which targets a small set of trusted knowledge repositories — primarily Wikipedia and Britannica — to generate concise AI summaries.
+
+**Duck.ai.** Duck.ai is DuckDuckGo's privacy-preserving AI chat interface. It routes anonymised prompts to third-party models (including Claude, GPT, Llama and Mistral variants) and strips identifying information before forwarding. Its answers and surfaced web sources are governed by the underlying model and its retrieval, not by a DuckDuckGo ranking algorithm.
+
+### How to show up on DuckDuckGo
+
+Because DuckDuckGo aggregates rather than originates, visibility is won by satisfying each layer. Each maps cleanly onto the Five Signal Model.
+
+**Optimise for Bing first.** The highest-leverage action is being well-indexed and well-ranked in Bing. Verify the site in Bing Webmaster Tools, submit a clean XML sitemap, and resolve crawl and indexation errors there. Improvement in Bing is the most direct route to improvement in DuckDuckGo's web results. *(Signal 03: Meaning Architecture.)*
+
+**Do not block the crawlers.** Confirm that `robots.txt` does not disallow DuckDuckBot or, if AI-answer visibility is wanted, DuckAssistBot. Blocking DuckAssistBot does not affect organic rankings, but it removes the content from the DuckAssist answer surface entirely. LLM and crawler accessibility is a precondition, not an optimisation. *(Signal 03: Meaning Architecture.)*
+
+**Earn a presence on Wikipedia and Wikidata.** Instant Answers and DuckAssist draw disproportionately from Wikipedia, Wikidata and Britannica. A notable, well-sourced, accurate entry in these repositories — or being cited as a source within relevant entries — is the primary way to influence the Instant Answer and DuckAssist surfaces. This cannot be self-declared; it must be earned through genuine notability and independent citation. *(Signal 04: Ecosystem Validation.)*
+
+**Keep entity language consistent.** Because DuckDuckGo cannot personalise and stitches together multiple independent sources, contradictions between your site, Bing's index, Wikidata and review platforms are exposed rather than smoothed over. Identical identity language across every surface is what allows the assembled page to resolve to a single, confident entity. *(Signal 01: Identity Clarity and Signal 05: Signal Consistency.)*
+
+**Structure passages for extraction.** DuckAssist and Duck.ai both favour clean, self-contained, extractable passages. The RAG-ready passage discipline — primary answer in the first 150 words, full entity names, no ambiguous pronouns — applies directly. *(Signal 03: Meaning Architecture.)*
+
+### Why this matters
+
+DuckDuckGo rewards the businesses that have already done the structural work the framework prescribes. There is no DuckDuckGo-specific trick and no personalisation to exploit. A business that is cleanly indexed in Bing, accessible to crawlers, consistently described across independent sources, and notable enough to appear in Wikipedia and Wikidata will show up across DuckDuckGo's web results, Instant Answers and AI surfaces alike. Optimising for DuckDuckGo is, in practice, optimising the underlying signals well enough that an aggregator with no memory of the user still arrives at the right answer.
+
+---
+
 ## The Relationship Between the Framework and the Audit
 
 The Five Signal Model is the framework. The Rank4AI AI Search Audit is the application of that framework.
