@@ -47,6 +47,16 @@ Then a 30-second Ahrefs check on survivors:
 2. Top referring pages — real directories/sites vs `businessXX.htm` farm clones
 3. Anchors — branded/varied (good) vs repeated exact-match commercial (bad)
 
+Two gotchas learned in the hunt:
+- **Majestic DP (ExpiredDomains) ≠ Ahrefs "linking websites".** Different
+  indexes; Majestic often inflates with stale/dead links. When they disagree,
+  trust the tool that lets you *inspect the referring pages* (Ahrefs) — a count
+  you can't see is worthless.
+- **"Factors" is a homonym trap.** Searching `factors` pulls motor factors
+  (car parts), diet products (Venus Factor, Fat Loss Factors) and generic
+  "success/human factors" — not invoice *factoring*. Use `invoice`,
+  `factoring`, `discounting`, `cashflow` instead.
+
 (Reference: `factoring-quote.co.uk` failed all three — link-farm footprint.
 `aonefinance.co.uk` passed — Yell DR91 link, branded anchor, 70% dofollow,
 180 real referring domains — but it's a *loans* domain, off-vertical for IF.)
@@ -69,3 +79,34 @@ Then a 30-second Ahrefs check on survivors:
 4. Distribution: NACFB listing, comparison-hub features, the Late-Payment Index
    data-PR for clean relevant links.
 5. Cross-feed: comparison/overflow traffic → marketinvoice broker conversion.
+
+## Getting a Google head-start from an aged domain
+
+An expired domain is a **Google lever, not an AI/ChatGPT lever** (AI
+recommendation is built via the five signals, not inherited from a dead
+domain). Only three things deliver a Google head-start:
+
+1. **Age** — real history beats a day-old registration.
+2. **Clean, relevant, authoritative backlinks** — a few real finance/business
+   links beat thousands of farm links (which count for zero or negative).
+3. **No penalty** — a flagged domain is a head-start in reverse.
+
+Buy-decision checks (real Google signals, not Ahrefs estimates):
+- **Ahrefs Organic keywords / traffic history** — did it ever rank for real,
+  relevant terms? (best pre-purchase proxy)
+- **Wayback** — genuinely a finance site, not repurposed spam?
+- **`site:thedomain.com`** — fully deindexed despite past content = penalty smell.
+- **After acquiring → Google Search Console → Manual Actions** — the only place
+  a penalty is confirmed. Add it day one, before building.
+
+Deploy:
+- **Rebuild on it** (preferred for scaling): build the comparison hub directly
+  on the aged domain, preserving any URLs that held links — age + equity accrue
+  to the asset.
+- **301 into an existing site**: only if topically aligned (clean *factoring*
+  domain → marketinvoice). Off-topic 301s get discounted as soft-404s.
+
+Realistic sizing: from the free pool the head-start is age + a few clean
+relevant links + an exact-match keyword — a few months' jump, not instant
+page 1. Content + the distribution playbook still do the heavy lifting. A
+bigger jump means paying for a quality aged domain via a broker/marketplace.
