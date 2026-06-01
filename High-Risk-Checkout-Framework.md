@@ -193,34 +193,79 @@ Red flags:
 
 ---
 
-## 6. Scoring Rubric
+## 6. The Detection Model (Gated, Not Summed)
 
-Score each signal layer 0–4 by how strongly transfer-in-disguise red flags are
-present. Higher = more suspicious.
+A naïve model scores all five signals and sums them. That fails in two
+directions: it **flags honest** pay-by-bank/crypto merchants (who score high on
+"uses irreversible rail") and it **misses clean disguises** that trip only one
+decisive signal. The working model is therefore **gated**: a small number of
+dispositive facts decide the outcome, and the soft signals only move cases that
+sit on the boundary.
 
-| Score | Meaning |
-|-------|---------|
-| 0 | No red flags; behaves as a protected card checkout. |
-| 1 | Minor ambiguity; plausibly legitimate. |
-| 2 | Notable concern; warrants review. |
-| 3 | Strong indicators of disguise. |
-| 4 | Unambiguous transfer-in-disguise behaviour. |
+### Step 1 — Establish the two facts that decide most cases
 
-**Composite Disguise Score = sum across the five layers (0–20).**
+The model turns on two observable facts, captured at the *final* payment step
+(and after any deliberate card failure):
 
-Suggested bands (tune to your risk appetite):
+- **Fact A — Actual rail.** What truly moves the money: `CARD` (with
+  authorisation / 3-DS), `A2A` (push bank transfer), `CRYPTO`, or `OFF_RAILS`
+  (gift card, manual, chat handoff).
+- **Fact B — Claimed protection.** What the interface *implies*: does it present
+  itself as a protected card purchase (card logos, "secure card checkout",
+  card-style fields, padlock-as-card-trust)?
 
-| Band | Score | Interpretation | Suggested action |
-|------|-------|----------------|------------------|
-| Clear | 0–3 | Behaves as protected checkout | Monitor only |
-| Watch | 4–8 | Some disguise characteristics | Enhanced monitoring |
-| Elevated | 9–13 | Likely transfer-in-disguise | Hold / manual review / restrict |
-| Critical | 14–20 | Disguise effectively confirmed | Block / offboard / escalate |
+### Step 2 — Apply the primary gate (Rail Honesty)
 
-**Override rule:** A score of **4 on Signal 01 (Rail Integrity)** — i.e. a
-confirmed rail-switch or beneficiary mismatch — should escalate the case to at
-least *Elevated* regardless of the composite, because the core deception is
-proven.
+| Actual rail (A) | Interface claims card protection? (B) | Outcome |
+|-----------------|----------------------------------------|---------|
+| CARD | — | **PASS** — protected purchase, exit model |
+| A2A / CRYPTO / OFF_RAILS | **No** (rail honestly disclosed) | **WATCH** — legitimate alt-payment until proven otherwise → go to Step 4 |
+| A2A / CRYPTO / OFF_RAILS | **Yes** (presented as card purchase) | **DISGUISE CONFIRMED** — irreversible rail dressed as protected card → go to Step 3 |
+
+This single gate does most of the work. The disguise *is* the mismatch in this
+table; everything else is corroboration or false-positive control.
+
+### Step 3 — Apply the override triggers (any one ⇒ Critical)
+
+Independent of any score, treat as **Critical** if any of these is observed,
+because each is the deception in action:
+
+- **Rail-switch.** A card field that fails ("card declined — use bank
+  transfer/crypto") and funnels to an irreversible rail.
+- **Beneficiary mismatch.** Receiving account/wallet/entity differs from the
+  advertised merchant, is a personal account, or changes between sessions.
+- **Beneficiary reuse.** The same account/wallet sits behind multiple unrelated
+  "stores."
+
+### Step 4 — Corroborating score (only for WATCH / boundary cases)
+
+For cases that cleared the gate as plausibly legitimate, or sit on the boundary,
+score the soft signals (Interface Honesty, Reversibility disclosure,
+Counterparty clarity, Behavioural context) **0–4 each** for how strongly
+disguise red-flags are present. These only *promote* a case; they never clear a
+gate failure.
+
+| Soft score (0–16) | Effect |
+|--------------------|--------|
+| 0–3 | Stays **Clear/Watch** — honest alt-payment merchant |
+| 4–8 | **Elevated** — review the rail-honesty disclosure |
+| 9+ | **Elevated → escalate** — disguise likely despite passing the gate |
+
+### Outcome bands
+
+| Band | How reached | Suggested action |
+|------|-------------|------------------|
+| Clear | Actual rail = CARD, or honest disclosure + low soft score | Monitor only |
+| Watch | Irreversible rail, honestly disclosed | Enhanced monitoring |
+| Elevated | Gate ambiguity or soft score 4–8 | Hold / manual review / restrict |
+| Critical | Gate = DISGUISE, or any override trigger | Block / offboard / escalate |
+
+**Why this model works:** the decision is driven by the *disguise gap itself*
+(rail vs. claimed protection, beneficiary vs. merchant), which is precisely what
+separates a fraudulent flow from an honest one — rather than by the rail choice,
+which does not. This keeps false positives on legitimate pay-by-bank/crypto
+merchants low while making a single decisive signal (rail-switch, beneficiary
+mismatch) sufficient to catch the disguise.
 
 ---
 
@@ -229,17 +274,18 @@ proven.
 1. **Capture the checkout.** Record the full payment journey, including any
    "card declined → alternative method" branches. The disguise often only
    reveals itself at the final step or after a deliberate card failure.
-2. **Identify the actual rail.** Determine what really moves the money: card
-   authorisation, A2A push, crypto, or off-rails. This single fact drives most
-   of the score.
-3. **Resolve the beneficiary.** Compare the receiving account / wallet / entity
-   against the advertised merchant.
-4. **Score the five layers** using the rubric.
-5. **Apply bands and the override rule.**
-6. **Decide and document.** Record the disguise gap evidence (rail, beneficiary,
-   interface mismatch) so the decision is auditable and repeatable.
-7. **Re-test periodically.** Operators rotate domains, beneficiaries and copy;
-   re-score on a schedule and on any reported incident.
+2. **Establish Fact A (actual rail).** Determine what really moves the money:
+   `CARD`, `A2A`, `CRYPTO`, or `OFF_RAILS`.
+3. **Establish Fact B (claimed protection).** Does the interface present itself
+   as a protected card purchase?
+4. **Apply the primary gate** (Step 2 table). Most cases resolve here.
+5. **Check the override triggers** — rail-switch, beneficiary mismatch,
+   beneficiary reuse. Any one ⇒ Critical.
+6. **Score soft signals only for boundary/Watch cases** and apply the band.
+7. **Decide and document.** Record the disguise-gap evidence (rail vs. claimed
+   protection, beneficiary vs. merchant) so the decision is auditable.
+8. **Re-test periodically.** Operators rotate domains, beneficiaries and copy;
+   re-run the gate on a schedule and on any reported incident.
 
 ---
 
